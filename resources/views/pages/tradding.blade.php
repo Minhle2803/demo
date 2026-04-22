@@ -179,12 +179,7 @@
                 <ul class="nav nav-tabs-custom rounded card-header-tabs nav-justified border-bottom-0 mx-n3" role="tablist">
                     <li class="nav-item">
                         <a class="nav-link active" data-bs-toggle="tab" href="#cryptoBuy" role="tab">
-                            Buy
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" data-bs-toggle="tab" href="#cryptoSell" role="tab">
-                            Sell
+                            Giao dịch
                         </a>
                     </li>
                 </ul>
@@ -192,163 +187,64 @@
             <div class="card-body p-0">
                 <div class="tab-content text-muted">
                     <div class="tab-pane active" id="cryptoBuy" role="tabpanel">
-                        <div class="p-3 bg-warning-subtle">
-                            <div class="float-end ms-2">
-                                <h6 class="text-warning mb-0">USD Balance : <span class="text-body">$12,426.07</span></h6>
-                            </div>
-                            <h6 class="mb-0 text-danger">Buy Coin</h6>
-                        </div>
                         <div class="p-3">
-                            <div class="row">
-                                <div class="col-6">
-                                    <div class="mb-3">
-                                        <label>Currency :</label>
-                                        <select class="form-select">
-                                            <option>BTC</option>
-                                            <option>ETH</option>
-                                            <option>LTC</option>
-                                        </select>
+                            
+                            <div class="mt-3 pt-2">
+                                <div class="d-flex mb-2">
+                                    <div class="flex-grow-1">
+                                        <p class="fs-13 mb-0">Ngày</p>
                                     </div>
-                                </div><!-- end col -->
-                                <div class="col-6">
+                                    <div class="flex-shrink-0">
+                                        <h6 class="mb-0" id="date"></h6>
+                                    </div>
+                                </div>
+                                <div class="d-flex mb-2">
+                                    <div class="flex-grow-1">
+                                        <p class="fs-13 mb-0">Giờ</p>
+                                    </div>
+                                    <div class="flex-shrink-0">
+                                        <h6 class="mb-0" id="time"></h6>
+                                    </div>
+                                </div>
+                                <div class="d-flex mb-2">
+                                    <div class="flex-grow-1">
+                                        <p class="fs-13 mb-0">Phiên hiện tại</p>
+                                    </div>
+                                    <div class="flex-shrink-0">
+                                        <h6 class="mb-0" id="session"></h6>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-12">
                                     <div class="mb-3">
-                                        <label>Payment Method :</label>
                                         <select class="form-select">
-                                            <option>Wallet Balance</option>
-                                            <option>Credit / Debit Card</option>
-                                            <option>PayPal</option>
-                                            <option>Payoneer</option>
+                                            <option>20,000 VND</option>
+                                            <option>50,000 VND</option>
+                                            <option>100,000 VND</option>
+                                            <option>200,000 VND</option>
+                                            <option>500,000 VND</option>
+                                            <option>1,000,000 VND</option>
+                                            <option>2,000,000 VND</option>
+                                            <option>5,000,000 VND</option>
+                                            <option>10,000,000 VND</option>
+                                            <option>20,000,000 VND</option>
+                                            <option>50,000,000 VND</option>
+                                            <option>100,000,000 VND</option>
+                                            <option>200,000,000 VND</option>
+                                            <option>500,000,000 VND</option>
                                         </select>
                                     </div>
                                 </div><!-- end col -->
                             </div><!-- end row -->
-                            <div>
-                                <div class="input-group mb-3">
-                                    <label class="input-group-text">Amount</label>
-                                    <input type="text" class="form-control" placeholder="0">
-                                </div>
-
-                                <div class="input-group mb-3">
-                                    <label class="input-group-text">Price</label>
-                                    <input type="text" class="form-control" placeholder="2.045585">
-                                    <label class="input-group-text">$</label>
-                                </div>
-
-                                <div class="input-group mb-0">
-                                    <label class="input-group-text">Total</label>
-                                    <input type="text" class="form-control" placeholder="2700.16">
-                                </div>
+                            <div class="card">
+                                <div class="bg-light card-body p-4 text-center">
+                                    <h5 class="card-title mb-0">Hãy đặt lệnh: <span id="order-time">00:00</span></h5>
+                                </div><!-- end cardbody -->
                             </div>
-                            <div class="mt-3 pt-2">
-                                <div class="d-flex mb-2">
-                                    <div class="flex-grow-1">
-                                        <p class="fs-13 mb-0">Transaction Fees<span class="text-muted ms-1 fs-11">(0.05%)</span></p>
-                                    </div>
-                                    <div class="flex-shrink-0">
-                                        <h6 class="mb-0">$1.08</h6>
-                                    </div>
-                                </div>
-                                <div class="d-flex mb-2">
-                                    <div class="flex-grow-1">
-                                        <p class="fs-13 mb-0">Minimum Received<span class="text-muted ms-1 fs-11">(2%)</span></p>
-                                    </div>
-                                    <div class="flex-shrink-0">
-                                        <h6 class="mb-0">$7.85</h6>
-                                    </div>
-                                </div>
-                                <div class="d-flex">
-                                    <div class="flex-grow-1">
-                                        <p class="fs-13 mb-0">Estimated Rate</p>
-                                    </div>
-                                    <div class="flex-shrink-0">
-                                        <h6 class="mb-0">1 BTC ~ $46982.70</h6>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="mt-3 pt-2">
-                                <button type="button" class="btn btn-primary w-100">Buy Coin</button>
-                            </div>
-                        </div>
-                    </div>
-                    <!--end tab-pane-->
-                    <div class="tab-pane" id="cryptoSell" role="tabpanel">
-                        <div class="p-3 bg-warning-subtle">
-                            <div class="float-end ms-2">
-                                <h6 class="text-warning mb-0">USD Balance : <span class="text-body">$12,426.07</span></h6>
-                            </div>
-                            <h6 class="mb-0 text-danger">Sell Coin</h6>
-                        </div>
-                        <div class="p-3">
-                            <div class="row">
-                                <div class="col-6">
-                                    <div class="mb-3">
-                                        <label for="currencySelect">Currency :</label>
-                                        <select class="form-select" id="currencySelect">
-                                            <option value="BTC" selected>BTC</option>
-                                            <option value="ETH">ETH</option>
-                                            <option value="EUR">EUR</option>
-                                            <option value="JPY">JPY</option>
-                                            <option value="LTC">LTC</option>
-                                        </select>
-                                    </div>
-                                </div><!-- end col -->
-                                <div class="col-6">
-                                    <div class="mb-3">
-                                        <div class="mb-3">
-                                            <label for="paymentMethod">Payment Method :</label>
-                                            <select class="form-select" id="paymentMethod">
-                                                <option>Wallet Balance</option>
-                                                <option>Credit / Debit Card</option>
-                                                <option>PayPal</option>
-                                                <option>Payoneer</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                </div><!-- end col -->
-                            </div><!-- end row -->
-                            <div>
-                                <div class="input-group mb-3">
-                                    <label class="input-group-text">Amount</label>
-                                    <input type="text" class="form-control" placeholder="0">
-                                </div>
-                                <div class="input-group mb-3">
-                                    <label class="input-group-text">Price</label>
-                                    <input type="text" class="form-control" placeholder="2.045585">
-                                    <label class="input-group-text">$</label>
-                                </div>
-                                <div class="input-group mb-0">
-                                    <label class="input-group-text">Total</label>
-                                    <input type="text" class="form-control" placeholder="2700.16">
-                                </div>
-                            </div>
-                            <div class="mt-3 pt-2">
-                                <div class="d-flex mb-2">
-                                    <div class="flex-grow-1">
-                                        <p class="fs-13 mb-0">Transaction Fees<span class="text-muted ms-1 fs-11">(0.05%)</span></p>
-                                    </div>
-                                    <div class="flex-shrink-0">
-                                        <h6 class="mb-0">$1.08</h6>
-                                    </div>
-                                </div>
-                                <div class="d-flex mb-2">
-                                    <div class="flex-grow-1">
-                                        <p class="fs-13 mb-0">Minimum Received<span class="text-muted ms-1 fs-11">(2%)</span></p>
-                                    </div>
-                                    <div class="flex-shrink-0">
-                                        <h6 class="mb-0">$7.85</h6>
-                                    </div>
-                                </div>
-                                <div class="d-flex">
-                                    <div class="flex-grow-1">
-                                        <p class="fs-13 mb-0">Estimated Rate</p>
-                                    </div>
-                                    <div class="flex-shrink-0">
-                                        <h6 class="mb-0">1 BTC ~ $46982.70</h6>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="mt-3 pt-2">
-                                <button type="button" class="btn btn-danger w-100">Sell Coin</button>
+                            <div class="flex-wrap gap-3" >
+                                <button type="button" class="btn btn-success waves-effect waves-light left" style="width: 47%; float: left;" id="buyBtn">Buy Coin <i class="mdi mdi-trending-up align-middle me-1"></i></button>
+                                <button type="button" class="btn btn-danger waves-effect waves-light right" style="width: 47%; float: right;" id="sellBtn">Sell Coin <i class="mdi mdi-trending-down align-middle me-1"></i></button>
                             </div>
                         </div>
                     </div>

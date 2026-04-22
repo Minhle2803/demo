@@ -32,7 +32,7 @@
     @include('layouts.partials.preloader')
     @include('layouts.partials.customizer')
     @include('layouts.partials.scripts')
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
+    @vite(['resources/js/app.js'])
     @stack('scripts')
 </body>
 </html>

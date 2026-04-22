@@ -149,4 +149,69 @@ console.log("32423423");
     window.addEventListener('resize', () => {
         chart.resize()
     })
+
+    function formatDateTime(date = new Date()) {
+      const pad = (n) => String(n).padStart(2, "0");
+
+      const day = pad(date.getDate());
+      const month = pad(date.getMonth() + 1);
+      const year = date.getFullYear();
+
+      const hours = pad(date.getHours());
+      const minutes = pad(date.getMinutes());
+      const seconds = pad(date.getSeconds());
+
+      return {
+        date: `${day}-${month}-${year}`,                 // dd-MM-yyyy
+        dateTime: `${day}-${month}-${year} ${hours}:${minutes}:${seconds}` // full
+      };
+    }
+
+    var ses = 25346;
+    document.getElementById("session").innerHTML = ses;
+    setInterval(() => {
+          const elTime = document.getElementById("time");
+          const elDate = document.getElementById("date");
+          
+          const now = formatDateTime();
+          if (elTime) elTime.innerText = now.dateTime;
+          if (elDate) elDate.innerText = now.date;
+      }, 1000);
+
+
+      let seconds = 0;
+
+      const timerEl = document.getElementById("order-time");
+      const buyBtn = document.getElementById("buyBtn");
+      const sellBtn = document.getElementById("sellBtn");
+
+      function pad(n) {
+        return String(n).padStart(2, "0");
+      }
+
+      setInterval(() => {
+        seconds++;
+        
+        // reset sau 60s
+        if (seconds >= 60) {
+          
+          const elSession = document.getElementById("session");
+          ses +=1;
+          if (elSession) elSession.innerText = ses; // Replace with actual session data if available
+          seconds = 0;
+        }
+
+        // format mm:ss (ở đây chỉ dùng ss)
+        timerEl.innerText = `00:${pad(seconds)}`;
+
+        // logic enable/disable button
+        if (seconds < 50) {
+          buyBtn.disabled = false; // bật
+          sellBtn.disabled = false; // bật
+        } else {
+          buyBtn.disabled = true;  // tắt (50 -> 59)
+          sellBtn.disabled = true;  // tắt (50 -> 59)
+        }
+
+      }, 1000);
 })
