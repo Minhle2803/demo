@@ -9,6 +9,7 @@ use App\Models\ClientUser;
 use App\Services\OtpService;
 use App\Support\ErrorCodes;
 use Illuminate\Auth\Events\Registered;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Str;
 
@@ -27,7 +28,7 @@ class ClientRegisterController extends Controller
      * 1. Validate → 2. Create user → 3. Send email verification →
      * 4. Send phone OTP → 5. Return 201
      */
-    public function __invoke(ClientRegisterRequest $request): JsonResponse
+    public function __invoke(ClientRegisterRequest $request): JsonResponse|RedirectResponse
     {
         $validated = $request->validated();
 
@@ -52,11 +53,14 @@ class ClientRegisterController extends Controller
 
         // Send phone OTP (mocked by default)
         $this->otpService->sendOtp($user);
+        if ($request->expectsJson()) {
+            return ApiResponse::success(
+                data: ['user_id' => $user->user_id],
+                code: ErrorCodes::REGISTER_SUCCESS,
+                statusCode: 201,
+            );
+        }
 
-        return ApiResponse::success(
-            data: ['user_id' => $user->user_id],
-            code: ErrorCodes::REGISTER_SUCCESS,
-            statusCode: 201,
-        );
+        return redirect()->route('signin');
     }
 }

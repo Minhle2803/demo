@@ -40,7 +40,7 @@ Route::prefix('trade')->group(function () {
     
     Route::get('session/current', [TradingSessionController::class, 'current']);
 
-    Route::middleware(['auth:client', 'throttle:60,1'])->group(function () {
+    Route::middleware(['auth:sanctum', 'throttle:60,1'])->group(function () {
         Route::get('session/{id}/result', [TradingSessionController::class, 'result']);
 
         Route::middleware([EnsureClientFullyVerified::class, 'throttle:5,1'])->group(function () {

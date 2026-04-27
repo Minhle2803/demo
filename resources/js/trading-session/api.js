@@ -1,12 +1,14 @@
 const BASE = '/api/trade';
 
 async function request(method, path, body = null) {
+    const token = localStorage.getItem('token');
     const opts = {
         method,
         headers: {
             'Content-Type': 'application/json',
             'Accept': 'application/json',
             'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]')?.content ?? '',
+            ...(token && { Authorization: `Bearer ${token}` }),
         },
     };
     if (body) opts.body = JSON.stringify(body);

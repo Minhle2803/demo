@@ -80,7 +80,6 @@ class ClientRegisterRequest extends FormRequest
                 )
             );
         }
-        
         throw new HttpResponseException(
             redirect()
                 ->back()

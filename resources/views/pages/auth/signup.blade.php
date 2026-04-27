@@ -45,7 +45,6 @@
                         </div>
                     </div>
                 </div>
-
                 <div class="col-lg-6">
                     <div class="p-lg-5 p-4">
                         <div>
@@ -54,7 +53,7 @@
                         </div>
 
                         <div class="mt-4">
-                            <form class="needs-validation" novalidate action="{{ route('client.register') }}" method="POST">
+                            <form class="needs-validation" novalidate action="{{ route('client.register') }}" method="POST" id="form-signup">
                                 @csrf
                                 @if (session('error'))
                                 <div class="alert alert-danger material-shadow" role="alert">
@@ -89,6 +88,16 @@
                                         <button class="btn btn-link position-absolute end-0 top-0 text-decoration-none text-muted password-addon material-shadow-none" type="button" id="password-addon"><i class="ri-eye-fill align-middle"></i></button>
                                         <div class="invalid-feedback">
                                             Please enter password
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label" for="confirm-password-input">Confirm Password</label>
+                                    <div class="position-relative auth-pass-inputgroup">
+                                        <input type="password" name="password_confirmation" class="form-control pe-5 confirm-password-input" onpaste="return false" placeholder="Enter password" id="confirm-password-input" aria-describedby="passwordInput" >
+                                        <button class="btn btn-link position-absolute end-0 top-0 text-decoration-none text-muted confirm-password-addon material-shadow-none" type="button" id="confirm-password-addon"><i class="ri-eye-fill align-middle"></i></button>
+                                        <div class="invalid-feedback">
+                                            Please enter confirm password
                                         </div>
                                     </div>
                                 </div>

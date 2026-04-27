@@ -29,6 +29,7 @@ class ClientLoginController extends Controller
     {
         $login    = $request->input('login');
         $password = $request->input('password');
+        $remember = $request->input('remember');
 
         // Detect field and find user — never touches admin users table
         if ($request->isEmail()) {
@@ -56,16 +57,16 @@ class ClientLoginController extends Controller
         // if (!$user->is_verified) {
         //     return ApiResponse::error(ErrorCodes::AUTH_UNVERIFIED_ACCOUNT, statusCode: 403);
         // }
-
         // Authenticate against the client guard only — never logs into admin session
-        Auth::guard('client')->login($user, remember: false);
-
+        Auth::guard('client')->login($user, remember: $remember);
+       
         if ($request->expectsJson()) {
             return ApiResponse::success(
                 data: [
                     'user_id'  => $user->user_id,
                     'nickname' => $user->nickname,
                     'email'    => $user->email,
+                    'token'    =>$user->createToken('client-token')->plainTextToken,
                 ],
                 code: ErrorCodes::LOGIN_SUCCESS,
             );

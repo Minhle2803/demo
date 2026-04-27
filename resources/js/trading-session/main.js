@@ -101,14 +101,15 @@ async function handleTrade(type) {
 
      // Handle specific error codes
     if (res.code === 'AUTH_UNAUTHORIZED') {
-        const signinModal = new bootstrap.Offcanvas(document.getElementById('theme-settings-offcanvas'));
-        signinModal.show();
+        window.location.href = '/signin';
         return;
     }
 
     // Handle specific error codes
     if (res.code === 'USER_NOT_FULLY_VERIFIED') {
-        window.location.href = '/profile';
+        if (confirm(res.message)) {
+            window.location.href = '/profile';
+        }
         return;
     }
 

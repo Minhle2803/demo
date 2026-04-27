@@ -54,7 +54,7 @@
                         </div>
 
                         <div class="mt-4">
-                            <form  method="POST" action="{{ route('client.login') }}">
+                            <form  method="POST" id="loginForm" action="{{ route('client.login') }}">
                                 @csrf
                                 @if (session('error'))
                                 <div class="alert alert-danger material-shadow" role="alert">
@@ -78,7 +78,7 @@
                                 </div>
 
                                 <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" value="" id="auth-remember-check">
+                                    <input class="form-check-input" name="remember" type="checkbox" value="" id="auth-remember-check">
                                     <label class="form-check-label" for="auth-remember-check">Remember me</label>
                                 </div>
 
@@ -105,3 +105,6 @@
 <!-- end row -->
 @endsection
 
+@push('scripts')
+    @vite(['resources/js/auth/signin.js'])
+@endpush

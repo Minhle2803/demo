@@ -11,12 +11,12 @@ class EnsureClientFullyVerified
     public function handle(Request $request, Closure $next)
     {
         $user = auth('client')->user();
-
         if (! $user) {
             return response()->json([
                 'success'     => false,
                 'status_code' => 401,
                 'code'        => ErrorCodes::AUTH_UNAUTHORIZED,
+                'message' => __('errors.AUTH_UNAUTHORIZED'),
             ], 401);
         }
 
@@ -26,6 +26,7 @@ class EnsureClientFullyVerified
             return response()->json([
                 'success'     => false,
                 'status_code' => 403,
+                'message' => __('errors.USER_NOT_FULLY_VERIFIED'),
                 'code'        => ErrorCodes::USER_NOT_FULLY_VERIFIED,
             ], 403);
         }

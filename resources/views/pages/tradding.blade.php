@@ -61,7 +61,7 @@
             <div class="card-body p-0">
                 <div class="bg-light-subtle border-top-dashed border border-start-0 border-end-0 border-bottom-dashed py-3 px-4">
                     <div class="row align-items-center">
-                        <div class="col-6">
+                        <div class="col-3">
                             <div class="d-flex flex-wrap gap-4 align-items-center">
                                 <div>
                                     <h3 class="fs-19" id="market-price"><small class="fs-14 text-muted">.00</small></h3>
@@ -69,7 +69,7 @@
                                 </div>
                             </div>
                         </div><!-- end col -->
-                        <div class="col-6">
+                        <div class="col-9">
                             <div class="d-flex">
                                 <div class="d-flex justify-content-end text-end flex-wrap gap-4 ms-auto">
                                     <div class="pe-3">

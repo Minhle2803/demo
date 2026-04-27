@@ -21,6 +21,7 @@ class ClientLoginRequest extends FormRequest
             // 'login' accepts either email or phone number
             'login'    => ['required', 'string', 'max:255'],
             'password' => ['required', 'string', 'min:1'],
+            'remember' => ['nullable', 'boolean'],
         ];
     }
 

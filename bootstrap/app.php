@@ -23,9 +23,12 @@ return Application::configure(basePath: dirname(__DIR__))
         App\Console\Commands\TradingChartWorker::class,
     ])
     ->withMiddleware(function (Middleware $middleware): void {
-        //
+        $middleware->api(prepend: [
+            \Laravel\Sanctum\Http\Middleware\EnsureFrontendRequestsAreStateful::class,
+        ]);
     })
     ->withExceptions(function (Exceptions $exceptions): void {
+
         $exceptions->render(function (AuthenticationException $e, $request) {
             return response()->json([
                 'success' => false,

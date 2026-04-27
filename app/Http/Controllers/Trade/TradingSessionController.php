@@ -85,7 +85,7 @@ class TradingSessionController extends Controller
 
         try {
             $trade = $this->tradeService->placeTrade(
-                auth('client')->user(),
+                $request->user(),
                 $session,
                 $type,
                 (float) $request->validated('amount')
@@ -110,8 +110,11 @@ class TradingSessionController extends Controller
                 ErrorCodes::TRADE_INSUFFICIENT_BALANCE => 422,
                 default                                => 500,
             };
-
-            return ApiResponse::error($code, $httpStatus);
+            return ApiResponse::error(
+                code: $code,
+                message: __('errors.{$code}'),
+                statusCode: $httpStatus
+            );
         }
     }
 
