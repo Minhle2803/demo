@@ -72,11 +72,21 @@ class ClientRegisterRequest extends FormRequest
      */
     protected function failedValidation(Validator $validator): never
     {
+        if ($this->expectsJson()) {
+            throw new HttpResponseException(
+                ApiResponse::validationError(
+                    errors: $validator->errors()->toArray(),
+                    code: ErrorCodes::AUTH_VALIDATION_ERROR,
+                )
+            );
+        }
+        
         throw new HttpResponseException(
-            ApiResponse::validationError(
-                errors: $validator->errors()->toArray(),
-                code: ErrorCodes::AUTH_VALIDATION_ERROR,
-            )
+            redirect()
+                ->back()
+                ->withErrors($validator)
+                ->withInput()
+                ->with('error', $validator->errors()->first())
         );
     }
 }

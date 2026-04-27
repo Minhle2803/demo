@@ -14,6 +14,11 @@ use Illuminate\Support\Str;
 
 class ClientRegisterController extends Controller
 {
+    public function index()
+    {
+        return view('pages.auth.signup');
+    }
+
     public function __construct(private readonly OtpService $otpService) {}
 
     /**

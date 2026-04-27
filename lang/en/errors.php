@@ -48,4 +48,18 @@ return [
 
     // System
     'SYSTEM_INTERNAL_ERROR'            => 'Internal server error.',
+
+    //Trade Errors
+    'TRADE_SESSION_NOT_FOUND'      => 'Trading session not found.',
+    'TRADE_SESSION_NOT_OPEN'       => 'Trading session is not open.',
+    'TRADE_SESSION_LOCKED'         => 'Trading is locked for this session.',
+    'TRADE_ALREADY_PLACED'         => 'You have already placed a trade in this session.',
+    'TRADE_INSUFFICIENT_BALANCE'   => 'Insufficient balance.',
+    'TRADE_INVALID_AMOUNT'         => 'Invalid trade amount.',
+    'TRADE_PLACE_SUCCESS'          => 'Trade placed successfully.',
+    'TRADE_RESULT_FETCHED'         => 'Session result fetched.',
+    'TRADE_SESSION_FETCHED'        => 'Session fetched.',
+    'TRADE_CANDLE_NOT_FOUND'       => 'Candle data not found for this session.',
+    'USER_NOT_FULLY_VERIFIED'      => 'Your account is not fully verified. Please complete KYC.',
+
 ];

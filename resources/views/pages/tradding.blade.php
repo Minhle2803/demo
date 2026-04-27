@@ -4,6 +4,7 @@
 
 @section('content')
 
+    
 <!-- start page title -->
 <div class="row">
     <div class="col-12">
@@ -29,85 +30,7 @@
                 <h4 class="card-title mb-0 flex-grow-1">Giao dịch Spot</h4>
             </div><!-- end card-header -->
             <div class="card-body p-0">
-                <ul class="list-group list-group-flush border-dashed mb-0">
-                    <li class="list-group-item d-flex align-items-center">
-                        <div class="flex-shrink-0">
-                            <img src="assets/images/svg/crypto-icons/btc.svg" class="avatar-xs" alt="">
-                        </div>
-                        <div class="flex-grow-1 ms-3">
-                            <h6 class="fs-14 mb-1">Bitcoin</h6>
-                            <p class="text-muted mb-0">$18.7 Billions</p>
-                        </div>
-                        <div class="flex-shrink-0 text-end">
-                            <h6 class="fs-14 mb-1">$12,863.08</h6>
-                            <p class="text-success fs-12 mb-0">+$67.21 (+4.33%)</p>
-                        </div>
-                    </li><!-- end -->
-                    <li class="list-group-item d-flex align-items-center">
-                        <div class="flex-shrink-0">
-                            <img src="assets/images/svg/crypto-icons/eth.svg" class="avatar-xs material-shadow" alt="">
-                        </div>
-                        <div class="flex-grow-1 ms-3">
-                            <h6 class="fs-14 mb-1">Ethereum</h6>
-                            <p class="text-muted mb-0">$27.4 Billions</p>
-                        </div>
-                        <div class="flex-shrink-0 text-end">
-                            <h6 class="fs-14 mb-1">$08,256.04</h6>
-                            <p class="text-success fs-12 mb-0">+$51.19<span class="ms-1">(+5.64%)</span></p>
-                        </div>
-                    </li><!-- end -->
-                    <li class="list-group-item d-flex align-items-center">
-                        <div class="flex-shrink-0">
-                            <img src="assets/images/svg/crypto-icons/aave.svg" class="avatar-xs material-shadow" alt="">
-                        </div>
-                        <div class="flex-grow-1 ms-3">
-                            <h6 class="fs-14 mb-1">Avalanche</h6>
-                            <p class="text-muted mb-0">$12.9 Billions</p>
-                        </div>
-                        <div class="flex-shrink-0 text-end">
-                            <h6 class="fs-14 mb-1">$11,896.13</h6>
-                            <p class="text-danger fs-12 mb-0">-$59.01<span class="ms-1">(-4.08%)</span></p>
-                        </div>
-                    </li><!-- end -->
-                    <li class="list-group-item d-flex align-items-center">
-                        <div class="flex-shrink-0">
-                            <img src="assets/images/svg/crypto-icons/doge.svg" class="avatar-xs material-shadow" alt="">
-                        </div>
-                        <div class="flex-grow-1 ms-3">
-                            <h6 class="fs-14 mb-1">Dogecoin</h6>
-                            <p class="text-muted mb-0">$09.5 Billions</p>
-                        </div>
-                        <div class="flex-shrink-0 text-end">
-                            <h6 class="fs-14 mb-1">$15,999.06</h6>
-                            <p class="text-success fs-12 mb-0">+$74.05<span class="ms-1">(+3.12%)</span></p>
-                        </div>
-                    </li><!-- end -->
-                    <li class="list-group-item d-flex align-items-center">
-                        <div class="flex-shrink-0">
-                            <img src="assets/images/svg/crypto-icons/bnb.svg" class="avatar-xs material-shadow" alt="">
-                        </div>
-                        <div class="flex-grow-1 ms-3">
-                            <h6 class="fs-14 mb-1">Binance</h6>
-                            <p class="text-muted mb-0">$14.2 Billions</p>
-                        </div>
-                        <div class="flex-shrink-0 text-end">
-                            <h6 class="fs-14 mb-1">$13,786.18</h6>
-                            <p class="text-danger fs-12 mb-0">-$61.05<span class="ms-1">(-9.22%)</span></p>
-                        </div>
-                    </li><!-- end -->
-                    <li class="list-group-item d-flex align-items-center">
-                        <div class="flex-shrink-0">
-                            <img src="assets/images/svg/crypto-icons/ltc.svg" class="avatar-xs material-shadow" alt="">
-                        </div>
-                        <div class="flex-grow-1 ms-3">
-                            <h6 class="fs-14 mb-1">Litecoin</h6>
-                            <p class="text-muted mb-0">$09.5 Billions</p>
-                        </div>
-                        <div class="flex-shrink-0 text-end">
-                            <h6 class="fs-14 mb-1">$10,604.27</h6>
-                            <p class="text-success fs-12 mb-0">+$76.12<span class="ms-1">(+4.92%)</span></p>
-                        </div>
-                    </li><!-- end -->
+                <ul class="list-group list-group-flush border-dashed mb-0" id="market-list">
                 </ul><!-- end ul -->
             </div><!-- end card body -->
         </div><!-- end card -->
@@ -116,7 +39,7 @@
     <div class="col-xxl-6">
         <div class="card card-height-100">
             <div class="card-header border-0 align-items-center d-flex">
-                <h4 class="card-title mb-0 flex-grow-1">Market Graph</h4>
+                <h4 class="card-title mb-0 flex-grow-1" >Market Graph</h4>
                 <div>
                     <button type="button" class="btn btn-soft-secondary btn-sm material-shadow-none">
                         1H
@@ -141,8 +64,8 @@
                         <div class="col-6">
                             <div class="d-flex flex-wrap gap-4 align-items-center">
                                 <div>
-                                    <h3 class="fs-19">$46,959.<small class="fs-14 text-muted">00</small></h3>
-                                    <p class="text-muted text-uppercase fw-medium mb-0">Bitcoin (BTC) <small class="badge bg-success-subtle text-success"><i class="ri-arrow-right-up-line align-bottom"></i> 2.15%</small></p>
+                                    <h3 class="fs-19" id="market-price"><small class="fs-14 text-muted">.00</small></h3>
+                                    <p class="text-muted text-uppercase fw-medium mb-0"> <span  id="market-symbol"></span> <small class="badge bg-success-subtle text-success" id="market-bg"><i class="ri-arrow-right-up-line align-bottom" id="market-icon"></i> <span id="market-change">2.15%</span></small></p>
                                 </div>
                             </div>
                         </div><!-- end col -->
@@ -151,15 +74,15 @@
                                 <div class="d-flex justify-content-end text-end flex-wrap gap-4 ms-auto">
                                     <div class="pe-3">
                                         <h6 class="mb-2 text-muted">High</h6>
-                                        <h5 class="text-success mb-0">$28,722.76</h5>
+                                        <h5 class="text-success mb-0" id="market-high"></h5>
                                     </div>
                                     <div class="pe-3">
                                         <h6 class="mb-2 text-muted">Low</h6>
-                                        <h5 class="text-danger mb-0">$68,789.63</h5>
+                                        <h5 class="text-danger mb-0" id="market-low"></h5>
                                     </div>
                                     <div>
                                         <h6 class="mb-2 text-muted">Market Volume</h6>
-                                        <h5 class="text-danger mb-0">$888,411,910</h5>
+                                        <h5 class="text-danger mb-0" id="market-volume"></h5>
                                     </div>
                                 </div>
                             </div>
@@ -211,35 +134,35 @@
                                         <p class="fs-13 mb-0">Phiên hiện tại</p>
                                     </div>
                                     <div class="flex-shrink-0">
-                                        <h6 class="mb-0" id="session"></h6>
+                                        <h6 class="mb-0" id="session-id"></h6>
                                     </div>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-12">
                                     <div class="mb-3">
-                                        <select class="form-select">
-                                            <option>20,000 VND</option>
-                                            <option>50,000 VND</option>
-                                            <option>100,000 VND</option>
-                                            <option>200,000 VND</option>
-                                            <option>500,000 VND</option>
-                                            <option>1,000,000 VND</option>
-                                            <option>2,000,000 VND</option>
-                                            <option>5,000,000 VND</option>
-                                            <option>10,000,000 VND</option>
-                                            <option>20,000,000 VND</option>
-                                            <option>50,000,000 VND</option>
-                                            <option>100,000,000 VND</option>
-                                            <option>200,000,000 VND</option>
-                                            <option>500,000,000 VND</option>
+                                        <select class="form-select" id="trade-amount">
+                                            <option value="20000">20,000 VND</option>
+                                            <option value="50000">50,000 VND</option>
+                                            <option value="100000">100,000 VND</option>
+                                            <option value="200000">200,000 VND</option>
+                                            <option value="500000">500,000 VND</option>
+                                            <option value="1000000">1,000,000 VND</option>
+                                            <option value="2000000">2,000,000 VND</option>
+                                            <option value="5000000">5,000,000 VND</option>
+                                            <option value="10000000">10,000,000 VND</option>
+                                            <option value="20000000">20,000,000 VND</option>
+                                            <option value="50000000">50,000,000 VND</option>
+                                            <option value="100000000">100,000,000 VND</option>
+                                            <option value="200000000">200,000,000 VND</option>
+                                            <option value="500000000">500,000,000 VND</option>
                                         </select>
                                     </div>
                                 </div><!-- end col -->
                             </div><!-- end row -->
                             <div class="card">
                                 <div class="bg-light card-body p-4 text-center">
-                                    <h5 class="card-title mb-0">Hãy đặt lệnh: <span id="order-time">00:00</span></h5>
+                                    <h5 class="card-title mb-0">Hãy đặt lệnh: <span id="session-countdown">00:00</span></h5>
                                 </div><!-- end cardbody -->
                             </div>
                             <div class="flex-wrap gap-3" >
@@ -535,3 +458,24 @@
 </div>
 <!--end card-->
 @endsection
+@push('scripts')
+
+    {{-- Vite compiled entry --}}
+    @vite(['resources/js/trade-chart.js'])
+    @vite('resources/js/trading-session/main.js')
+    {{--
+        Inject Laravel server-side config into window.CHART_CONFIG.
+        chart-demo.js reads from this object.
+    --}}
+    <script>
+        window.CHART_CONFIG = {
+            apiBase:         '{{ url("/api/internal/chart") }}',
+            reverbHost:      'localhost',
+            reverbPort:      {{ (int) env("REVERB_PORT", 8080) }},
+            reverbKey:       '{{ env("REVERB_APP_KEY", "") }}',
+            reverbScheme:    '{{ env("REVERB_SCHEME", "http") }}',
+            defaultSymbol:   '{{ collect(config("trading_chart.symbols", ["BTC_USDT"]))->first() }}',
+            defaultInterval: '{{ collect(config("trading_chart.intervals", ["1m"]))->first() }}',
+        };
+    </script>
+@endpush

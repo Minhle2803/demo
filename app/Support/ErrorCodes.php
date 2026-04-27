@@ -69,4 +69,39 @@ final class ErrorCodes
     // Prevent instantiation — this is a pure constants class
     // -------------------------------------------------------------------------
     private function __construct() {}
+
+    // -------------------------------------------------------------------------
+    // Chart — success codes
+    // -------------------------------------------------------------------------
+
+    const CHART_CANDLES_FETCHED            = 'CHART_CANDLES_FETCHED';
+    const CHART_FUTURE_DIRECTION_UPDATED   = 'CHART_FUTURE_DIRECTION_UPDATED';
+    const CHART_RANGE_REWRITTEN            = 'CHART_RANGE_REWRITTEN';
+
+    // -------------------------------------------------------------------------
+    // Chart — error codes
+    // -------------------------------------------------------------------------
+    const CHART_INVALID_REQUEST            = 'CHART_INVALID_REQUEST';
+    const CHART_INVALID_SYMBOL             = 'CHART_INVALID_SYMBOL';
+    const CHART_INVALID_INTERVAL           = 'CHART_INVALID_INTERVAL';
+    const CHART_INVALID_DIRECTION          = 'CHART_INVALID_DIRECTION';
+    const CHART_INVALID_TIMESTAMP_RANGE    = 'CHART_INVALID_TIMESTAMP_RANGE';
+    const CHART_RANGE_TOO_LARGE            = 'CHART_RANGE_TOO_LARGE';
+    const CHART_CANDLE_NOT_FOUND           = 'CHART_CANDLE_NOT_FOUND';
+    const CHART_GENERATION_FAILED          = 'CHART_GENERATION_FAILED';
+    const CHART_INTERNAL_ERROR             = 'CHART_INTERNAL_ERROR';
+    
+    // Trading
+    const TRADE_SESSION_NOT_FOUND = 'TRADE_SESSION_NOT_FOUND';
+    const TRADE_SESSION_NOT_OPEN = 'TRADE_SESSION_NOT_OPEN';
+    const TRADE_SESSION_LOCKED = 'TRADE_SESSION_LOCKED';
+    const TRADE_ALREADY_PLACED = 'TRADE_ALREADY_PLACED';
+    const TRADE_INSUFFICIENT_BALANCE = 'TRADE_INSUFFICIENT_BALANCE';
+    const TRADE_INVALID_AMOUNT = 'TRADE_INVALID_AMOUNT';
+    const TRADE_PLACE_SUCCESS = 'TRADE_PLACE_SUCCESS';
+    const TRADE_RESULT_FETCHED = 'TRADE_RESULT_FETCHED';
+    const TRADE_SESSION_FETCHED = 'TRADE_SESSION_FETCHED';
+    const TRADE_CANDLE_NOT_FOUND = 'TRADE_CANDLE_NOT_FOUND';
+    const USER_NOT_FULLY_VERIFIED = 'USER_NOT_FULLY_VERIFIED';
+
 }

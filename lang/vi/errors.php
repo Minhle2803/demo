@@ -48,4 +48,18 @@ return [
 
     // Hệ thống
     'SYSTEM_INTERNAL_ERROR'            => 'Đã xảy ra lỗi không mong muốn. Vui lòng thử lại sau.',
+
+    //Trade
+    'TRADE_SESSION_NOT_FOUND'      => 'Không tìm thấy phiên giao dịch.',
+    'TRADE_SESSION_NOT_OPEN'       => 'Phiên giao dịch chưa mở.',
+    'TRADE_SESSION_LOCKED'         => 'Phiên giao dịch đã bị khóa.',
+    'TRADE_ALREADY_PLACED'         => 'Bạn đã đặt lệnh trong phiên này.',
+    'TRADE_INSUFFICIENT_BALANCE'   => 'Số dư không đủ.',
+    'TRADE_INVALID_AMOUNT'         => 'Số tiền không hợp lệ.',
+    'TRADE_PLACE_SUCCESS'          => 'Đặt lệnh thành công.',
+    'TRADE_RESULT_FETCHED'         => 'Đã lấy kết quả phiên.',
+    'TRADE_SESSION_FETCHED'        => 'Đã lấy thông tin phiên.',
+    'TRADE_CANDLE_NOT_FOUND'       => 'Không tìm thấy dữ liệu nến cho phiên này.',
+    'USER_NOT_FULLY_VERIFIED'      => 'Tài khoản chưa được xác minh đầy đủ. Vui lòng hoàn tất KYC.',
+
 ];

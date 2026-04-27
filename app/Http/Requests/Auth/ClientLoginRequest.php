@@ -42,11 +42,22 @@ class ClientLoginRequest extends FormRequest
 
     protected function failedValidation(Validator $validator): never
     {
+        if ($this->expectsJson()) {
+            throw new HttpResponseException(
+                ApiResponse::validationError(
+                    errors: $validator->errors()->toArray(),
+                    code: ErrorCodes::AUTH_VALIDATION_ERROR,
+                )
+            );
+        }
+
+        // WEB FLOW
         throw new HttpResponseException(
-            ApiResponse::validationError(
-                errors: $validator->errors()->toArray(),
-                code: ErrorCodes::AUTH_VALIDATION_ERROR,
-            )
+            redirect()
+                ->back()
+                ->withErrors($validator)
+                ->withInput()
+                ->with('error', $validator->errors()->first())
         );
     }
 }

@@ -1,0 +1,266 @@
+/**
+ * TradingChartSocket.js
+ *
+ * Manages the WebSocket connection to Laravel Reverb for a single
+ * symbol × interval channel.
+ *
+ * Handles: connect, subscribe, ping/pong, auto-reconnect, unsubscribe.
+ * Fires callbacks: onUpdate, onClose, onRewrite, onStatusChange.
+ *
+ * Usage:
+ *   const socket = new TradingChartSocket({
+ *     host:   'localhost',
+ *     port:   8080,
+ *     key:    'your-reverb-app-key',
+ *     scheme: 'http',
+ *   });
+ *
+ *   socket.onUpdate  = (candle) => chart.updateCandle(candle);
+ *   socket.onClose   = (candle) => chart.updateCandle(candle);
+ *   socket.onRewrite = (data)   => manager.handleRewrite(data);
+ *   socket.onStatusChange = (status, label) => updateDot(status, label);
+ *
+ *   socket.connect();
+ *   socket.subscribe('BTC_USDT', '1m');
+ *   socket.unsubscribe();   // before switching pair
+ *   socket.disconnect();    // full teardown
+ */
+class TradingChartSocket {
+    constructor(config = {}) {
+        this.host   = config.host   || 'localhost';
+        this.port   = config.port   || 8080;
+        this.key    = config.key    || '';
+        this.scheme = config.scheme || 'http';
+
+        // Reconnect delay in ms
+        this.reconnectDelay = config.reconnectDelay || 3000;
+
+        // Current subscription
+        this._symbol   = null;
+        this._interval = null;
+
+        this._ws              = null;
+        this._reconnectTimer  = null;
+        this._intentionalClose = false;
+
+        // ── Public callbacks ──────────────────────────────────────────────
+        /** @type {function(object): void} Fired on candle.update */
+        this.onUpdate = null;
+
+        /** @type {function(object): void} Fired on candle.close */
+        this.onClose = null;
+
+        /** @type {function(object): void} Fired on candle.rewrite */
+        this.onRewrite = null;
+
+        /** @type {function(string, string): void} Fired when WS state changes */
+        this.onStatusChange = null;
+
+        /** @type {function(string, string): void} Fired for log messages */
+        this.onLog = null;
+    }
+
+    // -------------------------------------------------------------------------
+    // Public API
+    // -------------------------------------------------------------------------
+
+    connect() {
+        this._intentionalClose = false;
+        this._setStatus('connecting', 'CONNECTING');
+
+        const scheme = this.scheme === 'https' ? 'wss' : 'ws';
+        const url    = `${scheme}://${this.host}:${this.port}/app/${this.key}`;
+
+        if (this._ws) {
+            this._ws.onclose = null; // detach old handler to prevent double reconnect
+            this._ws.close();
+        }
+
+        this._ws = new WebSocket(url);
+        this._ws.onopen    = () => this._onOpen();
+        this._ws.onmessage = (e) => this._onMessage(e);
+        this._ws.onerror   = () => this._onError();
+        this._ws.onclose   = () => this._onClose();
+
+        return this;
+    }
+
+    /**
+     * Subscribe to chart.{symbol}.{interval} channel.
+     * Stores the pair so reconnect can re-subscribe automatically.
+     */
+    subscribe(symbol, interval) {
+        this._symbol   = symbol;
+        this._interval = interval;
+        this._sendSubscribe();
+        return this;
+    }
+
+    /**
+     * Unsubscribe from the current channel.
+     * Call before switching to a different pair.
+     */
+    unsubscribe() {
+        if (this._symbol && this._interval) {
+            this._send('pusher:unsubscribe', {
+                channel: this._channelName(),
+            });
+        }
+        this._symbol   = null;
+        this._interval = null;
+        return this;
+    }
+
+    /**
+     * Full teardown — close WS and cancel reconnect.
+     */
+    disconnect() {
+        this._intentionalClose = true;
+        clearTimeout(this._reconnectTimer);
+        if (this._ws) {
+            this._ws.onclose = null;
+            this._ws.close();
+            this._ws = null;
+        }
+        this._setStatus('disconnected', 'OFFLINE');
+        return this;
+    }
+
+    get isConnected() {
+        return this._ws && this._ws.readyState === WebSocket.OPEN;
+    }
+
+    // -------------------------------------------------------------------------
+    // Private — WS event handlers
+    // -------------------------------------------------------------------------
+
+    _onOpen() {
+        this._setStatus('connected', 'LIVE');
+        this._log('info', `WebSocket connected → ${this.host}:${this.port}`);
+        // Re-subscribe if we already have a pair (reconnect scenario)
+        if (this._symbol && this._interval) {
+            this._sendSubscribe();
+        }
+    }
+
+    _onMessage({ data: raw }) {
+        let msg;
+        try { msg = JSON.parse(raw); } catch { return; }
+
+        const event = msg.event || '';
+
+        // ── Pusher protocol events ────────────────────────────────────────
+        if (event === 'pusher:connection_established') {
+            this._log('info', 'Reverb handshake OK');
+            return;
+        }
+
+        if (event === 'pusher:ping') {
+            this._send('pusher:pong', {});
+            return;
+        }
+
+        if (event === 'pusher_internal:subscription_succeeded') {
+            this._log('info', `Subscribed: ${msg.channel}`);
+            return;
+        }
+
+        // Ignore all other pusher: system events
+        if (event.startsWith('pusher')) return;
+
+        // ── Chart events ──────────────────────────────────────────────────
+        let payload;
+        try {
+            payload = typeof msg.data === 'string' ? JSON.parse(msg.data) : msg.data;
+        } catch { return; }
+
+        if (!payload || !payload.data) return;
+
+        this._dispatchChartEvent(event.replace(/^\./, ''), payload);
+    }
+
+    _onError() {
+        this._setStatus('disconnected', 'ERROR');
+        this._log('error', 'WebSocket error');
+    }
+
+    _onClose() {
+        this._setStatus('disconnected', 'OFFLINE');
+
+        if (this._intentionalClose) return;
+
+        this._log('info', `Disconnected — reconnecting in ${this.reconnectDelay}ms…`);
+        clearTimeout(this._reconnectTimer);
+        this._reconnectTimer = setTimeout(() => this.connect(), this.reconnectDelay);
+    }
+
+    // -------------------------------------------------------------------------
+    // Private — chart event dispatch
+    // -------------------------------------------------------------------------
+
+    _dispatchChartEvent(eventName, payload) {
+        const candle = payload.data;
+
+        switch (eventName) {
+            case 'candle.update':
+                if (typeof this.onUpdate === 'function') this.onUpdate(candle);
+                this._log('update', this._fmtPrice(candle.close));
+                break;
+
+            case 'candle.close':
+                if (typeof this.onClose === 'function') this.onClose(candle);
+                this._log('close', `Closed @ ${this._fmtPrice(candle.close)}`);
+                break;
+
+            case 'candle.rewrite':
+                if (typeof this.onRewrite === 'function') this.onRewrite(candle);
+                this._log('rewrite', candle.type === 'range'
+                    ? `Range rewrite: ${candle.count} candles`
+                    : `Candle rewritten @ ${new Date(candle.timestamp).toLocaleTimeString()}`
+                );
+                break;
+        }
+    }
+
+    // -------------------------------------------------------------------------
+    // Private — helpers
+    // -------------------------------------------------------------------------
+
+    _sendSubscribe() {
+        if (!this._symbol || !this._interval) return;
+        this._send('pusher:subscribe', { channel: this._channelName() });
+    }
+
+    _send(event, data) {
+        if (!this.isConnected) return;
+        try {
+            this._ws.send(JSON.stringify({ event, data }));
+        } catch (e) {
+            console.warn('[TradingChartSocket] send error:', e.message);
+        }
+    }
+
+    _channelName() {
+        return `chart.${this._symbol}.${this._interval}`;
+    }
+
+    _setStatus(status, label) {
+        if (typeof this.onStatusChange === 'function') {
+            this.onStatusChange(status, label);
+        }
+    }
+
+    _log(type, msg) {
+        if (typeof this.onLog === 'function') {
+            this.onLog(type, msg);
+        }
+    }
+
+    _fmtPrice(v) {
+        const n = parseFloat(v);
+        if (isNaN(n)) return '—';
+        if (n >= 1000) return n.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+        if (n >= 1)    return n.toFixed(4);
+        return n.toFixed(8);
+    }
+}
