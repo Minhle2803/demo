@@ -58,11 +58,11 @@ class ClientRegisterRequest extends FormRequest
     public function messages(): array
     {
         return [
-            'nickname.unique'        => __('errors.' . ErrorCodes::AUTH_NICKNAME_ALREADY_USED),
-            'email.unique'           => __('errors.' . ErrorCodes::AUTH_EMAIL_ALREADY_USED),
-            'phone_number.unique'    => __('errors.' . ErrorCodes::AUTH_PHONE_ALREADY_USED),
-            'phone_number.regex'     => 'The phone number format is invalid.',
-            'password.regex'         => 'Password must contain uppercase, lowercase, number, and special character.',
+            'nickname.unique' => __('errors.'.ErrorCodes::AUTH_NICKNAME_ALREADY_USED),
+            'email.unique' => __('errors.'.ErrorCodes::AUTH_EMAIL_ALREADY_USED),
+            'phone_number.unique' => __('errors.'.ErrorCodes::AUTH_PHONE_ALREADY_USED),
+            'phone_number.regex' => 'The phone number format is invalid.',
+            'password.regex' => 'Password must contain uppercase, lowercase, number, and special character.',
         ];
     }
 

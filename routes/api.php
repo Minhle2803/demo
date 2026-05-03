@@ -1,7 +1,10 @@
 <?php
+
+use App\Http\Controllers\Api\Admin\SpotDepositController;
+use App\Http\Controllers\Api\Admin\SpotWithdrawController;
+use App\Http\Controllers\Internal\MarketListController;
 use App\Http\Controllers\Internal\TradingChartController;
 use App\Http\Controllers\Internal\TradingChartSummaryController;
-use App\Http\Controllers\Internal\MarketListController;
 use App\Http\Controllers\Trade\TradingSessionController;
 use App\Http\Middleware\EnsureClientFullyVerified;
 use Illuminate\Support\Facades\Route;
@@ -24,7 +27,7 @@ Route::prefix('internal/chart')
         // GET /api/internal/chart/market-list
         Route::get('market-list', [MarketListController::class, 'index'])
             ->name('market-list');
-            
+
         // POST /api/internal/chart/future-direction
         Route::post('future-direction', [TradingChartController::class, 'updateFutureDirection'])
             ->name('future-direction')
@@ -37,15 +40,24 @@ Route::prefix('internal/chart')
     });
 
 Route::prefix('trade')->group(function () {
-    
+
     Route::get('session/current', [TradingSessionController::class, 'current']);
 
-    Route::middleware(['auth:sanctum', 'throttle:60,1'])->group(function () {
+    Route::middleware(['auth:sanctum'])->group(function () {
         Route::get('session/{id}/result', [TradingSessionController::class, 'result']);
+        Route::get('latest', [TradingSessionController::class, 'latest']);
 
-        Route::middleware([EnsureClientFullyVerified::class, 'throttle:5,1'])->group(function () {
+        Route::middleware([EnsureClientFullyVerified::class])->group(function () {
             Route::post('buy', [TradingSessionController::class, 'buy']);
             Route::post('sell', [TradingSessionController::class, 'sell']);
         });
     });
+});
+
+Route::prefix('admin/spot')->middleware(['auth:sanctum'])->group(function () {
+    Route::post('deposit/confirm', [SpotDepositController::class, 'confirm'])
+        ->name('admin.spot.deposit.confirm');
+
+    Route::post('withdraw/process', [SpotWithdrawController::class, 'process'])
+        ->name('admin.spot.withdraw.process');
 });

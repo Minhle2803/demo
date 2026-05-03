@@ -27,14 +27,14 @@ class ClientPhoneVerificationController extends Controller
         if ($this->otpService->isRateLimited($user->phone_number)) {
             return ApiResponse::error(
                 code: ErrorCodes::AUTH_OTP_TOO_MANY_REQUESTS,
-                message: 'Please wait ' . $this->otpService->availableIn($user->phone_number) . ' seconds before retrying.',
+                message: 'Please wait '.$this->otpService->availableIn($user->phone_number).' seconds before retrying.',
                 statusCode: 429,
             );
         }
 
         $sent = $this->otpService->sendOtp($user);
 
-        if (!$sent) {
+        if (! $sent) {
             return ApiResponse::error(
                 code: ErrorCodes::SYSTEM_INTERNAL_ERROR,
                 statusCode: 500,

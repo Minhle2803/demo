@@ -11,7 +11,7 @@ use Laravel\Sanctum\HasApiTokens;
 
 class ClientUser extends Authenticatable
 {
-    use HasFactory, Notifiable, HasApiTokens;
+    use HasApiTokens, HasFactory, Notifiable;
 
     // -------------------------------------------------------------------------
     // Table & guard
@@ -49,6 +49,10 @@ class ClientUser extends Authenticatable
         'trading_account',
         'balance',
         'trading_balance',
+        'full_name',
+        'date_of_birth',
+        'cccd_number',
+        'kyc_verified_at',
     ];
 
     // -------------------------------------------------------------------------
@@ -69,12 +73,14 @@ class ClientUser extends Authenticatable
     protected function casts(): array
     {
         return [
-            'password'              => 'hashed',
-            'is_verified'           => 'boolean',
-            'verified_at'           => 'datetime',
-            'phone_otp_expired_at'  => 'datetime',
-            'balance'               => 'decimal:2',
-            'trading_balance'       => 'decimal:2',
+            'password' => 'hashed',
+            'is_verified' => 'boolean',
+            'verified_at' => 'datetime',
+            'phone_otp_expired_at' => 'datetime',
+            'balance' => 'decimal:2',
+            'trading_balance' => 'decimal:2',
+            'date_of_birth' => 'date',
+            'kyc_verified_at' => 'datetime',
         ];
     }
 
@@ -86,7 +92,7 @@ class ClientUser extends Authenticatable
     {
         static::creating(function (self $user): void {
             if (empty($user->user_id)) {
-                $user->user_id = 'USR-' . strtoupper(Str::random(8));
+                $user->user_id = 'USR-'.strtoupper(Str::random(8));
             }
         });
     }
@@ -130,11 +136,15 @@ class ClientUser extends Authenticatable
     // Balance guard helper
     // -------------------------------------------------------------------------
 
-    /**
-     * Ensure trading_balance never exceeds balance.
-     */
     public function canSetTradingBalance(float|string $amount): bool
     {
         return bccomp((string) $amount, (string) $this->balance, 2) <= 0;
+    }
+
+    public function isKycVerified(): bool
+    {
+        return $this->kyc_verified_at !== null
+            && ! empty($this->kyc_front_url)
+            && ! empty($this->kyc_back_url);
     }
 }

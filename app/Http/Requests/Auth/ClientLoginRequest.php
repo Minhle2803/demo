@@ -19,7 +19,7 @@ class ClientLoginRequest extends FormRequest
     {
         return [
             // 'login' accepts either email or phone number
-            'login'    => ['required', 'string', 'max:255'],
+            'login' => ['required', 'string', 'max:255'],
             'password' => ['required', 'string', 'min:1'],
             'remember' => ['nullable', 'boolean'],
         ];
@@ -28,7 +28,7 @@ class ClientLoginRequest extends FormRequest
     public function messages(): array
     {
         return [
-            'login.required'    => 'Email or phone number is required.',
+            'login.required' => 'Email or phone number is required.',
             'password.required' => 'Password is required.',
         ];
     }

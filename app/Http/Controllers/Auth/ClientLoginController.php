@@ -4,11 +4,11 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Auth\ClientLoginRequest;
-use Illuminate\Http\RedirectResponse;
 use App\Http\Responses\ApiResponse;
 use App\Models\ClientUser;
 use App\Support\ErrorCodes;
 use Illuminate\Http\JsonResponse;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
@@ -27,7 +27,7 @@ class ClientLoginController extends Controller
      */
     public function __invoke(ClientLoginRequest $request): JsonResponse|RedirectResponse
     {
-        $login    = $request->input('login');
+        $login = $request->input('login');
         $password = $request->input('password');
         $remember = $request->input('remember');
 
@@ -50,7 +50,7 @@ class ClientLoginController extends Controller
             return redirect()
                 ->back()
                 ->withInput()
-                ->with('error', __('errors.' . ErrorCodes::AUTH_INVALID_CREDENTIALS));
+                ->with('error', __('errors.'.ErrorCodes::AUTH_INVALID_CREDENTIALS));
         }
 
         // Optionally block unverified accounts (toggle this depending on project policy)
@@ -59,14 +59,14 @@ class ClientLoginController extends Controller
         // }
         // Authenticate against the client guard only — never logs into admin session
         Auth::guard('client')->login($user, remember: $remember);
-       
+
         if ($request->expectsJson()) {
             return ApiResponse::success(
                 data: [
-                    'user_id'  => $user->user_id,
+                    'user_id' => $user->user_id,
                     'nickname' => $user->nickname,
-                    'email'    => $user->email,
-                    'token'    =>$user->createToken('client-token')->plainTextToken,
+                    'email' => $user->email,
+                    'token' => $user->createToken('client-token')->plainTextToken,
                 ],
                 code: ErrorCodes::LOGIN_SUCCESS,
             );
@@ -74,6 +74,6 @@ class ClientLoginController extends Controller
 
         return redirect()
             ->intended('/tradding')
-            ->with('success', __('errors.' . ErrorCodes::LOGIN_SUCCESS));
+            ->with('success', __('errors.'.ErrorCodes::LOGIN_SUCCESS));
     }
 }

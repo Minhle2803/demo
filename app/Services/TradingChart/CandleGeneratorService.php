@@ -3,7 +3,6 @@
 namespace App\Services\TradingChart;
 
 use App\Models\TradingChartCandle;
-use Illuminate\Support\Facades\Log;
 
 /**
  * CandleGeneratorService
@@ -49,6 +48,7 @@ class CandleGeneratorService
      * Volume range: [min, max] multiplier applied to a base volume.
      */
     private const VOLUME_MIN_MULTIPLIER = 0.5;
+
     private const VOLUME_MAX_MULTIPLIER = 3.0;
 
     /**
@@ -81,37 +81,37 @@ class CandleGeneratorService
      *   - The current interval boundary has passed and we need a new candle.
      *   - Seeding historical data.
      *
-     * @param  string      $symbol        e.g. 'BTC_USDT'
-     * @param  string      $interval      e.g. '1m'
-     * @param  int         $timestamp     Candle open time in milliseconds
-     * @param  string      $previousClose Previous candle's close price (bcmath string)
-     * @param  string      $direction     'up' | 'down' | 'neutral'
-     * @param  float       $biasPct       Extra directional bias in percent (e.g. 1.5 = +1.5%)
-     *                                    Pass negative value to amplify 'down'.
+     * @param  string  $symbol  e.g. 'BTC_USDT'
+     * @param  string  $interval  e.g. '1m'
+     * @param  int  $timestamp  Candle open time in milliseconds
+     * @param  string  $previousClose  Previous candle's close price (bcmath string)
+     * @param  string  $direction  'up' | 'down' | 'neutral'
+     * @param  float  $biasPct  Extra directional bias in percent (e.g. 1.5 = +1.5%)
+     *                          Pass negative value to amplify 'down'.
      */
     public function generateOpenCandle(
         string $symbol,
         string $interval,
-        int    $timestamp,
+        int $timestamp,
         string $previousClose,
         string $direction = TradingChartCandle::DIRECTION_NEUTRAL,
-        float  $biasPct = 0.0,
+        float $biasPct = 0.0,
     ): TradingChartCandle {
         $ohlcv = $this->computeOhlcv($previousClose, $direction, $biasPct, $symbol);
 
-        $candle = new TradingChartCandle();
-        $candle->symbol       = $symbol;
-        $candle->interval     = $interval;
-        $candle->timestamp    = $timestamp;
-        $candle->open         = $ohlcv['open'];
-        $candle->high         = $ohlcv['high'];
-        $candle->low          = $ohlcv['low'];
-        $candle->close        = $ohlcv['close'];
-        $candle->volume       = $ohlcv['volume'];
-        $candle->direction    = $direction;
-        $candle->status       = TradingChartCandle::STATUS_OPEN;
+        $candle = new TradingChartCandle;
+        $candle->symbol = $symbol;
+        $candle->interval = $interval;
+        $candle->timestamp = $timestamp;
+        $candle->open = $ohlcv['open'];
+        $candle->high = $ohlcv['high'];
+        $candle->low = $ohlcv['low'];
+        $candle->close = $ohlcv['close'];
+        $candle->volume = $ohlcv['volume'];
+        $candle->direction = $direction;
+        $candle->status = TradingChartCandle::STATUS_OPEN;
         $candle->is_generated = true;
-        $candle->is_modified  = false;
+        $candle->is_modified = false;
 
         $candle->save();
 
@@ -125,14 +125,14 @@ class CandleGeneratorService
      * Updates close, and expands high/low if the new close breaks outside them.
      * Open price NEVER changes once set — it is the anchor for the interval.
      *
-     * @param  TradingChartCandle $candle    The current open candle (Eloquent instance)
-     * @param  string             $direction Active direction for this tick
-     * @param  float              $biasPct   Active bias percent for this tick
+     * @param  TradingChartCandle  $candle  The current open candle (Eloquent instance)
+     * @param  string  $direction  Active direction for this tick
+     * @param  float  $biasPct  Active bias percent for this tick
      */
     public function tickOpenCandle(
         TradingChartCandle $candle,
         string $direction = TradingChartCandle::DIRECTION_NEUTRAL,
-        float  $biasPct = 0.0,
+        float $biasPct = 0.0,
     ): TradingChartCandle {
         // Compute a new close price from the candle's current close.
         $newClose = $this->computeNewClose((string) $candle->close, $direction, $biasPct);
@@ -155,9 +155,9 @@ class CandleGeneratorService
             $newLow,
         );
 
-        $candle->close  = $newClose;
-        $candle->high   = $newHigh;
-        $candle->low    = $newLow;
+        $candle->close = $newClose;
+        $candle->high = $newHigh;
+        $candle->low = $newLow;
         $candle->volume = bcadd(
             (string) $candle->volume,
             $this->generateVolumeDelta($candle->symbol),
@@ -190,26 +190,26 @@ class CandleGeneratorService
      * Open is anchored to the provided $previousClose for continuity.
      * Marks the candle as is_modified = true.
      *
-     * @param  TradingChartCandle $candle        Candle to rewrite
-     * @param  string             $previousClose Close price of the preceding candle
-     * @param  string             $direction     'up' | 'down' | 'neutral'
-     * @param  float              $strength      Multiplier for movement size (e.g. 2.0 = 2× normal)
+     * @param  TradingChartCandle  $candle  Candle to rewrite
+     * @param  string  $previousClose  Close price of the preceding candle
+     * @param  string  $direction  'up' | 'down' | 'neutral'
+     * @param  float  $strength  Multiplier for movement size (e.g. 2.0 = 2× normal)
      */
     public function rewriteCandle(
         TradingChartCandle $candle,
         string $previousClose,
         string $direction,
-        float  $strength = 1.0,
+        float $strength = 1.0,
     ): TradingChartCandle {
         $biasPct = $this->strengthToBias($strength, $direction);
-        $ohlcv   = $this->computeOhlcv($previousClose, $direction, $biasPct, $candle->symbol);
+        $ohlcv = $this->computeOhlcv($previousClose, $direction, $biasPct, $candle->symbol);
 
-        $candle->open        = $ohlcv['open'];
-        $candle->high        = $ohlcv['high'];
-        $candle->low         = $ohlcv['low'];
-        $candle->close       = $ohlcv['close'];
-        $candle->volume      = $ohlcv['volume'];
-        $candle->direction   = $direction;
+        $candle->open = $ohlcv['open'];
+        $candle->high = $ohlcv['high'];
+        $candle->low = $ohlcv['low'];
+        $candle->close = $ohlcv['close'];
+        $candle->volume = $ohlcv['volume'];
+        $candle->direction = $direction;
         $candle->is_modified = true;
 
         $candle->save();
@@ -223,21 +223,19 @@ class CandleGeneratorService
      * Generates $count candles going BACKWARD from $endTimestamp.
      * Intended for use by the chart:seed Artisan command.
      *
-     * @param  string $symbol
-     * @param  string $interval
-     * @param  int    $endTimestamp    Last candle timestamp in ms (most recent)
-     * @param  int    $count           Number of candles to generate
-     * @param  string $initialPrice    Starting price for the very first candle
-     * @param  int    $intervalMs      Interval duration in milliseconds
-     * @return int                     Number of candles inserted
+     * @param  int  $endTimestamp  Last candle timestamp in ms (most recent)
+     * @param  int  $count  Number of candles to generate
+     * @param  string  $initialPrice  Starting price for the very first candle
+     * @param  int  $intervalMs  Interval duration in milliseconds
+     * @return int Number of candles inserted
      */
     public function seedHistoricalCandles(
         string $symbol,
         string $interval,
-        int    $endTimestamp,
-        int    $count,
+        int $endTimestamp,
+        int $count,
         string $initialPrice,
-        int    $intervalMs,
+        int $intervalMs,
     ): int {
         // Build timestamps from oldest to newest.
         $timestamps = [];
@@ -246,30 +244,30 @@ class CandleGeneratorService
         }
 
         $previousClose = $initialPrice;
-        $inserted      = 0;
+        $inserted = 0;
 
         foreach ($timestamps as $timestamp) {
             // Random direction for historical seed — creates natural-looking chart.
             $direction = $this->randomDirection();
-            $ohlcv     = $this->computeOhlcv($previousClose, $direction, 0.0, $symbol);
+            $ohlcv = $this->computeOhlcv($previousClose, $direction, 0.0, $symbol);
 
             // Use upsert to safely re-run the seed command without duplicates.
             TradingChartCandle::upsert(
                 [
-                    'symbol'       => $symbol,
-                    'interval'     => $interval,
-                    'timestamp'    => $timestamp,
-                    'open'         => $ohlcv['open'],
-                    'high'         => $ohlcv['high'],
-                    'low'          => $ohlcv['low'],
-                    'close'        => $ohlcv['close'],
-                    'volume'       => $ohlcv['volume'],
-                    'direction'    => $direction,
-                    'status'       => TradingChartCandle::STATUS_CLOSED,
+                    'symbol' => $symbol,
+                    'interval' => $interval,
+                    'timestamp' => $timestamp,
+                    'open' => $ohlcv['open'],
+                    'high' => $ohlcv['high'],
+                    'low' => $ohlcv['low'],
+                    'close' => $ohlcv['close'],
+                    'volume' => $ohlcv['volume'],
+                    'direction' => $direction,
+                    'status' => TradingChartCandle::STATUS_CLOSED,
                     'is_generated' => true,
-                    'is_modified'  => false,
-                    'created_at'   => now(),
-                    'updated_at'   => now(),
+                    'is_modified' => false,
+                    'created_at' => now(),
+                    'updated_at' => now(),
                 ],
                 uniqueBy: ['symbol', 'interval', 'timestamp'],
                 update: ['open', 'high', 'low', 'close', 'volume', 'direction', 'updated_at'],
@@ -305,27 +303,27 @@ class CandleGeneratorService
     private function computeOhlcv(
         string $previousClose,
         string $direction,
-        float  $biasPct,
+        float $biasPct,
         string $symbol,
     ): array {
-        $open  = $previousClose; // candle open is always previous close
+        $open = $previousClose; // candle open is always previous close
         $close = $this->computeNewClose($open, $direction, $biasPct);
 
         $upperRef = bccomp($open, $close, self::BC_SCALE) >= 0 ? $open : $close;
         $lowerRef = bccomp($open, $close, self::BC_SCALE) <= 0 ? $open : $close;
 
-        $high   = $this->addWick($upperRef, true, $open);
-        $low    = $this->addWick($lowerRef, false, $open);
+        $high = $this->addWick($upperRef, true, $open);
+        $low = $this->addWick($lowerRef, false, $open);
         $volume = $this->generateVolume($symbol);
 
         // Final validation pass — correctness guaranteed before any DB write.
         [$high, $low] = $this->ensureHighLowBounds($open, $close, $high, $low);
 
         return [
-            'open'   => $this->format($open),
-            'high'   => $this->format($high),
-            'low'    => $this->format($low),
-            'close'  => $this->format($close),
+            'open' => $this->format($open),
+            'high' => $this->format($high),
+            'low' => $this->format($low),
+            'close' => $this->format($close),
             'volume' => $this->format($volume),
         ];
     }
@@ -345,16 +343,16 @@ class CandleGeneratorService
     private function computeNewClose(
         string $basePrice,
         string $direction,
-        float  $biasPct,
+        float $biasPct,
     ): string {
         // Random component — always present regardless of direction.
         $randomFraction = $this->randomFraction(self::BASE_VOLATILITY);
 
         // Directional component.
         $directionFraction = match ($direction) {
-            TradingChartCandle::DIRECTION_UP      =>  self::DIRECTION_BIAS,
-            TradingChartCandle::DIRECTION_DOWN    => -self::DIRECTION_BIAS,
-            default                               => $this->randomSign() * self::DIRECTION_BIAS,
+            TradingChartCandle::DIRECTION_UP => self::DIRECTION_BIAS,
+            TradingChartCandle::DIRECTION_DOWN => -self::DIRECTION_BIAS,
+            default => $this->randomSign() * self::DIRECTION_BIAS,
         };
 
         // External bias from generation rule (percent → fraction).
@@ -367,7 +365,7 @@ class CandleGeneratorService
         // MUST use sprintf — PHP (string) cast on float can produce scientific
         // notation like "1.5E-5" which bcmath cannot parse → ValueError.
         $movement = bcmul($basePrice, sprintf('%.10f', $totalFraction), self::BC_SCALE);
-        $newClose  = bcadd($basePrice, $movement, self::BC_SCALE);
+        $newClose = bcadd($basePrice, $movement, self::BC_SCALE);
 
         // Price must never go below 0.00000001 (crypto minimum tick).
         if (bccomp($newClose, '0.00000001', self::BC_SCALE) < 0) {
@@ -387,10 +385,10 @@ class CandleGeneratorService
      * Wick size is a random fraction of the body size, with a minimum
      * guaranteed size so candles never look like doji-only flat lines.
      *
-     * @param  string $referencePrice  The high (for upper wick) or low (for lower wick) body edge
-     * @param  bool   $isUpper         True = add upper wick, False = add lower wick
-     * @param  string $openPrice       Used to compute body size for wick scaling
-     * @return string                  New high or low with wick applied
+     * @param  string  $referencePrice  The high (for upper wick) or low (for lower wick) body edge
+     * @param  bool  $isUpper  True = add upper wick, False = add lower wick
+     * @param  string  $openPrice  Used to compute body size for wick scaling
+     * @return string New high or low with wick applied
      */
     private function addWick(string $referencePrice, bool $isUpper, string $openPrice): string
     {
@@ -399,12 +397,12 @@ class CandleGeneratorService
         // Wick = random fraction of body, minimum guaranteed size.
         $wickFromBody = bcmul(
             $bodySize,
-            sprintf('%.10f', mt_rand(0, (int)(self::MAX_WICK_RATIO * 100)) / 100),
+            sprintf('%.10f', mt_rand(0, (int) (self::MAX_WICK_RATIO * 100)) / 100),
             self::BC_SCALE,
         );
 
         $minWick = bcmul($referencePrice, sprintf('%.10f', self::MIN_WICK_FRACTION), self::BC_SCALE);
-        $wick    = bccomp($wickFromBody, $minWick, self::BC_SCALE) >= 0 ? $wickFromBody : $minWick;
+        $wick = bccomp($wickFromBody, $minWick, self::BC_SCALE) >= 0 ? $wickFromBody : $minWick;
 
         return $isUpper
             ? bcadd($referencePrice, $wick, self::BC_SCALE)
@@ -429,7 +427,7 @@ class CandleGeneratorService
      *   low  <= close
      *   high >= low
      *
-     * @return array{0: string, 1: string}  [corrected_high, corrected_low]
+     * @return array{0: string, 1: string} [corrected_high, corrected_low]
      */
     private function ensureHighLowBounds(
         string $open,
@@ -466,7 +464,7 @@ class CandleGeneratorService
      */
     private function generateVolume(string $symbol): string
     {
-        $base       = self::BASE_VOLUMES[$symbol] ?? self::DEFAULT_BASE_VOLUME;
+        $base = self::BASE_VOLUMES[$symbol] ?? self::DEFAULT_BASE_VOLUME;
         $multiplier = self::VOLUME_MIN_MULTIPLIER
             + (mt_rand() / mt_getrandmax())
             * (self::VOLUME_MAX_MULTIPLIER - self::VOLUME_MIN_MULTIPLIER);
@@ -482,7 +480,7 @@ class CandleGeneratorService
     {
         $base = self::BASE_VOLUMES[$symbol] ?? self::DEFAULT_BASE_VOLUME;
         // Delta = ~5–15% of base volume per tick
-        $pct  = mt_rand(5, 15) / 100;
+        $pct = mt_rand(5, 15) / 100;
 
         return bcmul(sprintf('%.10f', $base), sprintf('%.10f', $pct), self::BC_SCALE);
     }
@@ -503,7 +501,7 @@ class CandleGeneratorService
     private function strengthToBias(float $strength, string $direction): float
     {
         $baseBias = self::DIRECTION_BIAS * 100; // convert to percent
-        $biased   = $baseBias * $strength;
+        $biased = $baseBias * $strength;
 
         return $direction === TradingChartCandle::DIRECTION_DOWN ? -$biased : $biased;
     }

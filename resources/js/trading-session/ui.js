@@ -1,3 +1,5 @@
+import { formatDateUTC } from './timer.js';
+
 export function setCountdown(seconds) {
     const el = document.getElementById('session-countdown');
     if (el) el.textContent = `${seconds}s`;
@@ -44,4 +46,31 @@ export function showResultPopup(trade, session) {
 export function showError(message) {
     // Replace with your project's toast/notification system
     alert(message);
+}
+
+
+export function buildTradeRow(trade, coinMeta) {
+    const meta = coinMeta[trade.session_symbol] || {};
+    const name = meta.name || trade.session_symbol;
+    const icon = meta.icon || 'default';
+
+    const typeClass = trade.type === 'sell' ? 'text-danger' : 'text-success';
+    const statusClass = trade.status === 'lose' ? 'text-danger' : 'text-success';
+
+    return `
+        <tr data-id="${trade.id}">
+            <td>
+                <img src="/assets/images/svg/crypto-icons/${icon}.svg" width="16">
+                ${name}
+            </td>
+            <td>${trade.session_id}</td>
+            <td class="${typeClass}">${trade.type}</td>
+            <td>${trade.session_open_price ?? '-'}</td>
+            <td>${trade.session_close_price ?? '-'}</td>
+            <td class="${statusClass}">${trade.status}</td>
+            <td>${Number(trade.amount).toLocaleString()}</td>
+            <td>${Number(trade.payout).toLocaleString()}</td>
+            <td>${formatDateUTC(trade.created_at)}</td>
+        </tr>
+    `;
 }

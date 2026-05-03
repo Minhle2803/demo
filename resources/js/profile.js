@@ -1,27 +1,485 @@
-import { init } from 'klinecharts'
+function getCsrfToken() {
+    return document.querySelector('meta[name="csrf-token"]')?.content ?? '';
+}
 
+function getAuthToken() {
+    return localStorage.getItem('token');
+}
+
+async function fetchWithAuth(url, options = {}) {
+    const token = getAuthToken();
+    return fetch(url, {
+        ...options,
+        headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json',
+            'X-CSRF-TOKEN': getCsrfToken(),
+            ...(token && { Authorization: `Bearer ${token}` }),
+            ...(options.headers || {}),
+        },
+    });
+}
+
+function showFlash(type, message) {
+    const existing = document.querySelector('.alert-flash');
+    if (existing) existing.remove();
+
+    const cls = type === 'success' ? 'alert-success' : 'alert-danger';
+    const alert = document.createElement('div');
+    alert.className = `alert ${cls} alert-dismissible fade show alert-flash`;
+    alert.role = 'alert';
+    alert.innerHTML = `${message}<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>`;
+
+    const container = document.querySelector('.tab-content');
+    if (container) container.insertBefore(alert, container.firstChild);
+}
+
+// ---------------------------------------------------------------------------
+// Tab activation from URL query param
+// ---------------------------------------------------------------------------
+function initTabFromUrl() {
+    const urlParams = new URLSearchParams(window.location.search);
+    const tab = urlParams.get('tab');
+    if (!tab) return;
+
+    const tabMap = {
+        profile: '#personalDetails',
+        password: '#changePassword',
+        deposit: '#experience',
+        kyc: '#privacy',
+    };
+
+    const selector = tabMap[tab];
+    if (!selector) return;
+
+    const trigger = document.querySelector(`[data-bs-toggle="tab"][href="${selector}"]`);
+    if (trigger && typeof bootstrap !== 'undefined') {
+        new bootstrap.Tab(trigger).show();
+    }
+}
+
+// ---------------------------------------------------------------------------
+// Status badge renderer
+// ---------------------------------------------------------------------------
+function statusBadge(status) {
+    const map = {
+        pending: 'bg-warning',
+        processing: 'bg-info',
+        done: 'bg-success',
+        rejected: 'bg-danger',
+    };
+    const cls = map[status] || 'bg-secondary';
+    return `<span class="badge ${cls}">${status}</span>`;
+}
+
+// ---------------------------------------------------------------------------
+// Deposit History
+// ---------------------------------------------------------------------------
+async function loadDepositHistory(page = 1) {
+    const tbody = document.getElementById('depositHistoryBody');
+    const pagination = document.getElementById('depositPagination');
+    if (!tbody) return;
+
+    const config = window.profileConfig || {};
+    try {
+        const res = await fetchWithAuth(`${config.depositHistoryUrl}?page=${page}`);
+        const data = await res.json();
+
+        if (data.success && data.data) {
+            const items = data.data.data || [];
+            if (items.length === 0) {
+                tbody.innerHTML = '<tr><td colspan="4" class="text-center text-muted">No deposit history.</td></tr>';
+                if (pagination) pagination.innerHTML = '';
+                return;
+            }
+
+            tbody.innerHTML = items.map(d => `
+                <tr>
+                    <td>${Number(d.amount).toLocaleString()} VND</td>
+                    <td>${statusBadge(d.status)}</td>
+                    <td>${d.admin_note || '-'}</td>
+                    <td>${new Date(d.created_at).toLocaleDateString('vi-VN')}</td>
+                </tr>
+            `).join('');
+
+            if (pagination && data.data.last_page > 1) {
+                let html = '<ul class="pagination pagination-sm">';
+                for (let i = 1; i <= data.data.last_page; i++) {
+                    html += `<li class="page-item ${i === data.data.current_page ? 'active' : ''}">
+                        <a class="page-link" href="#" data-page="${i}">${i}</a></li>`;
+                }
+                html += '</ul>';
+                pagination.innerHTML = html;
+                pagination.querySelectorAll('.page-link').forEach(link => {
+                    link.addEventListener('click', (e) => {
+                        e.preventDefault();
+                        loadDepositHistory(parseInt(link.dataset.page));
+                    });
+                });
+            } else if (pagination) {
+                pagination.innerHTML = '';
+            }
+        }
+    } catch {
+        if (tbody) tbody.innerHTML = '<tr><td colspan="4" class="text-center text-danger">Failed to load history.</td></tr>';
+    }
+}
+
+// ---------------------------------------------------------------------------
+// Withdraw History
+// ---------------------------------------------------------------------------
+async function loadWithdrawHistory(page = 1) {
+    const tbody = document.getElementById('withdrawHistoryBody');
+    const pagination = document.getElementById('withdrawPagination');
+    if (!tbody) return;
+
+    const config = window.profileConfig || {};
+    try {
+        const res = await fetchWithAuth(`${config.withdrawHistoryUrl}?page=${page}`);
+        const data = await res.json();
+
+        if (data.success && data.data) {
+            const items = data.data.data || [];
+            if (items.length === 0) {
+                tbody.innerHTML = '<tr><td colspan="4" class="text-center text-muted">No withdraw history.</td></tr>';
+                if (pagination) pagination.innerHTML = '';
+                return;
+            }
+
+            tbody.innerHTML = items.map(d => `
+                <tr>
+                    <td>${Number(d.amount).toLocaleString()} VND</td>
+                    <td>${statusBadge(d.status)}</td>
+                    <td>${d.admin_note || '-'}</td>
+                    <td>${new Date(d.created_at).toLocaleDateString('vi-VN')}</td>
+                </tr>
+            `).join('');
+
+            if (pagination && data.data.last_page > 1) {
+                let html = '<ul class="pagination pagination-sm">';
+                for (let i = 1; i <= data.data.last_page; i++) {
+                    html += `<li class="page-item ${i === data.data.current_page ? 'active' : ''}">
+                        <a class="page-link" href="#" data-page="${i}">${i}</a></li>`;
+                }
+                html += '</ul>';
+                pagination.innerHTML = html;
+                pagination.querySelectorAll('.page-link').forEach(link => {
+                    link.addEventListener('click', (e) => {
+                        e.preventDefault();
+                        loadWithdrawHistory(parseInt(link.dataset.page));
+                    });
+                });
+            } else if (pagination) {
+                pagination.innerHTML = '';
+            }
+        }
+    } catch {
+        if (tbody) tbody.innerHTML = '<tr><td colspan="4" class="text-center text-danger">Failed to load history.</td></tr>';
+    }
+}
+
+// ---------------------------------------------------------------------------
+// Deposit QR generation
+// ---------------------------------------------------------------------------
+function initDeposit() {
+    const depositBtn = document.getElementById('depositButton');
+    const amountInput = document.getElementById('depositAmount');
+    const errorEl = document.getElementById('depositError');
+    const qrCode = document.getElementById('qr-code');
+    const payBtn = document.getElementById('btn-pay');
+
+    if (!depositBtn) return;
+
+    depositBtn.addEventListener('click', async () => {
+        const amount = amountInput?.value?.trim();
+        if (!amount || isNaN(amount) || Number(amount) < 10000) {
+            if (errorEl) {
+                errorEl.textContent = 'Vui lòng nhập số tiền tối thiểu 10,000 VND.';
+                errorEl.style.display = 'block';
+            }
+            return;
+        }
+        if (errorEl) errorEl.style.display = 'none';
+
+        try {
+            const config = window.profileConfig || {};
+            const res = await fetchWithAuth(config.depositQrUrl || '/profile/deposit/qr', {
+                method: 'POST',
+                body: JSON.stringify({ amount: Number(amount) }),
+            });
+            const data = await res.json();
+
+            if (data.success && data.data) {
+                const d = data.data;
+                const qrUrl = `https://img.vietqr.io/image/${d.bank_id}-${d.account_no}-compact.png?amount=${d.amount}&addInfo=${encodeURIComponent(d.content)}`;
+
+                if (qrCode) {
+                    qrCode.innerHTML = `<img style="width: 60%; height: 60%;" src="${qrUrl}" alt="QR Code" />`;
+                }
+
+                const elAccountName = document.getElementById('accountName');
+                const elBankName = document.getElementById('bankName');
+                const elAccountNo = document.getElementById('accountNo');
+                const elTransferAmount = document.getElementById('transferAmount');
+                if (elAccountName) elAccountName.textContent = d.account_name;
+                if (elBankName) elBankName.textContent = d.bank_name;
+                if (elAccountNo) elAccountNo.textContent = d.account_no;
+                if (elTransferAmount) elTransferAmount.textContent = Number(d.amount).toLocaleString();
+                showFlash('success', data.message || 'QR code generated.');
+                loadDepositHistory();
+            } else {
+                showFlash('error', data.message || 'Failed to generate QR.');
+            }
+        } catch {
+            showFlash('error', 'Network error. Please try again.');
+        }
+    });
+
+    if (payBtn) {
+        payBtn.addEventListener('click', () => {
+            if (qrCode) qrCode.innerHTML = '';
+            if (amountInput) amountInput.value = '';
+            if (errorEl) errorEl.style.display = 'none';
+        });
+    }
+}
+
+// ---------------------------------------------------------------------------
+// Withdraw form
+// ---------------------------------------------------------------------------
+function initWithdraw() {
+    const form = document.getElementById('withdrawForm');
+    if (!form) return;
+
+    const errorEl = document.getElementById('withdrawError');
+
+    function showWithdrawError(msg, isKycError) {
+        if (errorEl) {
+            if (isKycError) {
+                errorEl.innerHTML = `${msg} <a href="?tab=kyc" class="alert-link">Go to KYC Verification tab</a>.`;
+            } else {
+                errorEl.textContent = msg;
+            }
+            errorEl.style.display = 'block';
+        }
+    }
+
+    form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const amount = document.getElementById('withdrawAmount')?.value;
+
+        if (!amount || isNaN(amount) || Number(amount) < 10000) {
+            showWithdrawError('So tien rut toi thieu la 10,000 VND.', false);
+            return;
+        }
+        if (errorEl) errorEl.style.display = 'none';
+
+        const config = window.profileConfig || {};
+        try {
+            const res = await fetchWithAuth(config.withdrawSubmitUrl || '/profile/withdraw', {
+                method: 'POST',
+                body: JSON.stringify({ amount: Number(amount) }),
+            });
+            const data = await res.json();
+
+            if (data.success) {
+                if (errorEl) errorEl.style.display = 'none';
+                showFlash('success', data.message || 'Withdraw request submitted.');
+                form.reset();
+                loadWithdrawHistory();
+                const totalBalance = document.getElementById('totalBalance');
+                if (totalBalance && data.data?.new_balance !== undefined) {
+                    totalBalance.textContent = Number(data.data.new_balance).toLocaleString();
+                }
+            } else {
+                const isKycError = data.code === 'USER_NOT_FULLY_VERIFIED';
+                showWithdrawError(data.message || 'Withdraw request failed.', isKycError);
+            }
+        } catch {
+            showWithdrawError('Network error.', false);
+        }
+    });
+}
+
+// ---------------------------------------------------------------------------
+// KYC Modal 2-step navigation
+// ---------------------------------------------------------------------------
+function initKycModal() {
+    const step1Content = document.getElementById('kycStep1Content');
+    const step2Content = document.getElementById('kycStep2Content');
+    const step1Badge = document.getElementById('kycStep1Badge');
+    const step2Badge = document.getElementById('kycStep2Badge');
+    const nextBtn = document.getElementById('kycNextStep');
+    const prevBtn = document.getElementById('kycPrevStep');
+    const bankForm = document.getElementById('kycBankForm');
+    const uploadForm = document.getElementById('kycUploadForm');
+
+    if (!step1Content || !step2Content) return;
+
+    function showStep(step) {
+        if (step === 1) {
+            step1Content.style.display = '';
+            step2Content.style.display = 'none';
+            if (step1Badge) step1Badge.className = 'badge bg-primary fs-6 px-3 py-2 me-2';
+            if (step2Badge) step2Badge.className = 'badge bg-light text-dark fs-6 px-3 py-2 ms-2';
+        } else {
+            step1Content.style.display = 'none';
+            step2Content.style.display = '';
+            if (step1Badge) step1Badge.className = 'badge bg-light text-dark fs-6 px-3 py-2 me-2';
+            if (step2Badge) step2Badge.className = 'badge bg-primary fs-6 px-3 py-2 ms-2';
+        }
+    }
+
+    if (nextBtn) {
+        nextBtn.addEventListener('click', async () => {
+            const config = window.profileConfig || {};
+            const accountName = document.getElementById('kycBankName')?.value?.trim();
+            const bankNumber = document.getElementById('kycBankNumber')?.value?.trim();
+            const bankAccount = document.getElementById('kycBankBranch')?.value?.trim();
+
+            if (!accountName || !bankNumber || !bankAccount) {
+                showFlash('error', 'Vui lòng điền đầy đủ thông tin ngân hàng.');
+                return;
+            }
+
+            try {
+                const res = await fetchWithAuth(config.updateBankUrl || '/profile/bank', {
+                    method: 'POST',
+                    body: JSON.stringify({ account_name: accountName, bank_number: bankNumber, bank_account: bankAccount }),
+                });
+                const data = await res.json();
+                if (data.success) {
+                    showStep(2);
+                } else {
+                    showFlash('error', data.message || 'Failed to save bank info.');
+                }
+            } catch {
+                showFlash('error', 'Network error.');
+            }
+        });
+    }
+
+    if (prevBtn) {
+        prevBtn.addEventListener('click', () => showStep(1));
+    }
+
+    // KYC Upload form submission
+    if (uploadForm) {
+        uploadForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const config = window.profileConfig || {};
+            const statusEl = document.getElementById('kycUploadStatus');
+            const formData = new FormData(uploadForm);
+
+            try {
+                const res = await fetch(config.kycSubmitUrl || '/profile/kyc', {
+                    method: 'POST',
+                    headers: {
+                        'X-CSRF-TOKEN': getCsrfToken(),
+                        'Accept': 'application/json',
+                        'Authorization': `Bearer ${getAuthToken()}`,
+                    },
+                    body: formData,
+                });
+                const data = await res.json();
+
+                if (data.success) {
+                    if (statusEl) statusEl.innerHTML = '<div class="alert alert-success">KYC verification successful! Reloading page...</div>';
+                    setTimeout(() => window.location.reload(), 2000);
+                } else {
+                    if (statusEl) statusEl.innerHTML = `<div class="alert alert-danger">${data.message || 'Verification failed.'}</div>`;
+                }
+            } catch {
+                if (statusEl) statusEl.innerHTML = '<div class="alert alert-danger">Network error.</div>';
+            }
+        });
+    }
+
+    // KYC file previews
+    function previewFile(input, previewEl) {
+        if (!input || !previewEl) return;
+        input.addEventListener('change', () => {
+            previewEl.innerHTML = '';
+            const file = input.files[0];
+            if (!file) return;
+            const reader = new FileReader();
+            reader.onload = (ev) => {
+                previewEl.innerHTML = `<img src="${ev.target.result}" class="img-thumbnail mt-2" style="max-height: 200px;" alt="Preview">`;
+            };
+            reader.readAsDataURL(file);
+        });
+    }
+
+    previewFile(document.getElementById('kycFrontInput'), document.getElementById('kycFrontPreview'));
+    previewFile(document.getElementById('kycBackInput'), document.getElementById('kycBackPreview'));
+}
+
+// ---------------------------------------------------------------------------
+// AJAX form handling for profile update and password change
+// ---------------------------------------------------------------------------
+function initForms() {
+    const profileForm = document.getElementById('profileForm');
+    const passwordForm = document.getElementById('passwordForm');
+
+    if (profileForm) {
+        profileForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const config = window.profileConfig || {};
+            try {
+                const res = await fetchWithAuth(config.updateProfileUrl || '/profile/update', {
+                    method: 'POST',
+                    body: JSON.stringify({
+                        nickname: document.getElementById('nicknameInput')?.value,
+                    }),
+                });
+                const data = await res.json();
+                if (data.success) {
+                    showFlash('success', data.message || 'Profile updated.');
+                } else {
+                    showFlash('error', data.message || 'Update failed.');
+                }
+            } catch {
+                showFlash('error', 'Network error.');
+            }
+        });
+    }
+
+    if (passwordForm) {
+        passwordForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const config = window.profileConfig || {};
+            try {
+                const res = await fetchWithAuth(config.updatePasswordUrl || '/profile/password', {
+                    method: 'POST',
+                    body: JSON.stringify({
+                        current_password: document.getElementById('currentPasswordInput')?.value,
+                        new_password: document.getElementById('newPasswordInput')?.value,
+                        new_password_confirmation: document.getElementById('confirmPasswordInput')?.value,
+                    }),
+                });
+                const data = await res.json();
+                if (data.success) {
+                    showFlash('success', data.message || 'Password changed.');
+                    passwordForm.reset();
+                } else {
+                    showFlash('error', data.message || 'Password change failed.');
+                }
+            } catch {
+                showFlash('error', 'Network error.');
+            }
+        });
+    }
+}
+
+// ---------------------------------------------------------------------------
+// Bootstrap
+// ---------------------------------------------------------------------------
 document.addEventListener('DOMContentLoaded', () => {
-    const el = document.getElementById('depositButton')
-    const payBtn = document.getElementById('btn-pay')
-    const money = document.getElementById('money')
-    if (!el) return
-    el.addEventListener("click", function () {
-      const bankId = "970436";      // MB Bank (ví dụ)
-      const accountNo = "123456789";
-      const amount = money.value;         // số tiền
-      const content = "Nap tien";   // nội dung
-
-      const qrUrl = `https://img.vietqr.io/image/${bankId}-${accountNo}-compact.png?amount=${amount}&addInfo=${encodeURIComponent(content)}`;
-
-      document.getElementById("qr-code").innerHTML =
-        `<img style="width: 60%; height: 60%;" src="${qrUrl}" alt="QR Code" />`;
-    });
-
-    payBtn.addEventListener("click", function () {
-      document.getElementById("qr-code").innerHTML = "";
-      money.value = "";
-      const modal = new bootstrap.Modal(document.getElementById("myModal"));
-      modal.show();
-    });
-    document.querySelectorAll(".checkout-tab")&&Array.from(document.querySelectorAll(".checkout-tab")).forEach(function(t){t.querySelectorAll(".nexttab")&&t.querySelectorAll(".nexttab").forEach(function(o){var e=t.querySelectorAll('button[data-bs-toggle="pill"]');Array.from(e).forEach(function(e){e.addEventListener("show.bs.tab",function(e){e.target.classList.add("done")})}),o.addEventListener("click",function(){var e=o.getAttribute("data-nexttab");document.getElementById(e).click()})}),t.querySelectorAll(".previestab")&&Array.from(t.querySelectorAll(".previestab")).forEach(function(r){r.addEventListener("click",function(){for(var e=r.getAttribute("data-previous"),o=r.closest("form"),t=o-1;t<o;t++)r.closest("form").querySelectorAll(".custom-nav .done")[t]&&r.closest("form").querySelectorAll(".custom-nav .done")[t].classList.remove("done");document.getElementById(e).click()})});var r=t.querySelectorAll('button[data-bs-toggle="pill"]');r&&Array.from(r).forEach(function(e,o){e.setAttribute("data-position",o),e.addEventListener("click",function(){0<t.querySelectorAll(".custom-nav .done").length&&Array.from(t.querySelectorAll(".custom-nav .done")).forEach(function(e){e.classList.remove("done")});for(var e=0;e<=o;e++)r[e].classList.contains("active")?r[e].classList.remove("done"):r[e].classList.add("done")})})});var previewTemplate,dropzone,dropzonePreviewNode=document.querySelector("#dropzone-preview-list");dropzonePreviewNode&&(dropzonePreviewNode.id="",previewTemplate=dropzonePreviewNode.parentNode.innerHTML,dropzonePreviewNode.parentNode.removeChild(dropzonePreviewNode)),document.querySelector(".dropzone")&&(dropzone=new Dropzone(".dropzone",{url:"https://httpbin.org/post",method:"post",previewTemplate:previewTemplate,previewsContainer:"#dropzone-preview"}));
-})
+    initTabFromUrl();
+    initDeposit();
+    initWithdraw();
+    initKycModal();
+    initForms();
+    loadDepositHistory();
+    loadWithdrawHistory();
+});

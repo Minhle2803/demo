@@ -2,19 +2,20 @@
 
 namespace App\Services\Trading;
 
-use App\Models\TradingSession;
-use App\Models\TradingChartCandle;
-use App\Events\TradingSessionUpdated;
 use App\Events\TradingSessionResult;
+use App\Events\TradingSessionUpdated;
+use App\Models\TradingChartCandle;
+use App\Models\TradingSession;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
-use Carbon\Carbon;
 
 class TradingSessionService
 {
     // Symbol and interval used for session-candle sync.
     // Must match the candle worker configuration.
-    protected string $symbol   = 'BTC_USDT';
+    protected string $symbol = 'BTC_USDT';
+
     protected string $interval = '1m';
 
     /**
@@ -48,6 +49,7 @@ class TradingSessionService
 
         if (! $candle) {
             Log::warning('TradingSessionService: No open candle found to create session.');
+
             return null;
         }
 
@@ -58,19 +60,19 @@ class TradingSessionService
         }
 
         $startTime = Carbon::createFromTimestampMs($candle->timestamp);
-        $endTime   = $startTime->copy()->addSeconds(60);
-        $lockTime  = $endTime->copy()->subSeconds(10);
+        $endTime = $startTime->copy()->addSeconds(60);
+        $lockTime = $endTime->copy()->subSeconds(10);
 
         return DB::transaction(function () use ($candle, $startTime, $lockTime, $endTime) {
             return TradingSession::create([
-                'symbol'           => $this->symbol,
-                'interval'         => $this->interval,
-                'start_time'       => $startTime,
-                'lock_time'        => $lockTime,
-                'end_time'         => $endTime,
-                'status'           => 'open',
-                'open_price'       => $candle->open,
-                'close_price'      => null,
+                'symbol' => $this->symbol,
+                'interval' => $this->interval,
+                'start_time' => $startTime,
+                'lock_time' => $lockTime,
+                'end_time' => $endTime,
+                'status' => 'open',
+                'open_price' => $candle->open,
+                'close_price' => null,
                 'candle_timestamp' => $candle->timestamp,
             ]);
         });
@@ -100,12 +102,13 @@ class TradingSessionService
 
         if (! $candle || $candle->status !== 'closed') {
             Log::warning("TradingSessionService: Candle not closed yet for session {$session->id}");
+
             return;
         }
 
         DB::transaction(function () use ($session, $candle) {
             $session->update([
-                'status'      => 'closed',
+                'status' => 'closed',
                 'close_price' => $candle->close,
             ]);
 
@@ -125,7 +128,7 @@ class TradingSessionService
 
         foreach ($trades as $trade) {
             $win = match ($trade->type) {
-                'buy'  => $closePrice > $openPrice,
+                'buy' => $closePrice > $openPrice,
                 'sell' => $closePrice < $openPrice,
                 default => false,
             };

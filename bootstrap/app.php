@@ -1,10 +1,13 @@
 <?php
 
+use App\Console\Commands\SeedTradingChartCandles;
+use App\Console\Commands\TradingChartWorker;
+use Illuminate\Auth\AuthenticationException;
 use Illuminate\Foundation\Application;
 use Illuminate\Foundation\Configuration\Exceptions;
 use Illuminate\Foundation\Configuration\Middleware;
 use Illuminate\Support\Facades\Route;
-use Illuminate\Auth\AuthenticationException;
+use Laravel\Sanctum\Http\Middleware\EnsureFrontendRequestsAreStateful;
 
 return Application::configure(basePath: dirname(__DIR__))
     ->withRouting(
@@ -16,15 +19,18 @@ return Application::configure(basePath: dirname(__DIR__))
         then: function () {
             Route::middleware('web')
                 ->group(base_path('routes/client_auth.php'));
+
+            Route::middleware('web')
+                ->group(base_path('routes/client_profile.php'));
         },
     )
     ->withCommands([
-        App\Console\Commands\SeedTradingChartCandles::class,
-        App\Console\Commands\TradingChartWorker::class,
+        SeedTradingChartCandles::class,
+        TradingChartWorker::class,
     ])
     ->withMiddleware(function (Middleware $middleware): void {
         $middleware->api(prepend: [
-            \Laravel\Sanctum\Http\Middleware\EnsureFrontendRequestsAreStateful::class,
+            EnsureFrontendRequestsAreStateful::class,
         ]);
     })
     ->withExceptions(function (Exceptions $exceptions): void {

@@ -41,24 +41,24 @@ class TradingChartCandle extends Model
         return [
             // Millisecond timestamp — kept as integer, never cast to Carbon
             // to avoid any timezone mutation and stay KLineCharts-compatible
-            'timestamp'    => 'integer',
+            'timestamp' => 'integer',
 
             // Price & volume — cast to string to preserve full decimal(24,8)
             // precision without PHP float rounding errors.
             // Use bcmath or brick/money for any arithmetic on these values.
-            'open'         => 'decimal:8',
-            'high'         => 'decimal:8',
-            'low'          => 'decimal:8',
-            'close'        => 'decimal:8',
-            'volume'       => 'decimal:8',
+            'open' => 'decimal:8',
+            'high' => 'decimal:8',
+            'low' => 'decimal:8',
+            'close' => 'decimal:8',
+            'volume' => 'decimal:8',
 
             // Enum fields — cast to string (enum values: up/down/neutral, open/closed)
-            'direction'    => 'string',
-            'status'       => 'string',
+            'direction' => 'string',
+            'status' => 'string',
 
             // Flags
             'is_generated' => 'boolean',
-            'is_modified'  => 'boolean',
+            'is_modified' => 'boolean',
         ];
     }
 
@@ -67,8 +67,10 @@ class TradingChartCandle extends Model
     // -------------------------------------------------------------------------
 
     // Direction values
-    const DIRECTION_UP      = 'up';
-    const DIRECTION_DOWN    = 'down';
+    const DIRECTION_UP = 'up';
+
+    const DIRECTION_DOWN = 'down';
+
     const DIRECTION_NEUTRAL = 'neutral';
 
     const DIRECTIONS = [
@@ -78,7 +80,8 @@ class TradingChartCandle extends Model
     ];
 
     // Status values
-    const STATUS_OPEN   = 'open';
+    const STATUS_OPEN = 'open';
+
     const STATUS_CLOSED = 'closed';
 
     const STATUSES = [
@@ -207,11 +210,11 @@ class TradingChartCandle extends Model
     {
         return [
             'timestamp' => (int) $this->timestamp,
-            'open'      => (float) $this->open,
-            'high'      => (float) $this->high,
-            'low'       => (float) $this->low,
-            'close'     => (float) $this->close,
-            'volume'    => (float) $this->volume,
+            'open' => (float) $this->open,
+            'high' => (float) $this->high,
+            'low' => (float) $this->low,
+            'close' => (float) $this->close,
+            'volume' => (float) $this->volume,
         ];
     }
 }

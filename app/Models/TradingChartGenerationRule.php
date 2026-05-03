@@ -24,10 +24,10 @@ class TradingChartGenerationRule extends Model
     {
         return [
             'price_bias_percent' => 'decimal:4',
-            'active_from'        => 'integer',
-            'active_until'       => 'integer',
-            'apply_to_existing'  => 'boolean',
-            'is_active'          => 'boolean',
+            'active_from' => 'integer',
+            'active_until' => 'integer',
+            'apply_to_existing' => 'boolean',
+            'is_active' => 'boolean',
         ];
     }
 

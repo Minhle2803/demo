@@ -40,12 +40,14 @@ class ChartSummaryService
 
             if (! $summary) {
                 $this->createSummaryFromRange($candle, $range, $from, $to);
+
                 return;
             }
 
             // Nếu candle hiện tại đã xử lý rồi thì không cộng volume lại nữa
             if ((int) $summary->last_candle_timestamp === (int) $candle->timestamp) {
                 $this->updateCurrentCandleOnly($summary, $candle, $from, $to);
+
                 return;
             }
 

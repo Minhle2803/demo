@@ -12,8 +12,9 @@
                         <div class="bg-overlay"></div>
                         <div class="position-relative h-100 d-flex flex-column">
                             <div class="mb-4">
-                                <a href="index.html" class="d-block">
-                                    <img src="{{ asset('assets/images/logo-light.png') }}" alt="" height="18">
+                                <a href="{{ route('landing_page') }}" class="d-block">
+                                    <img src="{{ asset('assets/images/logo/tradex_logo.png') }}" alt="" height="45">
+                                    <span class="fs-24 fw-bold text-white mt-5">TRADEX</span>
                                 </a>
                             </div>
                             <div class="mt-auto">
@@ -29,13 +30,13 @@
                                     </div>
                                     <div class="carousel-inner text-center text-white-50 pb-5">
                                         <div class="carousel-item active">
-                                            <p class="fs-15 fst-italic">" Great! Clean code, clean design, easy for customization. Thanks very much! "</p>
+                                            <p class="fs-15 fst-italic">" Institutional-grade spot trading. Real-time order matching, KYC-secured accounts, and non-custodial wallet protection "</p>
                                         </div>
                                         <div class="carousel-item">
-                                            <p class="fs-15 fst-italic">" The theme is really great with an amazing customer support."</p>
+                                            <p class="fs-15 fst-italic">" Row-level DB locking prevents race conditions. Negative balances are blocked at the database level."</p>
                                         </div>
                                         <div class="carousel-item">
-                                            <p class="fs-15 fst-italic">" Great! Clean code, clean design, easy for customization. Thanks very much! "</p>
+                                            <p class="fs-15 fst-italic">" All trades auditable. Admin manual matching recorded with full timestamp and actor ID. "</p>
                                         </div>
                                     </div>
                                 </div>
@@ -50,7 +51,7 @@
                     <div class="p-lg-5 p-4">
                         <div>
                             <h5 class="text-primary">Welcome Back !</h5>
-                            <p class="text-muted">Sign in to continue to Velzon.</p>
+                            <p class="text-muted">Sign in to continue to TRADEX.</p>
                         </div>
 
                         <div class="mt-4">

@@ -15,7 +15,7 @@ class MockSmsProvider implements SmsProviderInterface
     public function send(string $phone, string $message): bool
     {
         Log::channel('single')->info('[MockSMS] OTP sent', [
-            'phone'   => $phone,
+            'phone' => $phone,
             'message' => $message,
         ]);
 

@@ -9,8 +9,8 @@ use App\Models\ClientUser;
 use App\Services\OtpService;
 use App\Support\ErrorCodes;
 use Illuminate\Auth\Events\Registered;
-use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\JsonResponse;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Str;
 
 class ClientRegisterController extends Controller
@@ -33,16 +33,16 @@ class ClientRegisterController extends Controller
         $validated = $request->validated();
 
         $user = ClientUser::create([
-            'nickname'                   => $validated['nickname'],
-            'email'                      => $validated['email'],
-            'phone_number'               => $validated['phone_number'],
-            'password'                   => $validated['password'], // cast 'hashed' handles bcrypt
-            'referral_code'              => $validated['referral_code'] ?? null,
-            'is_verified'                => false,
-            'balance'                    => 0,
-            'trading_balance'            => 0,
+            'nickname' => $validated['nickname'],
+            'email' => $validated['email'],
+            'phone_number' => $validated['phone_number'],
+            'password' => $validated['password'], // cast 'hashed' handles bcrypt
+            'referral_code' => $validated['referral_code'] ?? null,
+            'is_verified' => false,
+            'balance' => 0,
+            'trading_balance' => 0,
             // Email verification token for custom flow
-            'email_verification_token'   => Str::random(64),
+            'email_verification_token' => Str::random(64),
         ]);
 
         // Fire Laravel's Registered event → triggers MustVerifyEmail if needed

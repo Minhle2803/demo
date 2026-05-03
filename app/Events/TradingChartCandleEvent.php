@@ -29,8 +29,10 @@ class TradingChartCandleEvent implements ShouldBroadcastNow
     // Event type constants — used by ChartBroadcastService and frontend
     // -------------------------------------------------------------------------
 
-    const TYPE_UPDATE  = 'candle.update';
-    const TYPE_CLOSE   = 'candle.close';
+    const TYPE_UPDATE = 'candle.update';
+
+    const TYPE_CLOSE = 'candle.close';
+
     const TYPE_REWRITE = 'candle.rewrite';
 
     // -------------------------------------------------------------------------
@@ -38,20 +40,23 @@ class TradingChartCandleEvent implements ShouldBroadcastNow
     // -------------------------------------------------------------------------
 
     public string $event;
+
     public string $symbol;
+
     public string $interval;
-    public array  $data;
+
+    public array $data;
 
     /**
-     * @param  TradingChartCandle $candle     The candle being broadcast
-     * @param  string             $eventType  One of the TYPE_* constants
+     * @param  TradingChartCandle  $candle  The candle being broadcast
+     * @param  string  $eventType  One of the TYPE_* constants
      */
     public function __construct(TradingChartCandle $candle, string $eventType)
     {
-        $this->event    = $eventType;
-        $this->symbol   = $candle->symbol;
+        $this->event = $eventType;
+        $this->symbol = $candle->symbol;
         $this->interval = $candle->interval;
-        $this->data     = $this->buildPayload($candle, $eventType);
+        $this->data = $this->buildPayload($candle, $eventType);
     }
 
     // -------------------------------------------------------------------------
@@ -101,10 +106,10 @@ class TradingChartCandleEvent implements ShouldBroadcastNow
     public function broadcastWith(): array
     {
         return [
-            'event'    => $this->event,
-            'symbol'   => $this->symbol,
+            'event' => $this->event,
+            'symbol' => $this->symbol,
             'interval' => $this->interval,
-            'data'     => $this->data,
+            'data' => $this->data,
         ];
     }
 
@@ -133,7 +138,7 @@ class TradingChartCandleEvent implements ShouldBroadcastNow
             ]),
 
             self::TYPE_REWRITE => array_merge($base, [
-                'status'      => $candle->status,
+                'status' => $candle->status,
                 'is_modified' => true,
             ]),
 

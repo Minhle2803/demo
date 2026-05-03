@@ -24,9 +24,9 @@ class ClientResetPasswordController extends Controller
     public function __invoke(Request $request): JsonResponse
     {
         $request->validate([
-            'token'                 => ['required', 'string'],
-            'email'                 => ['required', 'email'],
-            'password'              => [
+            'token' => ['required', 'string'],
+            'email' => ['required', 'email'],
+            'password' => [
                 'required',
                 'string',
                 'min:8',
@@ -39,7 +39,7 @@ class ClientResetPasswordController extends Controller
             $request->only('email', 'password', 'password_confirmation', 'token'),
             function (ClientUser $user, string $password): void {
                 $user->forceFill([
-                    'password'       => Hash::make($password),
+                    'password' => Hash::make($password),
                     'remember_token' => Str::random(60),
                 ])->save();
 

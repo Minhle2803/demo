@@ -12,11 +12,11 @@ use App\Models\TradingChartGenerationRule;
 use App\Services\TradingChart\CandleGeneratorService;
 use App\Services\TradingChart\ChartBroadcastService;
 use App\Support\ErrorCodes;
+use Carbon\Carbon;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 use Throwable;
-use Carbon\Carbon;
 
 /**
  * TradingChartController
@@ -39,7 +39,7 @@ class TradingChartController extends Controller
 
     public function __construct(
         private readonly CandleGeneratorService $generator,
-        private readonly ChartBroadcastService  $broadcaster,
+        private readonly ChartBroadcastService $broadcaster,
     ) {}
 
     // =========================================================================
@@ -56,12 +56,12 @@ class TradingChartController extends Controller
      */
     public function getCandles(GetCandlesRequest $request): JsonResponse
     {
-        $v        = $request->validated();
-        $symbol   = $v['symbol'];
+        $v = $request->validated();
+        $symbol = $v['symbol'];
         $interval = $v['interval'];
-        $limit    = $request->resolvedLimit();
+        $limit = $request->resolvedLimit();
         $from = Carbon::now()->subDays(2)->timestamp * 1000;
-        $to   = Carbon::now()->timestamp * 1000;
+        $to = Carbon::now()->timestamp * 1000;
 
         $query = TradingChartCandle::forPair($symbol, $interval)
             ->chronological()
@@ -119,25 +119,25 @@ class TradingChartController extends Controller
                 }
 
                 TradingChartGenerationRule::create([
-                    'symbol'             => $v['symbol'],
-                    'interval'           => $v['interval'],
-                    'forced_direction'   => $v['direction'],
+                    'symbol' => $v['symbol'],
+                    'interval' => $v['interval'],
+                    'forced_direction' => $v['direction'],
                     'price_bias_percent' => $v['price_bias_percent'] ?? 0,
-                    'active_from'        => $v['from_timestamp'] ?? null,
-                    'active_until'       => $v['to_timestamp'] ?? null,
-                    'apply_to_existing'  => $v['apply_to_existing'] ?? false,
-                    'is_active'          => true,
+                    'active_from' => $v['from_timestamp'] ?? null,
+                    'active_until' => $v['to_timestamp'] ?? null,
+                    'apply_to_existing' => $v['apply_to_existing'] ?? false,
+                    'is_active' => true,
                 ]);
 
                 // If requested, immediately rewrite existing candles in the range.
                 if (! empty($v['apply_to_existing']) && isset($v['from_timestamp'], $v['to_timestamp'])) {
                     $this->rewriteCandlesInRange(
-                        symbol:    $v['symbol'],
-                        interval:  $v['interval'],
-                        fromMs:    (int) $v['from_timestamp'],
-                        toMs:      (int) $v['to_timestamp'],
+                        symbol: $v['symbol'],
+                        interval: $v['interval'],
+                        fromMs: (int) $v['from_timestamp'],
+                        toMs: (int) $v['to_timestamp'],
                         direction: $v['direction'],
-                        strength:  1.0,
+                        strength: 1.0,
                         broadcast: true,
                     );
                 }
@@ -145,7 +145,7 @@ class TradingChartController extends Controller
         } catch (Throwable $e) {
             Log::error('[TradingChartController] updateFutureDirection failed', [
                 'payload' => $v,
-                'error'   => $e->getMessage(),
+                'error' => $e->getMessage(),
             ]);
 
             return ApiResponse::error(
@@ -156,9 +156,9 @@ class TradingChartController extends Controller
 
         return ApiResponse::success(
             data: [
-                'symbol'            => $v['symbol'],
-                'interval'          => $v['interval'],
-                'direction'         => $v['direction'],
+                'symbol' => $v['symbol'],
+                'interval' => $v['interval'],
+                'direction' => $v['direction'],
                 'apply_to_existing' => (bool) ($v['apply_to_existing'] ?? false),
             ],
             code: ErrorCodes::CHART_FUTURE_DIRECTION_UPDATED,
@@ -184,13 +184,13 @@ class TradingChartController extends Controller
      */
     public function rewriteRange(RewriteCandleRangeRequest $request): JsonResponse
     {
-        $v        = $request->validated();
-        $symbol   = $v['symbol'];
+        $v = $request->validated();
+        $symbol = $v['symbol'];
         $interval = $v['interval'];
-        $fromMs   = (int) $v['from_timestamp'];
-        $toMs     = (int) $v['to_timestamp'];
+        $fromMs = (int) $v['from_timestamp'];
+        $toMs = (int) $v['to_timestamp'];
         $direction = $v['direction'];
-        $strength  = $request->resolvedStrength();
+        $strength = $request->resolvedStrength();
 
         // Count before fetching to return an early error if over limit.
         $count = TradingChartCandle::forPair($symbol, $interval)
@@ -200,7 +200,7 @@ class TradingChartController extends Controller
         if ($count > self::MAX_REWRITE_COUNT) {
             return ApiResponse::error(
                 code: ErrorCodes::CHART_RANGE_TOO_LARGE,
-                message: "Range contains {$count} candles. Maximum is " . self::MAX_REWRITE_COUNT . '.',
+                message: "Range contains {$count} candles. Maximum is ".self::MAX_REWRITE_COUNT.'.',
                 statusCode: 422,
             );
         }
@@ -218,22 +218,22 @@ class TradingChartController extends Controller
                 $symbol, $interval, $fromMs, $toMs, $direction, $strength
             ): int {
                 return $this->rewriteCandlesInRange(
-                    symbol:    $symbol,
-                    interval:  $interval,
-                    fromMs:    $fromMs,
-                    toMs:      $toMs,
+                    symbol: $symbol,
+                    interval: $interval,
+                    fromMs: $fromMs,
+                    toMs: $toMs,
                     direction: $direction,
-                    strength:  $strength,
+                    strength: $strength,
                     broadcast: true,
                 );
             });
         } catch (Throwable $e) {
             Log::error('[TradingChartController] rewriteRange failed', [
-                'symbol'   => $symbol,
+                'symbol' => $symbol,
                 'interval' => $interval,
-                'from'     => $fromMs,
-                'to'       => $toMs,
-                'error'    => $e->getMessage(),
+                'from' => $fromMs,
+                'to' => $toMs,
+                'error' => $e->getMessage(),
             ]);
 
             return ApiResponse::error(
@@ -264,16 +264,16 @@ class TradingChartController extends Controller
      *      if it still exists and is still open (preserves forward continuity).
      *   5. Broadcast candle.rewrite events if $broadcast = true.
      *
-     * @return int  Number of candles rewritten
+     * @return int Number of candles rewritten
      */
     private function rewriteCandlesInRange(
         string $symbol,
         string $interval,
-        int    $fromMs,
-        int    $toMs,
+        int $fromMs,
+        int $toMs,
         string $direction,
-        float  $strength,
-        bool   $broadcast,
+        float $strength,
+        bool $broadcast,
     ): int {
         // Step 1 — anchor close price from the candle just before the range.
         $beforeCandle = TradingChartCandle::forPair($symbol, $interval)
@@ -303,10 +303,10 @@ class TradingChartController extends Controller
 
         foreach ($candles as $candle) {
             $rewritten[] = $this->generator->rewriteCandle(
-                candle:        $candle,
+                candle: $candle,
                 previousClose: $previousClose,
-                direction:     $direction,
-                strength:      $strength,
+                direction: $direction,
+                strength: $strength,
             );
 
             $previousClose = (string) $candle->fresh()->close;

@@ -33,12 +33,12 @@ class SeedTradingChartCandles extends Command
     // -------------------------------------------------------------------------
 
     private const INTERVAL_MS = [
-        '1m'  =>     60_000,
-        '5m'  =>    300_000,
-        '15m' =>    900_000,
-        '1h'  =>  3_600_000,
-        '4h'  => 14_400_000,
-        '1d'  => 86_400_000,
+        '1m' => 60_000,
+        '5m' => 300_000,
+        '15m' => 900_000,
+        '1h' => 3_600_000,
+        '4h' => 14_400_000,
+        '1d' => 86_400_000,
     ];
 
     public function __construct(private readonly CandleGeneratorService $generator)
@@ -52,19 +52,20 @@ class SeedTradingChartCandles extends Command
 
     public function handle(): int
     {
-        $symbols   = $this->resolveSymbols();
+        $symbols = $this->resolveSymbols();
         $intervals = $this->resolveIntervals();
-        $count     = max(1, (int) $this->option('count'));
+        $count = max(1, (int) $this->option('count'));
 
         $this->info('chart:seed starting');
-        $this->info("Symbols   : " . implode(', ', $symbols));
-        $this->info("Intervals : " . implode(', ', $intervals));
+        $this->info('Symbols   : '.implode(', ', $symbols));
+        $this->info('Intervals : '.implode(', ', $intervals));
         $this->info("Count     : {$count} candles per pair");
 
         // --fresh: wipe existing data first
         if ($this->option('fresh')) {
             if (! $this->confirm('--fresh will DELETE all candles. Continue?', false)) {
                 $this->warn('Aborted.');
+
                 return self::FAILURE;
             }
 
@@ -73,7 +74,7 @@ class SeedTradingChartCandles extends Command
         }
 
         $totalPairs = count($symbols) * count($intervals);
-        $bar        = $this->output->createProgressBar($totalPairs);
+        $bar = $this->output->createProgressBar($totalPairs);
         $bar->start();
 
         foreach ($symbols as $symbol) {
@@ -99,24 +100,24 @@ class SeedTradingChartCandles extends Command
         $intervalMs = self::INTERVAL_MS[$interval] ?? 60_000;
 
         // End timestamp = floor of current time to interval boundary
-        $nowMs      = (int) (microtime(true) * 1000);
-        $endTs      = intdiv($nowMs, $intervalMs) * $intervalMs;
+        $nowMs = (int) (microtime(true) * 1000);
+        $endTs = intdiv($nowMs, $intervalMs) * $intervalMs;
 
         // Seed price from config
         $initialPrice = $this->seedPrice($symbol);
 
         $inserted = $this->generator->seedHistoricalCandles(
-            symbol:       $symbol,
-            interval:     $interval,
+            symbol: $symbol,
+            interval: $interval,
             endTimestamp: $endTs,
-            count:        $count,
+            count: $count,
             initialPrice: $initialPrice,
-            intervalMs:   $intervalMs,
+            intervalMs: $intervalMs,
         );
 
         $this->line(
             "  <fg=green>✓</> {$symbol}/{$interval} — {$inserted} candles"
-            . " (up to " . date('Y-m-d H:i', $endTs / 1000) . ")"
+            .' (up to '.date('Y-m-d H:i', $endTs / 1000).')'
         );
     }
 
@@ -127,6 +128,7 @@ class SeedTradingChartCandles extends Command
     private function resolveSymbols(): array
     {
         $opt = $this->option('symbols');
+
         return $opt
             ? array_map('trim', explode(',', $opt))
             : config('trading_chart.symbols', ['BTC_USDT', 'ETH_USDT', 'SOL_USDT']);
@@ -135,6 +137,7 @@ class SeedTradingChartCandles extends Command
     private function resolveIntervals(): array
     {
         $opt = $this->option('intervals');
+
         return $opt
             ? array_map('trim', explode(',', $opt))
             : config('trading_chart.intervals', ['1m', '5m']);

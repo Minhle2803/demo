@@ -48,17 +48,15 @@ class ChartRuleService
      *
      * Falls back to ['neutral', 0.0] when no rule matches.
      *
-     * @param  string $symbol
-     * @param  string $interval
-     * @param  int    $timestampMs  Candle open time in milliseconds
-     * @return array{0: string, 1: float}  [direction, biasPct]
+     * @param  int  $timestampMs  Candle open time in milliseconds
+     * @return array{0: string, 1: float} [direction, biasPct]
      */
     public function getActiveDirectionAndBias(
         string $symbol,
         string $interval,
-        int    $timestampMs,
+        int $timestampMs,
     ): array {
-        $cacheKey = self::CACHE_PREFIX . "{$symbol}:{$interval}";
+        $cacheKey = self::CACHE_PREFIX."{$symbol}:{$interval}";
 
         $rule = Cache::remember($cacheKey, self::CACHE_TTL, function () use (
             $symbol, $interval, $timestampMs
@@ -93,7 +91,7 @@ class ChartRuleService
      */
     public function bustCache(string $symbol, string $interval): void
     {
-        Cache::forget(self::CACHE_PREFIX . "{$symbol}:{$interval}");
+        Cache::forget(self::CACHE_PREFIX."{$symbol}:{$interval}");
     }
 
     /**
@@ -102,7 +100,7 @@ class ChartRuleService
      */
     public function bustAllCaches(): void
     {
-        $symbols   = config('trading_chart.symbols', []);
+        $symbols = config('trading_chart.symbols', []);
         $intervals = config('trading_chart.intervals', []);
 
         foreach ($symbols as $symbol) {

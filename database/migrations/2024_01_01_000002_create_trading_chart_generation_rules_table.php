@@ -64,7 +64,7 @@ return new class extends Migration
             $table->index(['symbol', 'interval', 'is_active'], 'idx_rule_pair_active');
 
             // Time window queries
-            $table->index('active_from',  'idx_rule_active_from');
+            $table->index('active_from', 'idx_rule_active_from');
             $table->index('active_until', 'idx_rule_active_until');
         });
     }

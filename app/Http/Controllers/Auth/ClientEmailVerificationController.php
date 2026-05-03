@@ -8,6 +8,7 @@ use App\Models\ClientUser;
 use App\Support\ErrorCodes;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class ClientEmailVerificationController extends Controller
 {
@@ -29,7 +30,7 @@ class ClientEmailVerificationController extends Controller
         }
 
         // Regenerate token and (re-)send email
-        $user->forceFill(['email_verification_token' => \Illuminate\Support\Str::random(64)])->save();
+        $user->forceFill(['email_verification_token' => Str::random(64)])->save();
 
         // TODO: dispatch ClientEmailVerificationMail — example:
         // Mail::to($user->email)->send(new ClientEmailVerificationMail($user));

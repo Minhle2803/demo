@@ -74,7 +74,7 @@ class ChartBroadcastService
      *
      * This prevents flooding the WebSocket channel with 1000 events for a large rewrite.
      *
-     * @param  TradingChartCandle[] $candles   Ordered collection of rewritten candles
+     * @param  TradingChartCandle[]  $candles  Ordered collection of rewritten candles
      */
     public function broadcastRewriteRange(array $candles): void
     {
@@ -86,6 +86,7 @@ class ChartBroadcastService
             foreach ($candles as $candle) {
                 $this->broadcastRewrite($candle);
             }
+
             return;
         }
 
@@ -120,11 +121,11 @@ class ChartBroadcastService
             broadcast(new TradingChartCandleEvent($candle, $eventType));
         } catch (Throwable $e) {
             Log::warning('[ChartBroadcast] Failed to broadcast event', [
-                'event'     => $eventType,
-                'symbol'    => $candle->symbol,
-                'interval'  => $candle->interval,
+                'event' => $eventType,
+                'symbol' => $candle->symbol,
+                'interval' => $candle->interval,
                 'timestamp' => $candle->timestamp,
-                'error'     => $e->getMessage(),
+                'error' => $e->getMessage(),
             ]);
         }
     }
@@ -137,14 +138,14 @@ class ChartBroadcastService
      * boundaries instead of individual candle data. The frontend detects
      * the presence of from_timestamp/to_timestamp and triggers a range reload.
      *
-     * @param  TradingChartCandle[] $candles
+     * @param  TradingChartCandle[]  $candles
      */
     private function broadcastRangeSummary(array $candles): void
     {
         // Use first and last candle to get the range boundaries.
-        $first  = $candles[0];
-        $last   = $candles[array_key_last($candles)];
-        $count  = count($candles);
+        $first = $candles[0];
+        $last = $candles[array_key_last($candles)];
+        $count = count($candles);
 
         try {
             // Build a synthetic event directly on the first candle's channel.
@@ -152,6 +153,7 @@ class ChartBroadcastService
             broadcast(new class($first, $last, $count) extends TradingChartCandleEvent
             {
                 private TradingChartCandle $lastCandle;
+
                 private int $count;
 
                 public function __construct(
@@ -160,36 +162,36 @@ class ChartBroadcastService
                     int $count,
                 ) {
                     // Skip parent constructor — we build payload manually.
-                    $this->event    = TradingChartCandleEvent::TYPE_REWRITE;
-                    $this->symbol   = $first->symbol;
+                    $this->event = TradingChartCandleEvent::TYPE_REWRITE;
+                    $this->symbol = $first->symbol;
                     $this->interval = $first->interval;
-                    $this->data     = []; // overridden in broadcastWith()
+                    $this->data = []; // overridden in broadcastWith()
 
                     $this->lastCandle = $last;
-                    $this->count      = $count;
+                    $this->count = $count;
                 }
 
                 public function broadcastWith(): array
                 {
                     return [
-                        'event'          => $this->event,
-                        'symbol'         => $this->symbol,
-                        'interval'       => $this->interval,
-                        'data'           => [
-                            'type'           => 'range',
+                        'event' => $this->event,
+                        'symbol' => $this->symbol,
+                        'interval' => $this->interval,
+                        'data' => [
+                            'type' => 'range',
                             'from_timestamp' => (int) $this->data['timestamp'] ?? 0,
-                            'to_timestamp'   => (int) $this->lastCandle->timestamp,
-                            'count'          => $this->count,
+                            'to_timestamp' => (int) $this->lastCandle->timestamp,
+                            'count' => $this->count,
                         ],
                     ];
                 }
             });
         } catch (Throwable $e) {
             Log::warning('[ChartBroadcast] Failed to broadcast range summary', [
-                'symbol'   => $first->symbol,
+                'symbol' => $first->symbol,
                 'interval' => $first->interval,
-                'count'    => $count,
-                'error'    => $e->getMessage(),
+                'count' => $count,
+                'error' => $e->getMessage(),
             ]);
         }
     }

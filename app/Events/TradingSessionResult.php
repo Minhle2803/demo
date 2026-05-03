@@ -27,10 +27,10 @@ class TradingSessionResult implements ShouldBroadcastNow
     public function broadcastWith(): array
     {
         return [
-            'session_id'  => $this->session->id,
-            'open_price'  => $this->session->open_price,
+            'session_id' => $this->session->id,
+            'open_price' => $this->session->open_price,
             'close_price' => $this->session->close_price,
-            'status'      => $this->session->status,
+            'status' => $this->session->status,
         ];
     }
 }

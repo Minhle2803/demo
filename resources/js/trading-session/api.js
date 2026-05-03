@@ -33,3 +33,7 @@ export async function placeBuy(amount) {
 export async function placeSell(amount) {
     return request('POST', '/sell', { amount });
 }
+
+export async function fetchLatestTrades(lastId = 0) {
+    return request('GET', `/latest?last_id=${lastId}`);
+}

@@ -1,5 +1,7 @@
 <?php
 
+use App\Models\ClientUser;
+
 /**
  * config/auth.php — CLIENT AUTH ADDITIONS
  * =========================================
@@ -18,7 +20,7 @@ return [
     |--------------------------------------------------------------------------
     */
     'defaults' => [
-        'guard'     => 'web',   // ← keep your existing default, don't change it
+        'guard' => 'web',   // ← keep your existing default, don't change it
         'passwords' => 'users', // ← keep your existing default
     ],
 
@@ -33,7 +35,7 @@ return [
         // ✅ NEW — client guard (session-based; swap driver to 'token' or
         //    'sanctum' if this is a pure API project)
         'client' => [
-            'driver'   => 'session',
+            'driver' => 'session',
             'provider' => 'client_users',
         ],
     ],
@@ -49,7 +51,7 @@ return [
         // ✅ NEW — maps the 'client' guard to the ClientUser model
         'client_users' => [
             'driver' => 'eloquent',
-            'model'  => App\Models\ClientUser::class,
+            'model' => ClientUser::class,
         ],
     ],
 
@@ -65,8 +67,8 @@ return [
         //    isolated from admin/web password resets (separate DB table too)
         'client_users' => [
             'provider' => 'client_users',
-            'table'    => 'client_password_reset_tokens', // separate table from 'password_reset_tokens'
-            'expire'   => 60,   // minutes
+            'table' => 'client_password_reset_tokens', // separate table from 'password_reset_tokens'
+            'expire' => 60,   // minutes
             'throttle' => 60,   // seconds between resend requests
         ],
     ],

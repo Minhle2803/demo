@@ -2,14 +2,16 @@
 
 namespace App\Console\Commands;
 
+use App\Events\TradingSessionUpdated;
 use App\Models\TradingSession;
 use App\Services\Trading\TradingSessionService;
-use Illuminate\Console\Command;
 use Carbon\Carbon;
+use Illuminate\Console\Command;
 
 class TradingSessionWorker extends Command
 {
-    protected $signature   = 'trading:session-worker';
+    protected $signature = 'trading:session-worker';
+
     protected $description = 'Manages trading session lifecycle: open → lock → close → repeat';
 
     public function handle(TradingSessionService $service): void
@@ -20,8 +22,8 @@ class TradingSessionWorker extends Command
             try {
                 $this->tick($service);
             } catch (\Throwable $e) {
-                $this->error('Session worker error: ' . $e->getMessage());
-                \Log::error('TradingSessionWorker: ' . $e->getMessage(), ['trace' => $e->getTraceAsString()]);
+                $this->error('Session worker error: '.$e->getMessage());
+                \Log::error('TradingSessionWorker: '.$e->getMessage(), ['trace' => $e->getTraceAsString()]);
             }
 
             sleep(1);
@@ -40,6 +42,7 @@ class TradingSessionWorker extends Command
                 $this->info("Locking session #{$openSession->id}");
                 $service->lockSession($openSession);
             }
+
             return;
         }
 
@@ -51,6 +54,7 @@ class TradingSessionWorker extends Command
                 $this->info("Closing session #{$lockedSession->id}");
                 $service->closeSession($lockedSession);
             }
+
             return;
         }
 
@@ -60,7 +64,7 @@ class TradingSessionWorker extends Command
 
         if ($session) {
             $this->info("New session #{$session->id} created.");
-            broadcast(new \App\Events\TradingSessionUpdated($session));
+            broadcast(new TradingSessionUpdated($session));
         }
     }
 }

@@ -15,10 +15,10 @@ final class ApiResponse
     /**
      * Success response.
      *
-     * @param  mixed       $data       Payload (object, array, or null)
-     * @param  string      $code       ErrorCodes constant
-     * @param  string|null $message    Optional fallback message for debugging
-     * @param  int         $statusCode HTTP status code (200, 201, etc.)
+     * @param  mixed  $data  Payload (object, array, or null)
+     * @param  string  $code  ErrorCodes constant
+     * @param  string|null  $message  Optional fallback message for debugging
+     * @param  int  $statusCode  HTTP status code (200, 201, etc.)
      */
     public static function success(
         mixed $data = null,
@@ -27,9 +27,9 @@ final class ApiResponse
         int $statusCode = 200
     ): JsonResponse {
         $body = [
-            'success'     => true,
+            'success' => true,
             'status_code' => $statusCode,
-            'code'        => $code,
+            'code' => $code,
         ];
 
         if ($message !== null) {
@@ -44,10 +44,10 @@ final class ApiResponse
     /**
      * Error response.
      *
-     * @param  string      $code       ErrorCodes constant
-     * @param  string|null $message    Optional fallback message
-     * @param  int         $statusCode HTTP status code (400, 401, 422, etc.)
-     * @param  array|null  $errors     Validation error bag (field => [messages])
+     * @param  string  $code  ErrorCodes constant
+     * @param  string|null  $message  Optional fallback message
+     * @param  int  $statusCode  HTTP status code (400, 401, 422, etc.)
+     * @param  array|null  $errors  Validation error bag (field => [messages])
      */
     public static function error(
         string $code,
@@ -56,9 +56,9 @@ final class ApiResponse
         ?array $errors = null
     ): JsonResponse {
         $body = [
-            'success'     => false,
+            'success' => false,
             'status_code' => $statusCode,
-            'code'        => $code,
+            'code' => $code,
         ];
 
         if ($message !== null) {

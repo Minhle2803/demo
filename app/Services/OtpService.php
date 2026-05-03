@@ -50,11 +50,11 @@ class OtpService
         $otp = $this->generateOtp();
 
         $user->forceFill([
-            'phone_otp_code'       => Hash::make($otp),
+            'phone_otp_code' => Hash::make($otp),
             'phone_otp_expired_at' => now()->addMinutes(self::OTP_TTL_MINUTES),
         ])->save();
 
-        $message = "Your verification code is: {$otp}. Valid for " . self::OTP_TTL_MINUTES . " minutes.";
+        $message = "Your verification code is: {$otp}. Valid for ".self::OTP_TTL_MINUTES.' minutes.';
 
         return $this->smsProvider->send($user->phone_number, $message);
     }
@@ -74,13 +74,13 @@ class OtpService
             return 'expired';
         }
 
-        if (!Hash::check($submittedOtp, $user->phone_otp_code)) {
+        if (! Hash::check($submittedOtp, $user->phone_otp_code)) {
             return 'invalid';
         }
 
         // Consume the OTP so it cannot be reused
         $user->forceFill([
-            'phone_otp_code'       => null,
+            'phone_otp_code' => null,
             'phone_otp_expired_at' => null,
         ])->save();
 
@@ -121,6 +121,6 @@ class OtpService
 
     private function rateLimitKey(string $phone): string
     {
-        return 'otp_send:' . $phone;
+        return 'otp_send:'.$phone;
     }
 }

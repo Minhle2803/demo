@@ -29,3 +29,12 @@ export function startTimer(onTick, onLock, onExpire) {
 export function stopTimer() {
     clearInterval(_interval);
 }
+
+export function formatDateUTC(dateStr) {
+    const d = new Date(dateStr);
+
+    const pad = (n) => String(n).padStart(2, '0');
+
+    return `${d.getUTCFullYear()}-${pad(d.getUTCMonth() + 1)}-${pad(d.getUTCDate())} ` +
+           `${pad(d.getUTCHours())}:${pad(d.getUTCMinutes())}:${pad(d.getUTCSeconds())}`;
+}

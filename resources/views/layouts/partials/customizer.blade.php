@@ -884,7 +884,7 @@
                 <button class="btn btn-light w-100" id="reset-layout" type="button">Reset</button>
             </div>
             <div class="col-6">
-                <a class="btn btn-primary w-100" href="https://1.envato.market/velzon-admin" target="_blank">Buy Now</a>
+                <a class="btn btn-primary w-100" href="https://1.envato.market/TRADEX-admin" target="_blank">Buy Now</a>
             </div>
         </div>
     </div>

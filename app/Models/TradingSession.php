@@ -20,11 +20,11 @@ class TradingSession extends Model
     ];
 
     protected $casts = [
-        'start_time'       => 'datetime',
-        'lock_time'        => 'datetime',
-        'end_time'         => 'datetime',
-        'open_price'       => 'decimal:8',
-        'close_price'      => 'decimal:8',
+        'start_time' => 'datetime',
+        'lock_time' => 'datetime',
+        'end_time' => 'datetime',
+        'open_price' => 'decimal:8',
+        'close_price' => 'decimal:8',
         'candle_timestamp' => 'integer',
     ];
 

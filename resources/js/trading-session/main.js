@@ -3,11 +3,14 @@ import { fetchCurrentSession, fetchSessionResult, placeBuy, placeSell } from './
 import { startTimer, stopTimer } from './timer.js';
 import { setCountdown, setStatus, setSessionId, enableTrading, disableTrading, showResultPopup, showError } from './ui.js';
 import { validateAmount } from './validation.js';
+import { updateTrades, initTradesTable  } from './service.js';
 
 let echo = null;
 
 async function init() {
     await loadSession();
+    initTradesTable();
+    updateTrades();
     bindButtons();
     initReverb();
 }
@@ -58,7 +61,7 @@ function applySession(session, serverTime) {
 
 function scheduleResultFetch(sessionId) {
     // Small delay to let backend settle the result
-    setTimeout(() => fetchResult(sessionId), 2000);
+    setTimeout(() => fetchResult(sessionId), 5000);
 }
 
 async function fetchResult(sessionId) {
@@ -70,6 +73,7 @@ async function fetchResult(sessionId) {
         showResultPopup(res.data.trade, res.data.session);
         // Load next session
         setTimeout(loadSession, 3000);
+        await updateTrades();
     }
 }
 

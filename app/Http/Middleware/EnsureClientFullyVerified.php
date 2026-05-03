@@ -13,9 +13,9 @@ class EnsureClientFullyVerified
         $user = auth('client')->user();
         if (! $user) {
             return response()->json([
-                'success'     => false,
+                'success' => false,
                 'status_code' => 401,
-                'code'        => ErrorCodes::AUTH_UNAUTHORIZED,
+                'code' => ErrorCodes::AUTH_UNAUTHORIZED,
                 'message' => __('errors.AUTH_UNAUTHORIZED'),
             ], 401);
         }
@@ -24,10 +24,10 @@ class EnsureClientFullyVerified
 
         if (! $user->is_verified || ! $kycComplete) {
             return response()->json([
-                'success'     => false,
+                'success' => false,
                 'status_code' => 403,
                 'message' => __('errors.USER_NOT_FULLY_VERIFIED'),
-                'code'        => ErrorCodes::USER_NOT_FULLY_VERIFIED,
+                'code' => ErrorCodes::USER_NOT_FULLY_VERIFIED,
             ], 403);
         }
 

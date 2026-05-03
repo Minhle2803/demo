@@ -18,25 +18,25 @@ class RewriteCandleRangeRequest extends FormRequest
 
     public function rules(): array
     {
-        $symbols   = implode(',', config('trading_chart.symbols', ['BTC_USDT', 'ETH_USDT', 'SOL_USDT']));
+        $symbols = implode(',', config('trading_chart.symbols', ['BTC_USDT', 'ETH_USDT', 'SOL_USDT']));
         $intervals = implode(',', config('trading_chart.intervals', ['1m', '5m']));
         $directions = implode(',', TradingChartCandle::DIRECTIONS);
 
         return [
-            'symbol'         => ['required', 'string', "in:{$symbols}"],
-            'interval'       => ['required', 'string', "in:{$intervals}"],
+            'symbol' => ['required', 'string', "in:{$symbols}"],
+            'interval' => ['required', 'string', "in:{$intervals}"],
             'from_timestamp' => ['required', 'integer', 'min:0'],
-            'to_timestamp'   => ['required', 'integer', 'min:0', 'gt:from_timestamp'],
-            'direction'      => ['required', 'string', "in:{$directions}"],
-            'strength'       => ['nullable', 'numeric', 'min:0.1', 'max:10'],
+            'to_timestamp' => ['required', 'integer', 'min:0', 'gt:from_timestamp'],
+            'direction' => ['required', 'string', "in:{$directions}"],
+            'strength' => ['nullable', 'numeric', 'min:0.1', 'max:10'],
         ];
     }
 
     public function messages(): array
     {
         return [
-            'to_timestamp.gt'  => 'to_timestamp must be greater than from_timestamp.',
-            'direction.in'     => 'Direction must be one of: up, down, neutral.',
+            'to_timestamp.gt' => 'to_timestamp must be greater than from_timestamp.',
+            'direction.in' => 'Direction must be one of: up, down, neutral.',
             'strength.between' => 'strength must be between 0.1 and 10.',
         ];
     }

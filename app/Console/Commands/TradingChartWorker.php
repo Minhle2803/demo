@@ -6,7 +6,6 @@ use App\Models\TradingChartCandle;
 use App\Services\TradingChart\CandleGeneratorService;
 use App\Services\TradingChart\ChartBroadcastService;
 use App\Services\TradingChart\ChartRuleService;
-use App\Services\TradingChart\ChartSummaryService;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
@@ -42,12 +41,12 @@ class TradingChartWorker extends Command
     // -------------------------------------------------------------------------
 
     private const INTERVAL_MS = [
-        '1m'  =>     60_000,
-        '5m'  =>    300_000,
-        '15m' =>    900_000,
-        '1h'  =>  3_600_000,
-        '4h'  => 14_400_000,
-        '1d'  => 86_400_000,
+        '1m' => 60_000,
+        '5m' => 300_000,
+        '15m' => 900_000,
+        '1h' => 3_600_000,
+        '4h' => 14_400_000,
+        '1d' => 86_400_000,
     ];
 
     // -------------------------------------------------------------------------
@@ -56,9 +55,8 @@ class TradingChartWorker extends Command
 
     public function __construct(
         private readonly CandleGeneratorService $generator,
-        private readonly ChartBroadcastService  $broadcaster,
-        private readonly ChartRuleService       $ruleService,
-        private readonly ChartSummaryService $summaryService,
+        private readonly ChartBroadcastService $broadcaster,
+        private readonly ChartRuleService $ruleService,
     ) {
         parent::__construct();
     }
@@ -69,15 +67,15 @@ class TradingChartWorker extends Command
 
     public function handle(): int
     {
-        $symbols   = $this->resolveSymbols();
+        $symbols = $this->resolveSymbols();
         $intervals = $this->resolveIntervals();
-        $tickSec   = (int) $this->option('tick');
-        $tickMs    = $tickSec * 1_000_000; // microseconds for usleep()
+        $tickSec = (int) $this->option('tick');
+        $tickMs = $tickSec * 1_000_000; // microseconds for usleep()
 
         $this->info('[chart:worker] Starting.');
-        $this->info('[chart:worker] Symbols   : ' . implode(', ', $symbols));
-        $this->info('[chart:worker] Intervals : ' . implode(', ', $intervals));
-        $this->info('[chart:worker] Tick every : ' . $tickSec . 's');
+        $this->info('[chart:worker] Symbols   : '.implode(', ', $symbols));
+        $this->info('[chart:worker] Intervals : '.implode(', ', $intervals));
+        $this->info('[chart:worker] Tick every : '.$tickSec.'s');
 
         $pairs = $this->buildPairs($symbols, $intervals);
 
@@ -91,7 +89,7 @@ class TradingChartWorker extends Command
 
             // Sleep for the remainder of the tick window.
             // Accounts for processing time so ticks stay on schedule.
-            $elapsed  = microtime(true) - $tickStart;
+            $elapsed = microtime(true) - $tickStart;
             $sleepSec = max(0.0, $tickSec - $elapsed);
 
             $this->sleepPrecise($sleepSec);
@@ -116,48 +114,79 @@ class TradingChartWorker extends Command
      *   5. If no candle exists at all → create the first one from config seed price.
      *   6. Broadcast the updated candle.
      */
+    // Max retry attempts on transient DB errors (lock timeout, deadlock)
+    private const MAX_RETRIES = 3;
+
+    // Delay between retries in milliseconds
+    private const RETRY_DELAY_MS = 200;
+
     private function processPair(string $symbol, string $interval): void
     {
-        try {
-            $intervalMs       = self::INTERVAL_MS[$interval];
-            $nowMs            = $this->nowMs();
-            $currentIntervalTs = $this->floorToInterval($nowMs, $intervalMs);
+        $attempt = 0;
 
-            // All DB reads and writes for this pair are wrapped in a transaction
-            // to prevent a partial state if the process is killed mid-tick.
-            DB::transaction(function () use (
-                $symbol, $interval, $intervalMs, $currentIntervalTs
-            ): void {
+        while (true) {
+            try {
+                $intervalMs = self::INTERVAL_MS[$interval];
+                $nowMs = $this->nowMs();
+                $currentIntervalTs = $this->floorToInterval($nowMs, $intervalMs);
+
                 $openCandle = TradingChartCandle::currentOpenFor($symbol, $interval);
 
                 if ($openCandle === null) {
-                    // No open candle at all — either first run or all candles are closed.
                     $this->handleNoOpenCandle($symbol, $interval, $currentIntervalTs);
+
                     return;
                 }
 
                 if ((int) $openCandle->timestamp < $currentIntervalTs) {
-                    // The open candle belongs to a past interval.
-                    // Close it and open a new one for the current interval.
                     $this->handleIntervalBoundary($openCandle, $symbol, $interval, $currentIntervalTs);
+
                     return;
                 }
 
-                // The open candle is current — tick it.
                 $this->handleCurrentTick($openCandle, $symbol, $interval);
-            });
 
-        } catch (Throwable $e) {
-            // Log and continue — a single pair failure must never crash the worker.
-            Log::error('[chart:worker] Pair error', [
-                'symbol'    => $symbol,
-                'interval'  => $interval,
-                'error'     => $e->getMessage(),
-                'trace'     => $e->getTraceAsString(),
-            ]);
+                return; // success — exit retry loop
 
-            $this->warn("[chart:worker] Error on {$symbol}/{$interval}: {$e->getMessage()}");
+            } catch (Throwable $e) {
+                if ($this->isRetryable($e) && $attempt < self::MAX_RETRIES) {
+                    $attempt++;
+                    Log::warning('[chart:worker] Retryable error, attempt '.$attempt, [
+                        'symbol' => $symbol,
+                        'interval' => $interval,
+                        'error' => $e->getMessage(),
+                    ]);
+                    usleep(self::RETRY_DELAY_MS * 1000 * $attempt); // back-off: 200ms, 400ms, 600ms
+
+                    continue;
+                }
+
+                // Non-retryable or exhausted retries — log and skip this tick.
+                Log::error('[chart:worker] Pair error (gave up after '.$attempt.' retries)', [
+                    'symbol' => $symbol,
+                    'interval' => $interval,
+                    'error' => $e->getMessage(),
+                    'trace' => $e->getTraceAsString(),
+                ]);
+
+                $this->warn("[chart:worker] Error on {$symbol}/{$interval}: {$e->getMessage()}");
+
+                return;
+            }
         }
+    }
+
+    /**
+     * Whether an exception is safe to retry.
+     * Only transient MySQL errors qualify — logic errors must not be retried.
+     */
+    private function isRetryable(Throwable $e): bool
+    {
+        $msg = $e->getMessage();
+
+        return str_contains($msg, 'Lock wait timeout exceeded')   // 1205
+            || str_contains($msg, 'Deadlock found')               // 1213
+            || str_contains($msg, 'try restarting transaction');  // general deadlock hint
     }
 
     // -------------------------------------------------------------------------
@@ -174,7 +203,7 @@ class TradingChartWorker extends Command
     private function handleNoOpenCandle(
         string $symbol,
         string $interval,
-        int    $currentIntervalTs,
+        int $currentIntervalTs,
     ): void {
         $latestClosed = TradingChartCandle::forPair($symbol, $interval)
             ->closed()
@@ -189,16 +218,14 @@ class TradingChartWorker extends Command
             $symbol, $interval, $currentIntervalTs,
         );
 
-        $newCandle = $this->generator->generateOpenCandle(
-            symbol:        $symbol,
-            interval:      $interval,
-            timestamp:     $currentIntervalTs,
+        $newCandle = DB::transaction(fn () => $this->generator->generateOpenCandle(
+            symbol: $symbol,
+            interval: $interval,
+            timestamp: $currentIntervalTs,
             previousClose: $previousClose,
-            direction:     $direction,
-            biasPct:       $biasPct,
-        );
-        // TODO: Summary update only needs the final closed candle, can be optimized to not recalc summary on every tick
-        $this->summaryService->applyCandle($newCandle);
+            direction: $direction,
+            biasPct: $biasPct,
+        ));
 
         $this->broadcaster->broadcastUpdate($newCandle);
 
@@ -215,41 +242,39 @@ class TradingChartWorker extends Command
      */
     private function handleIntervalBoundary(
         TradingChartCandle $staleCandle,
-        string             $symbol,
-        string             $interval,
-        int                $currentIntervalTs,
+        string $symbol,
+        string $interval,
+        int $currentIntervalTs,
     ): void {
         $intervalMs = self::INTERVAL_MS[$interval];
 
-        // a) Close the stale open candle.
-        $closed = $this->generator->closeCandle($staleCandle);
-        // TODO: Summary update only needs the final closed candle, can be optimized to not recalc summary on every tick
-        $this->summaryService->applyCandle($closed);
+        // a) Close the stale open candle — tight transaction: one UPDATE only.
+        $closed = DB::transaction(fn () => $this->generator->closeCandle($staleCandle));
         $this->broadcaster->broadcastClose($closed);
 
         $this->line("[chart:worker] [{$symbol}/{$interval}] Closed candle @ {$staleCandle->timestamp}");
 
         // b) Fill any gap intervals that were missed (e.g. worker was down for several intervals).
         $previousClose = (string) $closed->close;
-        $gapStart      = (int) $staleCandle->timestamp + $intervalMs;
+        $gapStart = (int) $staleCandle->timestamp + $intervalMs;
 
         while ($gapStart < $currentIntervalTs) {
             [$direction, $biasPct] = $this->ruleService->getActiveDirectionAndBias(
                 $symbol, $interval, $gapStart,
             );
 
-            $gapCandle = $this->generator->generateOpenCandle(
-                symbol:        $symbol,
-                interval:      $interval,
-                timestamp:     $gapStart,
+            $gapCandle = DB::transaction(fn () => $this->generator->generateOpenCandle(
+                symbol: $symbol,
+                interval: $interval,
+                timestamp: $gapStart,
                 previousClose: $previousClose,
-                direction:     $direction,
-                biasPct:       $biasPct,
-            );
+                direction: $direction,
+                biasPct: $biasPct,
+            ));
 
-            $gapCandle     = $this->generator->closeCandle($gapCandle);
+            $gapCandle = DB::transaction(fn () => $this->generator->closeCandle($gapCandle));
             $previousClose = (string) $gapCandle->close;
-            $gapStart     += $intervalMs;
+            $gapStart += $intervalMs;
 
             $this->line("[chart:worker] [{$symbol}/{$interval}] Filled gap candle @ {$gapCandle->timestamp}");
         }
@@ -259,16 +284,14 @@ class TradingChartWorker extends Command
             $symbol, $interval, $currentIntervalTs,
         );
 
-        $newCandle = $this->generator->generateOpenCandle(
-            symbol:        $symbol,
-            interval:      $interval,
-            timestamp:     $currentIntervalTs,
+        $newCandle = DB::transaction(fn () => $this->generator->generateOpenCandle(
+            symbol: $symbol,
+            interval: $interval,
+            timestamp: $currentIntervalTs,
             previousClose: $previousClose,
-            direction:     $direction,
-            biasPct:       $biasPct,
-        );
-        // TODO: Summary update only needs the final closed candle, can be optimized to not recalc summary on every tick
-        $this->summaryService->applyCandle($newCandle);
+            direction: $direction,
+            biasPct: $biasPct,
+        ));
 
         $this->broadcaster->broadcastUpdate($newCandle);
 
@@ -280,16 +303,19 @@ class TradingChartWorker extends Command
      */
     private function handleCurrentTick(
         TradingChartCandle $openCandle,
-        string             $symbol,
-        string             $interval,
+        string $symbol,
+        string $interval,
     ): void {
         [$direction, $biasPct] = $this->ruleService->getActiveDirectionAndBias(
             $symbol, $interval, (int) $openCandle->timestamp,
         );
 
-        $ticked = $this->generator->tickOpenCandle($openCandle, $direction, $biasPct);
-        //TODO: SUmmary update only needs the final closed candle, can be optimized to not recalc summary on every tick
-        $this->summaryService->applyCandle($ticked);
+        // Tight transaction: single UPDATE on one candle row.
+        // Broadcast happens OUTSIDE the transaction so lock is released first.
+        $ticked = DB::transaction(
+            fn () => $this->generator->tickOpenCandle($openCandle, $direction, $biasPct)
+        );
+
         $this->broadcaster->broadcastUpdate($ticked);
     }
 

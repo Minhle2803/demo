@@ -6,8 +6,8 @@ use App\Models\ClientUser;
 use App\Models\Trade;
 use App\Models\TradingSession;
 use App\Support\ErrorCodes;
-use Illuminate\Support\Facades\DB;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\DB;
 
 class TradeService
 {
@@ -43,12 +43,12 @@ class TradeService
 
             // Create trade
             return Trade::create([
-                'user_id'    => $freshUser->id,
+                'user_id' => $freshUser->id,
                 'session_id' => $freshSession->id,
-                'type'       => $type,
-                'amount'     => $amount,
-                'status'     => 'pending',
-                'payout'     => 0,
+                'type' => $type,
+                'amount' => $amount,
+                'status' => 'pending',
+                'payout' => 0,
             ]);
         });
     }
