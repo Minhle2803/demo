@@ -62,6 +62,10 @@
                     <a aria-controls="sidebarApps" aria-expanded="false" class="nav-link" href="{{ route('spot.trading') }}" role="button">
                         <i class="ri-apps-2-line"></i> <span data-key="t-apps">{{ __('messages.menu.spot_trading') }}</span>
                     </a>
+                </li><li class="nav-item">
+                    <a aria-controls="sidebarApps" aria-expanded="false" class="nav-link" href="{{ route('tradding') }}" role="button">
+                        <i class="ri-apps-2-line"></i> <span data-key="t-apps">Trading</span>
+                    </a>
                 </li>
                 
             </ul>
