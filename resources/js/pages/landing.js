@@ -1,6 +1,6 @@
 /**
  * resources/js/pages/landing.js
- * TradeX Landing Page — Behaviour
+ * Binance Landing Page — Behaviour
  */
 
 // ── MOCK DATA (fallback if API unavailable) ────────────────────────────────

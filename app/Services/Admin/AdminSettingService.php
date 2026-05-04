@@ -41,6 +41,6 @@ class AdminSettingService
 
     public function getLogo(): ?string
     {
-        return ProjectSetting::getValue('project_logo', asset('assets/images/logo/tradex_logo.png'));
+        return ProjectSetting::getValue('project_logo', asset('assets/images/logo/logo.png'));
     }
 }

@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Professional crypto spot trading. Real-time charts, secure wallet, KYC-verified accounts.">
-    <title>TradeX — Crypto Trading Platform</title>
+    <title>Binance — Crypto Trading Platform</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -27,11 +27,11 @@
     <div class="container navbar-inner">
         <a href="/" class="logo">
             <img 
-                src="{{ asset('assets/images/logo/tradex_logo.png') }}" 
-                alt="TRADEX Logo"
+                src="{{ asset('assets/images/logo/logo.png') }}" 
+                alt="Binance Logo"
                 class="logo-img"
+                style="width: 64px;"
             >
-            <span class="logo-text">TRADEX</span>
         </a>
 
         <nav class="nav-links" id="nav-links">
@@ -184,7 +184,7 @@
 <section class="section features-section" id="features">
     <div class="container">
         <div class="section-header">
-            <div class="section-label">{{ __('messages.features.why_tradex') }}</div>
+            <div class="section-label">{{ __('messages.features.why_Binance') }}</div>
             <h2 class="section-title">{{ __('messages.features.built_for') }}</h2>
         </div>
 
@@ -343,7 +343,7 @@
     <div class="container footer-inner">
         <div class="footer-brand">
             <span class="logo-icon">◈</span>
-            <span class="logo-text">TRADEX</span>
+            <span class="logo-text">Binance</span>
         </div>
         <div class="footer-links">
             <a href="#markets">Markets</a>

@@ -12,9 +12,9 @@
                         <div class="bg-overlay"></div>
                         <div class="position-relative h-100 d-flex flex-column">
                             <div class="mb-4">
-                                <a href="{{ route('landing_page') }}" class="d-block">
-                                    <img src="{{ asset('assets/images/logo/tradex_logo.png') }}" alt="" height="45">
-                                    <span class="fs-24 fw-bold text-white mt-5">TRADEX</span>
+                                <a href="{{ route('landing2') }}" class="d-block">
+                                    <img src="{{ asset('assets/images/logo/logo.png') }}" alt="" height="64">
+                                  
                                 </a>
                             </div>
                             <div class="mt-auto">

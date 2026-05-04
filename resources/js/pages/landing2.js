@@ -1,5 +1,5 @@
 // ══════════════════════════════════════════════════════════
-// TRADEX Landing Page — Binance-inspired JS
+// Binance Landing Page — Binance-inspired JS
 // ══════════════════════════════════════════════════════════
 
 document.addEventListener('DOMContentLoaded', () => {

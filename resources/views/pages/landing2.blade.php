@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="{{ __('messages.landing2.hero_subtitle') }}">
-    <title>TRADEX — {{ __('messages.landing2.world_leading') }}</title>
+    <title>Binance — {{ __('messages.landing2.world_leading') }}</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -24,11 +24,10 @@
     <div class="navbar-inner">
         <a href="/" class="logo">
             <img
-                src="{{ asset('assets/images/logo/tradex_logo.png') }}"
-                alt="TRADEX Logo"
-                style="height:28px;width:auto;object-fit:contain;margin-right:8px;"
+                src="{{ asset('assets/images/logo/logo.png') }}"
+                alt="Binance Logo"
+                style="height:64px;width:auto;object-fit:contain;margin-right:8px;"
             >
-            <span class="logo-text">TRADEX</span>
             <span class="trust-stat">{{ __('messages.landing2.users_trust') }}</span>
         </a>
 
@@ -210,7 +209,7 @@
         </div>
         <div class="news-grid">
             <div class="news-card">
-                <div class="news-title">TRADEX Introduces New Trading Pairs for Q2 2026</div>
+                <div class="news-title">Binance Introduces New Trading Pairs for Q2 2026</div>
                 <div class="news-date">2026-05-01</div>
             </div>
             <div class="news-card">
@@ -218,7 +217,7 @@
                 <div class="news-date">2026-04-28</div>
             </div>
             <div class="news-card">
-                <div class="news-title">TRADEX Proof of Reserves Report — April 2026</div>
+                <div class="news-title">Binance Proof of Reserves Report — April 2026</div>
                 <div class="news-date">2026-04-25</div>
             </div>
             <div class="news-card">

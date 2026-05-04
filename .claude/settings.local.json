@@ -6,7 +6,9 @@
       "Bash(php artisan *)",
       "Bash(vendor/bin/pint --dirty --format agent)",
       "Bash(php -m)",
-      "Bash(composer check-platform-reqs *)"
+      "Bash(composer check-platform-reqs *)",
+      "WebFetch(domain:www.binance.com)",
+      "WebFetch(domain:bin.bnbstatic.com)"
     ]
   },
   "enableAllProjectMcpServers": true,
