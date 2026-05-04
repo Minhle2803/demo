@@ -16,6 +16,15 @@ Hệ thống giao dịch crypto spot & session trading với WebSocket real-time
 ```
 bcmath, ctype, curl, dom, fileinfo, filter, gd, hash, json, mbstring,
 mysqlnd, openssl, pcre, pdo, pdo_mysql, session, tokenizer, xml, zip
+
+# Ubuntu/Debian
+sudo apt install php8.4 php8.4-cli php8.4-fpm php8.4-bcmath php8.4-curl \
+  php8.4-dom php8.4-fileinfo php8.4-gd php8.4-mbstring php8.4-mysql \
+  php8.4-xml php8.4-zip php8.4-opcache
+
+# Sau đó
+composer install
+
 ```
 
 ---
@@ -143,63 +152,63 @@ programs=reverb,queue,chart-worker,session-worker,scheduler
 
 ; ── Reverb WebSocket Server ──────────────────────────────────────────
 [program:reverb]
-command=php /var/www/tradex/artisan reverb:start
-directory=/var/www/tradex
+command=php /var/www/demo/artisan reverb:start
+directory=/var/www/demo
 user=www-data
 autostart=true
 autorestart=true
 numprocs=1
 stopwaitsecs=10
-stdout_logfile=/var/www/tradex/storage/logs/supervisor-reverb.log
-stderr_logfile=/var/www/tradex/storage/logs/supervisor-reverb-error.log
+stdout_logfile=/var/www/demo/storage/logs/supervisor-reverb.log
+stderr_logfile=/var/www/demo/storage/logs/supervisor-reverb-error.log
 
 ; ── Queue Worker (database queue) ────────────────────────────────────
 [program:queue]
-command=php /var/www/tradex/artisan queue:work --sleep=3 --tries=3
-directory=/var/www/tradex
+command=php /var/www/demo/artisan queue:work --sleep=3 --tries=3
+directory=/var/www/demo
 user=www-data
 autostart=true
 autorestart=true
 numprocs=1
 stopwaitsecs=10
-stdout_logfile=/var/www/tradex/storage/logs/supervisor-queue.log
-stderr_logfile=/var/www/tradex/storage/logs/supervisor-queue-error.log
+stdout_logfile=/var/www/demo/storage/logs/supervisor-queue.log
+stderr_logfile=/var/www/demo/storage/logs/supervisor-queue-error.log
 
 ; ── Chart Worker (K-line generator) ──────────────────────────────────
 [program:chart-worker]
-command=php /var/www/tradex/artisan chart:worker
-directory=/var/www/tradex
+command=php /var/www/demo/artisan chart:worker
+directory=/var/www/demo
 user=www-data
 autostart=true
 autorestart=true
 numprocs=1
 stopwaitsecs=10
-stdout_logfile=/var/www/tradex/storage/logs/supervisor-chart-worker.log
-stderr_logfile=/var/www/tradex/storage/logs/supervisor-chart-worker-error.log
+stdout_logfile=/var/www/demo/storage/logs/supervisor-chart-worker.log
+stderr_logfile=/var/www/demo/storage/logs/supervisor-chart-worker-error.log
 
 ; ── Trading Session Worker ───────────────────────────────────────────
 [program:session-worker]
-command=php /var/www/tradex/artisan trading:session-worker
-directory=/var/www/tradex
+command=php /var/www/demo/artisan trading:session-worker
+directory=/var/www/demo
 user=www-data
 autostart=true
 autorestart=true
 numprocs=1
 stopwaitsecs=10
-stdout_logfile=/var/www/tradex/storage/logs/supervisor-session-worker.log
-stderr_logfile=/var/www/tradex/storage/logs/supervisor-session-worker-error.log
+stdout_logfile=/var/www/demo/storage/logs/supervisor-session-worker.log
+stderr_logfile=/var/www/demo/storage/logs/supervisor-session-worker-error.log
 
 ; ── Scheduler (thay thế cron) ────────────────────────────────────────
 [program:scheduler]
-command=php /var/www/tradex/artisan schedule:work
-directory=/var/www/tradex
+command=php /var/www/demo/artisan schedule:work
+directory=/var/www/demo
 user=www-data
 autostart=true
 autorestart=true
 numprocs=1
 stopwaitsecs=10
-stdout_logfile=/var/www/tradex/storage/logs/supervisor-scheduler.log
-stderr_logfile=/var/www/tradex/storage/logs/supervisor-scheduler-error.log
+stdout_logfile=/var/www/demo/storage/logs/supervisor-scheduler.log
+stderr_logfile=/var/www/demo/storage/logs/supervisor-scheduler-error.log
 ```
 
 > **Thay `/var/www/tradex`** bằng đường dẫn thực tế tới thư mục dự án.
