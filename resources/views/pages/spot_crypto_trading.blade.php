@@ -306,7 +306,7 @@
     <script>
         window.CHART_CONFIG = {
             apiBase:         '{{ url("/api/internal/chart") }}',
-            reverbHost:      'localhost',
+            reverbHost:      '{{ env('REVERB_HOST', '0.0.0.0') }}',
             reverbPort:      {{ (int) env("REVERB_PORT", 8080) }},
             reverbKey:       '{{ env("REVERB_APP_KEY", "") }}',
             reverbScheme:    '{{ env("REVERB_SCHEME", "http") }}',
@@ -316,7 +316,7 @@
         window.SPOT_CONFIG = {
             baseUrl: '{{ url("/api/spot") }}',
             symbols: @json(config('spot_trading.symbols')),
-            reverbHost:      'localhost',
+            reverbHost:      '{{ env('REVERB_HOST', '0.0.0.0') }}',
             reverbPort:      {{ (int) env("REVERB_PORT", 8080) }},
             reverbKey:       '{{ env("REVERB_APP_KEY", "") }}',
             reverbScheme:    '{{ env("REVERB_SCHEME", "http") }}',
