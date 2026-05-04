@@ -48,6 +48,7 @@ socket.onUpdate = (candle) => {
     chart.updateCandle(candle);
     updateLiveCandle(candle);
     updatePriceBadge(candle);
+    window.__currentPrice = candle.close;
 };
 
 socket.onClose = (candle) => {
@@ -56,6 +57,7 @@ socket.onClose = (candle) => {
     updateLiveCandle(candle);
     updatePriceBadge(candle);
     updateStatusBar();
+    window.__currentPrice = candle.close;
 };
 
 socket.onRewrite = async (data) => {

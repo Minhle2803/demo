@@ -31,7 +31,7 @@
                 <!-- App Search-->
                 <form class="app-search d-none d-md-block">
                     <div class="position-relative">
-                        <input autocomplete="off" class="form-control" id="search-options" placeholder="Search..." type="text" value="" />
+                        <input autocomplete="off" class="form-control" id="search-options" placeholder="{{ __('messages.common.search') }}" type="text" value="" />
                         <span class="mdi mdi-magnify search-widget-icon"></span>
                         <span class="mdi mdi-close-circle search-widget-icon search-widget-icon-close d-none" id="search-close-options"></span>
                     </div>
@@ -125,47 +125,16 @@
                 </div>
                 <div class="dropdown ms-1 topbar-head-dropdown header-item">
                     <button aria-expanded="false" aria-haspopup="true" class="btn btn-icon btn-topbar material-shadow-none btn-ghost-secondary rounded-circle" data-bs-toggle="dropdown" type="button">
-                        <img alt="Header Language" class="rounded" height="20" id="header-lang-img" src="{{ asset('assets/images/flags/us.svg') }}" />
+                        <img alt="Header Language" class="rounded" height="20" id="header-lang-img" src="{{ asset('assets/images/flags/' . (app()->getLocale() === 'vi' ? 'vn' : 'us') . '.svg') }}" />
                     </button>
                     <div class="dropdown-menu dropdown-menu-end">
-                        <!-- item-->
-                        <a class="dropdown-item notify-item language py-2" data-lang="en" href="javascript:void(0);" title="English">
-                            <img alt="user-image" class="me-2 rounded" height="18" src="{{ asset('assets/images/flags/us.svg') }}" />
+                        <a class="dropdown-item notify-item language py-2 {{ app()->getLocale() === 'en' ? 'active' : '' }}" data-lang="en" href="{{ route('lang.switch', 'en') }}" title="English">
+                            <img alt="EN" class="me-2 rounded" height="18" src="{{ asset('assets/images/flags/us.svg') }}" />
                             <span class="align-middle">English</span>
                         </a>
-                        <!-- item-->
-                        <a class="dropdown-item notify-item language" data-lang="sp" href="javascript:void(0);" title="Spanish">
-                            <img alt="user-image" class="me-2 rounded" height="18" src="{{ asset('assets/images/flags/spain.svg') }}" />
-                            <span class="align-middle">Española</span>
-                        </a>
-                        <!-- item-->
-                        <a class="dropdown-item notify-item language" data-lang="gr" href="javascript:void(0);" title="German">
-                            <img alt="user-image" class="me-2 rounded" height="18" src="{{ asset('assets/images/flags/germany.svg') }}" /> <span class="align-middle">Deutsche</span>
-                        </a>
-                        <!-- item-->
-                        <a class="dropdown-item notify-item language" data-lang="it" href="javascript:void(0);" title="Italian">
-                            <img alt="user-image" class="me-2 rounded" height="18" src="{{ asset('assets/images/flags/italy.svg') }}" />
-                            <span class="align-middle">Italiana</span>
-                        </a>
-                        <!-- item-->
-                        <a class="dropdown-item notify-item language" data-lang="ru" href="javascript:void(0);" title="Russian">
-                            <img alt="user-image" class="me-2 rounded" height="18" src="{{ asset('assets/images/flags/russia.svg') }}" />
-                            <span class="align-middle">русский</span>
-                        </a>
-                        <!-- item-->
-                        <a class="dropdown-item notify-item language" data-lang="ch" href="javascript:void(0);" title="Chinese">
-                            <img alt="user-image" class="me-2 rounded" height="18" src="{{ asset('assets/images/flags/china.svg') }}" />
-                            <span class="align-middle">中国人</span>
-                        </a>
-                        <!-- item-->
-                        <a class="dropdown-item notify-item language" data-lang="fr" href="javascript:void(0);" title="French">
-                            <img alt="user-image" class="me-2 rounded" height="18" src="{{ asset('assets/images/flags/french.svg') }}" />
-                            <span class="align-middle">français</span>
-                        </a>
-                        <!-- item-->
-                        <a class="dropdown-item notify-item language" data-lang="ar" href="javascript:void(0);" title="Arabic">
-                            <img alt="user-image" class="me-2 rounded" height="18" src="{{ asset('assets/images/flags/ae.svg') }}" />
-                            <span class="align-middle">Arabic</span>
+                        <a class="dropdown-item notify-item language py-2 {{ app()->getLocale() === 'vi' ? 'active' : '' }}" data-lang="vi" href="{{ route('lang.switch', 'vi') }}" title="Vietnamese">
+                            <img alt="VI" class="me-2 rounded" height="18" src="{{ asset('assets/images/flags/vn.svg') }}" />
+                            <span class="align-middle">Tiếng Việt</span>
                         </a>
                     </div>
                 </div>
@@ -180,7 +149,7 @@
                             <div class="p-3">
                                 <div class="row align-items-center">
                                     <div class="col">
-                                        <h6 class="m-0 fs-16 fw-semibold text-white"> Notifications </h6>
+                                        <h6 class="m-0 fs-16 fw-semibold text-white"> {{ __('messages.common.notifications') }} </h6>
                                     </div>
                                     <div class="col-auto dropdown-tabs">
                                         <span class="badge bg-light text-body fs-13"> 4 New</span>
@@ -429,14 +398,14 @@
                     </button>
                     <div class="dropdown-menu dropdown-menu-end">
                         <!-- item-->
-                        <h6 class="dropdown-header">Welcome {{ Auth::guard('client')->user()->nickname }}!</h6>
-                        <a class="dropdown-item" href="{{ route('client.profile.show') }}"><i class="mdi mdi-account-circle text-muted fs-16 align-middle me-1"></i> <span class="align-middle">Profile</span></a>
-                        <a class="dropdown-item" href="apps-chat.html"><i class="mdi mdi-message-text-outline text-muted fs-16 align-middle me-1"></i> <span class="align-middle">Messages</span></a>
-                        <a class="dropdown-item" href="pages-faqs.html"><i class="mdi mdi-lifebuoy text-muted fs-16 align-middle me-1"></i> <span class="align-middle">Help</span></a>
+                        <h6 class="dropdown-header">{{ __('messages.auth.welcome_user', ['name' => Auth::guard('client')->user()->nickname]) }}</h6>
+                        <a class="dropdown-item" href="{{ route('client.profile.show') }}"><i class="mdi mdi-account-circle text-muted fs-16 align-middle me-1"></i> <span class="align-middle">{{ __('messages.common.profile') }}</span></a>
+                        <a class="dropdown-item" href="apps-chat.html"><i class="mdi mdi-message-text-outline text-muted fs-16 align-middle me-1"></i> <span class="align-middle">{{ __('messages.common.messages') }}</span></a>
+                        <a class="dropdown-item" href="pages-faqs.html"><i class="mdi mdi-lifebuoy text-muted fs-16 align-middle me-1"></i> <span class="align-middle">{{ __('messages.common.help') }}</span></a>
                         <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="{{ route('client.profile.show') }}"><i class="mdi mdi-wallet text-muted fs-16 align-middle me-1"></i> <span class="align-middle">Balance : <b>{{ Auth::guard('client')->user()->balance }}</b></span></a>
-                        <a class="dropdown-item" href="auth-lockscreen-basic.html"><i class="mdi mdi-lock text-muted fs-16 align-middle me-1"></i> <span class="align-middle">Lock screen</span></a>
-                        <a class="dropdown-item" href="auth-logout-basic.html"><i class="mdi mdi-logout text-muted fs-16 align-middle me-1"></i> <span class="align-middle" data-key="t-logout') }}">Logout</span></a>
+                        <a class="dropdown-item" href="{{ route('client.profile.show') }}"><i class="mdi mdi-wallet text-muted fs-16 align-middle me-1"></i> <span class="align-middle">{{ __('messages.common.balance') }} : <b>{{ Auth::guard('client')->user()->balance }}</b></span></a>
+                        <a class="dropdown-item" href="auth-lockscreen-basic.html"><i class="mdi mdi-lock text-muted fs-16 align-middle me-1"></i> <span class="align-middle">{{ __('messages.auth.lock_screen') }}</span></a>
+                        <a class="dropdown-item" href="auth-logout-basic.html"><i class="mdi mdi-logout text-muted fs-16 align-middle me-1"></i> <span class="align-middle">{{ __('messages.common.logout') }}</span></a>
                     </div>
                 </div>
                 @endauth

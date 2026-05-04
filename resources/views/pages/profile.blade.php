@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Profile')
+@section('title', __('messages.profile.title'))
 
 @section('content')
 
@@ -12,7 +12,7 @@
                 <div class="p-0 ms-auto rounded-circle profile-photo-edit">
                     <input id="profile-foreground-img-file-input" type="file" class="profile-foreground-img-file-input">
                     <label for="profile-foreground-img-file-input" class="profile-photo-edit btn btn-light">
-                        <i class="ri-image-edit-line align-bottom me-1"></i> Change Cover
+                        <i class="ri-image-edit-line align-bottom me-1"></i> {{ __('messages.profile.change_cover') }}
                     </label>
                 </div>
             </div>
@@ -47,31 +47,31 @@
             <div class="card-body">
                 <div class="d-flex align-items-center mb-4">
                     <div class="flex-grow-1">
-                        <h5 class="card-title mb-0">Account Info</h5>
+                        <h5 class="card-title mb-0">{{ __('messages.profile.account_info') }}</h5>
                     </div>
                 </div>
                 <div class="table-responsive">
                     <table class="table table-borderless table-sm">
                         <tr>
-                            <td class="text-muted">User ID</td>
+                            <td class="text-muted">{{ __('messages.profile.user_id') }}</td>
                             <td class="fw-medium">{{ $user->user_id }}</td>
                         </tr>
                         <tr>
-                            <td class="text-muted">Balance</td>
+                            <td class="text-muted">{{ __('messages.profile.balance') }}</td>
                             <td class="fw-medium">{{ number_format($user->balance, 2) }} VND</td>
                         </tr>
                         <tr>
-                            <td class="text-muted">Status</td>
+                            <td class="text-muted">{{ __('messages.profile.status') }}</td>
                             <td>
                                 @if ($user->isKycVerified())
-                                    <span class="badge bg-success">KYC Verified</span>
+                                    <span class="badge bg-success">{{ __('messages.profile.kyc_verified') }}</span>
                                 @else
-                                    <span class="badge bg-warning">Not Verified</span>
+                                    <span class="badge bg-warning">{{ __('messages.profile.not_verified') }}</span>
                                 @endif
                             </td>
                         </tr>
                         <tr>
-                            <td class="text-muted">Joined</td>
+                            <td class="text-muted">{{ __('messages.profile.joined') }}</td>
                             <td class="fw-medium">{{ $user->created_at?->format('d/m/Y') }}</td>
                         </tr>
                     </table>
@@ -88,22 +88,22 @@
                 <ul class="nav nav-tabs-custom rounded card-header-tabs border-bottom-0" role="tablist">
                     <li class="nav-item">
                         <a class="nav-link {{ $activeTab === 'profile' ? 'active' : '' }}" data-bs-toggle="tab" href="#personalDetails" role="tab">
-                            <i class="fas fa-home"></i> Thông tin cá nhân
+                            <i class="fas fa-home"></i> {{ __('messages.profile.personal_info') }}
                         </a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link {{ $activeTab === 'password' ? 'active' : '' }}" data-bs-toggle="tab" href="#changePassword" role="tab">
-                            <i class="far fa-user"></i> Change Password
+                            <i class="far fa-user"></i> {{ __('messages.profile.change_password') }}
                         </a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link {{ $activeTab === 'deposit' ? 'active' : '' }}" data-bs-toggle="tab" href="#experience" role="tab">
-                            <i class="far fa-envelope"></i> Nạp / Rút
+                            <i class="far fa-envelope"></i> {{ __('messages.profile.deposit_withdraw') }}
                         </a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link {{ $activeTab === 'kyc' ? 'active' : '' }}" data-bs-toggle="tab" href="#privacy" role="tab">
-                            <i class="far fa-envelope"></i> KYC Verification
+                            <i class="far fa-envelope"></i> {{ __('messages.profile.kyc_verification') }}
                         </a>
                     </li>
                 </ul>
@@ -140,73 +140,73 @@
                             <div class="row">
                                 <div class="col-lg-6">
                                     <div class="mb-3">
-                                        <label for="userIdDisplay" class="form-label">User ID</label>
+                                        <label for="userIdDisplay" class="form-label">{{ __('messages.profile.user_id') }}</label>
                                         <input type="text" class="form-control bg-light" value="{{ $user->user_id }}" readonly>
                                     </div>
                                 </div>
                                 <div class="col-lg-6">
                                     <div class="mb-3">
-                                        <label for="emailDisplay" class="form-label">Email</label>
+                                        <label for="emailDisplay" class="form-label">{{ __('messages.profile.email') }}</label>
                                         <input type="email" class="form-control bg-light" value="{{ $user->email }}" readonly>
                                     </div>
                                 </div>
                                 <div class="col-lg-6">
                                     <div class="mb-3">
-                                        <label for="nicknameInput" class="form-label">Nick Name <span class="text-danger">*</span></label>
+                                        <label for="nicknameInput" class="form-label">{{ __('messages.profile.nickname') }} <span class="text-danger">*</span></label>
                                         <input type="text" class="form-control" name="nickname" id="nicknameInput" value="{{ old('nickname', $user->nickname) }}" required>
                                     </div>
                                 </div>
                                 <div class="col-lg-6">
                                     <div class="mb-3">
-                                        <label for="phoneDisplay" class="form-label">Số điện thoại</label>
+                                        <label for="phoneDisplay" class="form-label">{{ __('messages.profile.phone_number') }}</label>
                                         <input type="text" class="form-control bg-light" value="{{ $user->phone_number }}" readonly>
                                     </div>
                                 </div>
                                 <div class="col-lg-6">
                                     <div class="mb-3">
-                                        <label for="balanceDisplay" class="form-label">Balance</label>
+                                        <label for="balanceDisplay" class="form-label">{{ __('messages.profile.balance') }}</label>
                                         <input type="text" class="form-control bg-light" value="{{ number_format($user->balance, 2) }} VND" readonly>
                                     </div>
                                 </div>
                                 <div class="col-lg-6">
                                     <div class="mb-3">
                                         <label for="kycStatus" class="form-label">KYC Status</label>
-                                        <input type="text" class="form-control bg-light" value="{{ $user->isKycVerified() ? 'Verified' : ($user->kyc_front_url || $user->kyc_back_url ? 'Pending' : 'Not Submitted') }}" readonly>
+                                        <input type="text" class="form-control bg-light" value="{{ $user->isKycVerified() ? __('messages.common.verified') : ($user->kyc_front_url || $user->kyc_back_url ? __('messages.common.pending') : __('messages.common.not_submitted')) }}" readonly>
                                     </div>
                                 </div>
                                 <div class="col-lg-4">
                                     <div class="mb-3">
-                                        <label for="bankAccountDisplay" class="form-label">Ngân Hàng</label>
+                                        <label for="bankAccountDisplay" class="form-label">{{ __('messages.profile.bank_name_label') }}</label>
                                         <input type="text" class="form-control bg-light" value="{{ $user->bank_account ?? '-' }}" readonly>
                                     </div>
                                 </div>
                                 <div class="col-lg-4">
                                     <div class="mb-3">
-                                        <label for="bankNumberDisplay" class="form-label">Số tài khoản</label>
+                                        <label for="bankNumberDisplay" class="form-label">{{ __('messages.profile.account_number') }}</label>
                                         <input type="text" class="form-control bg-light" value="{{ $user->bank_number ?? '-' }}" readonly>
                                     </div>
                                 </div>
                                 <div class="col-lg-4">
                                     <div class="mb-3">
-                                        <label for="bankNameDisplay" class="form-label">Chủ tài khoản</label>
+                                        <label for="bankNameDisplay" class="form-label">{{ __('messages.profile.account_holder') }}</label>
                                         <input type="text" class="form-control bg-light" value="{{ $user->account_name ?? '-' }}" readonly>
                                     </div>
                                 </div>
                                 <div class="col-lg-6">
                                     <div class="mb-3">
-                                        <label for="createdAtDisplay" class="form-label">Ngày tham gia</label>
+                                        <label for="createdAtDisplay" class="form-label">{{ __('messages.profile.join_date') }}</label>
                                         <input type="text" class="form-control bg-light" value="{{ $user->created_at?->format('d/m/Y H:i') }}" readonly>
                                     </div>
                                 </div>
                                 <div class="col-lg-6">
                                     <div class="mb-3">
-                                        <label for="verifiedAtDisplay" class="form-label">Ngày xác minh</label>
+                                        <label for="verifiedAtDisplay" class="form-label">{{ __('messages.profile.verification_date') }}</label>
                                         <input type="text" class="form-control bg-light" value="{{ $user->verified_at?->format('d/m/Y H:i') ?? '-' }}" readonly>
                                     </div>
                                 </div>
                                 <div class="col-lg-12">
                                     <div class="hstack gap-2 justify-content-end">
-                                        <button type="submit" class="btn btn-primary">Updates</button>
+                                        <button type="submit" class="btn btn-primary">{{ __('messages.profile.updates') }}</button>
                                     </div>
                                 </div>
                             </div>
@@ -221,25 +221,25 @@
                             <div class="row g-2">
                                 <div class="col-lg-4">
                                     <div>
-                                        <label for="currentPasswordInput" class="form-label">Current Password*</label>
-                                        <input type="password" class="form-control" name="current_password" id="currentPasswordInput" placeholder="Enter current password" required>
+                                        <label for="currentPasswordInput" class="form-label">{{ __('messages.profile.current_password') }}</label>
+                                        <input type="password" class="form-control" name="current_password" id="currentPasswordInput" placeholder="{{ __('messages.profile.enter_current_password') }}" required>
                                     </div>
                                 </div>
                                 <div class="col-lg-4">
                                     <div>
-                                        <label for="newPasswordInput" class="form-label">New Password*</label>
-                                        <input type="password" class="form-control" name="new_password" id="newPasswordInput" placeholder="Enter new password" required minlength="8">
+                                        <label for="newPasswordInput" class="form-label">{{ __('messages.profile.new_password') }}</label>
+                                        <input type="password" class="form-control" name="new_password" id="newPasswordInput" placeholder="{{ __('messages.profile.enter_new_password') }}" required minlength="8">
                                     </div>
                                 </div>
                                 <div class="col-lg-4">
                                     <div>
-                                        <label for="confirmPasswordInput" class="form-label">Confirm Password*</label>
-                                        <input type="password" class="form-control" name="new_password_confirmation" id="confirmPasswordInput" placeholder="Confirm new password" required>
+                                        <label for="confirmPasswordInput" class="form-label">{{ __('messages.profile.confirm_password') }}</label>
+                                        <input type="password" class="form-control" name="new_password_confirmation" id="confirmPasswordInput" placeholder="{{ __('messages.profile.enter_confirm_password') }}" required>
                                     </div>
                                 </div>
                                 <div class="col-lg-12 mt-3">
                                     <div class="text-end">
-                                        <button type="submit" class="btn btn-success">Change Password</button>
+                                        <button type="submit" class="btn btn-success">{{ __('messages.profile.change_password') }}</button>
                                     </div>
                                 </div>
                             </div>
@@ -251,7 +251,7 @@
                     <div class="tab-pane {{ $activeTab === 'deposit' ? 'active' : '' }}" id="experience" role="tabpanel">
                         <div class="row">
                             <div class="card card-body text-center bg-light">
-                                <h4 class="card-title">Tổng tài sản (VND)</h4>
+                                <h4 class="card-title">{{ __('messages.profile.total_assets') }}</h4>
                                 <p class="card-text text-muted" id="totalBalance">{{ number_format($user->balance, 2) }}</p>
                             </div>
                         </div>
@@ -259,10 +259,10 @@
                         {{-- Sub-tabs: Deposit | Withdraw --}}
                         <ul class="nav nav-tabs nav-tabs-custom mt-3" role="tablist">
                             <li class="nav-item">
-                                <a class="nav-link active" data-bs-toggle="tab" href="#subDeposit" role="tab">Nạp tiền</a>
+                                <a class="nav-link active" data-bs-toggle="tab" href="#subDeposit" role="tab">{{ __('messages.profile.deposit') }}</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" data-bs-toggle="tab" href="#subWithdraw" role="tab">Rút tiền</a>
+                                <a class="nav-link" data-bs-toggle="tab" href="#subWithdraw" role="tab">{{ __('messages.profile.withdraw') }}</a>
                             </li>
                         </ul>
 
@@ -278,7 +278,7 @@
                                                 </span>
                                             </div>
                                             <div class="flex-grow-1 ms-3">
-                                                <h4 class="mb-0">Ngân Hàng</h4>
+                                                <h4 class="mb-0">{{ __('messages.profile.bank_name_label') }}</h4>
                                             </div>
                                             <div class="flex-shrink-0 align-self-end">
                                                 <h4 class="mb-0"><span>{{ number_format($user->balance, 2) }}</span></h4>
@@ -286,28 +286,28 @@
                                         </div>
                                     </div>
                                     <div class="flex-wrap gap-3 m-3">
-                                        <button type="button" class="btn btn-success waves-effect waves-light w-100" id="btn-pay" data-bs-toggle="modal" data-bs-target="#depositModal">Nạp tiền</button>
+                                        <button type="button" class="btn btn-success waves-effect waves-light w-100" id="btn-pay" data-bs-toggle="modal" data-bs-target="#depositModal">{{ __('messages.profile.deposit') }}</button>
                                     </div>
                                 </div>
 
                                 {{-- Deposit History --}}
                                 <div class="card">
                                     <div class="card-header">
-                                        <h5 class="card-title mb-0">Lịch sử nạp tiền</h5>
+                                        <h5 class="card-title mb-0">{{ __('messages.profile.deposit_history') }}</h5>
                                     </div>
                                     <div class="card-body">
                                         <div class="table-responsive">
                                             <table class="table table-bordered table-sm">
                                                 <thead>
                                                     <tr>
-                                                        <th>Amount</th>
-                                                        <th>Status</th>
+                                                        <th>{{ __('messages.profile.amount_label') }}</th>
+                                                        <th>{{ __('messages.common.status') }}</th>
                                                         <th>Admin Note</th>
-                                                        <th>Date</th>
+                                                        <th>{{ __('messages.common.date') }}</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody id="depositHistoryBody">
-                                                    <tr><td colspan="4" class="text-center text-muted">Loading...</td></tr>
+                                                    <tr><td colspan="4" class="text-center text-muted">{{ __('messages.common.loading') }}</td></tr>
                                                 </tbody>
                                             </table>
                                         </div>
@@ -320,25 +320,25 @@
                             <div class="tab-pane fade" id="subWithdraw" role="tabpanel">
                                 <div class="card mb-3">
                                     <div class="card-header">
-                                        <h5 class="card-title mb-0">Yêu cầu rút tiền</h5>
+                                        <h5 class="card-title mb-0">{{ __('messages.profile.withdraw_request') }}</h5>
                                     </div>
                                     <div class="card-body">
                                         <form id="withdrawForm">
                                             @csrf
                                             <div class="mb-3">
-                                                <label for="withdrawAmount" class="form-label">Số tiền rút (tối thiểu 10,000 VND) <span class="text-danger">*</span></label>
-                                                <input type="number" class="form-control" id="withdrawAmount" name="amount" placeholder="Nhập số tiền cần rút" min="10000" required>
+                                                <label for="withdrawAmount" class="form-label">{{ __('messages.profile.withdraw_amount_min') }} <span class="text-danger">*</span></label>
+                                                <input type="number" class="form-control" id="withdrawAmount" name="amount" placeholder="{{ __('messages.profile.enter_withdraw_amount') }}" min="10000" required>
                                                 <p class="text-danger mt-1" id="withdrawError" style="display:none;"></p>
                                             </div>
                                             <div class="mb-3">
-                                                <p class="text-muted mb-1">Tài khoản nhận: <strong>{{ $user->account_name ?? '-' }}</strong></p>
-                                                <p class="text-muted mb-1">Ngân hàng: <strong>{{ $user->bank_account ?? '-' }}</strong></p>
-                                                <p class="text-muted mb-1">Số tài khoản: <strong>{{ $user->bank_number ?? '-' }}</strong></p>
+                                                <p class="text-muted mb-1">{{ __('messages.common.balance') }}: <strong>{{ $user->account_name ?? '-' }}</strong></p>
+                                                <p class="text-muted mb-1">{{ __('messages.profile.bank_name_label') }}: <strong>{{ $user->bank_account ?? '-' }}</strong></p>
+                                                <p class="text-muted mb-1">{{ __('messages.profile.account_number') }}: <strong>{{ $user->bank_number ?? '-' }}</strong></p>
                                                 @if (empty($user->account_name) || empty($user->bank_number) || empty($user->bank_account))
-                                                    <p class="text-warning"><i class="ri-information-line"></i> Vui lòng cập nhật thông tin ngân hàng trong modal KYC trước khi rút tiền.</p>
+                                                    <p class="text-warning"><i class="ri-information-line"></i> {{ __('messages.profile.kyc_warning') }}</p>
                                                 @endif
                                             </div>
-                                            <button type="submit" class="btn btn-danger">Gửi yêu cầu rút tiền</button>
+                                            <button type="submit" class="btn btn-danger">{{ __('messages.profile.submit_withdraw') }}</button>
                                         </form>
                                     </div>
                                 </div>
@@ -346,21 +346,21 @@
                                 {{-- Withdraw History --}}
                                 <div class="card">
                                     <div class="card-header">
-                                        <h5 class="card-title mb-0">Lịch sử rút tiền</h5>
+                                        <h5 class="card-title mb-0">{{ __('messages.profile.withdraw_history') }}</h5>
                                     </div>
                                     <div class="card-body">
                                         <div class="table-responsive">
                                             <table class="table table-bordered table-sm">
                                                 <thead>
                                                     <tr>
-                                                        <th>Amount</th>
-                                                        <th>Status</th>
+                                                        <th>{{ __('messages.profile.amount_label') }}</th>
+                                                        <th>{{ __('messages.common.status') }}</th>
                                                         <th>Admin Note</th>
-                                                        <th>Date</th>
+                                                        <th>{{ __('messages.common.date') }}</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody id="withdrawHistoryBody">
-                                                    <tr><td colspan="4" class="text-center text-muted">Loading...</td></tr>
+                                                    <tr><td colspan="4" class="text-center text-muted">{{ __('messages.common.loading') }}</td></tr>
                                                 </tbody>
                                             </table>
                                         </div>
@@ -375,27 +375,27 @@
                             <div class="modal-dialog">
                                 <div class="modal-content">
                                     <div class="modal-header">
-                                        <h5 class="modal-title" id="depositModalLabel">Nạp tiền</h5>
+                                        <h5 class="modal-title" id="depositModalLabel">{{ __('messages.profile.deposit') }}</h5>
                                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                     </div>
                                     <div class="modal-body text-center">
-                                        <h5 class="fs-15">Nhập số tiền</h5>
-                                        <input type="number" class="form-control mb-3" id="depositAmount" placeholder="Nhập số tiền Nạp" min="10000">
+                                        <h5 class="fs-15">{{ __('messages.profile.enter_amount') }}</h5>
+                                        <input type="number" class="form-control mb-3" id="depositAmount" placeholder="{{ __('messages.profile.enter_deposit_amount') }}" min="10000">
                                         <p class="mb-2 text-danger" id="depositError" style="display:none;"></p>
-                                        <p class="mb-2">Để thanh toán bạn vui lòng chuyển tiền theo</p>
-                                        <p class="mb-2"><strong>Nội dung: <span id="depositContent">{{ $user->nickname }}</span></strong></p>
+                                        <p class="mb-2">{{ __('messages.profile.deposit_payment_note') }}</p>
+                                        <p class="mb-2"><strong>{{ __('messages.common.balance') }}: <span id="depositContent">{{ $user->nickname }}</span></strong></p>
                                         <div style="height:1px; background:linear-gradient(to right, transparent, #ccc, transparent); margin:20px 0;"></div>
-                                        <p class="mb-2">Chủ tài khoản: <strong id="accountName"></strong></p>
-                                        <p class="mb-2">Ngân hàng: <strong id="bankName"></strong></p>
-                                        <p class="mb-2">Số tài khoản: <strong id="accountNo"></strong></p>
-                                        <p class="mb-2">Số tiền: <strong id="transferAmount"></strong> VND</p>
+                                        <p class="mb-2">{{ __('messages.profile.account_holder') }}: <strong id="accountName"></strong></p>
+                                        <p class="mb-2">{{ __('messages.profile.bank_name_label') }}: <strong id="bankName"></strong></p>
+                                        <p class="mb-2">{{ __('messages.profile.account_number') }}: <strong id="accountNo"></strong></p>
+                                        <p class="mb-2">{{ __('messages.profile.amount_label') }}: <strong id="transferAmount"></strong> VND</p>
                                         <div style="height:1px; background:linear-gradient(to right, transparent, #ccc, transparent); margin:20px 0;"></div>
-                                        <p class="text-warning"><i>Lưu ý: Hệ thống sẽ không chịu trách nhiệm nếu bạn gửi sai nội dung</i></p>
+                                        <p class="text-warning"><i>{{ __('messages.profile.note_transfer') }}</i></p>
                                         <div id="qr-code"></div>
                                     </div>
                                     <div class="modal-footer">
-                                        <button type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button>
-                                        <button type="button" id="depositButton" class="btn btn-success">Tạo mã QR</button>
+                                        <button type="button" class="btn btn-light" data-bs-dismiss="modal">{{ __('messages.common.close') }}</button>
+                                        <button type="button" id="depositButton" class="btn btn-success">{{ __('messages.profile.generate_qr') }}</button>
                                     </div>
                                 </div>
                             </div>
@@ -413,14 +413,14 @@
                                             <div class="mb-4">
                                                 <lord-icon src="https://cdn.lordicon.com/lupuorrc.json" trigger="loop" colors="primary:#0ab39c,secondary:#405189" style="width:120px;height:120px"></lord-icon>
                                             </div>
-                                            <h4 class="fw-semibold">KYC Verified</h4>
-                                            <p class="text-muted">Your account has been verified on {{ $user->kyc_verified_at?->format('d/m/Y H:i') }}.</p>
+                                            <h4 class="fw-semibold">{{ __('messages.profile.kyc_verified_badge') }}</h4>
+                                            <p class="text-muted">{{ __('messages.profile.kyc_verified_msg') }}</p>
                                             <div class="mt-3">
                                                 @if ($user->kyc_front_url)
-                                                    <a href="{{ Storage::url($user->kyc_front_url) }}" target="_blank" class="btn btn-sm btn-outline-primary me-2">View Front ID</a>
+                                                    <a href="{{ Storage::url($user->kyc_front_url) }}" target="_blank" class="btn btn-sm btn-outline-primary me-2">{{ __('messages.profile.view_front_id') }}</a>
                                                 @endif
                                                 @if ($user->kyc_back_url)
-                                                    <a href="{{ Storage::url($user->kyc_back_url) }}" target="_blank" class="btn btn-sm btn-outline-primary">View Back ID</a>
+                                                    <a href="{{ Storage::url($user->kyc_back_url) }}" target="_blank" class="btn btn-sm btn-outline-primary">{{ __('messages.profile.view_back_id') }}</a>
                                                 @endif
                                             </div>
                                         </div>
@@ -431,16 +431,16 @@
                                             <div class="mb-4">
                                                 <i class="ri-shield-check-fill text-muted" style="font-size: 80px;"></i>
                                             </div>
-                                            <h4 class="fw-semibold">KYC Verification</h4>
-                                            <p class="text-muted">Xác minh danh tính của bạn để sử dụng đầy đủ tính năng.</p>
+                                            <h4 class="fw-semibold">{{ __('messages.profile.kyc_modal_title') }}</h4>
+                                            <p class="text-muted">{{ __('messages.profile.kyc_modal_subtitle') }}</p>
                                             @if ($user->kyc_front_url && !$user->isKycVerified())
                                                 <div class="alert alert-warning mt-3">
                                                     <i class="ri-information-line me-1"></i>
-                                                    Your KYC documents have been submitted and are pending verification.
+                                                    {{ __('messages.profile.kyc_pending_msg') }}
                                                 </div>
                                             @endif
                                             <button type="button" class="btn btn-primary mt-3" data-bs-toggle="modal" data-bs-target="#kycModal">
-                                                <i class="ri-user-shared-line me-1"></i> Verify KYC
+                                                <i class="ri-user-shared-line me-1"></i> {{ __('messages.profile.verify_kyc') }}
                                             </button>
                                         </div>
                                     </div>
@@ -463,15 +463,15 @@
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="kycModalLabel">KYC Verification</h5>
+                <h5 class="modal-title" id="kycModalLabel">{{ __('messages.profile.kyc_modal_title') }}</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
                 {{-- Step indicators --}}
                 <div class="d-flex justify-content-center mb-4" id="kycSteps">
-                    <span class="badge bg-primary fs-6 px-3 py-2 me-2" id="kycStep1Badge">Step 1: Bank Info</span>
+                    <span class="badge bg-primary fs-6 px-3 py-2 me-2" id="kycStep1Badge">{{ __('messages.profile.kyc_step1') }}</span>
                     <span class="text-muted fs-5">→</span>
-                    <span class="badge bg-light text-dark fs-6 px-3 py-2 ms-2" id="kycStep2Badge">Step 2: Upload CCCD</span>
+                    <span class="badge bg-light text-dark fs-6 px-3 py-2 ms-2" id="kycStep2Badge">{{ __('messages.profile.kyc_step2') }}</span>
                 </div>
 
                 {{-- Step 1: Bank Info --}}
@@ -479,19 +479,19 @@
                     <form id="kycBankForm">
                         @csrf
                         <div class="mb-3">
-                            <label for="kycBankName" class="form-label">Tên chủ tài khoản <span class="text-danger">*</span></label>
+                            <label for="kycBankName" class="form-label">{{ __('messages.profile.account_name') }} <span class="text-danger">*</span></label>
                             <input type="text" class="form-control" id="kycBankName" name="account_name" value="{{ $user->account_name }}" placeholder="NGUYEN VAN A" required>
                         </div>
                         <div class="mb-3">
-                            <label for="kycBankNumber" class="form-label">Số tài khoản <span class="text-danger">*</span></label>
-                            <input type="text" class="form-control" id="kycBankNumber" name="bank_number" value="{{ $user->bank_number }}" placeholder="Nhập số tài khoản" required>
+                            <label for="kycBankNumber" class="form-label">{{ __('messages.profile.account_number') }} <span class="text-danger">*</span></label>
+                            <input type="text" class="form-control" id="kycBankNumber" name="bank_number" value="{{ $user->bank_number }}" placeholder="{{ __('messages.profile.enter_account_number') }}" required>
                         </div>
                         <div class="mb-3">
-                            <label for="kycBankBranch" class="form-label">Ngân hàng <span class="text-danger">*</span></label>
-                            <input type="text" class="form-control" id="kycBankBranch" name="bank_account" value="{{ $user->bank_account }}" placeholder="VD: Vietcombank, BIDV..." required>
+                            <label for="kycBankBranch" class="form-label">{{ __('messages.profile.bank_name_label') }} <span class="text-danger">*</span></label>
+                            <input type="text" class="form-control" id="kycBankBranch" name="bank_account" value="{{ $user->bank_account }}" placeholder="{{ __('messages.profile.enter_bank_name') }}" required>
                         </div>
                         <div class="text-end">
-                            <button type="button" class="btn btn-primary" id="kycNextStep">Tiếp theo</button>
+                            <button type="button" class="btn btn-primary" id="kycNextStep">{{ __('messages.profile.next_step') }}</button>
                         </div>
                     </form>
                 </div>
@@ -501,33 +501,33 @@
                     <form id="kycUploadForm" enctype="multipart/form-data">
                         @csrf
                         <div class="mb-3">
-                            <label for="kycFullName" class="form-label">Họ và tên (trên CCCD) <span class="text-danger">*</span></label>
+                            <label for="kycFullName" class="form-label">{{ __('messages.profile.full_name_cccd') }} <span class="text-danger">*</span></label>
                             <input type="text" class="form-control" id="kycFullName" name="full_name" value="{{ $user->full_name }}" placeholder="NGUYEN VAN A" required>
                         </div>
                         <div class="mb-3">
-                            <label for="kycDob" class="form-label">Ngày sinh <span class="text-danger">*</span></label>
+                            <label for="kycDob" class="form-label">{{ __('messages.profile.date_of_birth') }} <span class="text-danger">*</span></label>
                             <input type="date" class="form-control" id="kycDob" name="date_of_birth" value="{{ $user->date_of_birth?->format('Y-m-d') }}" required>
                         </div>
                         <div class="mb-3">
-                            <label for="kycCccdNumber" class="form-label">Số CCCD <span class="text-danger">*</span></label>
-                            <input type="text" class="form-control" id="kycCccdNumber" name="cccd_number" value="{{ $user->cccd_number }}" placeholder="Nhập số CCCD" required>
+                            <label for="kycCccdNumber" class="form-label">{{ __('messages.profile.cccd_number') }} <span class="text-danger">*</span></label>
+                            <input type="text" class="form-control" id="kycCccdNumber" name="cccd_number" value="{{ $user->cccd_number }}" placeholder="{{ __('messages.profile.enter_cccd') }}" required>
                         </div>
                         <div class="row g-3">
                             <div class="col-lg-6">
-                                <label for="kycFrontInput" class="form-label">Mặt trước CCCD <span class="text-danger">*</span></label>
+                                <label for="kycFrontInput" class="form-label">{{ __('messages.profile.cccd_front') }} <span class="text-danger">*</span></label>
                                 <input type="file" class="form-control" name="kyc_front" id="kycFrontInput" accept="image/jpeg,image/png,image/jpg" required>
                                 <div class="mt-2" id="kycFrontPreview"></div>
                             </div>
                             <div class="col-lg-6">
-                                <label for="kycBackInput" class="form-label">Mặt sau CCCD <span class="text-danger">*</span></label>
+                                <label for="kycBackInput" class="form-label">{{ __('messages.profile.cccd_back') }} <span class="text-danger">*</span></label>
                                 <input type="file" class="form-control" name="kyc_back" id="kycBackInput" accept="image/jpeg,image/png,image/jpg" required>
                                 <div class="mt-2" id="kycBackPreview"></div>
                             </div>
                         </div>
                         <div class="mt-3" id="kycUploadStatus"></div>
                         <div class="d-flex justify-content-between mt-3">
-                            <button type="button" class="btn btn-light" id="kycPrevStep">Quay lại</button>
-                            <button type="submit" class="btn btn-primary">Gửi xác minh</button>
+                            <button type="button" class="btn btn-light" id="kycPrevStep">{{ __('messages.profile.back') }}</button>
+                            <button type="submit" class="btn btn-primary">{{ __('messages.profile.submit_verification') }}</button>
                         </div>
                     </form>
                 </div>

@@ -48,8 +48,8 @@
                 <div class="col-lg-6">
                     <div class="p-lg-5 p-4">
                         <div>
-                            <h5 class="text-primary">Register Account</h5>
-                            <p class="text-muted">Get your Free TRADEX account now.</p>
+                            <h5 class="text-primary">{{ __('messages.auth.register_account') }}</h5>
+                            <p class="text-muted">{{ __('messages.auth.get_free_account') }}</p>
                         </div>
 
                         <div class="mt-4">
@@ -61,70 +61,70 @@
                                 </div>
                                 @endif
                                 <div class="mb-3">
-                                    <label for="nickname" class="form-label">nickname <span class="text-danger">*</span></label>
-                                    <input type="text" name="nickname" class="form-control" id="nickname" placeholder="Enter nickname" required>
+                                    <label for="nickname" class="form-label">{{ __('messages.auth.nickname') }} <span class="text-danger">*</span></label>
+                                    <input type="text" name="nickname" class="form-control" id="nickname" placeholder="{{ __('messages.auth.enter_nickname') }}" required>
                                     <div class="invalid-feedback">
-                                        Please enter nickname
+                                        {{ __('messages.auth.validate_nickname') }}
                                     </div>
                                 </div>
                                 <div class="mb-3">
-                                    <label for="useremail" class="form-label">Email <span class="text-danger">*</span></label>
-                                    <input type="email" class="form-control" name="email" id="useremail" placeholder="Enter email address" required>
+                                    <label for="useremail" class="form-label">{{ __('messages.auth.email') }} <span class="text-danger">*</span></label>
+                                    <input type="email" class="form-control" name="email" id="useremail" placeholder="{{ __('messages.auth.enter_email') }}" required>
                                     <div class="invalid-feedback">
-                                        Please enter email
+                                        {{ __('messages.auth.validate_email') }}
                                     </div>
                                 </div>
                                 <div class="mb-3">
-                                    <label for="phone" class="form-label">Phone Number <span class="text-danger">*</span></label>
-                                    <input type="tel" class="form-control" id="phone" name="phone_number" placeholder="Enter phone number" required>
+                                    <label for="phone" class="form-label">{{ __('messages.auth.phone_number') }} <span class="text-danger">*</span></label>
+                                    <input type="tel" class="form-control" id="phone" name="phone_number" placeholder="{{ __('messages.auth.enter_phone') }}" required>
                                     <div class="invalid-feedback">
-                                        Please enter phone number
+                                        {{ __('messages.auth.validate_phone') }}
                                     </div>
                                 </div>
                                 <div class="mb-3">
-                                    <label class="form-label" for="password-input">Password</label>
+                                    <label class="form-label" for="password-input">{{ __('messages.auth.password') }}</label>
                                     <div class="position-relative auth-pass-inputgroup">
-                                        <input type="password" name="password" class="form-control pe-5 password-input" onpaste="return false" placeholder="Enter password" id="password-input" aria-describedby="passwordInput" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" required>
+                                        <input type="password" name="password" class="form-control pe-5 password-input" onpaste="return false" placeholder="{{ __('messages.auth.enter_password') }}" id="password-input" aria-describedby="passwordInput" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" required>
                                         <button class="btn btn-link position-absolute end-0 top-0 text-decoration-none text-muted password-addon material-shadow-none" type="button" id="password-addon"><i class="ri-eye-fill align-middle"></i></button>
                                         <div class="invalid-feedback">
-                                            Please enter password
+                                            {{ __('messages.auth.validate_password') }}
                                         </div>
                                     </div>
                                 </div>
                                 <div class="mb-3">
-                                    <label class="form-label" for="confirm-password-input">Confirm Password</label>
+                                    <label class="form-label" for="confirm-password-input">{{ __('messages.auth.confirm_password') }}</label>
                                     <div class="position-relative auth-pass-inputgroup">
-                                        <input type="password" name="password_confirmation" class="form-control pe-5 confirm-password-input" onpaste="return false" placeholder="Enter password" id="confirm-password-input" aria-describedby="passwordInput" >
+                                        <input type="password" name="password_confirmation" class="form-control pe-5 confirm-password-input" onpaste="return false" placeholder="{{ __('messages.auth.enter_confirm_password') }}" id="confirm-password-input" aria-describedby="passwordInput" >
                                         <button class="btn btn-link position-absolute end-0 top-0 text-decoration-none text-muted confirm-password-addon material-shadow-none" type="button" id="confirm-password-addon"><i class="ri-eye-fill align-middle"></i></button>
                                         <div class="invalid-feedback">
-                                            Please enter confirm password
+                                            {{ __('messages.auth.validate_confirm') }}
                                         </div>
                                     </div>
                                 </div>
                                 <div class="mb-3">
-                                    <label for="referral_code" class="form-label">Referral Code (Optional)</label>
-                                    <input type="text" class="form-control" id="referral_code" name="referral_code" placeholder="Enter referral code">
+                                    <label for="referral_code" class="form-label">{{ __('messages.auth.referral_code') }}</label>
+                                    <input type="text" class="form-control" id="referral_code" name="referral_code" placeholder="{{ __('messages.auth.enter_referral') }}">
                                 </div>
                                 <div class="mb-4">
-                                    <p class="mb-0 fs-12 text-muted fst-italic">By registering you agree to the TRADEX <a href="#" class="text-primary text-decoration-underline fst-normal fw-medium">Terms of Use</a></p>
+                                    <p class="mb-0 fs-12 text-muted fst-italic">{{ __('messages.auth.terms_agree') }} <a href="#" class="text-primary text-decoration-underline fst-normal fw-medium">{{ __('messages.auth.terms_of_use') }}</a></p>
                                 </div>
 
                                 <div id="password-contain" class="p-3 bg-light mb-2 rounded">
-                                    <h5 class="fs-13">Password must contain:</h5>
-                                    <p id="pass-length" class="invalid fs-12 mb-2">Minimum <b>8 characters</b></p>
-                                    <p id="pass-lower" class="invalid fs-12 mb-2">At <b>lowercase</b> letter (a-z)</p>
-                                    <p id="pass-upper" class="invalid fs-12 mb-2">At least <b>uppercase</b> letter (A-Z)</p>
-                                    <p id="pass-number" class="invalid fs-12 mb-0">A least <b>number</b> (0-9)</p>
+                                    <h5 class="fs-13">{{ __('messages.auth.password_requirements') }}</h5>
+                                    <p id="pass-length" class="invalid fs-12 mb-2">{!! __('messages.auth.min_chars') !!}</p>
+                                    <p id="pass-lower" class="invalid fs-12 mb-2">{!! __('messages.auth.lowercase') !!}</p>
+                                    <p id="pass-upper" class="invalid fs-12 mb-2">{!! __('messages.auth.uppercase') !!}</p>
+                                    <p id="pass-number" class="invalid fs-12 mb-0">{!! __('messages.auth.number') !!}</p>
                                 </div>
 
                                 <div class="mt-4">
-                                    <button class="btn btn-success w-100" type="submit">Sign Up</button>
+                                    <button class="btn btn-success w-100" type="submit">{{ __('messages.auth.signup') }}</button>
                                 </div>
                             </form>
                         </div>
 
                         <div class="mt-5 text-center">
-                            <p class="mb-0">Already have an account ? <a href="auth-signin-cover.html" class="fw-semibold text-primary text-decoration-underline"> Signin</a> </p>
+                            <p class="mb-0">{{ __('messages.auth.already_have_account') }} <a href="{{ route('signin') }}" class="fw-semibold text-primary text-decoration-underline"> {{ __('messages.auth.sign_in') }}</a> </p>
                         </div>
                     </div>
                 </div>

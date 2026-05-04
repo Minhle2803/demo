@@ -85,4 +85,24 @@ return [
     'KYC_VERIFIED_SUCCESS' => 'KYC verification completed successfully.',
     'KYC_ALREADY_VERIFIED' => 'Your account is already KYC verified.',
 
+    // Spot Trading
+    'SPOT_ORDER_CREATED' => 'Order placed successfully.',
+    'SPOT_ORDER_CANCELLED' => 'Order cancelled successfully.',
+    'SPOT_INVALID_SYMBOL' => 'Unsupported trading pair.',
+    'SPOT_INVALID_PRICE' => 'Invalid price. Price must be greater than 0.',
+    'SPOT_INVALID_QUANTITY' => 'Invalid quantity. Quantity must be greater than 0.',
+    'SPOT_MIN_NOTIONAL_NOT_MET' => 'Order value is below the minimum notional.',
+    'SPOT_INSUFFICIENT_BALANCE' => 'Insufficient balance.',
+    'SPOT_ORDER_NOT_FOUND' => 'Order not found.',
+    'SPOT_ORDER_ALREADY_FILLED' => 'Order has already been filled.',
+    'SPOT_ORDER_ALREADY_CANCELLED' => 'Order has already been cancelled.',
+    'SPOT_ORDER_CANCEL_FAILED' => 'Order cannot be cancelled.',
+    'SPOT_MATCH_FAILED' => 'Order matching failed.',
+    'SPOT_ADMIN_MATCH_SUCCESS' => 'Manual match executed successfully.',
+    'SPOT_ADMIN_MATCH_FAILED' => 'Admin manual match failed.',
+    'SPOT_UNAUTHORIZED' => 'Unauthorized.',
+    'SPOT_USER_NOT_FULLY_VERIFIED' => 'KYC verification required to trade.',
+    'SPOT_WALLET_NOT_FOUND' => 'Wallet not found for this asset.',
+    'SPOT_NEGATIVE_BALANCE_BLOCKED' => 'Operation blocked to prevent negative balance.',
+
 ];

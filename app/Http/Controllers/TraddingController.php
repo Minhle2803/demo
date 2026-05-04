@@ -3,9 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Models\Trade;
+use App\Services\SpotTrading\WalletService;
+use Illuminate\Support\Facades\Auth;
 
 class TraddingController extends Controller
 {
+    public function __construct(private readonly WalletService $walletService) {}
+
     public function index()
     {
         $trades = Trade::query()
@@ -28,5 +32,14 @@ class TraddingController extends Controller
             ->paginate(20);
 
         return view('pages.tradding', compact('trades'));
+    }
+
+    public function spot()
+    {
+        if ($user = Auth::guard('client')->user()) {
+            $this->walletService->seedDemoWallets($user->id);
+        }
+
+        return view('pages.spot_crypto_trading');
     }
 }

@@ -29,22 +29,22 @@
                 <img alt="Header Avatar" class="rounded header-profile-user" src="{{ asset('assets/images/users/avatar-1.jpg') }}" />
                 <span class="text-start">
                     <span class="d-block fw-medium sidebar-user-name-text">Anna Adame</span>
-                    <span class="d-block fs-14 sidebar-user-name-sub-text"><i class="ri ri-circle-fill fs-10 text-success align-baseline"></i> <span class="align-middle">Online</span></span>
+                    <span class="d-block fs-14 sidebar-user-name-sub-text"><i class="ri ri-circle-fill fs-10 text-success align-baseline"></i> <span class="align-middle">{{ __('messages.common.online') }}</span></span>
                 </span>
             </span>
         </button>
         <div class="dropdown-menu dropdown-menu-end">
             <!-- item-->
-            <h6 class="dropdown-header">Welcome Anna!</h6>
-            <a class="dropdown-item" href="pages-profile.html"><i class="mdi mdi-account-circle text-muted fs-16 align-middle me-1"></i> <span class="align-middle">Profile</span></a>
-            <a class="dropdown-item" href="apps-chat.html"><i class="mdi mdi-message-text-outline text-muted fs-16 align-middle me-1"></i> <span class="align-middle">Messages</span></a>
+            <h6 class="dropdown-header">{{ __('messages.auth.welcome_user', ['name' => 'Anna']) }}</h6>
+            <a class="dropdown-item" href="pages-profile.html"><i class="mdi mdi-account-circle text-muted fs-16 align-middle me-1"></i> <span class="align-middle">{{ __('messages.common.profile') }}</span></a>
+            <a class="dropdown-item" href="apps-chat.html"><i class="mdi mdi-message-text-outline text-muted fs-16 align-middle me-1"></i> <span class="align-middle">{{ __('messages.common.messages') }}</span></a>
             <a class="dropdown-item" href="apps-tasks-kanban.html"><i class="mdi mdi-calendar-check-outline text-muted fs-16 align-middle me-1"></i> <span class="align-middle">Taskboard</span></a>
-            <a class="dropdown-item" href="pages-faqs.html"><i class="mdi mdi-lifebuoy text-muted fs-16 align-middle me-1"></i> <span class="align-middle">Help</span></a>
+            <a class="dropdown-item" href="pages-faqs.html"><i class="mdi mdi-lifebuoy text-muted fs-16 align-middle me-1"></i> <span class="align-middle">{{ __('messages.common.help') }}</span></a>
             <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="pages-profile.html"><i class="mdi mdi-wallet text-muted fs-16 align-middle me-1"></i> <span class="align-middle">Balance : <b>$5971.67</b></span></a>
-            <a class="dropdown-item" href="pages-profile-settings.html"><span class="badge bg-success-subtle text-success mt-1 float-end">New</span><i class="mdi mdi-cog-outline text-muted fs-16 align-middle me-1"></i> <span class="align-middle">Settings</span></a>
-            <a class="dropdown-item" href="auth-lockscreen-basic.html"><i class="mdi mdi-lock text-muted fs-16 align-middle me-1"></i> <span class="align-middle">Lock screen</span></a>
-            <a class="dropdown-item" href="auth-logout-basic.html"><i class="mdi mdi-logout text-muted fs-16 align-middle me-1"></i> <span class="align-middle" data-key="t-logout">Logout</span></a>
+            <a class="dropdown-item" href="pages-profile.html"><i class="mdi mdi-wallet text-muted fs-16 align-middle me-1"></i> <span class="align-middle">{{ __('messages.common.balance') }} : <b>$5971.67</b></span></a>
+            <a class="dropdown-item" href="pages-profile-settings.html"><span class="badge bg-success-subtle text-success mt-1 float-end">New</span><i class="mdi mdi-cog-outline text-muted fs-16 align-middle me-1"></i> <span class="align-middle">{{ __('messages.common.settings') }}</span></a>
+            <a class="dropdown-item" href="auth-lockscreen-basic.html"><i class="mdi mdi-lock text-muted fs-16 align-middle me-1"></i> <span class="align-middle">{{ __('messages.auth.lock_screen') }}</span></a>
+            <a class="dropdown-item" href="auth-logout-basic.html"><i class="mdi mdi-logout text-muted fs-16 align-middle me-1"></i> <span class="align-middle" data-key="t-logout">{{ __('messages.common.logout') }}</span></a>
         </div>
     </div>
     <div id="scrollbar">
@@ -52,15 +52,15 @@
             <div id="two-column-menu">
             </div>
             <ul class="navbar-nav" id="navbar-nav">
-                <li class="menu-title"><span data-key="t-menu">Menu</span></li>
+                <li class="menu-title"><span data-key="t-menu">{{ __('messages.menu.menu') }}</span></li>
                 <li class="nav-item">
                     <a  class="nav-link"  href="{{ route('dashboard') }}" role="button">
-                        <i class="ri-dashboard-2-line"></i> <span data-key="t-dashboards">Home</span>
+                        <i class="ri-dashboard-2-line"></i> <span data-key="t-dashboards">{{ __('messages.menu.home') }}</span>
                     </a>
                 </li> <!-- end Dashboard Menu -->
                 <li class="nav-item">
-                    <a aria-controls="sidebarApps" aria-expanded="false" class="nav-link" href="{{ route('tradding') }}" role="button">
-                        <i class="ri-apps-2-line"></i> <span data-key="t-apps">Giao dịch spot</span>
+                    <a aria-controls="sidebarApps" aria-expanded="false" class="nav-link" href="{{ route('spot.trading') }}" role="button">
+                        <i class="ri-apps-2-line"></i> <span data-key="t-apps">{{ __('messages.menu.spot_trading') }}</span>
                     </a>
                 </li>
                 
@@ -68,5 +68,5 @@
         </div>
         <!-- Sidebar -->
     </div>
-    <div class="sidebar-background') }}"></div>
+    <div class="sidebar-background"></div>
 </div>

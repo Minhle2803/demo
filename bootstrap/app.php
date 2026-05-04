@@ -2,6 +2,8 @@
 
 use App\Console\Commands\SeedTradingChartCandles;
 use App\Console\Commands\TradingChartWorker;
+use App\Http\Middleware\AdminMiddleware;
+use App\Http\Middleware\SetLocale;
 use Illuminate\Auth\AuthenticationException;
 use Illuminate\Foundation\Application;
 use Illuminate\Foundation\Configuration\Exceptions;
@@ -22,6 +24,17 @@ return Application::configure(basePath: dirname(__DIR__))
 
             Route::middleware('web')
                 ->group(base_path('routes/client_profile.php'));
+
+            Route::middleware('web')
+                ->group(base_path('routes/admin.php'));
+
+            Route::middleware('api')
+                ->prefix('api')
+                ->group(base_path('routes/spot_trading_api.php'));
+
+            Route::middleware('api')
+                ->prefix('api')
+                ->group(base_path('routes/spot_trading_admin_api.php'));
         },
     )
     ->withCommands([
@@ -29,8 +42,16 @@ return Application::configure(basePath: dirname(__DIR__))
         TradingChartWorker::class,
     ])
     ->withMiddleware(function (Middleware $middleware): void {
+        $middleware->alias([
+            'admin' => AdminMiddleware::class,
+        ]);
+
         $middleware->api(prepend: [
             EnsureFrontendRequestsAreStateful::class,
+        ]);
+
+        $middleware->web(append: [
+            SetLocale::class,
         ]);
     })
     ->withExceptions(function (Exceptions $exceptions): void {

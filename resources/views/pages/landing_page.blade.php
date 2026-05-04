@@ -35,14 +35,14 @@
         </a>
 
         <nav class="nav-links" id="nav-links">
-            <a href="#markets" class="nav-link">Markets</a>
-            <a href="{{ route('tradding') }}" class="nav-link">Trade</a>
-            <a href="{{ route('client.profile.show') }}" class="nav-link">Wallet</a>
+            <a href="#markets" class="nav-link">{{ __('messages.nav.markets') }}</a>
+            <a href="{{ route('spot.trading') }}" class="nav-link">{{ __('messages.nav.trade') }}</a>
+            <a href="{{ route('client.profile.show') }}" class="nav-link">{{ __('messages.nav.wallet') }}</a>
         </nav>
 
         <div class="nav-actions">
-            <a href="{{ route('signin') }}" class="btn-ghost">Login</a>
-            <a href="{{ route('signup') }}" class="btn-primary">Register</a>
+            <a href="{{ route('signin') }}" class="btn-ghost">{{ __('messages.nav.login') }}</a>
+            <a href="{{ route('signup') }}" class="btn-primary">{{ __('messages.nav.register') }}</a>
         </div>
 
         <button class="hamburger" id="hamburger" aria-label="Menu">
@@ -62,26 +62,25 @@
         <div class="hero-content">
             <div class="hero-badge">
                 <span class="badge-dot"></span>
-                Live Trading Active
+                {{ __('messages.hero.live_trading') }}
             </div>
 
             <h1 class="hero-headline">
-                <span class="line-1">TRADE</span>
-                <span class="line-2">CRYPTO</span>
-                <span class="line-3">WITH <em>PRECISION</em></span>
+                <span class="line-1">{{ __('messages.hero.headline_line1') }}</span>
+                <span class="line-2">{{ __('messages.hero.headline_line2') }}</span>
+                <span class="line-3">{{ __('messages.hero.headline_line3') }}</span>
             </h1>
 
             <p class="hero-sub">
-                Institutional-grade spot trading. Real-time order matching,
-                KYC-secured accounts, and non-custodial wallet protection.
+                {{ __('messages.hero.subtitle') }}
             </p>
 
             <div class="hero-cta">
                 <a href="/register" class="btn-primary btn-lg">
-                    <span>Create Account</span>
+                    <span>{{ __('messages.hero.create_account') }}</span>
                     <span class="btn-arrow">→</span>
                 </a>
-                <a href="#markets" class="btn-outline btn-lg">View Markets</a>
+                <a href="#markets" class="btn-outline btn-lg">{{ __('messages.hero.view_markets') }}</a>
             </div>
 
             <div class="hero-stats">
@@ -90,21 +89,21 @@
                         <span class="stat-num" data-count="12400">0</span>
                         <span class="stat-suffix">+</span>
                     </div>
-                    <span class="stat-label">Active Traders</span>
+                    <span class="stat-label">{{ __('messages.hero.active_traders') }}</span>
                 </div>
                 <div class="stat-divider"></div>
                 <div class="stat">
                     <div class="stat-value">
                         <span class="stat-prefix">$</span><span class="stat-num" data-count="48">0</span><span class="stat-suffix">M+</span>
                     </div>
-                    <span class="stat-label">Volume 24h</span>
+                    <span class="stat-label">{{ __('messages.hero.volume_24h') }}</span>
                 </div>
                 <div class="stat-divider"></div>
                 <div class="stat">
                     <div class="stat-value">
                         <span class="stat-num" data-count="99.9">0</span><span class="stat-suffix">%</span>
                     </div>
-                    <span class="stat-label">Uptime</span>
+                    <span class="stat-label">{{ __('messages.hero.uptime') }}</span>
                 </div>
             </div>
         </div>
@@ -152,8 +151,8 @@
 <section class="section markets-section" id="markets">
     <div class="container">
         <div class="section-header">
-            <div class="section-label">Live Markets</div>
-            <h2 class="section-title">MARKET <span class="gold">OVERVIEW</span></h2>
+            <div class="section-label">{{ __('messages.markets.live_markets') }}</div>
+            <h2 class="section-title">{{ __('messages.markets.market_overview') }}</h2>
         </div>
 
         <div class="market-table-wrap">
@@ -161,10 +160,10 @@
                 <thead>
                     <tr>
                         <th>#</th>
-                        <th>Pair</th>
-                        <th>Price</th>
-                        <th>24h Change</th>
-                        <th>Volume</th>
+                        <th>{{ __('messages.markets.pair') }}</th>
+                        <th>{{ __('messages.markets.price') }}</th>
+                        <th>{{ __('messages.markets.change_24h') }}</th>
+                        <th>{{ __('messages.markets.volume') }}</th>
                         <th></th>
                     </tr>
                 </thead>
@@ -185,15 +184,15 @@
 <section class="section features-section" id="features">
     <div class="container">
         <div class="section-header">
-            <div class="section-label">Why TradeX</div>
-            <h2 class="section-title">BUILT FOR <span class="gold">SERIOUS</span> TRADERS</h2>
+            <div class="section-label">{{ __('messages.features.why_tradex') }}</div>
+            <h2 class="section-title">{{ __('messages.features.built_for') }}</h2>
         </div>
 
         <div class="features-grid">
             <div class="feature-card feature-card--large">
                 <div class="feature-icon">⬡</div>
-                <h3>Real-Time Charts</h3>
-                <p>Professional K-line charts powered by WebSocket. Price updates every 5 seconds with full OHLCV data.</p>
+                <h3>{{ __('messages.features.real_time_charts') }}</h3>
+                <p>{{ __('messages.features.charts_desc') }}</p>
                 <div class="feature-visual chart-visual">
                     <div class="mini-bars">
                         <div class="bar" style="height:40%"></div>
@@ -209,26 +208,26 @@
 
             <div class="feature-card">
                 <div class="feature-icon">◎</div>
-                <h3>Secure Wallet</h3>
-                <p>Per-asset wallets with locked/available balance separation. Every transaction logged immutably.</p>
+                <h3>{{ __('messages.features.secure_wallet') }}</h3>
+                <p>{{ __('messages.features.wallet_desc') }}</p>
             </div>
 
             <div class="feature-card">
                 <div class="feature-icon">◈</div>
-                <h3>KYC Verified</h3>
-                <p>Two-step verification: email + phone OTP. ID document required before trading.</p>
+                <h3>{{ __('messages.features.kyc_verified') }}</h3>
+                <p>{{ __('messages.features.kyc_desc') }}</p>
             </div>
 
             <div class="feature-card">
                 <div class="feature-icon">⟳</div>
-                <h3>Fast Matching</h3>
-                <p>Limit order auto-matching with partial fill support. Admin manual matching as fallback.</p>
+                <h3>{{ __('messages.features.fast_matching') }}</h3>
+                <p>{{ __('messages.features.matching_desc') }}</p>
             </div>
 
             <div class="feature-card feature-card--wide">
                 <div class="feature-icon">◉</div>
-                <h3>Spot Trading Engine</h3>
-                <p>Full order book: Buy/Sell limit orders, cancellation, trade history, and wallet ledger — all in one platform.</p>
+                <h3>{{ __('messages.features.spot_engine') }}</h3>
+                <p>{{ __('messages.features.engine_desc') }}</p>
                 <div class="orderbook-visual">
                     <div class="ob-row sell"><span>65,100</span><span>0.042</span></div>
                     <div class="ob-row sell"><span>65,050</span><span>0.128</span></div>
@@ -248,27 +247,27 @@
     <div class="security-bg" aria-hidden="true"></div>
     <div class="container">
         <div class="section-header">
-            <div class="section-label">Security First</div>
-            <h2 class="section-title">YOUR FUNDS <span class="gold">PROTECTED</span></h2>
+            <div class="section-label">{{ __('messages.security.security_first') }}</div>
+            <h2 class="section-title">{{ __('messages.security.funds_protected') }}</h2>
         </div>
 
         <div class="security-grid">
             <div class="security-card">
                 <div class="security-num">01</div>
-                <h3>Identity Verified</h3>
-                <p>Email + phone OTP + KYC document upload. No unverified accounts can trade.</p>
+                <h3>{{ __('messages.security.identity_verified') }}</h3>
+                <p>{{ __('messages.security.identity_desc') }}</p>
                 <div class="security-bar"><div class="security-bar-fill" style="width:100%"></div></div>
             </div>
             <div class="security-card">
                 <div class="security-num">02</div>
-                <h3>Balance Protection</h3>
-                <p>Row-level DB locking prevents race conditions. Negative balances are blocked at the database level.</p>
+                <h3>{{ __('messages.security.balance_protection') }}</h3>
+                <p>{{ __('messages.security.balance_desc') }}</p>
                 <div class="security-bar"><div class="security-bar-fill" style="width:95%"></div></div>
             </div>
             <div class="security-card">
                 <div class="security-num">03</div>
-                <h3>Admin Oversight</h3>
-                <p>All trades auditable. Admin manual matching recorded with full timestamp and actor ID.</p>
+                <h3>{{ __('messages.security.admin_oversight') }}</h3>
+                <p>{{ __('messages.security.admin_desc') }}</p>
                 <div class="security-bar"><div class="security-bar-fill" style="width:90%"></div></div>
             </div>
         </div>
@@ -281,14 +280,14 @@
 <section class="section mobile-section">
     <div class="container mobile-inner">
         <div class="mobile-text">
-            <div class="section-label">Mobile Ready</div>
-            <h2 class="section-title">TRADE FROM <span class="gold">ANYWHERE</span></h2>
-            <p>Fully responsive interface. Place orders, check your portfolio, and monitor live charts — from any device, any screen size.</p>
+            <div class="section-label">{{ __('messages.mobile.mobile_ready') }}</div>
+            <h2 class="section-title">{{ __('messages.mobile.trade_anywhere') }}</h2>
+            <p>{{ __('messages.mobile.mobile_desc') }}</p>
             <ul class="mobile-features">
-                <li><span class="check">✓</span> Mobile-optimized chart view</li>
-                <li><span class="check">✓</span> One-tap buy &amp; sell</li>
-                <li><span class="check">✓</span> Real-time push notifications</li>
-                <li><span class="check">✓</span> Instant wallet balance</li>
+                <li><span class="check">✓</span> {{ __('messages.mobile.mobile_chart') }}</li>
+                <li><span class="check">✓</span> {{ __('messages.mobile.one_tap') }}</li>
+                <li><span class="check">✓</span> {{ __('messages.mobile.push_notifications') }}</li>
+                <li><span class="check">✓</span> {{ __('messages.mobile.instant_wallet') }}</li>
             </ul>
         </div>
         <div class="mobile-device">
@@ -306,8 +305,8 @@
                         </svg>
                     </div>
                     <div class="phone-buttons">
-                        <button class="phone-btn-buy">BUY</button>
-                        <button class="phone-btn-sell">SELL</button>
+                        <button class="phone-btn-buy">{{ __('messages.mobile.buy') }}</button>
+                        <button class="phone-btn-sell">{{ __('messages.mobile.sell') }}</button>
                     </div>
                     <div class="phone-balance">
                         <span class="balance-label">Balance</span>
@@ -325,14 +324,14 @@
 <section class="section cta-section">
     <div class="cta-glow" aria-hidden="true"></div>
     <div class="container cta-inner">
-        <h2 class="cta-title">READY TO <span class="gold">START</span> TRADING?</h2>
-        <p class="cta-sub">Join thousands of verified traders on TradeX. Account setup takes under 5 minutes.</p>
+        <h2 class="cta-title">{{ __('messages.cta.ready_to_start') }}</h2>
+        <p class="cta-sub">{{ __('messages.cta.cta_subtitle') }}</p>
         <div class="cta-buttons">
             <a href="/register" class="btn-primary btn-lg btn-glow">
-                <span>Create Free Account</span>
+                <span>{{ __('messages.cta.create_free_account') }}</span>
                 <span class="btn-arrow">→</span>
             </a>
-            <a href="/login" class="btn-ghost btn-lg">Sign In</a>
+            <a href="/login" class="btn-ghost btn-lg">{{ __('messages.cta.sign_in') }}</a>
         </div>
     </div>
 </section>
@@ -353,7 +352,7 @@
             <a href="/login">Login</a>
             <a href="/register">Register</a>
         </div>
-        <p class="footer-copy">© {{ date('Y') }} TradeX. All rights reserved. Trading involves risk.</p>
+        <p class="footer-copy">{{ __('messages.footer.copyright', ['year' => date('Y')]) }} {{ __('messages.footer.trading_risk') }}</p>
     </div>
 </footer>
 <style>

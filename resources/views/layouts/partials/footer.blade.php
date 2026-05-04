@@ -2,11 +2,11 @@
 <div class="container-fluid">
 <div class="row">
 <div class="col-sm-6">
-<script>document.write(new Date().getFullYear())</script> © TRADEX.
+{{ __('messages.footer.copyright', ['year' => date('Y')]) }}
                         </div>
 <div class="col-sm-6">
 <div class="text-sm-end d-none d-sm-block">
-                                Design &amp; Develop by Themesbrand
+                                {{ __('messages.footer.design_by') }}
                             </div>
 </div>
 </div>

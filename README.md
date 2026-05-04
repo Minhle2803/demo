@@ -1,58 +1,328 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# TRADEX — Crypto Trading Platform
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+Hệ thống giao dịch crypto spot & session trading với WebSocket real-time, matching engine, và quản trị admin.
 
-## About Laravel
+## Yêu cầu hệ thống
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+| Thành phần | Phiên bản |
+|---|---|
+| PHP | 8.4+ |
+| MySQL | 8.0+ |
+| Node.js | 18+ |
+| Composer | 2.x |
+| npm | 9+ |
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
-
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
-
-## Learning Laravel
-
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
-
-In addition, [Laracasts](https://laracasts.com) contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
-
-You can also watch bite-sized lessons with real-world projects on [Laravel Learn](https://laravel.com/learn), where you will be guided through building a Laravel application from scratch while learning PHP fundamentals.
-
-## Agentic Development
-
-Laravel's predictable structure and conventions make it ideal for AI coding agents like Claude Code, Cursor, and GitHub Copilot. Install [Laravel Boost](https://laravel.com/docs/ai) to supercharge your AI workflow:
-
-```bash
-composer require laravel/boost --dev
-
-php artisan boost:install
+**PHP Extensions cần thiết:**
+```
+bcmath, ctype, curl, dom, fileinfo, filter, gd, hash, json, mbstring,
+mysqlnd, openssl, pcre, pdo, pdo_mysql, session, tokenizer, xml, zip
 ```
 
-Boost provides your agent 15+ tools and skills that help agents build Laravel applications while following best practices.
+---
 
-## Contributing
+## Cài đặt
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+### 1. Clone dự án
 
-## Code of Conduct
+```bash
+git clone <repo-url>
+cd demo
+```
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+### 2. Cài dependencies
 
-## Security Vulnerabilities
+```bash
+composer install
+npm install
+```
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+### 3. Cấu hình môi trường
 
-## License
+```bash
+cp .env.example .env
+php artisan key:generate
+```
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+Chỉnh sửa `.env` với thông tin thực tế:
+
+```ini
+# Database
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=trading_app
+DB_USERNAME=root
+DB_PASSWORD=
+
+# Queue (database driver)
+QUEUE_CONNECTION=database
+
+# Session & Cache (database driver)
+SESSION_DRIVER=database
+CACHE_STORE=database
+
+# Broadcasting (Reverb)
+BROADCAST_CONNECTION=reverb
+
+# Reverb WebSocket Server
+REVERB_APP_ID=353480
+REVERB_APP_KEY=<your-app-key>
+REVERB_APP_SECRET=<your-app-secret>
+REVERB_HOST=127.0.0.1
+REVERB_PORT=8080
+REVERB_SCHEME=http
+
+# Vite Reverb (phải trùng với REVERB_*)
+VITE_REVERB_APP_KEY="${REVERB_APP_KEY}"
+VITE_REVERB_HOST="${REVERB_HOST}"
+VITE_REVERB_PORT="${REVERB_PORT}"
+VITE_REVERB_SCHEME="${REVERB_SCHEME}"
+```
+
+### 4. Tạo database & chạy migration
+
+```bash
+mysql -u root -p -e "CREATE DATABASE IF NOT EXISTS trading_app"
+php artisan migrate --seed
+```
+
+Lệnh `--seed` sẽ tạo tài khoản admin mặc định:
+
+```
+Email: admin@tradex.local
+Password: trade@#!123
+```
+
+### 5. Build frontend
+
+```bash
+# Development
+npm run dev
+
+# Production
+npm run build
+```
+
+### 6. Tạo storage link
+
+```bash
+php artisan storage:link
+```
+
+---
+
+## Các Service / Process
+
+Dự án cần **5 process** chạy liên tục để hoạt động đầy đủ:
+
+| Process | Command | Mô tả |
+|---|---|---|
+| **Reverb** | `php artisan reverb:start` | WebSocket server (port 8080), xử lý real-time chart + orderbook |
+| **Queue Worker** | `php artisan queue:work --sleep=3 --tries=3` | Xử lý job trong bảng `jobs` (database queue) |
+| **Chart Worker** | `php artisan chart:worker` | Sinh dữ liệu nến K-line giả lập, broadcast qua Reverb |
+| **Session Worker** | `php artisan trading:session-worker` | Quản lý vòng đời phiên giao dịch (mở → khóa → đóng) |
+| **Scheduler** | `php artisan schedule:work` | Chạy `chart:summary-refresh` mỗi phút |
+
+> **Lưu ý:** `chart:worker` và `trading:session-worker` là các tiến trình chạy vô hạn (`while(true)`), cần Supervisor để quản lý.
+
+---
+
+## Cấu hình Supervisor
+
+Cài Supervisor trên Linux:
+
+```bash
+sudo apt install supervisor
+```
+
+Tạo file cấu hình `/etc/supervisor/conf.d/tradex.conf`:
+
+```ini
+[group:tradex]
+programs=reverb,queue,chart-worker,session-worker,scheduler
+
+; ── Reverb WebSocket Server ──────────────────────────────────────────
+[program:reverb]
+command=php /var/www/tradex/artisan reverb:start
+directory=/var/www/tradex
+user=www-data
+autostart=true
+autorestart=true
+numprocs=1
+stopwaitsecs=10
+stdout_logfile=/var/www/tradex/storage/logs/supervisor-reverb.log
+stderr_logfile=/var/www/tradex/storage/logs/supervisor-reverb-error.log
+
+; ── Queue Worker (database queue) ────────────────────────────────────
+[program:queue]
+command=php /var/www/tradex/artisan queue:work --sleep=3 --tries=3
+directory=/var/www/tradex
+user=www-data
+autostart=true
+autorestart=true
+numprocs=1
+stopwaitsecs=10
+stdout_logfile=/var/www/tradex/storage/logs/supervisor-queue.log
+stderr_logfile=/var/www/tradex/storage/logs/supervisor-queue-error.log
+
+; ── Chart Worker (K-line generator) ──────────────────────────────────
+[program:chart-worker]
+command=php /var/www/tradex/artisan chart:worker
+directory=/var/www/tradex
+user=www-data
+autostart=true
+autorestart=true
+numprocs=1
+stopwaitsecs=10
+stdout_logfile=/var/www/tradex/storage/logs/supervisor-chart-worker.log
+stderr_logfile=/var/www/tradex/storage/logs/supervisor-chart-worker-error.log
+
+; ── Trading Session Worker ───────────────────────────────────────────
+[program:session-worker]
+command=php /var/www/tradex/artisan trading:session-worker
+directory=/var/www/tradex
+user=www-data
+autostart=true
+autorestart=true
+numprocs=1
+stopwaitsecs=10
+stdout_logfile=/var/www/tradex/storage/logs/supervisor-session-worker.log
+stderr_logfile=/var/www/tradex/storage/logs/supervisor-session-worker-error.log
+
+; ── Scheduler (thay thế cron) ────────────────────────────────────────
+[program:scheduler]
+command=php /var/www/tradex/artisan schedule:work
+directory=/var/www/tradex
+user=www-data
+autostart=true
+autorestart=true
+numprocs=1
+stopwaitsecs=10
+stdout_logfile=/var/www/tradex/storage/logs/supervisor-scheduler.log
+stderr_logfile=/var/www/tradex/storage/logs/supervisor-scheduler-error.log
+```
+
+> **Thay `/var/www/tradex`** bằng đường dẫn thực tế tới thư mục dự án.
+
+### Áp dụng cấu hình Supervisor
+
+```bash
+sudo supervisorctl reread
+sudo supervisorctl update
+sudo supervisorctl start tradex:*
+```
+
+### Các lệnh Supervisor thường dùng
+
+```bash
+sudo supervisorctl status              # Xem trạng thái tất cả process
+sudo supervisorctl restart tradex:*    # Restart tất cả process nhóm tradex
+sudo supervisorctl stop tradex:*       # Dừng tất cả process
+sudo supervisorctl tail -f tradex:chart-worker  # Xem log chart worker
+```
+
+---
+
+## Web Server (Nginx)
+
+Cấu hình Nginx cơ bản:
+
+```nginx
+server {
+    listen 80;
+    server_name tradex.local;
+    root /var/www/tradex/public;
+
+    index index.php;
+
+    location / {
+        try_files $uri $uri/ /index.php?$query_string;
+    }
+
+    location ~ \.php$ {
+        fastcgi_pass unix:/run/php/php8.4-fpm.sock;
+        fastcgi_param SCRIPT_FILENAME $realpath_root$fastcgi_script_name;
+        include fastcgi_params;
+    }
+
+    location ~ /\.(?!well-known).* {
+        deny all;
+    }
+}
+```
+
+---
+
+## Kiến trúc dự án
+
+```
+app/
+├── Console/Commands/        # Artisan commands (chart:worker, trading:session-worker, ...)
+├── Events/                  # Broadcast events (chart candles, orderbook, session)
+├── Http/
+│   ├── Controllers/
+│   │   ├── Admin/           # Admin dashboard controllers (web Blade)
+│   │   └── Api/Admin/Spot/  # Admin API (token auth)
+│   ├── Middleware/
+│   │   ├── AdminMiddleware.php  # Kiểm tra is_admin
+│   │   └── SetLocale.php        # EN/VI language switcher
+│   └── Requests/Admin/      # FormRequest validation
+├── Models/                  # Eloquent models
+└── Services/
+    ├── Admin/               # Dashboard stats, deposit/withdraw approval
+    ├── SpotTrading/         # Order matching, orderbook, wallet
+    ├── Trading/             # Session lifecycle, trade settlement
+    └── TradingChart/        # Candle generation, chart broadcasting
+
+routes/
+├── admin.php                # Admin web routes (protected)
+├── spot_trading_api.php     # Spot API routes (auth:sanctum)
+├── spot_trading_admin_api.php # Admin Spot API routes
+├── client_auth.php          # Client auth routes
+└── client_profile.php       # Client profile routes
+```
+
+### Guards / Auth
+
+| Guard | Model | Table | Dùng cho |
+|---|---|---|---|
+| `web` | `User` | `users` | Admin (session-based) |
+| `client` | `ClientUser` | `client_users` | Client/User (session-based) |
+| `sanctum` | token | `personal_access_tokens` | API (token-based) |
+
+### Channels WebSocket
+
+| Channel | Sự kiện |
+|---|---|
+| `chart.{symbol}.{interval}` | `candle.update`, `candle.close`, `candle.rewrite` |
+| `spot-orderbook.{symbol}` | `orderbook.updated` |
+| `trading.session` | `session.updated` |
+| `trading.result.{session_id}` | `session.result` |
+
+---
+
+## Artisan Commands
+
+| Command | Mô tả |
+|---|---|
+| `chart:worker` | Sinh nến K-line, broadcast real-time. Options: `--symbols`, `--intervals`, `--tick` |
+| `chart:seed` | Seed dữ liệu nến lịch sử. Options: `--fresh`, `--count=500` |
+| `chart:summary-refresh` | Refresh bảng `trading_chart_summaries` (chạy mỗi phút) |
+| `trading:session-worker` | Quản lý phiên giao dịch (open/lock/close) |
+
+---
+
+## Cron thay thế (nếu không dùng `schedule:work`)
+
+```cron
+* * * * * php /var/www/tradex/artisan schedule:run >> /dev/null 2>&1
+```
+
+---
+
+## Các lưu ý khác
+
+- Session và Cache dùng `database` driver — đảm bảo đã chạy `php artisan migrate` để tạo bảng `sessions` và `cache`.
+- Reverb chạy trên port 8080 — cần mở port nếu có firewall hoặc dùng Nginx reverse proxy.
+- Upload logo admin được lưu vào `storage/app/public/logo`.
+- Ngôn ngữ: `en` (mặc định), `vi` — chuyển đổi qua route `/lang/{locale}` hoặc topbar dropdown.

@@ -46,16 +46,16 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav mx-auto mt-2 mt-lg-0" id="navbar-example">
                         <li class="nav-item">
-                            <a class="nav-link active" href="{{ route('dashboard') }}">Home</a>
+                            <a class="nav-link active" href="{{ route('dashboard') }}">{{ __('messages.menu.home') }}</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('tradding') }}">Tradding</a>
+                            <a class="nav-link" href="{{ route('spot.trading') }}">{{ __('messages.nav.trade') }}</a>
                         </li>
                     </ul>
 
                     <div class="">
-                        <a href="javascript:;" class="btn btn-link fw-medium text-decoration-none text-body">Sign in</a>
-                        <a href="javascript:;" class="btn btn-primary">Sign Up</a>
+                        <a href="javascript:;" class="btn btn-link fw-medium text-decoration-none text-body">{{ __('messages.nav.sign_in') }}</a>
+                        <a href="javascript:;" class="btn btn-primary">{{ __('messages.nav.sign_up') }}</a>
                     </div>
                 </div>
 
@@ -71,12 +71,12 @@
                 <div class="row justify-content-center">
                     <div class="col-lg-8 col-sm-10">
                         <div class="text-center mt-lg-5 pt-5">
-                            <h1 class="display-6 fw-semibold mb-3 lh-base">The better way to manage your website with <span class="text-success">TRADEX </span></h1>
-                            <p class="lead text-muted lh-base">TRADEX is a fully responsive, multipurpose and premium Bootstrap 5 Admin & Dashboard Template built in multiple frameworks.</p>
+                            <h1 class="display-6 fw-semibold mb-3 lh-base">{{ __('messages.dashboard.better_way') }}</h1>
+                            <p class="lead text-muted lh-base">{{ __('messages.dashboard.description') }}</p>
 
                             <div class="d-flex gap-2 justify-content-center mt-4">
-                                <a href="javascript:;" class="btn btn-primary">Get Started <i class="ri-arrow-right-line align-middle ms-1"></i></a>
-                                <a href="javascript:;" class="btn btn-danger">View Plans <i class="ri-eye-line align-middle ms-1"></i></a>
+                                <a href="javascript:;" class="btn btn-primary">{{ __('messages.dashboard.get_started') }} <i class="ri-arrow-right-line align-middle ms-1"></i></a>
+                                <a href="javascript:;" class="btn btn-danger">{{ __('messages.dashboard.view_plans') }} <i class="ri-eye-line align-middle ms-1"></i></a>
                             </div>
                         </div>
 
@@ -137,7 +137,7 @@
                     <div class="col-lg-12">
 
                         <div class="text-center mt-5">
-                            <h5 class="fs-20">Trusted <span class="text-primary text-decoration-underline">by</span> the world's best</h5>
+                            <h5 class="fs-20">{{ __('messages.dashboard.trusted_by') }}</h5>
 
                             <!-- Swiper -->
                             <div class="swiper trusted-client-slider mt-sm-5 mt-4 mb-sm-5 mb-4" dir="ltr">

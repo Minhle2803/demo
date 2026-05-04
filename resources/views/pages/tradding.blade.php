@@ -9,12 +9,12 @@
 <div class="row">
     <div class="col-12">
         <div class="page-title-box d-sm-flex align-items-center justify-content-between bg-galaxy-transparent">
-            <h4 class="mb-sm-0">Giao dịch Spot</h4>
+            <h4 class="mb-sm-0">{{ __('messages.trading.title') }}</h4>
 
             <div class="page-title-right">
                 <ol class="breadcrumb m-0">
-                    <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">Home</a></li>
-                    <li class="breadcrumb-item active">Giao dịch Spot</li>
+                    <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">{{ __('messages.trading.home') }}</a></li>
+                    <li class="breadcrumb-item active">{{ __('messages.trading.title') }}</li>
                 </ol>
             </div>
 
@@ -27,7 +27,7 @@
     <div class="col-xxl-3">
         <div class="card card-height-100">
             <div class="card-header align-items-center d-flex">
-                <h4 class="card-title mb-0 flex-grow-1">Giao dịch Spot</h4>
+                <h4 class="card-title mb-0 flex-grow-1">{{ __('messages.trading.title') }}</h4>
             </div><!-- end card-header -->
             <div class="card-body p-0">
                 <ul class="list-group list-group-flush border-dashed mb-0" id="market-list">
@@ -39,7 +39,7 @@
     <div class="col-xxl-6">
         <div class="card card-height-100">
             <div class="card-header border-0 align-items-center d-flex">
-                <h4 class="card-title mb-0 flex-grow-1" >Market Graph</h4>
+                <h4 class="card-title mb-0 flex-grow-1" >{{ __('messages.trading.market_graph') }}</h4>
                 <!-- <div>
                     <button type="button" class="btn btn-soft-secondary btn-sm material-shadow-none">
                         1H
@@ -73,15 +73,15 @@
                             <div class="d-flex">
                                 <div class="d-flex justify-content-end text-end flex-wrap gap-4 ms-auto">
                                     <div class="pe-3">
-                                        <h6 class="mb-2 text-muted">High</h6>
+                                        <h6 class="mb-2 text-muted">{{ __('messages.trading.high') }}</h6>
                                         <h5 class="text-success mb-0" id="market-high"></h5>
                                     </div>
                                     <div class="pe-3">
-                                        <h6 class="mb-2 text-muted">Low</h6>
+                                        <h6 class="mb-2 text-muted">{{ __('messages.trading.low') }}</h6>
                                         <h5 class="text-danger mb-0" id="market-low"></h5>
                                     </div>
                                     <div>
-                                        <h6 class="mb-2 text-muted">Market Volume</h6>
+                                        <h6 class="mb-2 text-muted">{{ __('messages.trading.market_volume') }}</h6>
                                         <h5 class="text-danger mb-0" id="market-volume"></h5>
                                     </div>
                                 </div>
@@ -102,7 +102,7 @@
                 <ul class="nav nav-tabs-custom rounded card-header-tabs nav-justified border-bottom-0 mx-n3" role="tablist">
                     <li class="nav-item">
                         <a class="nav-link active" data-bs-toggle="tab" href="#cryptoBuy" role="tab">
-                            Giao dịch
+                            {{ __('messages.trading.place_order') }}
                         </a>
                     </li>
                 </ul>
@@ -115,7 +115,7 @@
                             <div class="mt-3 pt-2">
                                 <div class="d-flex mb-2">
                                     <div class="flex-grow-1">
-                                        <p class="fs-13 mb-0">Ngày</p>
+                                        <p class="fs-13 mb-0">{{ __('messages.trading.date') }}</p>
                                     </div>
                                     <div class="flex-shrink-0">
                                         <h6 class="mb-0" id="date"></h6>
@@ -123,7 +123,7 @@
                                 </div>
                                 <div class="d-flex mb-2">
                                     <div class="flex-grow-1">
-                                        <p class="fs-13 mb-0">Giờ</p>
+                                        <p class="fs-13 mb-0">{{ __('messages.trading.hour') }}</p>
                                     </div>
                                     <div class="flex-shrink-0">
                                         <h6 class="mb-0" id="time"></h6>
@@ -131,7 +131,7 @@
                                 </div>
                                 <div class="d-flex mb-2">
                                     <div class="flex-grow-1">
-                                        <p class="fs-13 mb-0">Phiên hiện tại</p>
+                                        <p class="fs-13 mb-0">{{ __('messages.trading.current_session') }}</p>
                                     </div>
                                     <div class="flex-shrink-0">
                                         <h6 class="mb-0" id="session-id"></h6>
@@ -162,12 +162,12 @@
                             </div><!-- end row -->
                             <div class="card">
                                 <div class="bg-light card-body p-4 text-center">
-                                    <h5 class="card-title mb-0">Hãy đặt lệnh: <span id="session-countdown">00:00</span></h5>
+                                    <h5 class="card-title mb-0">{{ __('messages.trading.place_order') }}: <span id="session-countdown">00:00</span></h5>
                                 </div><!-- end cardbody -->
                             </div>
                             <div class="flex-wrap gap-3" >
-                                <button type="button" class="btn btn-success waves-effect waves-light left" style="width: 47%; float: left;" id="buyBtn">Buy Coin <i class="mdi mdi-trending-up align-middle me-1"></i></button>
-                                <button type="button" class="btn btn-danger waves-effect waves-light right" style="width: 47%; float: right;" id="sellBtn">Sell Coin <i class="mdi mdi-trending-down align-middle me-1"></i></button>
+                                <button type="button" class="btn btn-success waves-effect waves-light left" style="width: 47%; float: left;" id="buyBtn">{{ __('messages.trading.buy_coin') }} <i class="mdi mdi-trending-up align-middle me-1"></i></button>
+                                <button type="button" class="btn btn-danger waves-effect waves-light right" style="width: 47%; float: right;" id="sellBtn">{{ __('messages.trading.sell_coin') }} <i class="mdi mdi-trending-down align-middle me-1"></i></button>
                             </div>
                         </div>
                     </div>
@@ -184,7 +184,7 @@
     <div class="card-header border-bottom-dashed">
         <div class="row align-items-center">
             <div class="col-3">
-                <h5 class="card-title mb-0">History</h5>
+                <h5 class="card-title mb-0">{{ __('messages.trading.history') }}</h5>
             </div>
             <!--end col-->
         </div>
@@ -196,15 +196,15 @@
             <table class="table align-middle table-nowrap"  id="tradesTable">
                 <thead class="table-light text-muted">
                     <tr>
-                        <th>Symbol</th>
-                        <th>Session ID</th>
-                        <th>type</th>
-                        <th>Open price</th>
-                        <th>Close Price</th>
-                        <th>status</th>
-                        <th>Amount</th>
-                        <th>payout</th>
-                        <th>Time</th>
+                        <th>{{ __('messages.trading.symbol') }}</th>
+                        <th>{{ __('messages.trading.session_id') }}</th>
+                        <th>{{ __('messages.trading.type') }}</th>
+                        <th>{{ __('messages.trading.open_price') }}</th>
+                        <th>{{ __('messages.trading.close_price') }}</th>
+                        <th>{{ __('messages.trading.status') }}</th>
+                        <th>{{ __('messages.trading.amount') }}</th>
+                        <th>{{ __('messages.trading.payout') }}</th>
+                        <th>{{ __('messages.trading.time') }}</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -264,11 +264,11 @@
                     $hrefNext = $trades->hasMorePages() ? $trades->nextPageUrl() : '#';
                 ?>
                 <a class="page-item pagination-prev {{ $disabledPrev }}" href="{{ $hrefPrev }}">
-                    Previous
+                    {{ __('messages.common.previous') }}
                 </a>
                 <ul class="pagination listjs-pagination mb-0"></ul>
                 <a class="page-item pagination-next {{ $disabledNext }}" href="{{ $hrefNext }}">
-                    Next
+                    {{ __('messages.common.next') }}
                 </a>
             </div>
         </div>

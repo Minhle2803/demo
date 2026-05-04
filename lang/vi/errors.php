@@ -85,4 +85,24 @@ return [
     'KYC_VERIFIED_SUCCESS' => 'Xac minh KYC thanh cong.',
     'KYC_ALREADY_VERIFIED' => 'Tai khoan da duoc xac minh KYC.',
 
+    // Spot Trading
+    'SPOT_ORDER_CREATED' => 'Dat lenh thanh cong.',
+    'SPOT_ORDER_CANCELLED' => 'Huy lenh thanh cong.',
+    'SPOT_INVALID_SYMBOL' => 'Cap giao dich khong duoc ho tro.',
+    'SPOT_INVALID_PRICE' => 'Gia khong hop le. Gia phai lon hon 0.',
+    'SPOT_INVALID_QUANTITY' => 'So luong khong hop le. So luong phai lon hon 0.',
+    'SPOT_MIN_NOTIONAL_NOT_MET' => 'Gia tri lenh duoi muc toi thieu.',
+    'SPOT_INSUFFICIENT_BALANCE' => 'So du khong du.',
+    'SPOT_ORDER_NOT_FOUND' => 'Khong tim thay lenh.',
+    'SPOT_ORDER_ALREADY_FILLED' => 'Lenh da duoc khop.',
+    'SPOT_ORDER_ALREADY_CANCELLED' => 'Lenh da bi huy.',
+    'SPOT_ORDER_CANCEL_FAILED' => 'Khong the huy lenh.',
+    'SPOT_MATCH_FAILED' => 'Khop lenh that bai.',
+    'SPOT_ADMIN_MATCH_SUCCESS' => 'Khop lenh thu cong thanh cong.',
+    'SPOT_ADMIN_MATCH_FAILED' => 'Khop lenh thu cong that bai.',
+    'SPOT_UNAUTHORIZED' => 'Chua xac thuc.',
+    'SPOT_USER_NOT_FULLY_VERIFIED' => 'Can xac minh KYC de giao dich.',
+    'SPOT_WALLET_NOT_FOUND' => 'Khong tim thay vi cho tai san nay.',
+    'SPOT_NEGATIVE_BALANCE_BLOCKED' => 'Giao dich bi chan de ngan so du am.',
+
 ];
