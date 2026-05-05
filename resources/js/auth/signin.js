@@ -16,7 +16,8 @@ form.addEventListener('submit', async (e) => {
     password: form.password.value,
     remember:form.remember.checked ? 1 : 0,
   };
-
+  console.log('Submitting login form with payload:', payload);
+  console.log('CSRF Token:', getCsrfToken());
   try {
     const res = await fetch(form.action, {
       method: 'POST',
