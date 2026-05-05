@@ -54,11 +54,6 @@
             <ul class="navbar-nav" id="navbar-nav">
                 <li class="menu-title"><span data-key="t-menu">{{ __('messages.menu.menu') }}</span></li>
                 <li class="nav-item">
-                    <a  class="nav-link"  href="{{ route('landing2') }}" role="button">
-                        <i class="ri-dashboard-2-line"></i> <span data-key="t-dashboards">{{ __('messages.menu.home') }}</span>
-                    </a>
-                </li> <!-- end Dashboard Menu -->
-                <li class="nav-item">
                     <a aria-controls="sidebarApps" aria-expanded="false" class="nav-link" href="{{ route('spot.trading') }}" role="button">
                         <i class="ri-apps-2-line"></i> <span data-key="t-apps">{{ __('messages.menu.spot_trading') }}</span>
                     </a>
