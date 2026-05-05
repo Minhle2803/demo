@@ -25,7 +25,13 @@ class SpotOrderController extends Controller
     {
         $user = Auth::guard('client')->user();
 
-        if (! $user->isKycVerified()) {
+        if (!$user) {
+            $user = $request->user();
+        }
+
+        $kycComplete = ! empty($user->kyc_front_url) && ! empty($user->kyc_back_url);
+
+        if (! $user->is_verified || ! $kycComplete) {
             return ApiResponse::error(
                 code: ErrorCodes::SPOT_USER_NOT_FULLY_VERIFIED,
                 message: __('errors.'.ErrorCodes::SPOT_USER_NOT_FULLY_VERIFIED),
@@ -79,7 +85,13 @@ class SpotOrderController extends Controller
     {
         $user = Auth::guard('client')->user();
 
-        if (! $user->isKycVerified()) {
+        if (!$user) {
+            $user = $request->user();
+        }
+
+        $kycComplete = ! empty($user->kyc_front_url) && ! empty($user->kyc_back_url);
+
+        if (! $user->is_verified || ! $kycComplete) {
             return ApiResponse::error(
                 code: ErrorCodes::SPOT_USER_NOT_FULLY_VERIFIED,
                 message: __('errors.'.ErrorCodes::SPOT_USER_NOT_FULLY_VERIFIED),
@@ -162,6 +174,9 @@ class SpotOrderController extends Controller
     public function myOrders(Request $request): JsonResponse
     {
         $user = Auth::guard('client')->user();
+        if (!$user) {
+            $user = $request->user();
+        }
 
         $query = CryptoOrder::where('user_id', $user->id)->latest();
 
