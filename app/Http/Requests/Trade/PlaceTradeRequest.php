@@ -8,7 +8,7 @@ class PlaceTradeRequest extends FormRequest
 {
     public function authorize(): bool
     {
-        return auth('client')->check();
+        return $this->user() !== null;
     }
 
     public function rules(): array
