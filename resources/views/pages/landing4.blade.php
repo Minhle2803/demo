@@ -600,6 +600,13 @@
                         </a>
                      </div>
                   </div>
+                  <div class="header-rightside">
+                    <a id="toLoginPage" class="header-menu-rightItem typography-Subtitle4 color-t_primary rwd-768-hide" href="{{ route('signin') }}">
+                        <button class="bn-button bn-button__secondary data-size-small">Log In</button>
+                    </a>
+                    <a class="header-menu-rightItem" id="toRegisterPage" href="{{ route('signup') }}">
+                        <button class="bn-button bn-button__primary data-size-small header-menu-registerbtn">Sign Up</button>
+                    </a>
                </header>
                <div class="header-global-js-top-alert">
                   <div class="header-global-js-top-alert__inner" id="header_global_js_wxgy34nj"></div>
@@ -1585,7 +1592,15 @@
              baseUrl: "",
          });
       </script>
- @verbatim
+
+        <?php
+            $symbol = "BTCUSDT";
+            $price = "78721.20";
+            $coin = "0.01";
+            $pricePercent = "0.14%";
+            $quote = "USDT";
+            $count = "1534179893.985557";
+        ?>
       <script type="application/javascript" id="__COMMON_WIDGET_SSR_DATA__" nonce="25b28dca-3fd5-41bd-944e-3713ed4bf0eb">
 
          window.__COMMON_WIDGET_SSR_DATA__ = {
@@ -13273,473 +13288,474 @@
             "bncLocation": "",
             "currency": "USD",
             "currencyList": [{
-                "name": "AED",
-                "pair": "AED_USD",
-                "rate": 3.67,
-                "symbol": "د.إ",
-                "fullName": "UAE dirham",
-                "imageUrl": "https://public.bnbstatic.com/image/currencies/AED.png",
-                "displayName": "UAE Dirham",
-                "value": "AED"
-            }, {
-                "name": "ARS",
-                "pair": "ARS_USD",
-                "rate": 1479.8,
-                "symbol": "ARS$",
-                "fullName": "Argentine Peso",
-                "imageUrl": "https://public.bnbstatic.com/image/currencies/ARS.png",
-                "displayName": "Argentine Peso",
-                "value": "ARS"
-            }, {
-                "name": "AUD",
-                "pair": "AUD_USD",
-                "rate": 1.39,
-                "symbol": "A$",
-                "fullName": "Australian Dollar",
-                "imageUrl": "https://public.bnbstatic.com/image/currencies/AUD.png",
-                "displayName": "Australian Dollar",
-                "value": "AUD"
-            }, {
-                "name": "AZN",
-                "pair": "AZN_USD",
-                "rate": 1.7,
-                "symbol": "₼",
-                "fullName": "Azerbaijani Manat",
-                "imageUrl": "https://public.bnbstatic.com/image/currencies/AZN.png",
-                "displayName": "Azerbaijani Manat",
-                "value": "AZN"
-            }, {
-                "name": "BDT",
-                "pair": "BDT_USD",
-                "rate": 122.72,
-                "symbol": "৳",
-                "fullName": "Bangladeshi Taka",
-                "imageUrl": "https://public.bnbstatic.com/image/currencies/BDT.png",
-                "displayName": "Bangladeshi taka",
-                "value": "BDT"
-            }, {
-                "name": "BGN",
-                "pair": "BGN_USD",
-                "rate": 1.67,
-                "symbol": "лв",
-                "fullName": "Bulgarian Lev",
-                "imageUrl": "https://public.bnbstatic.com/image/currencies/BGN.png",
-                "displayName": "Bulgarian Lev",
-                "value": "BGN"
-            }, {
-                "name": "BHD",
-                "pair": "BHD_USD",
-                "rate": 0.376,
-                "symbol": ".د.ب",
-                "fullName": "Bahraini Dinar",
-                "imageUrl": "https://public.bnbstatic.com/image/currencies/BHD.png",
-                "displayName": "Bahraini dinar",
-                "value": "BHD"
-            }, {
-                "name": "BOB",
-                "pair": "BOB_USD",
-                "rate": 6.93,
-                "symbol": "$b",
-                "fullName": "Bolivian Boliviano",
-                "imageUrl": "https://public.bnbstatic.com/image/currencies/BOB.png",
-                "displayName": "Bolivian boliviano",
-                "value": "BOB"
-            }, {
-                "name": "BRL",
-                "pair": "BRL_USD",
-                "rate": 4.97,
-                "symbol": "R$",
-                "fullName": "Brazilian Real",
-                "imageUrl": "https://public.bnbstatic.com/image/currencies/BRL.png",
-                "displayName": "Brazilian Real",
-                "value": "BRL"
-            }, {
-                "name": "CAD",
-                "pair": "CAD_USD",
-                "rate": 1.36,
-                "symbol": "C$",
-                "fullName": "Canadian Dollar",
-                "imageUrl": "https://public.bnbstatic.com/image/currencies/CAD.png",
-                "displayName": "Canadian Dollar",
-                "value": "CAD"
-            }, {
-                "name": "CHF",
-                "pair": "CHF_USD",
-                "rate": 0.7843,
-                "symbol": "CHF",
-                "fullName": "Swiss Franc",
-                "imageUrl": "https://public.bnbstatic.com/image/currencies/CHF.png",
-                "displayName": "Swiss Franc",
-                "value": "CHF"
-            }, {
-                "name": "CLP",
-                "pair": "CLP_USD",
-                "rate": 899.9,
-                "symbol": "CLP$",
-                "fullName": "Chilean Peso",
-                "imageUrl": "https://public.bnbstatic.com/image/currencies/CLP.png",
-                "displayName": "Chilean Peso",
-                "value": "CLP"
-            }, {
-                "name": "CNY",
-                "pair": "CNY_USD",
-                "rate": 6.83,
-                "symbol": "¥",
-                "fullName": "Chinese Yuan",
-                "imageUrl": "https://public.bnbstatic.com/image/currencies/CNY.png",
-                "displayName": "Chinese Yuan",
-                "value": "CNY"
-            }, {
-                "name": "COP",
-                "pair": "COP_USD",
-                "rate": 3656.91,
-                "symbol": "COL$",
-                "fullName": "Colombian Peso",
-                "imageUrl": "https://public.bnbstatic.com/image/currencies/COP.png",
-                "displayName": "Colombian Peso",
-                "value": "COP"
-            }, {
-                "name": "CZK",
-                "pair": "CZK_USD",
-                "rate": 20.85,
-                "symbol": "Kč",
-                "fullName": "Czech Koruna",
-                "imageUrl": "https://public.bnbstatic.com/image/currencies/CZK.png",
-                "displayName": "Czech Koruna",
-                "value": "CZK"
-            }, {
-                "name": "DKK",
-                "pair": "DKK_USD",
-                "rate": 6.39,
-                "symbol": "KR",
-                "fullName": "Danish Krone",
-                "imageUrl": "https://public.bnbstatic.com/image/currencies/DKK.png",
-                "displayName": "Danish Krone",
-                "value": "DKK"
-            }, {
-                "name": "EGP",
-                "pair": "EGP_USD",
-                "rate": 53.51,
-                "symbol": "E£",
-                "fullName": "Egyptian Pound",
-                "imageUrl": "https://public.bnbstatic.com/image/currencies/EGP.png",
-                "displayName": "Egyptian Pound",
-                "value": "EGP"
-            }, {
-                "name": "EUR",
-                "pair": "EUR_USD",
-                "rate": 0.8548,
-                "symbol": "€",
-                "fullName": "Euro",
-                "imageUrl": "https://public.bnbstatic.com/image/currencies/EUR.png",
-                "displayName": "Euro",
-                "value": "EUR"
-            }, {
-                "name": "GBP",
-                "pair": "GBP_USD",
-                "rate": 0.7385,
-                "symbol": "£",
-                "fullName": "Pound Sterling",
-                "imageUrl": "https://public.bnbstatic.com/image/currencies/GBP.png",
-                "displayName": "Pound Sterling",
-                "value": "GBP"
-            }, {
-                "name": "HKD",
-                "pair": "HKD_USD",
-                "rate": 7.83,
-                "symbol": "HKD",
-                "fullName": "Hong Kong Dollar",
-                "imageUrl": "https://public.bnbstatic.com/image/currencies/HKD.png",
-                "displayName": "Hong Kong Dollar",
-                "value": "HKD"
-            }, {
-                "name": "HRK",
-                "pair": "HRK_USD",
-                "rate": 7.03,
-                "symbol": "kn",
-                "fullName": "Croatian Kuna",
-                "imageUrl": "https://public.bnbstatic.com/image/currencies/HRK.png",
-                "displayName": "Croatia Kuna",
-                "value": "HRK"
-            }, {
-                "name": "HUF",
-                "pair": "HUF_USD",
-                "rate": 310.87,
-                "symbol": "Ft",
-                "fullName": "Hungarian Forint",
-                "imageUrl": "https://public.bnbstatic.com/image/currencies/HUF.png",
-                "displayName": "Hungarian Forint",
-                "value": "HUF"
-            }, {
-                "name": "IDR",
-                "pair": "IDR_USD",
-                "rate": 17413.97,
-                "symbol": "Rp",
-                "fullName": "Indonesian Rupiah",
-                "imageUrl": "https://public.bnbstatic.com/image/currencies/IDR.png",
-                "displayName": "Indonesia Rupiah",
-                "value": "IDR"
-            }, {
-                "name": "INR",
-                "pair": "INR_USD",
-                "rate": 95.16,
-                "symbol": "₹",
-                "fullName": "Indian Rupee",
-                "imageUrl": "https://public.bnbstatic.com/image/currencies/INR.png",
-                "displayName": "Indian Rupee",
-                "value": "INR"
-            }, {
-                "name": "JPY",
-                "pair": "JPY_USD",
-                "rate": 157.16,
-                "symbol": "¥",
-                "fullName": "Japanese Yen",
-                "imageUrl": "https://public.bnbstatic.com/image/currencies/JPY.png",
-                "displayName": "Japanese Yen",
-                "value": "JPY"
-            }, {
-                "name": "KES",
-                "pair": "KES_USD",
-                "rate": 129.17,
-                "symbol": "KSh",
-                "fullName": "Kenyan Shilling",
-                "imageUrl": "https://public.bnbstatic.com/image/currencies/KES.png",
-                "displayName": "Kenyan Shilling",
-                "value": "KES"
-            }, {
-                "name": "KWD",
-                "pair": "KWD_USD",
-                "rate": 0.3075,
-                "symbol": "ك.د",
-                "fullName": "Kuwaiti Dinar",
-                "imageUrl": "https://public.bnbstatic.com/image/currencies/KWD.png",
-                "displayName": "Kuwaiti Dinar",
-                "value": "KWD"
-            }, {
-                "name": "KZT",
-                "pair": "KZT_USD",
-                "rate": 464.54,
-                "symbol": "₸",
-                "fullName": "Kazakhstani Tenge",
-                "imageUrl": "https://public.bnbstatic.com/image/currencies/KZT.png",
-                "displayName": "Kazakhstani Tenge",
-                "value": "KZT"
-            }, {
-                "name": "MAD",
-                "pair": "MAD_USD",
-                "rate": 9.25,
-                "symbol": "م.د.",
-                "fullName": "Moroccan Dirham",
-                "imageUrl": "https://public.bnbstatic.com/image/currencies/MAD.png",
-                "displayName": "Moroccan dirham",
-                "value": "MAD"
-            }, {
-                "name": "MNT",
-                "pair": "MNT_USD",
-                "rate": 3578.46,
-                "symbol": "₮",
-                "fullName": "Mongolian Tugrik",
-                "imageUrl": "https://public.bnbstatic.com/image/currencies/MNT.png",
-                "displayName": "Mongolian Tugrik",
-                "value": "MNT"
-            }, {
-                "name": "MXN",
-                "pair": "MXN_USD",
-                "rate": 17.5,
-                "symbol": "Mex$",
-                "fullName": "Mexican Peso",
-                "imageUrl": "https://public.bnbstatic.com/image/currencies/MXN.png",
-                "displayName": "Mexican Peso",
-                "value": "MXN"
-            }, {
-                "name": "NZD",
-                "pair": "NZD_USD",
-                "rate": 1.7,
-                "symbol": "NZ$",
-                "fullName": "New Zealand Dollar",
-                "imageUrl": "https://public.bnbstatic.com/image/currencies/NZD.png",
-                "displayName": "New Zealand Dollar",
-                "value": "NZD"
-            }, {
-                "name": "OMR",
-                "pair": "OMR_USD",
-                "rate": 0.385,
-                "symbol": "ر.ع.",
-                "fullName": "Omani Rial",
-                "imageUrl": "https://public.bnbstatic.com/image/currencies/OMR.png",
-                "displayName": "Omani Rial",
-                "value": "OMR"
-            }, {
-                "name": "PEN",
-                "pair": "PEN_USD",
-                "rate": 3.51,
-                "symbol": "S/.",
-                "fullName": "Nuevo Sol",
-                "imageUrl": "https://public.bnbstatic.com/image/currencies/PEN.png",
-                "displayName": "Peruvian Nuevo Sol",
-                "value": "PEN"
-            }, {
-                "name": "PHP",
-                "pair": "PHP_USD",
-                "rate": 61.64,
-                "symbol": "₱",
-                "fullName": "Philippine Peso",
-                "imageUrl": "https://public.bnbstatic.com/image/currencies/PHP.png",
-                "displayName": "Philippine Peso",
-                "value": "PHP"
-            }, {
-                "name": "PKR",
-                "pair": "PKR_USD",
-                "rate": 278.7,
-                "symbol": "₨",
-                "fullName": "Pakistani Rupee",
-                "imageUrl": "https://public.bnbstatic.com/image/currencies/PKR.png",
-                "displayName": "Pakistani rupee",
-                "value": "PKR"
-            }, {
-                "name": "PLN",
-                "pair": "PLN_USD",
-                "rate": 3.64,
-                "symbol": "zł",
-                "fullName": "Polish Zloty",
-                "imageUrl": "https://public.bnbstatic.com/image/currencies/PLN.png",
-                "displayName": "Polish Zloty",
-                "value": "PLN"
-            }, {
-                "name": "QAR",
-                "pair": "QAR_USD",
-                "rate": 3.64,
-                "symbol": "ر.ق",
-                "fullName": "Qatari Riyal",
-                "imageUrl": "https://public.bnbstatic.com/image/currencies/QAR.png",
-                "displayName": "Qatari Riyal",
-                "value": "QAR"
-            }, {
-                "name": "RON",
-                "pair": "RON_USD",
-                "rate": 4.44,
-                "symbol": "lei",
-                "fullName": "Romanian Leu",
-                "imageUrl": "https://public.bnbstatic.com/image/currencies/RON.png",
-                "displayName": "Romania Leu",
-                "value": "RON"
-            }, {
-                "name": "RUB",
-                "pair": "RUB_USD",
-                "rate": 75.61,
-                "symbol": "₽",
-                "fullName": "Russian Ruble",
-                "imageUrl": "https://public.bnbstatic.com/image/currencies/RUB.png",
-                "displayName": "Russian Ruble",
-                "value": "RUB"
-            }, {
-                "name": "SAR",
-                "pair": "SAR_USD",
-                "rate": 3.75,
-                "symbol": "ر.س",
-                "fullName": "Saudi Riyal",
-                "imageUrl": "https://public.bnbstatic.com/image/currencies/SAR.png",
-                "displayName": "Saudi Riyal",
-                "value": "SAR"
-            }, {
-                "name": "SEK",
-                "pair": "SEK_USD",
-                "rate": 9.27,
-                "symbol": "kr",
-                "fullName": "Swedish Krona",
-                "imageUrl": "https://public.bnbstatic.com/image/currencies/SEK.png",
-                "displayName": "Swedish Krona",
-                "value": "SEK"
-            }, {
-                "name": "THB",
-                "pair": "THB_USD",
-                "rate": 32.65,
-                "symbol": "฿",
-                "fullName": "Thai Baht",
-                "imageUrl": "https://public.bnbstatic.com/image/currencies/THB.png",
-                "displayName": "Thai Baht",
-                "value": "THB"
-            }, {
-                "name": "TRY",
-                "pair": "TRY_USD",
-                "rate": 45.2,
-                "symbol": "₺",
-                "fullName": "Turkish Lira",
-                "imageUrl": "https://public.bnbstatic.com/image/currencies/TRY.png",
-                "displayName": "Turkish Lira",
-                "value": "TRY"
-            }, {
-                "name": "TWD",
-                "pair": "TWD_USD",
-                "rate": 31.64,
-                "symbol": "NT$",
-                "fullName": "New Taiwan dollar",
-                "imageUrl": "https://public.bnbstatic.com/image/currencies/TWD.png",
-                "displayName": "New Taiwan Dollar",
-                "value": "TWD"
-            }, {
-                "name": "UAH",
-                "pair": "UAH_USD",
-                "rate": 44.06,
-                "symbol": "₴",
-                "fullName": "Ukrainian Hryvnia",
-                "imageUrl": "https://public.bnbstatic.com/image/currencies/UAH.png",
-                "displayName": "Ukrainian Hryvnia",
-                "value": "UAH"
-            }, {
-                "name": "UGX",
-                "pair": "UGX_USD",
-                "rate": 3751.01,
-                "symbol": "USh",
-                "fullName": "Uganda Shilling",
-                "imageUrl": "https://public.bnbstatic.com/image/currencies/UGX.png",
-                "displayName": "Uganda Shilling",
-                "value": "UGX"
-            }, {
-                "name": "UZS",
-                "pair": "UZS_USD",
-                "rate": 11990.63,
-                "symbol": "UZS",
-                "fullName": "Uzbekistani Sum",
-                "imageUrl": "https://public.bnbstatic.com/image/currencies/UZS.png",
-                "displayName": "Uzbekistani Som",
-                "value": "UZS"
-            }, {
-                "name": "VES",
-                "pair": "VES_USD",
-                "rate": 488.93,
-                "symbol": "Bs",
-                "fullName": "Venezuelan Bolivar",
-                "imageUrl": "https://public.bnbstatic.com/image/currencies/VES.png",
-                "displayName": "Venezuelan bolívar",
-                "value": "VES"
-            }, {
-                "name": "VND",
-                "pair": "VND_USD",
-                "rate": 26311.21,
-                "symbol": "₫",
-                "fullName": "Vietnamese Dong",
-                "imageUrl": "https://public.bnbstatic.com/image/currencies/VND.png",
-                "displayName": "Vietnamese Dong",
-                "value": "VND"
-            }, {
-                "name": "ZAR",
-                "pair": "ZAR_USD",
-                "rate": 16.73,
-                "symbol": "R",
-                "fullName": "South African Rand",
-                "imageUrl": "https://public.bnbstatic.com/image/currencies/ZAR.png",
-                "displayName": "South African Rand",
-                "value": "ZAR"
-            }, {
-                "name": "USD",
-                "pair": "USD_USD",
-                "rate": 1,
-                "symbol": "$",
-                "fullName": "US Dollar",
-                "value": "USD",
-                "imageUrl": "https://public.bnbstatic.com/image/currencies/USD.png"
-            }],
+                    "name": "AED",
+                    "pair": "AED_USD",
+                    "rate": 3.67,
+                    "symbol": "د.إ",
+                    "fullName": "UAE dirham",
+                    "imageUrl": "https://public.bnbstatic.com/image/currencies/AED.png",
+                    "displayName": "UAE Dirham",
+                    "value": "AED"
+                }, {
+                    "name": "ARS",
+                    "pair": "ARS_USD",
+                    "rate": 1479.8,
+                    "symbol": "ARS$",
+                    "fullName": "Argentine Peso",
+                    "imageUrl": "https://public.bnbstatic.com/image/currencies/ARS.png",
+                    "displayName": "Argentine Peso",
+                    "value": "ARS"
+                }, {
+                    "name": "AUD",
+                    "pair": "AUD_USD",
+                    "rate": 1.39,
+                    "symbol": "A$",
+                    "fullName": "Australian Dollar",
+                    "imageUrl": "https://public.bnbstatic.com/image/currencies/AUD.png",
+                    "displayName": "Australian Dollar",
+                    "value": "AUD"
+                }, {
+                    "name": "AZN",
+                    "pair": "AZN_USD",
+                    "rate": 1.7,
+                    "symbol": "₼",
+                    "fullName": "Azerbaijani Manat",
+                    "imageUrl": "https://public.bnbstatic.com/image/currencies/AZN.png",
+                    "displayName": "Azerbaijani Manat",
+                    "value": "AZN"
+                }, {
+                    "name": "BDT",
+                    "pair": "BDT_USD",
+                    "rate": 122.72,
+                    "symbol": "৳",
+                    "fullName": "Bangladeshi Taka",
+                    "imageUrl": "https://public.bnbstatic.com/image/currencies/BDT.png",
+                    "displayName": "Bangladeshi taka",
+                    "value": "BDT"
+                }, {
+                    "name": "BGN",
+                    "pair": "BGN_USD",
+                    "rate": 1.67,
+                    "symbol": "лв",
+                    "fullName": "Bulgarian Lev",
+                    "imageUrl": "https://public.bnbstatic.com/image/currencies/BGN.png",
+                    "displayName": "Bulgarian Lev",
+                    "value": "BGN"
+                }, {
+                    "name": "BHD",
+                    "pair": "BHD_USD",
+                    "rate": 0.376,
+                    "symbol": ".د.ب",
+                    "fullName": "Bahraini Dinar",
+                    "imageUrl": "https://public.bnbstatic.com/image/currencies/BHD.png",
+                    "displayName": "Bahraini dinar",
+                    "value": "BHD"
+                }, {
+                    "name": "BOB",
+                    "pair": "BOB_USD",
+                    "rate": 6.93,
+                    "symbol": "$b",
+                    "fullName": "Bolivian Boliviano",
+                    "imageUrl": "https://public.bnbstatic.com/image/currencies/BOB.png",
+                    "displayName": "Bolivian boliviano",
+                    "value": "BOB"
+                }, {
+                    "name": "BRL",
+                    "pair": "BRL_USD",
+                    "rate": 4.97,
+                    "symbol": "R$",
+                    "fullName": "Brazilian Real",
+                    "imageUrl": "https://public.bnbstatic.com/image/currencies/BRL.png",
+                    "displayName": "Brazilian Real",
+                    "value": "BRL"
+                }, {
+                    "name": "CAD",
+                    "pair": "CAD_USD",
+                    "rate": 1.36,
+                    "symbol": "C$",
+                    "fullName": "Canadian Dollar",
+                    "imageUrl": "https://public.bnbstatic.com/image/currencies/CAD.png",
+                    "displayName": "Canadian Dollar",
+                    "value": "CAD"
+                }, {
+                    "name": "CHF",
+                    "pair": "CHF_USD",
+                    "rate": 0.7843,
+                    "symbol": "CHF",
+                    "fullName": "Swiss Franc",
+                    "imageUrl": "https://public.bnbstatic.com/image/currencies/CHF.png",
+                    "displayName": "Swiss Franc",
+                    "value": "CHF"
+                }, {
+                    "name": "CLP",
+                    "pair": "CLP_USD",
+                    "rate": 899.9,
+                    "symbol": "CLP$",
+                    "fullName": "Chilean Peso",
+                    "imageUrl": "https://public.bnbstatic.com/image/currencies/CLP.png",
+                    "displayName": "Chilean Peso",
+                    "value": "CLP"
+                }, {
+                    "name": "CNY",
+                    "pair": "CNY_USD",
+                    "rate": 6.83,
+                    "symbol": "¥",
+                    "fullName": "Chinese Yuan",
+                    "imageUrl": "https://public.bnbstatic.com/image/currencies/CNY.png",
+                    "displayName": "Chinese Yuan",
+                    "value": "CNY"
+                }, {
+                    "name": "COP",
+                    "pair": "COP_USD",
+                    "rate": 3656.91,
+                    "symbol": "COL$",
+                    "fullName": "Colombian Peso",
+                    "imageUrl": "https://public.bnbstatic.com/image/currencies/COP.png",
+                    "displayName": "Colombian Peso",
+                    "value": "COP"
+                }, {
+                    "name": "CZK",
+                    "pair": "CZK_USD",
+                    "rate": 20.85,
+                    "symbol": "Kč",
+                    "fullName": "Czech Koruna",
+                    "imageUrl": "https://public.bnbstatic.com/image/currencies/CZK.png",
+                    "displayName": "Czech Koruna",
+                    "value": "CZK"
+                }, {
+                    "name": "DKK",
+                    "pair": "DKK_USD",
+                    "rate": 6.39,
+                    "symbol": "KR",
+                    "fullName": "Danish Krone",
+                    "imageUrl": "https://public.bnbstatic.com/image/currencies/DKK.png",
+                    "displayName": "Danish Krone",
+                    "value": "DKK"
+                }, {
+                    "name": "EGP",
+                    "pair": "EGP_USD",
+                    "rate": 53.51,
+                    "symbol": "E£",
+                    "fullName": "Egyptian Pound",
+                    "imageUrl": "https://public.bnbstatic.com/image/currencies/EGP.png",
+                    "displayName": "Egyptian Pound",
+                    "value": "EGP"
+                }, {
+                    "name": "EUR",
+                    "pair": "EUR_USD",
+                    "rate": 0.8548,
+                    "symbol": "€",
+                    "fullName": "Euro",
+                    "imageUrl": "https://public.bnbstatic.com/image/currencies/EUR.png",
+                    "displayName": "Euro",
+                    "value": "EUR"
+                }, {
+                    "name": "GBP",
+                    "pair": "GBP_USD",
+                    "rate": 0.7385,
+                    "symbol": "£",
+                    "fullName": "Pound Sterling",
+                    "imageUrl": "https://public.bnbstatic.com/image/currencies/GBP.png",
+                    "displayName": "Pound Sterling",
+                    "value": "GBP"
+                }, {
+                    "name": "HKD",
+                    "pair": "HKD_USD",
+                    "rate": 7.83,
+                    "symbol": "HKD",
+                    "fullName": "Hong Kong Dollar",
+                    "imageUrl": "https://public.bnbstatic.com/image/currencies/HKD.png",
+                    "displayName": "Hong Kong Dollar",
+                    "value": "HKD"
+                }, {
+                    "name": "HRK",
+                    "pair": "HRK_USD",
+                    "rate": 7.03,
+                    "symbol": "kn",
+                    "fullName": "Croatian Kuna",
+                    "imageUrl": "https://public.bnbstatic.com/image/currencies/HRK.png",
+                    "displayName": "Croatia Kuna",
+                    "value": "HRK"
+                }, {
+                    "name": "HUF",
+                    "pair": "HUF_USD",
+                    "rate": 310.87,
+                    "symbol": "Ft",
+                    "fullName": "Hungarian Forint",
+                    "imageUrl": "https://public.bnbstatic.com/image/currencies/HUF.png",
+                    "displayName": "Hungarian Forint",
+                    "value": "HUF"
+                }, {
+                    "name": "IDR",
+                    "pair": "IDR_USD",
+                    "rate": 17413.97,
+                    "symbol": "Rp",
+                    "fullName": "Indonesian Rupiah",
+                    "imageUrl": "https://public.bnbstatic.com/image/currencies/IDR.png",
+                    "displayName": "Indonesia Rupiah",
+                    "value": "IDR"
+                }, {
+                    "name": "INR",
+                    "pair": "INR_USD",
+                    "rate": 95.16,
+                    "symbol": "₹",
+                    "fullName": "Indian Rupee",
+                    "imageUrl": "https://public.bnbstatic.com/image/currencies/INR.png",
+                    "displayName": "Indian Rupee",
+                    "value": "INR"
+                }, {
+                    "name": "JPY",
+                    "pair": "JPY_USD",
+                    "rate": 157.16,
+                    "symbol": "¥",
+                    "fullName": "Japanese Yen",
+                    "imageUrl": "https://public.bnbstatic.com/image/currencies/JPY.png",
+                    "displayName": "Japanese Yen",
+                    "value": "JPY"
+                }, {
+                    "name": "KES",
+                    "pair": "KES_USD",
+                    "rate": 129.17,
+                    "symbol": "KSh",
+                    "fullName": "Kenyan Shilling",
+                    "imageUrl": "https://public.bnbstatic.com/image/currencies/KES.png",
+                    "displayName": "Kenyan Shilling",
+                    "value": "KES"
+                }, {
+                    "name": "KWD",
+                    "pair": "KWD_USD",
+                    "rate": 0.3075,
+                    "symbol": "ك.د",
+                    "fullName": "Kuwaiti Dinar",
+                    "imageUrl": "https://public.bnbstatic.com/image/currencies/KWD.png",
+                    "displayName": "Kuwaiti Dinar",
+                    "value": "KWD"
+                }, {
+                    "name": "KZT",
+                    "pair": "KZT_USD",
+                    "rate": 464.54,
+                    "symbol": "₸",
+                    "fullName": "Kazakhstani Tenge",
+                    "imageUrl": "https://public.bnbstatic.com/image/currencies/KZT.png",
+                    "displayName": "Kazakhstani Tenge",
+                    "value": "KZT"
+                }, {
+                    "name": "MAD",
+                    "pair": "MAD_USD",
+                    "rate": 9.25,
+                    "symbol": "م.د.",
+                    "fullName": "Moroccan Dirham",
+                    "imageUrl": "https://public.bnbstatic.com/image/currencies/MAD.png",
+                    "displayName": "Moroccan dirham",
+                    "value": "MAD"
+                }, {
+                    "name": "MNT",
+                    "pair": "MNT_USD",
+                    "rate": 3578.46,
+                    "symbol": "₮",
+                    "fullName": "Mongolian Tugrik",
+                    "imageUrl": "https://public.bnbstatic.com/image/currencies/MNT.png",
+                    "displayName": "Mongolian Tugrik",
+                    "value": "MNT"
+                }, {
+                    "name": "MXN",
+                    "pair": "MXN_USD",
+                    "rate": 17.5,
+                    "symbol": "Mex$",
+                    "fullName": "Mexican Peso",
+                    "imageUrl": "https://public.bnbstatic.com/image/currencies/MXN.png",
+                    "displayName": "Mexican Peso",
+                    "value": "MXN"
+                }, {
+                    "name": "NZD",
+                    "pair": "NZD_USD",
+                    "rate": 1.7,
+                    "symbol": "NZ$",
+                    "fullName": "New Zealand Dollar",
+                    "imageUrl": "https://public.bnbstatic.com/image/currencies/NZD.png",
+                    "displayName": "New Zealand Dollar",
+                    "value": "NZD"
+                }, {
+                    "name": "OMR",
+                    "pair": "OMR_USD",
+                    "rate": 0.385,
+                    "symbol": "ر.ع.",
+                    "fullName": "Omani Rial",
+                    "imageUrl": "https://public.bnbstatic.com/image/currencies/OMR.png",
+                    "displayName": "Omani Rial",
+                    "value": "OMR"
+                }, {
+                    "name": "PEN",
+                    "pair": "PEN_USD",
+                    "rate": 3.51,
+                    "symbol": "S/.",
+                    "fullName": "Nuevo Sol",
+                    "imageUrl": "https://public.bnbstatic.com/image/currencies/PEN.png",
+                    "displayName": "Peruvian Nuevo Sol",
+                    "value": "PEN"
+                }, {
+                    "name": "PHP",
+                    "pair": "PHP_USD",
+                    "rate": 61.64,
+                    "symbol": "₱",
+                    "fullName": "Philippine Peso",
+                    "imageUrl": "https://public.bnbstatic.com/image/currencies/PHP.png",
+                    "displayName": "Philippine Peso",
+                    "value": "PHP"
+                }, {
+                    "name": "PKR",
+                    "pair": "PKR_USD",
+                    "rate": 278.7,
+                    "symbol": "₨",
+                    "fullName": "Pakistani Rupee",
+                    "imageUrl": "https://public.bnbstatic.com/image/currencies/PKR.png",
+                    "displayName": "Pakistani rupee",
+                    "value": "PKR"
+                }, {
+                    "name": "PLN",
+                    "pair": "PLN_USD",
+                    "rate": 3.64,
+                    "symbol": "zł",
+                    "fullName": "Polish Zloty",
+                    "imageUrl": "https://public.bnbstatic.com/image/currencies/PLN.png",
+                    "displayName": "Polish Zloty",
+                    "value": "PLN"
+                }, {
+                    "name": "QAR",
+                    "pair": "QAR_USD",
+                    "rate": 3.64,
+                    "symbol": "ر.ق",
+                    "fullName": "Qatari Riyal",
+                    "imageUrl": "https://public.bnbstatic.com/image/currencies/QAR.png",
+                    "displayName": "Qatari Riyal",
+                    "value": "QAR"
+                }, {
+                    "name": "RON",
+                    "pair": "RON_USD",
+                    "rate": 4.44,
+                    "symbol": "lei",
+                    "fullName": "Romanian Leu",
+                    "imageUrl": "https://public.bnbstatic.com/image/currencies/RON.png",
+                    "displayName": "Romania Leu",
+                    "value": "RON"
+                }, {
+                    "name": "RUB",
+                    "pair": "RUB_USD",
+                    "rate": 75.61,
+                    "symbol": "₽",
+                    "fullName": "Russian Ruble",
+                    "imageUrl": "https://public.bnbstatic.com/image/currencies/RUB.png",
+                    "displayName": "Russian Ruble",
+                    "value": "RUB"
+                }, {
+                    "name": "SAR",
+                    "pair": "SAR_USD",
+                    "rate": 3.75,
+                    "symbol": "ر.س",
+                    "fullName": "Saudi Riyal",
+                    "imageUrl": "https://public.bnbstatic.com/image/currencies/SAR.png",
+                    "displayName": "Saudi Riyal",
+                    "value": "SAR"
+                }, {
+                    "name": "SEK",
+                    "pair": "SEK_USD",
+                    "rate": 9.27,
+                    "symbol": "kr",
+                    "fullName": "Swedish Krona",
+                    "imageUrl": "https://public.bnbstatic.com/image/currencies/SEK.png",
+                    "displayName": "Swedish Krona",
+                    "value": "SEK"
+                }, {
+                    "name": "THB",
+                    "pair": "THB_USD",
+                    "rate": 32.65,
+                    "symbol": "฿",
+                    "fullName": "Thai Baht",
+                    "imageUrl": "https://public.bnbstatic.com/image/currencies/THB.png",
+                    "displayName": "Thai Baht",
+                    "value": "THB"
+                }, {
+                    "name": "TRY",
+                    "pair": "TRY_USD",
+                    "rate": 45.2,
+                    "symbol": "₺",
+                    "fullName": "Turkish Lira",
+                    "imageUrl": "https://public.bnbstatic.com/image/currencies/TRY.png",
+                    "displayName": "Turkish Lira",
+                    "value": "TRY"
+                }, {
+                    "name": "TWD",
+                    "pair": "TWD_USD",
+                    "rate": 31.64,
+                    "symbol": "NT$",
+                    "fullName": "New Taiwan dollar",
+                    "imageUrl": "https://public.bnbstatic.com/image/currencies/TWD.png",
+                    "displayName": "New Taiwan Dollar",
+                    "value": "TWD"
+                }, {
+                    "name": "UAH",
+                    "pair": "UAH_USD",
+                    "rate": 44.06,
+                    "symbol": "₴",
+                    "fullName": "Ukrainian Hryvnia",
+                    "imageUrl": "https://public.bnbstatic.com/image/currencies/UAH.png",
+                    "displayName": "Ukrainian Hryvnia",
+                    "value": "UAH"
+                }, {
+                    "name": "UGX",
+                    "pair": "UGX_USD",
+                    "rate": 3751.01,
+                    "symbol": "USh",
+                    "fullName": "Uganda Shilling",
+                    "imageUrl": "https://public.bnbstatic.com/image/currencies/UGX.png",
+                    "displayName": "Uganda Shilling",
+                    "value": "UGX"
+                }, {
+                    "name": "UZS",
+                    "pair": "UZS_USD",
+                    "rate": 11990.63,
+                    "symbol": "UZS",
+                    "fullName": "Uzbekistani Sum",
+                    "imageUrl": "https://public.bnbstatic.com/image/currencies/UZS.png",
+                    "displayName": "Uzbekistani Som",
+                    "value": "UZS"
+                }, {
+                    "name": "VES",
+                    "pair": "VES_USD",
+                    "rate": 488.93,
+                    "symbol": "Bs",
+                    "fullName": "Venezuelan Bolivar",
+                    "imageUrl": "https://public.bnbstatic.com/image/currencies/VES.png",
+                    "displayName": "Venezuelan bolívar",
+                    "value": "VES"
+                }, {
+                    "name": "VND",
+                    "pair": "VND_USD",
+                    "rate": 26311.21,
+                    "symbol": "₫",
+                    "fullName": "Vietnamese Dong",
+                    "imageUrl": "https://public.bnbstatic.com/image/currencies/VND.png",
+                    "displayName": "Vietnamese Dong",
+                    "value": "VND"
+                }, {
+                    "name": "ZAR",
+                    "pair": "ZAR_USD",
+                    "rate": 16.73,
+                    "symbol": "R",
+                    "fullName": "South African Rand",
+                    "imageUrl": "https://public.bnbstatic.com/image/currencies/ZAR.png",
+                    "displayName": "South African Rand",
+                    "value": "ZAR"
+                }, {
+                    "name": "USD",
+                    "pair": "USD_USD",
+                    "rate": 1,
+                    "symbol": "$",
+                    "fullName": "US Dollar",
+                    "value": "USD",
+                    "imageUrl": "https://public.bnbstatic.com/image/currencies/USD.png"
+                }
+            ],
             "isSeo": false,
             "navI18n": {
                 "200003971": "Please provide us with current proof of residential address outside of Singapore before July 21st.If you are unable to provide this evidence within the specified timeframe, your account will be restricted until you can do so, with the exception of permitting withdrawals of assets from your account.",
@@ -14182,7 +14198,7 @@
                 "ba-Binance Pay": "Pay",
                 "ba-Binance Pay-content": "Send, receive and spend crypto",
                 "ba-viewmore": "View More",
-                "ba-countdown": "Service Suspended for users from restricted countries. Now you have  {{ time }} to withdraw your funds. Please withdraw as soon, failing which your account will be locked and can’t withdraw anymore.",
+                "ba-countdown": "Service Suspended for users from restricted countries. Now you have  24 hours to withdraw your funds. Please withdraw as soon, failing which your account will be locked and can’t withdraw anymore.",
                 "ba-BuyTradable": "Buy Tradable Altcoins",
                 "ba-FundingWallet": "Funding",
                 "ba-Onboarding": "Onboarding",
@@ -14556,14 +14572,14 @@
                 "com_header_contnet_4070": "Please convert, liquidate, or withdraw any impermissible assets by Nov 30th 2023, or earlier (if advised).",
                 "ba-new-user-zone": "Claim 100 USDT",
                 "ba-BHD-bank": "Deposit BHD via bank transfer",
-                "terms-200004079-global-tou": "We have updated our <a href=\"https://www.{{suffixOrigin}}/{{locale}}/terms\">Terms of Use</a>. <br/> <br / > These will automatically be binding and effective on 31 Aug, 2023. < br / ><br / > No further action is required on your part. < br / ><br / > Your continued use of our services constitutes your acceptance of the updated < a href = \"https://www.{{suffixOrigin}}/{{locale}}/terms\">Terms of Use</a>.",
+                "terms-200004079-global-tou": "We have updated our <a href=\"#\">Terms of Use</a>. <br/> <br / > These will automatically be binding and effective on 31 Aug, 2023. < br / ><br / > No further action is required on your part. < br / ><br / > Your continued use of our services constitutes your acceptance of the updated < a href = \"#\">Terms of Use</a>.",
                 "com_header_contnet_4069": "Action Required: Please complete the Binance Japan Verification Process.",
                 "ba-copy-trading": "Copy Trading",
                 "futures_social_trading": "Social Trading",
                 "futures_copy_trading": "Copy Trading",
                 "ba_social_trading": "Social Trading",
                 "ba_copy_trading": "Copy Trading",
-                "ba-WalletTitle": "Wallet ({{currency}})",
+                "ba-WalletTitle": "Wallet (0)",
                 "com_header_btn_disagree": "I Disagree",
                 "com_header_contnet_200004082": "We noticed that your trade and withdrawal functions are temporarily suspended due to a dispute on your P2P order. We apologize for the inconvenience. Please click \"I Disagree\" below and our Customer Support team will assist you immediately.",
                 "ba-copy-trading-desc": "Follow the most popular traders",
@@ -14640,12 +14656,12 @@
                 "ba-megadrop-subtitle": "Lock your BNB and complete Web3 quests for boosted airdrop rewards",
                 "ba-footer-kz-disclaimer": "Binance Kazakhstan is authorised by the financial regulator of the AIFC, Astana Financial Services Authority (“AFSA”), to conduct the activities of Operating Digital Asset Trading Platform and Providing Custody. Status of the licence and its validity may be verified at the AFSA website (www.afsa.kz).<br/> <br / > Risk Warning: Digital Asset prices can be volatile.The value of your investment may go down or up and you may not get back the amount invested.You are solely responsiblefor your investment decisions and Binance Kazakhstan is not liablefor any losses you may incur.",
                 "ba - arbitrageBot ": "Arbitrage Bot ",
-                "price - alert - milestone - rise ": " {{symbol}}crosses {{price}} {{coin}}",
-                "price - alert - milestone - drop ": " {{symbol}}dips below {{price}} {{coin}}",
-                "price - alert - fluctuation - rise ": " {{symbol}} has up by {{pricePercent}} in the past 24 hours to {{price}} {{coin}}",
+                "price - alert - milestone - rise ": " {{$symbol}}crosses {{$price}} {{$coin}}",
+                "price - alert - milestone - drop ": " {{$symbol}}dips below {{$price}} {{$coin}}",
+                "price - alert - fluctuation - rise ": " {{$symbol}} has up by {{$pricePercent}} in the past 24 hours to {{$price}} {{$coin}}",
                 "nc - no - news ": "No news to report ",
                 "ba - header - nuz ": "New User Zone ",
-                "price - alert - fluctuation - drop ": " {{symbol}}has dropped by {{pricePercent}} in the past 24 hours to {{price}} {{coin}}",
+                "price - alert - fluctuation - drop ": " {{$symbol}}has dropped by {{$pricePercent}} in the past 24 hours to {{$price}} {{$coin}}",
                 "ba - downloadapp - cn ": "1. Scan to download;2. Send email to download @binance.com to get download link ",
                 "ba - buy - and - sell ": "Buy & Sell ",
                 "ba - trading - fees ": "Trading Fees ",
@@ -14704,7 +14720,7 @@
                 "ba - earn - loans - sub ": "Access quick and easy loans with competitive rates ",
                 "ba - earn - advancedearn ": "Advanced Earn ",
                 "gcc_registration_jp ": "Binance Japan ",
-                "price - alert - history - rise - limit ": " {{ symbol }} achieves record high, surpassing {{ price }} {{ quote }} .Analyze market trends to refine your trading strategy.Explore now➡️ ",
+                "price - alert - history - rise - limit ": " {{ $symbol }} achieves record high, surpassing {{ $price }} {{ $quote }} .Analyze market trends to refine your trading strategy.Explore now➡️ ",
                 "footer - trading - insight ": "Trading Insight ",
                 "service_group_placeholder_bestwishes ": "Happy New Year, HODL to the moon!",
                 "service_group_card_binanceredpacket_allclaimed ": "All Claimed ",
@@ -14714,8 +14730,8 @@
                 "ba - whistleblowing ": "Secure Internal Communication Channel ",
                 "ba - referral - title ": "Referral ",
                 "ba - referral - subtitle ": "Invite friends to earn either a commission rebate or a one - time reward ",
-                "todo - tips ": "You have {{ count }} pending action requests to complete.",
-                "header - todolist ": "You have {{ count }} pending action requests to complete.",
+                "todo - tips ": "You have {{ $count }} pending action requests to complete.",
+                "header - todolist ": "You have {{ $count }} pending action requests to complete.",
                 "ba - travel - rule ": "Travel Rule ",
                 "ba - travel - rule - desc ": "Enhance transparency and combat financial crimes such as money laundering and terrorism financing ",
                 "ba - Alpha ": "Alpha ",
@@ -14850,667 +14866,611 @@
                 ],
                 "header": {
                     "logo": {
-                        "link": "https://www.binance.com/en"
+                        "link": "{{ route('landing2')}}"
                     },
-                    "menus": [{
-                        "menuType": "text",
-                        "subMenuFlow": "row",
-                        "menuItem": {
-                            "type": "text",
-                            "icon": "crypto-f",
-                            "title": "ba-titile2-2",
-                            "link": "https://www.binance.com/en/crypto/buy",
-                            "linkTarget": "_self",
-                            "langMapping": "",
-                            "businessKeys": "buycrypto-fiat",
-                            "businessKeysIsWhite": false
-                        },
-                        "subMenuSize": "normal",
-                        "subMenus": []
-                    }, {
-                        "menuType": "text",
-                        "subMenuFlow": "row",
-                        "menuItem": {
-                            "type": "text",
-                            "icon": "crypto-f",
-                            "title": "ba-titile2-2",
-                            "link": "https://p2p.binance.com/en/trade/all-payments",
-                            "linkTarget": "_self",
-                            "langMapping": "",
-                            "businessKeys": "buycrypto-p2p",
-                            "businessKeysIsWhite": true
-                        },
-                        "subMenuSize": "normal"
-                    }, {
-                        "menuType": "text",
-                        "subMenuFlow": "row",
-                        "menuItem": {
-                            "type": "text",
-                            "icon": "market-s24",
-                            "title": "ba-tableMarkets",
-                            "link": "https://www.binance.com/en/markets/overview",
-                            "linkTarget": "_self",
-                            "langMapping": "",
-                            "businessKeysIsWhite": false
-                        },
-                        "subMenuSize": "large",
-                        "subMenus": [{
-                            "icon": "market-overview-g",
-                            "title": "ba-markets-overview",
-                            "link": "https://www.binance.com/en/markets/overview",
-                            "linkTarget": "_self",
-                            "langMapping": "",
-                            "type": "normal",
-                            "content": "ba-markets-overview-desc",
-                            "columnNumber": 1
+                    "menus": [
+                        {
+                            "menuType": "gird",
+                            "subMenuFlow": "column",
+                            "menuItem": {
+                                "type": "text",
+                                "icon": "trade-f",
+                                "title": "ba-trade",
+                                "linkTarget": "_self",
+                                "langMapping": "",
+                                "businessKeysIsWhite": false
+                            },
+                            "subMenuSize": "large",
+                            "subMenus": [
+                                {
+                                    "title": "ba-basic",
+                                    "link": "ba-basic",
+                                    "linkTarget": "_self",
+                                    "langMapping": "",
+                                    "type": "subTitle",
+                                    "columnNumber": 1
+                                }, 
+                                {
+                                    "icon": "Spot2C",
+                                    "title": "ba-spot-only",
+                                    "link": "{{ route('spot.trading') }}",
+                                    "linkTarget": "_self",
+                                    "langMapping": "",
+                                    "type": "normal",
+                                    "content": "ba-spot-only-subtitle",
+                                    "columnNumber": 1
+                                }, 
+                                {
+                                    "icon": "Margin2C",
+                                    "title": "ba-margin",
+                                    "link": "{{ route('tradding') }}",
+                                    "linkTarget": "_self",
+                                    "langMapping": "",
+                                    "type": "normal",
+                                    "content": "ba-margin-content",
+                                    "columnNumber": 1,
+                                }, 
+                                {
+                                    "icon": "P2P2C",
+                                    "title": "ba-titile2-1",
+                                    "link": "https://p2p.binance.com/en",
+                                    "linkTarget": "_self",
+                                    "langMapping": "",
+                                    "type": "normal",
+                                    "content": "ba-c2c-content",
+                                    "sceneNames": "trade-p2p-hide",
+                                    "columnNumber": 1,
+                                    "businessKeys": "tradeC2C"
+                                }, 
+                                {
+                                    "icon": "Convert2C",
+                                    "title": "ba-convert-block",
+                                    "link": "https://www.binance.com/en/convert",
+                                    "linkTarget": "_self",
+                                    "langMapping": "",
+                                    "type": "normal",
+                                    "content": "ba-BasicCONVERT-content",
+                                    "columnNumber": 1,
+                                    "businessKeys": "tradeConvert"
+                                 }, 
+                                // {
+                                //     "title": "ba-Advanced",
+                                //     "link": "ba-Advanced",
+                                //     "linkTarget": "_self",
+                                //     "langMapping": "",
+                                //     "type": "subTitle",
+                                //     "columnNumber": 2
+                                // }, 
+                                // {
+                                //     "icon": "icdex-wallet-2c",
+                                //     "title": "ba-DEX",
+                                //     "link": "https://web3.binance.com/en",
+                                //     "linkTarget": "_self",
+                                //     "langMapping": "",
+                                //     "type": "normal",
+                                //     "content": "ba-DEX-desc",
+                                //     "suffixTips": "Beta",
+                                //     "columnNumber": 2,
+                                //     "businessKeys": "web3_web_entrance"
+                                // }, 
+                                // {
+                                //     "icon": "alpha-2c",
+                                //     "title": "ba-Alpha",
+                                //     "link": "https://www.binance.com/en/alpha",
+                                //     "linkTarget": "_self",
+                                //     "langMapping": "",
+                                //     "type": "normal",
+                                //     "content": "ba-Alpha-desc",
+                                //     "columnNumber": 2,
+                                //     "businessKeys": "BinanceAlpha"
+                                // }, 
+                                // {
+                                //     "icon": "TradingBot2C",
+                                //     "title": "ba-StrategyTrading",
+                                //     "link": "https://www.binance.com/en/trading-bots",
+                                //     "linkTarget": "_self",
+                                //     "langMapping": "",
+                                //     "type": "normal",
+                                //     "content": "ba-StrategyTrading-desc",
+                                //     "columnNumber": 2,
+                                //     "businessKeys": "Spot_Grid"
+                                // }, 
+                                // {
+                                //     "icon": "CopyTrading2C",
+                                //     "title": "ba-copy-trading",
+                                //     "link": "https://www.binance.com/en/copy-trading",
+                                //     "linkTarget": "_self",
+                                //     "langMapping": "",
+                                //     "type": "normal",
+                                //     "content": "ba-copy-trading-desc",
+                                //     "columnNumber": 2,
+                                //     "businessKeys": "all_copy_trading"
+                                // }, 
+                                // {
+                                //     "icon": "Api2C",
+                                //     "title": "header-tier2-api",
+                                //     "link": "https://www.binance.com/en/binance-api",
+                                //     "linkTarget": "_self",
+                                //     "langMapping": "",
+                                //     "type": "normal",
+                                //     "content": "description-tier2-api",
+                                //     "columnNumber": 2
+                                // }
+                            ]
+                        }, 
+                        {
+                            "menuType": "gird",
+                            "subMenuFlow": "column",
+                            "menuItem": {
+                                "type": "text",
+                                "icon": "futures-f",
+                                "title": "ba-binanceFutrue",
+                                "link": "#",
+                                "linkTarget": "_self",
+                                "langMapping": "",
+                                "businessKeys": "Derivatives",
+                                "businessKeysIsWhite": false
+                            },
+                            "subMenuSize": "large",
+                            "subMenus": [{
+                                "icon": "FuturesUsdtM2C",
+                                "title": "ba-perpetualFutures",
+                                "link": "#",
+                                "linkTarget": "_self",
+                                "langMapping": "it(en)",
+                                "type": "normal",
+                                "content": "ba-perpetualFutures-content",
+                                "columnNumber": 1,
+                                "businessKeys": "umTrade"
+                            }, {
+                                "icon": "FuturesCoinM2C",
+                                "title": "ba-quarterlyFutures",
+                                "link": "#",
+                                "linkTarget": "_self",
+                                "langMapping": "it(en)",
+                                "type": "normal",
+                                "content": "ba-quarterlyFutures-content",
+                                "columnNumber": 1,
+                                "businessKeys": "cmTrade"
+                            }, {
+                                "icon": "FuturesOptionsEuropean2C",
+                                "title": "ba-voptions",
+                                "link": "#",
+                                "linkTarget": "_self",
+                                "langMapping": "",
+                                "type": "normal",
+                                "content": "ba-voptionscontent",
+                                "sceneNames": "Option-exclude-lang",
+                                "columnNumber": 1,
+                                "businessKeys": "E-option"
+                            }]
                         }, {
-                            "icon": "trading-data-g",
-                            "title": "ba-markets-data",
-                            "link": "https://www.binance.com/en/markets/trading_data",
-                            "linkTarget": "_self",
-                            "langMapping": "",
-                            "type": "normal",
-                            "content": "ba-markets-data-desc",
-                            "columnNumber": 1
-                        }]
-                    }, {
-                        "menuType": "gird",
-                        "subMenuFlow": "column",
-                        "menuItem": {
-                            "type": "text",
-                            "icon": "trade-f",
-                            "title": "ba-trade",
-                            "linkTarget": "_self",
-                            "langMapping": "",
-                            "businessKeysIsWhite": false
-                        },
-                        "subMenuSize": "large",
-                        "subMenus": [{
-                            "title": "ba-basic",
-                            "link": "ba-basic",
-                            "linkTarget": "_self",
-                            "langMapping": "",
-                            "type": "subTitle",
-                            "columnNumber": 1
+                            "menuType": "gird",
+                            "subMenuFlow": "row",
+                            "menuItem": {
+                                "type": "text",
+                                "icon": "earn-jar-2cF",
+                                "title": "ba-Earntitle",
+                                "link": "#",
+                                "linkTarget": "_self",
+                                "langMapping": "",
+                                "businessKeys": "earnHome",
+                                "businessKeysIsWhite": false
+                            },
+                            "subMenuSize": "large",
+                            "subMenus": [{
+                                "icon": "earn-jar-2c",
+                                "title": "ba-earn-overview",
+                                "link": "#",
+                                "linkTarget": "_self",
+                                "langMapping": "",
+                                "type": "normal",
+                                "content": "ba-earn-overview-sub",
+                                "columnNumber": 1,
+                                "businessKeys": "earnEarnOverviewWeb"
+                            }, {
+                                "icon": "earn-simple-earn",
+                                "title": "ba-simple-earn-title",
+                                "link": "#",
+                                "linkTarget": "_self",
+                                "langMapping": "",
+                                "type": "normal",
+                                "content": "ba-earn-simpleearn-sub",
+                                "columnNumber": 1,
+                                "businessKeys": "earnSimpleEarn"
+                            }, {
+                                "icon": "earn-high-yield",
+                                "title": "ba-earn-advancedearn",
+                                "link": "#",
+                                "linkTarget": "_self",
+                                "langMapping": "",
+                                "type": "normal",
+                                "content": "ba-earn-highyield-sub",
+                                "columnNumber": 1,
+                                "businessKeys": "earnHighYield"
+                            }, {
+                                "icon": "earn-loans",
+                                "title": "ba-earn-loans",
+                                "link": "#",
+                                "linkTarget": "_self",
+                                "langMapping": "",
+                                "type": "normal",
+                                "content": "ba-earn-loans-sub",
+                                "columnNumber": 1,
+                                "businessKeys": "earnLoanFlexibleRate"
+                            }]
                         }, {
-                            "icon": "Spot2C",
-                            "title": "ba-spot-only",
-                            "link": "https://www.binance.com/en/trade/BTC_USDT?type=spot",
-                            "linkTarget": "_self",
-                            "langMapping": "",
-                            "type": "normal",
-                            "content": "ba-spot-only-subtitle",
-                            "columnNumber": 1
+                            "menuType": "gird",
+                            "subMenuFlow": "row",
+                            "menuItem": {
+                                "type": "text",
+                                "icon": "rules-f",
+                                "title": "ba-Square",
+                                "link": "#",
+                                "linkTarget": "_self",
+                                "langMapping": "",
+                                "businessKeysIsWhite": false
+                            },
+                            "subMenuSize": "normal",
+                            "subMenus": [{
+                                "icon": "Feed2C",
+                                "title": "ba-Square",
+                                "link": "#",
+                                "linkTarget": "_self",
+                                "langMapping": "",
+                                "type": "normal",
+                                "content": "ba-feed-description",
+                                "columnNumber": 1
+                            }, {
+                                "icon": "Blog2C",
+                                "title": "ba-blog",
+                                "link": "#",
+                                "linkTarget": "_self",
+                                "langMapping": "sl(en),hi(en),en-KZ(en),hu(en)",
+                                "type": "normal",
+                                "content": "ba-blogdescription",
+                                "columnNumber": 1
+                            }, {
+                                "icon": "Research2C",
+                                "title": "ba-Research",
+                                "link": "#",
+                                "linkTarget": "_self",
+                                "langMapping": "",
+                                "type": "normal",
+                                "content": "ba-research",
+                                "columnNumber": 1
+                            }]
                         }, {
-                            "icon": "Margin2C",
-                            "title": "ba-margin",
-                            "link": "https://www.binance.com/en/trade?type=cross",
-                            "linkTarget": "_self",
-                            "langMapping": "",
-                            "type": "normal",
-                            "content": "ba-margin-content",
-                            "columnNumber": 1,
-                            "businessKeys": "marginTrade"
+                            "menuType": "gird",
+                            "subMenuFlow": "row",
+                            "menuItem": {
+                                "type": "text",
+                                "icon": "list-grid-f",
+                                "title": "ba-moreManagement",
+                                "link": "#",
+                                "linkTarget": "_self",
+                                "langMapping": "",
+                                "businessKeys": "binancesendtr",
+                                "businessKeysIsWhite": true
+                            },
+                            "subMenuSize": "large",
+                            "subMenus": [{
+                                "icon": "Institutions2C",
+                                "title": "ba-vip-institutional",
+                                "link": "#",
+                                "linkTarget": "_self",
+                                "langMapping": "",
+                                "type": "normal",
+                                "content": "ba-vip-institutional-desc",
+                                "columnNumber": 1
+                            }, {
+                                "icon": "junior-2c",
+                                "title": "ba-binance-junior",
+                                "link": "#",
+                                "linkTarget": "_self",
+                                "langMapping": "",
+                                "type": "normal",
+                                "content": "ba-binance-junior-desc",
+                                "columnNumber": 1,
+                                "businessKeys": "fea-title-BinanceJunior"
+                            }, {
+                                "icon": "Launchpad2C",
+                                "title": "ba-launchpad-launchpool",
+                                "link": "#",
+                                "linkTarget": "_self",
+                                "langMapping": "",
+                                "type": "normal",
+                                "content": "ba-launchpad-launchpool-desc",
+                                "sceneNames": "earn-launchpad-hide",
+                                "columnNumber": 1,
+                                "businessKeys": "launchpad"
+                            }, {
+                                "icon": "megadrop-2c-blk",
+                                "title": "Megadrop",
+                                "link": "https://www.binance.com/en/megadrop",
+                                "linkTarget": "_self",
+                                "langMapping": "",
+                                "type": "normal",
+                                "content": "ba-megadrop-subtitle",
+                                "columnNumber": 1,
+                                "businessKeys": "fea-title-megadrop"
+                            }, {
+                                "icon": "CloudMining2C",
+                                "title": "ba-pool",
+                                "link": "https://pool.binance.com/en",
+                                "linkTarget": "_self",
+                                "langMapping": "de-CH(en),en-BH(en),en-IN(en),en-KZ(en),en-NG(en),es-ES(en),fr-FR(en),hi(en),hu(en),kk-kZ(en),ru-UA(en)",
+                                "type": "normal",
+                                "content": "ba-pool-content",
+                                "columnNumber": 1,
+                                "businessKeys": "earnMiningPool"
+                            }, {
+                                "icon": "Pay2C",
+                                "title": "ba-binance-send",
+                                "link": "https://www.binance.com/en/my/wallet/account/payment",
+                                "linkTarget": "_self",
+                                "langMapping": "vi(en)",
+                                "type": "normal",
+                                "content": "ba-Binance Pay-content",
+                                "columnNumber": 2
+                            }, {
+                                "icon": "NftFi2C",
+                                "title": "ba-NFT",
+                                "link": "https://www.binance.com/en/nft/home",
+                                "linkTarget": "_self",
+                                "langMapping": "",
+                                "type": "normal",
+                                "content": "ba-nft-description",
+                                "columnNumber": 2
+                            }, {
+                                "icon": "fea-title-binancecard",
+                                "title": "ba-card",
+                                "link": "https://www.binance.com/en/cards/dashboard",
+                                "linkTarget": "_self",
+                                "langMapping": "",
+                                "type": "normal",
+                                "content": "ba-card-desc",
+                                "sceneNames": "after-login-only",
+                                "columnNumber": 2,
+                                "businessKeys": "fea-title-binancecard"
+                            }, {
+                                "icon": "FanToken2C",
+                                "title": "ba-Fantoken",
+                                "link": "https://www.binance.com/en/fan-token",
+                                "linkTarget": "_self",
+                                "langMapping": "",
+                                "type": "normal",
+                                "content": "ba-FanToken-content",
+                                "columnNumber": 2,
+                                "businessKeys": "fantoken"
+                            }, {
+                                "icon": "DefiWallet2C",
+                                "title": "ba-web3-wallet",
+                                "link": "https://www.binance.com/en/web3wallet",
+                                "linkTarget": "_self",
+                                "langMapping": "",
+                                "type": "normal",
+                                "content": "ba-defi-wallet-desc",
+                                "columnNumber": 2,
+                                "businessKeys": "web3wallet"
+                            }, {
+                                "icon": "BNB1C",
+                                "title": "ba-bnbchain",
+                                "link": "https://www.bnbchain.org",
+                                "linkTarget": "_self",
+                                "langMapping": "",
+                                "type": "normal",
+                                "content": "ba-dex",
+                                "sceneNames": "exclude-local-kz",
+                                "columnNumber": 2
+                            }, {
+                                "icon": "Academy2C",
+                                "title": "ba-binance-academy",
+                                "link": "https://www.binance.com/en/academy",
+                                "linkTarget": "_self",
+                                "langMapping": "ar-AE(ar),en-AU(en),en-BH(en),en-IN(en),en-KZ(en),en-NG(en),es-AR(es),es-LA(es),es-MX(es),fr-AF(en),fr-FR(fr),pt(pt-BR),ru-UA(ru),sl(en)",
+                                "type": "normal",
+                                "content": "ba-academy-desc",
+                                "columnNumber": 2
+                            }, {
+                                "icon": "Charity2C",
+                                "title": "ba-Charity",
+                                "link": "https://www.binance.charity",
+                                "linkTarget": "_self",
+                                "langMapping": "",
+                                "type": "normal",
+                                "content": "ba-BCFcontnet",
+                                "columnNumber": 1
+                            }, {
+                                "icon": "fea-title-travel",
+                                "title": "ba-travel-rule",
+                                "link": "https://www.binance.com/en/learn/travel-rule",
+                                "linkTarget": "_blank",
+                                "langMapping": "",
+                                "type": "normal",
+                                "content": "ba-travel-rule-desc",
+                                "columnNumber": 2
+                            }]
                         }, {
-                            "icon": "P2P2C",
-                            "title": "ba-titile2-1",
-                            "link": "https://p2p.binance.com/en",
-                            "linkTarget": "_self",
-                            "langMapping": "",
-                            "type": "normal",
-                            "content": "ba-c2c-content",
-                            "sceneNames": "trade-p2p-hide",
-                            "columnNumber": 1,
-                            "businessKeys": "tradeC2C"
-                        }, {
-                            "icon": "Convert2C",
-                            "title": "ba-convert-block",
-                            "link": "https://www.binance.com/en/convert",
-                            "linkTarget": "_self",
-                            "langMapping": "",
-                            "type": "normal",
-                            "content": "ba-BasicCONVERT-content",
-                            "columnNumber": 1,
-                            "businessKeys": "tradeConvert"
-                        }, {
-                            "icon": "fea-title-demo-trading",
-                            "title": "ba-demo-trading-title",
-                            "link": "https://demo.binance.com/en",
-                            "linkTarget": "_self",
-                            "langMapping": "",
-                            "type": "normal",
-                            "content": "ba-demo-trading-desc",
-                            "columnNumber": 1
-                        }, {
-                            "title": "ba-Advanced",
-                            "link": "ba-Advanced",
-                            "linkTarget": "_self",
-                            "langMapping": "",
-                            "type": "subTitle",
-                            "columnNumber": 2
-                        }, {
-                            "icon": "icdex-wallet-2c",
-                            "title": "ba-DEX",
-                            "link": "https://web3.binance.com/en",
-                            "linkTarget": "_self",
-                            "langMapping": "",
-                            "type": "normal",
-                            "content": "ba-DEX-desc",
-                            "suffixTips": "Beta",
-                            "columnNumber": 2,
-                            "businessKeys": "web3_web_entrance"
-                        }, {
-                            "icon": "alpha-2c",
-                            "title": "ba-Alpha",
-                            "link": "https://www.binance.com/en/alpha",
-                            "linkTarget": "_self",
-                            "langMapping": "",
-                            "type": "normal",
-                            "content": "ba-Alpha-desc",
-                            "columnNumber": 2,
-                            "businessKeys": "BinanceAlpha"
-                        }, {
-                            "icon": "TradingBot2C",
-                            "title": "ba-StrategyTrading",
-                            "link": "https://www.binance.com/en/trading-bots",
-                            "linkTarget": "_self",
-                            "langMapping": "",
-                            "type": "normal",
-                            "content": "ba-StrategyTrading-desc",
-                            "columnNumber": 2,
-                            "businessKeys": "Spot_Grid"
-                        }, {
-                            "icon": "CopyTrading2C",
-                            "title": "ba-copy-trading",
-                            "link": "https://www.binance.com/en/copy-trading",
-                            "linkTarget": "_self",
-                            "langMapping": "",
-                            "type": "normal",
-                            "content": "ba-copy-trading-desc",
-                            "columnNumber": 2,
-                            "businessKeys": "all_copy_trading"
-                        }, {
-                            "icon": "Api2C",
-                            "title": "header-tier2-api",
-                            "link": "https://www.binance.com/en/binance-api",
-                            "linkTarget": "_self",
-                            "langMapping": "",
-                            "type": "normal",
-                            "content": "description-tier2-api",
-                            "columnNumber": 2
-                        }]
-                    }, {
-                        "menuType": "gird",
-                        "subMenuFlow": "column",
-                        "menuItem": {
-                            "type": "text",
-                            "icon": "futures-f",
-                            "title": "ba-binanceFutrue",
-                            "link": "https://www.binance.com/en/futures/home",
-                            "linkTarget": "_self",
-                            "langMapping": "",
-                            "businessKeys": "Derivatives",
-                            "businessKeysIsWhite": false
-                        },
-                        "subMenuSize": "large",
-                        "subMenus": [{
-                            "icon": "FuturesUsdtM2C",
-                            "title": "ba-perpetualFutures",
-                            "link": "https://www.binance.com/en/futures",
-                            "linkTarget": "_self",
-                            "langMapping": "it(en)",
-                            "type": "normal",
-                            "content": "ba-perpetualFutures-content",
-                            "columnNumber": 1,
-                            "businessKeys": "umTrade"
-                        }, {
-                            "icon": "FuturesCoinM2C",
-                            "title": "ba-quarterlyFutures",
-                            "link": "https://www.binance.com/en/delivery",
-                            "linkTarget": "_self",
-                            "langMapping": "it(en)",
-                            "type": "normal",
-                            "content": "ba-quarterlyFutures-content",
-                            "columnNumber": 1,
-                            "businessKeys": "cmTrade"
-                        }, {
-                            "icon": "FuturesOptionsEuropean2C",
-                            "title": "ba-voptions",
-                            "link": "https://www.binance.com/en/eoptions",
-                            "linkTarget": "_self",
-                            "langMapping": "",
-                            "type": "normal",
-                            "content": "ba-voptionscontent",
-                            "sceneNames": "Option-exclude-lang",
-                            "columnNumber": 1,
-                            "businessKeys": "E-option"
-                        }]
-                    }, {
-                        "menuType": "gird",
-                        "subMenuFlow": "row",
-                        "menuItem": {
-                            "type": "text",
-                            "icon": "earn-jar-2cF",
-                            "title": "ba-Earntitle",
-                            "link": "https://www.binance.com/en/earn",
-                            "linkTarget": "_self",
-                            "langMapping": "",
-                            "businessKeys": "earnHome",
-                            "businessKeysIsWhite": false
-                        },
-                        "subMenuSize": "large",
-                        "subMenus": [{
-                            "icon": "earn-jar-2c",
-                            "title": "ba-earn-overview",
-                            "link": "https://www.binance.com/en/earn",
-                            "linkTarget": "_self",
-                            "langMapping": "",
-                            "type": "normal",
-                            "content": "ba-earn-overview-sub",
-                            "columnNumber": 1,
-                            "businessKeys": "earnEarnOverviewWeb"
-                        }, {
-                            "icon": "earn-simple-earn",
-                            "title": "ba-simple-earn-title",
-                            "link": "https://www.binance.com/en/earn/simple-earn",
-                            "linkTarget": "_self",
-                            "langMapping": "",
-                            "type": "normal",
-                            "content": "ba-earn-simpleearn-sub",
-                            "columnNumber": 1,
-                            "businessKeys": "earnSimpleEarn"
-                        }, {
-                            "icon": "earn-high-yield",
-                            "title": "ba-earn-advancedearn",
-                            "link": "https://www.binance.com/en/earn/advanced-earn",
-                            "linkTarget": "_self",
-                            "langMapping": "",
-                            "type": "normal",
-                            "content": "ba-earn-highyield-sub",
-                            "columnNumber": 1,
-                            "businessKeys": "earnHighYield"
-                        }, {
-                            "icon": "earn-loans",
-                            "title": "ba-earn-loans",
-                            "link": "https://www.binance.com/en/loan",
-                            "linkTarget": "_self",
-                            "langMapping": "",
-                            "type": "normal",
-                            "content": "ba-earn-loans-sub",
-                            "columnNumber": 1,
-                            "businessKeys": "earnLoanFlexibleRate"
-                        }]
-                    }, {
-                        "menuType": "gird",
-                        "subMenuFlow": "row",
-                        "menuItem": {
-                            "type": "text",
-                            "icon": "rules-f",
-                            "title": "ba-Square",
-                            "link": "https://www.binance.com/en/square",
-                            "linkTarget": "_self",
-                            "langMapping": "",
-                            "businessKeysIsWhite": false
-                        },
-                        "subMenuSize": "normal",
-                        "subMenus": [{
-                            "icon": "Feed2C",
-                            "title": "ba-Square",
-                            "link": "https://www.binance.com/en/square",
-                            "linkTarget": "_self",
-                            "langMapping": "",
-                            "type": "normal",
-                            "content": "ba-feed-description",
-                            "columnNumber": 1
-                        }, {
-                            "icon": "Blog2C",
-                            "title": "ba-blog",
-                            "link": "https://www.binance.com/en/blog",
-                            "linkTarget": "_self",
-                            "langMapping": "sl(en),hi(en),en-KZ(en),hu(en)",
-                            "type": "normal",
-                            "content": "ba-blogdescription",
-                            "columnNumber": 1
-                        }, {
-                            "icon": "Research2C",
-                            "title": "ba-Research",
-                            "link": "https://www.binance.com/en/research",
-                            "linkTarget": "_self",
-                            "langMapping": "",
-                            "type": "normal",
-                            "content": "ba-research",
-                            "columnNumber": 1
-                        }]
-                    }, {
-                        "menuType": "gird",
-                        "subMenuFlow": "row",
-                        "menuItem": {
-                            "type": "text",
-                            "icon": "list-grid-f",
-                            "title": "ba-moreManagement",
-                            "linkTarget": "_self",
-                            "langMapping": "",
-                            "businessKeys": "binancesendtr",
-                            "businessKeysIsWhite": true
-                        },
-                        "subMenuSize": "large",
-                        "subMenus": [{
-                            "icon": "Institutions2C",
-                            "title": "ba-vip-institutional",
-                            "link": "https://www.binance.com/en/vip-institutional-services",
-                            "linkTarget": "_self",
-                            "langMapping": "",
-                            "type": "normal",
-                            "content": "ba-vip-institutional-desc",
-                            "columnNumber": 1
-                        }, {
-                            "icon": "junior-2c",
-                            "title": "ba-binance-junior",
-                            "link": "https://www.binance.com/en/binance-junior",
-                            "linkTarget": "_self",
-                            "langMapping": "",
-                            "type": "normal",
-                            "content": "ba-binance-junior-desc",
-                            "columnNumber": 1,
-                            "businessKeys": "fea-title-BinanceJunior"
-                        }, {
-                            "icon": "Launchpad2C",
-                            "title": "ba-launchpad-launchpool",
-                            "link": "https://www.binance.com/en/launchpool",
-                            "linkTarget": "_self",
-                            "langMapping": "",
-                            "type": "normal",
-                            "content": "ba-launchpad-launchpool-desc",
-                            "sceneNames": "earn-launchpad-hide",
-                            "columnNumber": 1,
-                            "businessKeys": "launchpad"
-                        }, {
-                            "icon": "megadrop-2c-blk",
-                            "title": "Megadrop",
-                            "link": "https://www.binance.com/en/megadrop",
-                            "linkTarget": "_self",
-                            "langMapping": "",
-                            "type": "normal",
-                            "content": "ba-megadrop-subtitle",
-                            "columnNumber": 1,
-                            "businessKeys": "fea-title-megadrop"
-                        }, {
-                            "icon": "CloudMining2C",
-                            "title": "ba-pool",
-                            "link": "https://pool.binance.com/en",
-                            "linkTarget": "_self",
-                            "langMapping": "de-CH(en),en-BH(en),en-IN(en),en-KZ(en),en-NG(en),es-ES(en),fr-FR(en),hi(en),hu(en),kk-kZ(en),ru-UA(en)",
-                            "type": "normal",
-                            "content": "ba-pool-content",
-                            "columnNumber": 1,
-                            "businessKeys": "earnMiningPool"
-                        }, {
-                            "icon": "Pay2C",
-                            "title": "ba-binance-send",
-                            "link": "https://www.binance.com/en/my/wallet/account/payment",
-                            "linkTarget": "_self",
-                            "langMapping": "vi(en)",
-                            "type": "normal",
-                            "content": "ba-Binance Pay-content",
-                            "columnNumber": 2
-                        }, {
-                            "icon": "NftFi2C",
-                            "title": "ba-NFT",
-                            "link": "https://www.binance.com/en/nft/home",
-                            "linkTarget": "_self",
-                            "langMapping": "",
-                            "type": "normal",
-                            "content": "ba-nft-description",
-                            "columnNumber": 2
-                        }, {
-                            "icon": "fea-title-binancecard",
-                            "title": "ba-card",
-                            "link": "https://www.binance.com/en/cards/dashboard",
-                            "linkTarget": "_self",
-                            "langMapping": "",
-                            "type": "normal",
-                            "content": "ba-card-desc",
-                            "sceneNames": "after-login-only",
-                            "columnNumber": 2,
-                            "businessKeys": "fea-title-binancecard"
-                        }, {
-                            "icon": "FanToken2C",
-                            "title": "ba-Fantoken",
-                            "link": "https://www.binance.com/en/fan-token",
-                            "linkTarget": "_self",
-                            "langMapping": "",
-                            "type": "normal",
-                            "content": "ba-FanToken-content",
-                            "columnNumber": 2,
-                            "businessKeys": "fantoken"
-                        }, {
-                            "icon": "DefiWallet2C",
-                            "title": "ba-web3-wallet",
-                            "link": "https://www.binance.com/en/web3wallet",
-                            "linkTarget": "_self",
-                            "langMapping": "",
-                            "type": "normal",
-                            "content": "ba-defi-wallet-desc",
-                            "columnNumber": 2,
-                            "businessKeys": "web3wallet"
-                        }, {
-                            "icon": "BNB1C",
-                            "title": "ba-bnbchain",
-                            "link": "https://www.bnbchain.org",
-                            "linkTarget": "_self",
-                            "langMapping": "",
-                            "type": "normal",
-                            "content": "ba-dex",
-                            "sceneNames": "exclude-local-kz",
-                            "columnNumber": 2
-                        }, {
-                            "icon": "Academy2C",
-                            "title": "ba-binance-academy",
-                            "link": "https://www.binance.com/en/academy",
-                            "linkTarget": "_self",
-                            "langMapping": "ar-AE(ar),en-AU(en),en-BH(en),en-IN(en),en-KZ(en),en-NG(en),es-AR(es),es-LA(es),es-MX(es),fr-AF(en),fr-FR(fr),pt(pt-BR),ru-UA(ru),sl(en)",
-                            "type": "normal",
-                            "content": "ba-academy-desc",
-                            "columnNumber": 2
-                        }, {
-                            "icon": "Charity2C",
-                            "title": "ba-Charity",
-                            "link": "https://www.binance.charity",
-                            "linkTarget": "_self",
-                            "langMapping": "",
-                            "type": "normal",
-                            "content": "ba-BCFcontnet",
-                            "columnNumber": 1
-                        }, {
-                            "icon": "fea-title-travel",
-                            "title": "ba-travel-rule",
-                            "link": "https://www.binance.com/en/learn/travel-rule",
-                            "linkTarget": "_blank",
-                            "langMapping": "",
-                            "type": "normal",
-                            "content": "ba-travel-rule-desc",
-                            "columnNumber": 2
-                        }]
-                    }, {
-                        "menuType": "gird",
-                        "subMenuFlow": "row",
-                        "menuItem": {
-                            "type": "text",
-                            "icon": "list-grid-f",
-                            "title": "ba-moreManagement",
-                            "linkTarget": "_self",
-                            "langMapping": "",
-                            "businessKeys": "binancesendnotr",
-                            "businessKeysIsWhite": false
-                        },
-                        "subMenuSize": "large",
-                        "subMenus": [{
-                            "icon": "Institutions2C",
-                            "title": "ba-vip-institutional",
-                            "link": "https://www.binance.com/en/vip-institutional-services",
-                            "linkTarget": "_self",
-                            "langMapping": "",
-                            "type": "normal",
-                            "content": "ba-vip-institutional-desc",
-                            "columnNumber": 1
-                        }, {
-                            "icon": "affiliates-entry-2c",
-                            "title": "ba-affiliate-title",
-                            "link": "https://www.binance.com/en/activity/referral?stopRedirectToActivity=true",
-                            "linkTarget": "_self",
-                            "langMapping": "",
-                            "type": "normal",
-                            "content": "ba-affiliate-subtitle",
-                            "columnNumber": 1
-                        }, {
-                            "icon": "referral2-2c",
-                            "title": "ba-referral",
-                            "link": "https://www.binance.com/en/activity/referral",
-                            "linkTarget": "_self",
-                            "langMapping": "",
-                            "type": "normal",
-                            "content": "ba-referral-subtitle",
-                            "columnNumber": 1
-                        }, {
-                            "icon": "junior-2c",
-                            "title": "ba-binance-junior",
-                            "link": "https://www.binance.com/en/binance-junior",
-                            "linkTarget": "_self",
-                            "langMapping": "",
-                            "type": "normal",
-                            "content": "ba-binance-junior-desc",
-                            "columnNumber": 1,
-                            "businessKeys": "fea-title-BinanceJunior"
-                        }, {
-                            "icon": "Launchpad2C",
-                            "title": "ba-launchpad-launchpool",
-                            "link": "https://www.binance.com/en/launchpool",
-                            "linkTarget": "_self",
-                            "langMapping": "",
-                            "type": "normal",
-                            "content": "ba-launchpad-launchpool-desc",
-                            "sceneNames": "earn-launchpad-hide",
-                            "columnNumber": 1,
-                            "businessKeys": "launchpad"
-                        }, {
-                            "icon": "megadrop-2c-blk",
-                            "title": "Megadrop",
-                            "link": "https://www.binance.com/en/megadrop",
-                            "linkTarget": "_self",
-                            "langMapping": "",
-                            "type": "normal",
-                            "content": "ba-megadrop-subtitle",
-                            "columnNumber": 1,
-                            "businessKeys": "fea-title-megadrop"
-                        }, {
-                            "icon": "CloudMining2C",
-                            "title": "ba-pool",
-                            "link": "https://pool.binance.com/en",
-                            "linkTarget": "_self",
-                            "langMapping": "de-CH(en),en-BH(en),en-IN(en),en-KZ(en),en-NG(en),es-ES(en),fr-FR(en),hi(en),hu(en),kk-kZ(en),ru-UA(en)",
-                            "type": "normal",
-                            "content": "ba-pool-content",
-                            "columnNumber": 1,
-                            "businessKeys": "earnMiningPool"
-                        }, {
-                            "icon": "Pay2C",
-                            "title": "ba-Binance Pay",
-                            "link": "https://www.binance.com/en/my/wallet/account/payment",
-                            "linkTarget": "_self",
-                            "langMapping": "vi(en)",
-                            "type": "normal",
-                            "content": "ba-Binance Pay-content",
-                            "columnNumber": 2,
-                            "businessKeys": "binancepay"
-                        }, {
-                            "icon": "NftFi2C",
-                            "title": "ba-NFT",
-                            "link": "https://www.binance.com/en/nft/home",
-                            "linkTarget": "_self",
-                            "langMapping": "",
-                            "type": "normal",
-                            "content": "ba-nft-description",
-                            "columnNumber": 2
-                        }, {
-                            "icon": "fea-title-binancecard",
-                            "title": "ba-card",
-                            "link": "https://www.binance.com/en/cards/dashboard",
-                            "linkTarget": "_self",
-                            "langMapping": "",
-                            "type": "normal",
-                            "content": "ba-card-desc",
-                            "sceneNames": "after-login-only",
-                            "columnNumber": 2,
-                            "businessKeys": "fea-title-binancecard"
-                        }, {
-                            "icon": "FanToken2C",
-                            "title": "ba-Fantoken",
-                            "link": "https://www.binance.com/en/fan-token",
-                            "linkTarget": "_self",
-                            "langMapping": "",
-                            "type": "normal",
-                            "content": "ba-FanToken-content",
-                            "columnNumber": 2,
-                            "businessKeys": "fantoken"
-                        }, {
-                            "icon": "DefiWallet2C",
-                            "title": "ba-web3-wallet",
-                            "link": "https://www.binance.com/en/web3wallet",
-                            "linkTarget": "_self",
-                            "langMapping": "",
-                            "type": "normal",
-                            "content": "ba-defi-wallet-desc",
-                            "columnNumber": 2,
-                            "businessKeys": "web3wallet"
-                        }, {
-                            "icon": "BNB1C",
-                            "title": "ba-bnbchain",
-                            "link": "https://www.bnbchain.org",
-                            "linkTarget": "_self",
-                            "langMapping": "",
-                            "type": "normal",
-                            "content": "ba-dex",
-                            "sceneNames": "exclude-local-kz",
-                            "columnNumber": 2
-                        }, {
-                            "icon": "Academy2C",
-                            "title": "ba-binance-academy",
-                            "link": "https://www.binance.com/en/academy",
-                            "linkTarget": "_self",
-                            "langMapping": "ar-AE(ar),en-AU(en),en-BH(en),en-IN(en),en-KZ(en),en-NG(en),es-AR(es),es-LA(es),es-MX(es),fr-AF(en),fr-FR(fr),pt(pt-BR),ru-UA(ru),sl(en)",
-                            "type": "normal",
-                            "content": "ba-academy-desc",
-                            "columnNumber": 2
-                        }, {
-                            "icon": "Charity2C",
-                            "title": "ba-Charity",
-                            "link": "https://www.binance.charity",
-                            "linkTarget": "_self",
-                            "langMapping": "",
-                            "type": "normal",
-                            "content": "ba-BCFcontnet",
-                            "columnNumber": 2
-                        }, {
-                            "icon": "fea-title-travel",
-                            "title": "ba-travel-rule",
-                            "link": "https://www.binance.com/en/learn/travel-rule",
-                            "linkTarget": "_self",
-                            "langMapping": "",
-                            "type": "normal",
-                            "content": "ba-travel-rule-desc",
-                            "columnNumber": 2
-                        }, {
-                            "icon": "fea-title-binanceai",
-                            "title": "ba-binanceai",
-                            "link": "https://www.binance.com/en/ai-chat/binanceai-beta/chat",
-                            "linkTarget": "_self",
-                            "langMapping": "",
-                            "type": "normal",
-                            "content": "ba-binanceai-desc",
-                            "sceneNames": "binance-ai",
-                            "columnNumber": 1
-                        }]
-                    }],
+                            "menuType": "gird",
+                            "subMenuFlow": "row",
+                            "menuItem": {
+                                "type": "text",
+                                "icon": "list-grid-f",
+                                "title": "ba-moreManagement",
+                                "linkTarget": "_self",
+                                "langMapping": "",
+                                "businessKeys": "binancesendnotr",
+                                "businessKeysIsWhite": false
+                            },
+                            "subMenuSize": "large",
+                            "subMenus": [{
+                                "icon": "Institutions2C",
+                                "title": "ba-vip-institutional",
+                                "link": "https://www.binance.com/en/vip-institutional-services",
+                                "linkTarget": "_self",
+                                "langMapping": "",
+                                "type": "normal",
+                                "content": "ba-vip-institutional-desc",
+                                "columnNumber": 1
+                            }, {
+                                "icon": "affiliates-entry-2c",
+                                "title": "ba-affiliate-title",
+                                "link": "https://www.binance.com/en/activity/referral?stopRedirectToActivity=true",
+                                "linkTarget": "_self",
+                                "langMapping": "",
+                                "type": "normal",
+                                "content": "ba-affiliate-subtitle",
+                                "columnNumber": 1
+                            }, {
+                                "icon": "referral2-2c",
+                                "title": "ba-referral",
+                                "link": "https://www.binance.com/en/activity/referral",
+                                "linkTarget": "_self",
+                                "langMapping": "",
+                                "type": "normal",
+                                "content": "ba-referral-subtitle",
+                                "columnNumber": 1
+                            }, {
+                                "icon": "junior-2c",
+                                "title": "ba-binance-junior",
+                                "link": "https://www.binance.com/en/binance-junior",
+                                "linkTarget": "_self",
+                                "langMapping": "",
+                                "type": "normal",
+                                "content": "ba-binance-junior-desc",
+                                "columnNumber": 1,
+                                "businessKeys": "fea-title-BinanceJunior"
+                            }, {
+                                "icon": "Launchpad2C",
+                                "title": "ba-launchpad-launchpool",
+                                "link": "https://www.binance.com/en/launchpool",
+                                "linkTarget": "_self",
+                                "langMapping": "",
+                                "type": "normal",
+                                "content": "ba-launchpad-launchpool-desc",
+                                "sceneNames": "earn-launchpad-hide",
+                                "columnNumber": 1,
+                                "businessKeys": "launchpad"
+                            }, {
+                                "icon": "megadrop-2c-blk",
+                                "title": "Megadrop",
+                                "link": "https://www.binance.com/en/megadrop",
+                                "linkTarget": "_self",
+                                "langMapping": "",
+                                "type": "normal",
+                                "content": "ba-megadrop-subtitle",
+                                "columnNumber": 1,
+                                "businessKeys": "fea-title-megadrop"
+                            }, {
+                                "icon": "CloudMining2C",
+                                "title": "ba-pool",
+                                "link": "https://pool.binance.com/en",
+                                "linkTarget": "_self",
+                                "langMapping": "de-CH(en),en-BH(en),en-IN(en),en-KZ(en),en-NG(en),es-ES(en),fr-FR(en),hi(en),hu(en),kk-kZ(en),ru-UA(en)",
+                                "type": "normal",
+                                "content": "ba-pool-content",
+                                "columnNumber": 1,
+                                "businessKeys": "earnMiningPool"
+                            }, {
+                                "icon": "Pay2C",
+                                "title": "ba-Binance Pay",
+                                "link": "https://www.binance.com/en/my/wallet/account/payment",
+                                "linkTarget": "_self",
+                                "langMapping": "vi(en)",
+                                "type": "normal",
+                                "content": "ba-Binance Pay-content",
+                                "columnNumber": 2,
+                                "businessKeys": "binancepay"
+                            }, {
+                                "icon": "NftFi2C",
+                                "title": "ba-NFT",
+                                "link": "https://www.binance.com/en/nft/home",
+                                "linkTarget": "_self",
+                                "langMapping": "",
+                                "type": "normal",
+                                "content": "ba-nft-description",
+                                "columnNumber": 2
+                            }, {
+                                "icon": "fea-title-binancecard",
+                                "title": "ba-card",
+                                "link": "https://www.binance.com/en/cards/dashboard",
+                                "linkTarget": "_self",
+                                "langMapping": "",
+                                "type": "normal",
+                                "content": "ba-card-desc",
+                                "sceneNames": "after-login-only",
+                                "columnNumber": 2,
+                                "businessKeys": "fea-title-binancecard"
+                            }, {
+                                "icon": "FanToken2C",
+                                "title": "ba-Fantoken",
+                                "link": "https://www.binance.com/en/fan-token",
+                                "linkTarget": "_self",
+                                "langMapping": "",
+                                "type": "normal",
+                                "content": "ba-FanToken-content",
+                                "columnNumber": 2,
+                                "businessKeys": "fantoken"
+                            }, {
+                                "icon": "DefiWallet2C",
+                                "title": "ba-web3-wallet",
+                                "link": "https://www.binance.com/en/web3wallet",
+                                "linkTarget": "_self",
+                                "langMapping": "",
+                                "type": "normal",
+                                "content": "ba-defi-wallet-desc",
+                                "columnNumber": 2,
+                                "businessKeys": "web3wallet"
+                            }, {
+                                "icon": "BNB1C",
+                                "title": "ba-bnbchain",
+                                "link": "https://www.bnbchain.org",
+                                "linkTarget": "_self",
+                                "langMapping": "",
+                                "type": "normal",
+                                "content": "ba-dex",
+                                "sceneNames": "exclude-local-kz",
+                                "columnNumber": 2
+                            }, {
+                                "icon": "Academy2C",
+                                "title": "ba-binance-academy",
+                                "link": "https://www.binance.com/en/academy",
+                                "linkTarget": "_self",
+                                "langMapping": "ar-AE(ar),en-AU(en),en-BH(en),en-IN(en),en-KZ(en),en-NG(en),es-AR(es),es-LA(es),es-MX(es),fr-AF(en),fr-FR(fr),pt(pt-BR),ru-UA(ru),sl(en)",
+                                "type": "normal",
+                                "content": "ba-academy-desc",
+                                "columnNumber": 2
+                            }, {
+                                "icon": "Charity2C",
+                                "title": "ba-Charity",
+                                "link": "https://www.binance.charity",
+                                "linkTarget": "_self",
+                                "langMapping": "",
+                                "type": "normal",
+                                "content": "ba-BCFcontnet",
+                                "columnNumber": 2
+                            }, {
+                                "icon": "fea-title-travel",
+                                "title": "ba-travel-rule",
+                                "link": "https://www.binance.com/en/learn/travel-rule",
+                                "linkTarget": "_self",
+                                "langMapping": "",
+                                "type": "normal",
+                                "content": "ba-travel-rule-desc",
+                                "columnNumber": 2
+                            }, {
+                                "icon": "fea-title-binanceai",
+                                "title": "ba-binanceai",
+                                "link": "https://www.binance.com/en/ai-chat/binanceai-beta/chat",
+                                "linkTarget": "_self",
+                                "langMapping": "",
+                                "type": "normal",
+                                "content": "ba-binanceai-desc",
+                                "sceneNames": "binance-ai",
+                                "columnNumber": 1
+                            }]
+                        }],
                     "userInfo": {
                         "noLogged": {
                             "login": "https://accounts.binance.com/en/login",
@@ -15762,7 +15722,7 @@
                         }
                     },
                     "search": {
-                        "enable": true
+                        "enable": false
                     },
                     "featuresAlwaysVisible": {
                         "noLogged": {},
@@ -16255,7 +16215,7 @@
             }
         }
       </script>
-      @endverbatim
+   
       <script id="gtm-trueMetrics" nonce="25b28dca-3fd5-41bd-944e-3713ed4bf0eb" data-nonce="25b28dca-3fd5-41bd-944e-3713ed4bf0eb">
          (function(w, l, r) {
              w[l] = w[l] || [];
@@ -17945,7 +17905,7 @@
                     }
                 },
                 "loginStatus": {
-                    "isLoading": true
+                    "isLoading": false
                 },
                 "userContract": {
                     "assetDetails": []
