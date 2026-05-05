@@ -15,6 +15,10 @@ class SpotTradeController extends Controller
     {
         $user = Auth::guard('client')->user();
 
+        if (!$user) {
+            $user = $request->user();
+        }
+
         $query = CryptoTrade::where(function ($q) use ($user) {
             $q->where('buyer_user_id', $user->id)
                 ->orWhere('seller_user_id', $user->id);
