@@ -15,6 +15,35 @@ class ChartSummaryService
         '1Y' => 31536000,
     ];
 
+    public function refreshAll(): void
+    {
+        TradingChartSummary::query()->delete();
+
+        $combinations = TradingChartCandle::query()
+            ->select('symbol', 'interval')
+            ->distinct()
+            ->get();
+
+        foreach ($combinations as $combo) {
+            $latestCandle = TradingChartCandle::query()
+                ->where('symbol', $combo->symbol)
+                ->where('interval', $combo->interval)
+                ->orderByDesc('timestamp')
+                ->first();
+
+            if (! $latestCandle) {
+                continue;
+            }
+
+            foreach ($this->ranges as $range => $seconds) {
+                $to = (int) $latestCandle->timestamp;
+                $from = $to - $seconds;
+
+                $this->createSummaryFromRange($latestCandle, $range, $from, $to);
+            }
+        }
+    }
+
     public function applyCandle(TradingChartCandle $candle): void
     {
         foreach ($this->ranges as $range => $seconds) {
