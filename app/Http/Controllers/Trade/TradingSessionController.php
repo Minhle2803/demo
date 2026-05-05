@@ -65,6 +65,9 @@ class TradingSessionController extends Controller
         }
 
         $user = auth('client')->user();
+        if (! $user) {
+            $user = request()->user();
+        }
         $trade = $session->trades()->where('user_id', $user->id)->first();
 
         return ApiResponse::success([
