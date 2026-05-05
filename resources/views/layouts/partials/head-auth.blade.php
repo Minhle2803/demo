@@ -2,6 +2,7 @@
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <meta content="Premium Multipurpose Admin &amp; Dashboard Template" name="description"/>
 <meta content="Themesbrand" name="author">
+<meta name="csrf-token" content="{{ csrf_token() }}">
 <!-- App favicon -->
 <link href="{{ asset('assets/images/favicon.ico') }}" rel="shortcut icon"/>
 <!-- Layout config Js -->
