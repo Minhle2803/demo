@@ -60,12 +60,8 @@ class TradingChartController extends Controller
         $symbol = $v['symbol'];
         $interval = $v['interval'];
         $limit = $request->resolvedLimit();
-        $from = Carbon::now()->subDays(2)->timestamp * 1000;
-        $to = Carbon::now()->timestamp * 1000;
-
-        $query = TradingChartCandle::forPair($symbol, $interval)
-            ->chronological()
-            ->limit($limit);
+        $from = Carbon::now()->utc()->subDays(2)->timestamp * 1000;
+        $to = Carbon::now()->utc()->timestamp * 1000;
 
         if (isset($v['from'])) {
             $from = (int) $v['from'];
@@ -75,9 +71,17 @@ class TradingChartController extends Controller
             $to = (int) $v['to'];
         }
 
-        $query->fromTimestamp($from);
-        $query->toTimestamp($to);
-        $candles = $query->get();
+        // Fetch most recent candles first (DESC), then reverse to ASC for the chart.
+        // Using chronological() + limit() would return the oldest N candles,
+        // leaving a gap between the REST batch and the live WebSocket stream.
+        $candles = TradingChartCandle::forPair($symbol, $interval)
+            ->fromTimestamp($from)
+            ->toTimestamp($to)
+            ->latestFirst()
+            ->limit($limit)
+            ->get()
+            ->reverse()
+            ->values();
 
         // Map to KLineCharts-compatible array — numeric types, not strings.
         $data = $candles->map(fn (TradingChartCandle $c) => $c->toChartArray())->values()->all();

@@ -13,6 +13,9 @@ class SpotWalletController extends Controller
     public function myWallets(): JsonResponse
     {
         $user = Auth::guard('client')->user();
+        if (! $user) {
+            $user = request()->user();
+        }
 
         $wallets = CryptoWallet::where('user_id', $user->id)->get();
 
