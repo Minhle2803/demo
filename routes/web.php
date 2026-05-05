@@ -8,7 +8,7 @@ use App\Http\Controllers\TraddingController;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+//Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 Route::get('/tradding', [TraddingController::class, 'index'])->name('tradding');
 Route::get('/spot-trading', [TraddingController::class, 'spot'])->name('spot.trading');
 

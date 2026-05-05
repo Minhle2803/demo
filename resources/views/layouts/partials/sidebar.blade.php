@@ -2,21 +2,21 @@
     <!-- LOGO -->
     <div class="navbar-brand-box">
         <!-- Dark Logo-->
-        <a class="logo logo-dark" href="{{ route('dashboard') }}">
+        <a class="logo logo-dark" href="{{ route('landing2') }}">
             <span class="logo-sm">
-                <img alt="" height="22" src="{{ asset('assets/images/logo-sm.png') }}" />
+                <img alt="" height="22" src="{{ asset('assets/images/logo/logo.png') }}" />
             </span>
             <span class="logo-lg">
-                <img alt="" height="17" src="{{ asset('assets/images/logo-dark.png') }}" />
+                <img alt="" height="17" src="{{ asset('assets/images/logo/logo.png') }}" />
             </span>
         </a>
         <!-- Light Logo-->
-        <a class="logo logo-light" href="{{ route('dashboard') }}">
+        <a class="logo logo-light" href="{{ route('landing2') }}">
             <span class="logo-sm">
-                <img alt="" height="22" src="{{ asset('assets/images/logo-sm.png') }}" />
+                <img alt="" height="22" src="{{ asset('assets/images/logo/logo.png') }}" />
             </span>
             <span class="logo-lg">
-                <img alt="" height="17" src="{{ asset('assets/images/logo-light.png') }}" />
+                <img alt="" height="17" src="{{ asset('assets/images/logo/logo.png') }}" />
             </span>
         </a>
         <button class="btn btn-sm p-0 fs-20 header-item float-end btn-vertical-sm-hover" id="vertical-hover" type="button">
@@ -54,7 +54,7 @@
             <ul class="navbar-nav" id="navbar-nav">
                 <li class="menu-title"><span data-key="t-menu">{{ __('messages.menu.menu') }}</span></li>
                 <li class="nav-item">
-                    <a  class="nav-link"  href="{{ route('dashboard') }}" role="button">
+                    <a  class="nav-link"  href="{{ route('landing2') }}" role="button">
                         <i class="ri-dashboard-2-line"></i> <span data-key="t-dashboards">{{ __('messages.menu.home') }}</span>
                     </a>
                 </li> <!-- end Dashboard Menu -->
