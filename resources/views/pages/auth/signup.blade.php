@@ -1,6 +1,6 @@
 @extends('layouts.auth')
 
-@section('title', 'Signin')
+@section('title', 'Signup')
 
 @section('content')
 <div class="row">
@@ -67,13 +67,6 @@
                                     </div>
                                 </div>
                                 <div class="mb-3">
-                                    <label for="useremail" class="form-label">{{ __('messages.auth.email') }} <span class="text-danger">*</span></label>
-                                    <input type="email" class="form-control" name="email" id="useremail" placeholder="{{ __('messages.auth.enter_email') }}" required>
-                                    <div class="invalid-feedback">
-                                        {{ __('messages.auth.validate_email') }}
-                                    </div>
-                                </div>
-                                <div class="mb-3">
                                     <label for="phone" class="form-label">{{ __('messages.auth.phone_number') }} <span class="text-danger">*</span></label>
                                     <input type="tel" class="form-control" id="phone" name="phone_number" placeholder="{{ __('messages.auth.enter_phone') }}" required>
                                     <div class="invalid-feedback">
@@ -83,20 +76,10 @@
                                 <div class="mb-3">
                                     <label class="form-label" for="password-input">{{ __('messages.auth.password') }}</label>
                                     <div class="position-relative auth-pass-inputgroup">
-                                        <input type="password" name="password" class="form-control pe-5 password-input" onpaste="return false" placeholder="{{ __('messages.auth.enter_password') }}" id="password-input" aria-describedby="passwordInput" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" required>
+                                        <input type="password" name="password" class="form-control pe-5 password-input" onpaste="return false" placeholder="{{ __('messages.auth.enter_password') }}" id="password-input" aria-describedby="passwordInput"  required>
                                         <button class="btn btn-link position-absolute end-0 top-0 text-decoration-none text-muted password-addon material-shadow-none" type="button" id="password-addon"><i class="ri-eye-fill align-middle"></i></button>
                                         <div class="invalid-feedback">
                                             {{ __('messages.auth.validate_password') }}
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="mb-3">
-                                    <label class="form-label" for="confirm-password-input">{{ __('messages.auth.confirm_password') }}</label>
-                                    <div class="position-relative auth-pass-inputgroup">
-                                        <input type="password" name="password_confirmation" class="form-control pe-5 confirm-password-input" onpaste="return false" placeholder="{{ __('messages.auth.enter_confirm_password') }}" id="confirm-password-input" aria-describedby="passwordInput" >
-                                        <button class="btn btn-link position-absolute end-0 top-0 text-decoration-none text-muted confirm-password-addon material-shadow-none" type="button" id="confirm-password-addon"><i class="ri-eye-fill align-middle"></i></button>
-                                        <div class="invalid-feedback">
-                                            {{ __('messages.auth.validate_confirm') }}
                                         </div>
                                     </div>
                                 </div>

@@ -596,9 +596,15 @@
                     <a id="toLoginPage" class="header-menu-rightItem typography-Subtitle4 color-t_primary rwd-768-hide" href="{{ route('signin') }}">
                         <button class="bn-button bn-button__secondary data-size-small">Log In</button>
                     </a>
+                    @if(Auth::check())
+                    <a class="header-menu-rightItem" id="toRegisterPage" href="{{ route('tradding') }}">
+                        <button class="bn-button bn-button__primary data-size-small header-menu-registerbtn">Trading</button>
+                    </a>
+                    @else
                     <a class="header-menu-rightItem" id="toRegisterPage" href="{{ route('signup') }}">
                         <button class="bn-button bn-button__primary data-size-small header-menu-registerbtn">Sign Up</button>
                     </a>
+                    @endif
                </header>
                <div class="header-global-js-top-alert">
                   <div class="header-global-js-top-alert__inner" id="header_global_js_wxgy34nj"></div>
@@ -729,7 +735,13 @@
                                              <div class="t-body2 ml-[4px] whitespace-pre-line break-words text-PrimaryText">Up to $100 Bonus Only Today</div>
                                           </div>
                                        </div>
-                                       <div class="flex justify-center"><a href="{{ route('signup') }}" class="bn-button data-size-large h-[56px] h-full w-[180px] min-w-[160px] rounded-[8px] px-3xl text-subtitle1 mobile:h-[40px] mobile:min-h-[40px] mobile:min-w-[160px]">Sign Up</a></div>
+                                       <div class="flex justify-center">
+                                        @if(Auth::check())
+                                        <a href="{{ route('tradding') }}" class="bn-button data-size-large h-[56px] h-full w-[180px] min-w-[160px] rounded-[8px] px-3xl text-subtitle1 mobile:h-[40px] mobile:min-h-[40px] mobile:min-w-[160px]">Trading</a>
+                                        @else
+                                        <a href="{{ route('signup') }}" class="bn-button data-size-large h-[56px] h-full w-[180px] min-w-[160px] rounded-[8px] px-3xl text-subtitle1 mobile:h-[40px] mobile:min-h-[40px] mobile:min-w-[160px]">Sign Up</a>
+                                        @endif
+                                    </div>
                                     </div>
                                     <div class="mobile:hidden"></div>
                                  </div>

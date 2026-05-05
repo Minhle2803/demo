@@ -25,13 +25,6 @@ class ClientRegisterRequest extends FormRequest
                 'max:50',
                 'unique:client_users,nickname',
             ],
-            'email' => [
-                'required',
-                'string',
-                'email:rfc,dns',
-                'max:255',
-                'unique:client_users,email',
-            ],
             'phone_number' => [
                 'required',
                 'string',
@@ -43,9 +36,6 @@ class ClientRegisterRequest extends FormRequest
                 'required',
                 'string',
                 'min:8',
-                'confirmed',
-                // Strong password: at least one uppercase, lowercase, digit, special char
-                'regex:/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/',
             ],
             'referral_code' => [
                 'nullable',
@@ -59,7 +49,6 @@ class ClientRegisterRequest extends FormRequest
     {
         return [
             'nickname.unique' => __('errors.'.ErrorCodes::AUTH_NICKNAME_ALREADY_USED),
-            'email.unique' => __('errors.'.ErrorCodes::AUTH_EMAIL_ALREADY_USED),
             'phone_number.unique' => __('errors.'.ErrorCodes::AUTH_PHONE_ALREADY_USED),
             'phone_number.regex' => 'The phone number format is invalid.',
             'password.regex' => 'Password must contain uppercase, lowercase, number, and special character.',

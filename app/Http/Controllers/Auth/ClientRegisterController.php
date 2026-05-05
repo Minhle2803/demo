@@ -34,7 +34,6 @@ class ClientRegisterController extends Controller
 
         $user = ClientUser::create([
             'nickname' => $validated['nickname'],
-            'email' => $validated['email'],
             'phone_number' => $validated['phone_number'],
             'password' => $validated['password'], // cast 'hashed' handles bcrypt
             'referral_code' => $validated['referral_code'] ?? null,

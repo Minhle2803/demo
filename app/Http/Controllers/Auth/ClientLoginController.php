@@ -32,12 +32,7 @@ class ClientLoginController extends Controller
         $remember = $request->input('remember');
 
         // Detect field and find user — never touches admin users table
-        if ($request->isEmail()) {
-            $user = ClientUser::where('email', $login)->first();
-        } else {
-            $user = ClientUser::where('phone_number', $login)->first();
-        }
-
+        $user = ClientUser::where('nickname', $login)->first();
         // User not found OR wrong password
         if (! $user || ! Hash::check($password, $user->password)) {
             if ($request->expectsJson()) {
