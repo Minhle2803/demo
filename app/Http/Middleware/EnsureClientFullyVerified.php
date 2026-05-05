@@ -11,7 +11,12 @@ class EnsureClientFullyVerified
     public function handle(Request $request, Closure $next)
     {
         $user = auth('client')->user();
+        $user2 = $request->getUser();
+
+       
         if (! $user) {
+            echo "abcs";
+            exit;
             return response()->json([
                 'success' => false,
                 'status_code' => 401,
@@ -19,7 +24,8 @@ class EnsureClientFullyVerified
                 'message' => __('errors.AUTH_UNAUTHORIZED'),
             ], 401);
         }
-
+ echo "11111";
+            exit;
         $kycComplete = ! empty($user->kyc_front_url) && ! empty($user->kyc_back_url);
 
         if (! $user->is_verified || ! $kycComplete) {
