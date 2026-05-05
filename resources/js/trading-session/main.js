@@ -117,7 +117,7 @@ async function handleTrade(type) {
         return;
     }
 
-    showError(res.code);
+    showError(res.message);
 
     // Re-enable if session still open
     const now    = getServerNow();
