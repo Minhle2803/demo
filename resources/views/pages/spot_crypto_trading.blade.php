@@ -13,7 +13,7 @@
 
             <div class="page-title-right">
                 <ol class="breadcrumb m-0">
-                    <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">{{ __('messages.spot.home') }}</a></li>
+                    <li class="breadcrumb-item"><a href="{{ route('landing2') }}">{{ __('messages.spot.home') }}</a></li>
                     <li class="breadcrumb-item active">{{ __('messages.spot.title') }}</li>
                 </ol>
             </div>

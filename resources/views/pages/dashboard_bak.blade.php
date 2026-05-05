@@ -46,7 +46,7 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav mx-auto mt-2 mt-lg-0" id="navbar-example">
                         <li class="nav-item">
-                            <a class="nav-link active" href="{{ route('dashboard') }}">Home</a>
+                            <a class="nav-link active" href="{{ route('landing2') }}">Home</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('tradding') }}">Tradding</a>

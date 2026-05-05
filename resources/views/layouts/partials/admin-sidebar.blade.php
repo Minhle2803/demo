@@ -89,7 +89,7 @@
                 <li class="menu-title"><span>{{ __('messages.menu.link') }}</span></li>
 
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('dashboard') }}">
+                    <a class="nav-link" href="{{ route('landing2') }}">
                         <i class="ri-arrow-left-line"></i> <span>{{ __('admin.back_to_site') }}</span>
                     </a>
                 </li>
