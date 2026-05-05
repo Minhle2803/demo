@@ -13,7 +13,8 @@ class EnsureClientFullyVerified
         $user = auth('client')->user();
         $user2 = $request->getUser();
 
-       
+       print_r($user2);
+       exit;
         if (! $user2) {
             return response()->json([
                 'success' => false,
