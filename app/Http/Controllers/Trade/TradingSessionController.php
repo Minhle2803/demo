@@ -119,7 +119,7 @@ class TradingSessionController extends Controller
 
             return ApiResponse::error(
                 code: $code,
-                message: __('errors.{$code}'),
+                message: __('errors.'.$code),
                 statusCode: $httpStatus
             );
         }
