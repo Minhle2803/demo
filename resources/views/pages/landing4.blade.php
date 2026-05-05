@@ -591,14 +591,6 @@
                            </svg>
                         </span>
                      </div>
-                     <div class="header-menu-item header-dropdown-menu rwd-1024-hide-flex center">
-                        <a class="header-menu-item_view typography-Subtitle4" id="ba-Square" href="https://www.binance.com/en/square">
-                           Square
-                           <svg class="bn-svg header-menu-item_dropdown-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                              <path d="M11.432 15.698a.9.9 0 001.205-.061l6-6 .061-.069a.9.9 0 00-1.266-1.266l-.069.061L12 13.727 6.637 8.363a.9.9 0 00-1.274 1.274l6 6 .069.061z" fill="currentColor"></path>
-                           </svg>
-                        </a>
-                     </div>
                   </div>
                   <div class="header-rightside">
                     <a id="toLoginPage" class="header-menu-rightItem typography-Subtitle4 color-t_primary rwd-768-hide" href="{{ route('signin') }}">
@@ -737,7 +729,7 @@
                                              <div class="t-body2 ml-[4px] whitespace-pre-line break-words text-PrimaryText">Up to $100 Bonus Only Today</div>
                                           </div>
                                        </div>
-                                       <div class="flex justify-center"><a href="https://accounts./en/register?registerChannel=homepage" class="bn-button data-size-large h-[56px] h-full w-[180px] min-w-[160px] rounded-[8px] px-3xl text-subtitle1 mobile:h-[40px] mobile:min-h-[40px] mobile:min-w-[160px]">Sign Up</a></div>
+                                       <div class="flex justify-center"><a href="{{ route('signup') }}" class="bn-button data-size-large h-[56px] h-full w-[180px] min-w-[160px] rounded-[8px] px-3xl text-subtitle1 mobile:h-[40px] mobile:min-h-[40px] mobile:min-w-[160px]">Sign Up</a></div>
                                     </div>
                                     <div class="mobile:hidden"></div>
                                  </div>
@@ -848,7 +840,7 @@
                                           </div>
                                        </a>
                                     </div>
-                                    <a target="_blank" rel="noreferrer" href="/en/register?registerChannel=homepage" class="bg-transparent mb-[0px] flex items-center p-[0px] mobile:justify-center mobile:text-center tablet:top-[10px] noH5:absolute ltr:noH5:right-0 rtl:noH5:left-0 desktop:top-[10px] t-body3 text-t-third hover:text-t-secondary mobile:mt-[13px]">
+                                    <a target="_blank" rel="noreferrer" href="#" class="bg-transparent mb-[0px] flex items-center p-[0px] mobile:justify-center mobile:text-center tablet:top-[10px] noH5:absolute ltr:noH5:right-0 rtl:noH5:left-0 desktop:top-[10px] t-body3 text-t-third hover:text-t-secondary mobile:mt-[13px]">
                                        View All 350+ Coins
                                        <svg size="16" class="bn-svg icon-dir mt-[3px] h-[16px] w-[16px]" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                                           <path d="M15.698 12.568a.9.9 0 00-.061-1.205l-6-6-.069-.061a.9.9 0 00-1.266 1.266l.061.069L13.727 12l-5.364 5.363a.9.9 0 001.274 1.274l6-6 .061-.069z" fill="currentColor"></path>
@@ -952,7 +944,7 @@
                         <div class="noH5:bg-Vessel flex flex-col items-start justify-between rounded-[20px] p-xl mobile:bg-transparent mobile:items-center mobile:p-[0px] desktop:py-[20px] w-full flex-initial tablet:w-full tablet:flex-1">
                            <div class="bn-flex mb-m w-full items-center mobile:justify-center noH5:justify-between">
                               <div class="t-subtitle6">News</div>
-                              <a target="_blank" rel="noreferrer" href="/en/register?registerChannel=homepage_square" class="bg-transparent inline-flex items-center text-t-third hover:bg-transparent hover:text-t-secondary mobile:hidden noH5:inline-flex">
+                              <a target="_blank" rel="noreferrer" href="#" class="bg-transparent inline-flex items-center text-t-third hover:bg-transparent hover:text-t-secondary mobile:hidden noH5:inline-flex">
                                  <div class="t-body3">View All News</div>
                                  <svg class="bn-svg icon-dir mt-[3px] h-[16px] w-[16px]" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                                     <path d="M15.698 12.568a.9.9 0 00-.061-1.205l-6-6-.069-.061a.9.9 0 00-1.266 1.266l.061.069L13.727 12l-5.364 5.363a.9.9 0 001.274 1.274l6-6 .061-.069z" fill="currentColor"></path>
@@ -1216,7 +1208,7 @@
                      <div class="mb-[40px] text-headline2 text-PrimaryText mobile:mb-m mobile:text-subtitle1 tablet:mb-xl tablet:text-headline4">
                         <h2>Secure, Low-Fee Trading on Binance</h2>
                      </div>
-                     <a href="register?registerChannel=homepage" class="bn-button data-size-large h-[48px] min-w-[164px] rounded-[8px] px-m py-2xs text-[16px] mobile:h-[32px] mobile:max-h-[32px] mobile:min-h-[32px] mobile:min-w-[128px] mobile:rounded-[6px] mobile:px-s mobile:py-4xs mobile:text-[14px] tablet:rounded-[8px]">Sign Up Now</a>
+                     <a href="{{  route('signup') }}" class="bn-button data-size-large h-[48px] min-w-[164px] rounded-[8px] px-m py-2xs text-[16px] mobile:h-[32px] mobile:max-h-[32px] mobile:min-h-[32px] mobile:min-w-[128px] mobile:rounded-[6px] mobile:px-s mobile:py-4xs mobile:text-[14px] tablet:rounded-[8px]">Sign Up Now</a>
                   </div>
                </div>
             </div>
