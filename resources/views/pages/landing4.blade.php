@@ -19,7 +19,7 @@
       <meta name="twitter:image" content="https://public.bnbstatic.com/static/images/common/ogImage.jpg" data-shuvi-head="true" />
       <meta name="twitter:image:src" content="https://public.bnbstatic.com/static/images/common/ogImage.jpg" data-shuvi-head="true" />
       <meta http-equiv="etag" content="dbb0f6e750dfb5b32469b08db668fdfd2d4b7291" />
-      <meta name="msapplication-TileImage" content="https://bin.bnbstatic.com/static/images/bnb-for/brand.png" />
+      <meta name="msapplication-TileImage" content="{{ asset('assets/images/icons/brand.png') }}" />
       <meta name="robots" content="all" />
       <meta name="sogou_site_verification" content="tKz9Rld4qH" />
       <meta name="360-site-verification" content="e362348efd31ed6e77bcf0ba4963a6de" />
@@ -51,9 +51,9 @@
       <link rel="preload" as="script" href="https://bin.bnbstatic.com/static/main.bbf1535a.js" />
       <link rel="preload" as="script" href="https://public.bnbstatic.com/unpkg/config/remote-config.js" />
       <link rel="preload" as="script" href="https://public.bnbstatic.com/unpkg/common-widget/common-widget-render-control@1.4.110.min.js" />
-      <link rel="shortcut icon" href="https://bin.bnbstatic.com/static/images/common/favicon.ico" />
-      <link rel="apple-touch-icon" href="https://bin.bnbstatic.com/static/images/bnb-for/brand.png" />
-      <link rel="icon" href="https://bin.bnbstatic.com/static/images/bnb-for/brand.png" />
+      <link rel="shortcut icon" href="{{ asset('assets/images/icons/favicon.ico') }}" />
+      <link rel="apple-touch-icon" href="{{ asset('assets/images/icons/brand.png') }}" />
+      <link rel="icon" href="{{ asset('assets/images/icons/brand.png') }}" />
       <link rel="alternate" hreflang="es-NI" href="https://www.binance.com/es-LA" />
       <link rel="alternate" hreflang="pl" href="https://www.binance.com/pl" />
       <link rel="alternate" hreflang="es-VI" href="https://www.binance.com/es" />
@@ -741,11 +741,11 @@
                               <div class="mb-[0px] flex flex-col items-start justify-between gap-m">
                                  <div class="bids-button-group dark mini">
                                     <div id="google-login" style="position:relative;overflow:hidden">
-                                       <div class="third-part-btn rounded-[10px] fontsize-0 cursor-pointer border border-solid p-[11px]"><img role="img" aria-label="image" alt="google" class="bn-lazy-img h-[24px] w-[24px] flex-shrink-0" src="https://bin.bnbstatic.com/static/images/home/register/google-icon.png" data-src="https://bin.bnbstatic.com/static/images/home/register/google-icon.png"/>
+                                       <div class="third-part-btn rounded-[10px] fontsize-0 cursor-pointer border border-solid p-[11px]"><img role="img" aria-label="image" alt="google" class="bn-lazy-img h-[24px] w-[24px] flex-shrink-0" src="{{ asset('assets/images/icons/google-icon.png') }}" data-src="{{ asset('assets/images/icons/google-icon.png') }}"/>
                                        </div>
                                     </div>
                                     <div id="apple-login">
-                                       <div class="third-part-btn rounded-[10px] cursor-pointer border border-solid p-[11px] fontsize-0"><img role="img" aria-label="image" alt="apple" class="bn-lazy-img h-[24px] w-[24px] flex-shrink-0" src="https://bin.bnbstatic.com/static/images/home/register/apple-icon.png" data-src="https://bin.bnbstatic.com/static/images/home/register/apple-icon.png"/>
+                                       <div class="third-part-btn rounded-[10px] cursor-pointer border border-solid p-[11px] fontsize-0"><img role="img" aria-label="image" alt="apple" class="bn-lazy-img h-[24px] w-[24px] flex-shrink-0" src="{{ asset('assets/images/icons/apple-icon.png') }}" data-src="{{ asset('assets/images/icons/apple-icon.png') }}"/>
                                        </div>
                                     </div>
                                  </div>
@@ -777,7 +777,7 @@
                                     <div class="flex flex-col items-start  mobile:items-center mobile:gap-[24px] noH5:gap-[20px] w-full flex-initial tablet:w-auto tablet:flex-1">
                                        <a href="/en/price/bitcoin" id="top_crypto_table-1-BTC_USDT" class="flex w-full items-center justify-between rounded-xs text-PrimaryText hover:text-t-secondary">
                                           <div class="flex w-[45%] items-center">
-                                             <img role="img" aria-label="image" class="bn-lazy-img h-[28px] w-[28px] shrink-0 rounded-xl mobile:h-[24px] mobile:w-[24px]" src="https://bin.bnbstatic.com/image/admin_mgs_image_upload/20201110/87496d50-2408-43e1-ad4c-78b47b448a6a.png" data-src="https://bin.bnbstatic.com/image/admin_mgs_image_upload/20201110/87496d50-2408-43e1-ad4c-78b47b448a6a.png"/>
+                                             <img role="img" aria-label="image" class="bn-lazy-img h-[28px] w-[28px] shrink-0 rounded-xl mobile:h-[24px] mobile:w-[24px]" src="{{ asset('assets/images/icons/87496d50-2408-43e1-ad4c-78b47b448a6a.png') }}" data-src="{{ asset('assets/images/icons/87496d50-2408-43e1-ad4c-78b47b448a6a.png') }}"/>
                                              <div class="text-subtitle1 ml-2xs mr-4xs">BTC</div>
                                              <div class="overflow-x-hidden text-ellipsis whitespace-nowrap text-body2 text-t-third">Bitcoin</div>
                                           </div>
@@ -790,7 +790,7 @@
                                        </a>
                                        <a href="/en/price/ethereum" id="top_crypto_table-2-ETH_USDT" class="flex w-full items-center justify-between rounded-xs text-PrimaryText hover:text-t-secondary">
                                           <div class="flex w-[45%] items-center">
-                                             <img role="img" aria-label="image" class="bn-lazy-img h-[28px] w-[28px] shrink-0 rounded-xl mobile:h-[24px] mobile:w-[24px]" src="https://bin.bnbstatic.com/image/admin_mgs_image_upload/20201110/3a8c9fe6-2a76-4ace-aa07-415d994de6f0.png" data-src="https://bin.bnbstatic.com/image/admin_mgs_image_upload/20201110/3a8c9fe6-2a76-4ace-aa07-415d994de6f0.png"/>
+                                             <img role="img" aria-label="image" class="bn-lazy-img h-[28px] w-[28px] shrink-0 rounded-xl mobile:h-[24px] mobile:w-[24px]" src="{{ asset('assets/images/icons/3a8c9fe6-2a76-4ace-aa07-415d994de6f0.png') }}" data-src="{{ asset('assets/images/icons/3a8c9fe6-2a76-4ace-aa07-415d994de6f0.png') }}"/>
                                              <div class="text-subtitle1 ml-2xs mr-4xs">ETH</div>
                                              <div class="overflow-x-hidden text-ellipsis whitespace-nowrap text-body2 text-t-third">Ethereum</div>
                                           </div>
@@ -803,7 +803,7 @@
                                        </a>
                                        <a href="/en/price/bnb" id="top_crypto_table-3-BNB_USDT" class="flex w-full items-center justify-between rounded-xs text-PrimaryText hover:text-t-secondary">
                                           <div class="flex w-[45%] items-center">
-                                             <img role="img" aria-label="image" class="bn-lazy-img h-[28px] w-[28px] shrink-0 rounded-xl mobile:h-[24px] mobile:w-[24px]" src="https://bin.bnbstatic.com/image/admin_mgs_image_upload/20220218/94863af2-c980-42cf-a139-7b9f462a36c2.png" data-src="https://bin.bnbstatic.com/image/admin_mgs_image_upload/20220218/94863af2-c980-42cf-a139-7b9f462a36c2.png"/>
+                                             <img role="img" aria-label="image" class="bn-lazy-img h-[28px] w-[28px] shrink-0 rounded-xl mobile:h-[24px] mobile:w-[24px]" src="{{ asset('assets/images/icons/94863af2-c980-42cf-a139-7b9f462a36c2.png') }}" data-src="{{ asset('assets/images/icons/94863af2-c980-42cf-a139-7b9f462a36c2.png') }}"/>
                                              <div class="text-subtitle1 ml-2xs mr-4xs">BNB</div>
                                              <div class="overflow-x-hidden text-ellipsis whitespace-nowrap text-body2 text-t-third">BNB</div>
                                           </div>
@@ -816,7 +816,7 @@
                                        </a>
                                        <a href="/en/price/xrp" id="top_crypto_table-4-XRP_USDT" class="flex w-full items-center justify-between rounded-xs text-PrimaryText hover:text-t-secondary">
                                           <div class="flex w-[45%] items-center">
-                                             <img role="img" aria-label="image" class="bn-lazy-img h-[28px] w-[28px] shrink-0 rounded-xl mobile:h-[24px] mobile:w-[24px]" src="https://bin.bnbstatic.com/image/admin_mgs_image_upload/20201110/4766a9cc-8545-4c2b-bfa4-cad2be91c135.png" data-src="https://bin.bnbstatic.com/image/admin_mgs_image_upload/20201110/4766a9cc-8545-4c2b-bfa4-cad2be91c135.png"/>
+                                             <img role="img" aria-label="image" class="bn-lazy-img h-[28px] w-[28px] shrink-0 rounded-xl mobile:h-[24px] mobile:w-[24px]" src="{{ asset('assets/images/icons/4766a9cc-8545-4c2b-bfa4-cad2be91c135.png') }}" data-src="{{ asset('assets/images/icons/4766a9cc-8545-4c2b-bfa4-cad2be91c135.png') }}"/>
                                              <div class="text-subtitle1 ml-2xs mr-4xs">XRP</div>
                                              <div class="overflow-x-hidden text-ellipsis whitespace-nowrap text-body2 text-t-third">XRP</div>
                                           </div>
@@ -829,7 +829,7 @@
                                        </a>
                                        <a href="/en/price/aster" id="top_crypto_table-5-ASTER_USDT" class="flex w-full items-center justify-between rounded-xs text-PrimaryText hover:text-t-secondary">
                                           <div class="flex w-[45%] items-center">
-                                             <img role="img" aria-label="image" class="bn-lazy-img h-[28px] w-[28px] shrink-0 rounded-xl mobile:h-[24px] mobile:w-[24px]" src="https://bin.bnbstatic.com/image/admin_mgs_image_upload/20251006/5dc769cc-c302-4e3e-a5d4-fe5199f1cb7e.png" data-src="https://bin.bnbstatic.com/image/admin_mgs_image_upload/20251006/5dc769cc-c302-4e3e-a5d4-fe5199f1cb7e.png"/>
+                                             <img role="img" aria-label="image" class="bn-lazy-img h-[28px] w-[28px] shrink-0 rounded-xl mobile:h-[24px] mobile:w-[24px]" src="{{ asset('assets/images/icons/5dc769cc-c302-4e3e-a5d4-fe5199f1cb7e.png') }}" data-src="{{ asset('assets/images/icons/5dc769cc-c302-4e3e-a5d4-fe5199f1cb7e.png') }}"/>
                                              <div class="text-subtitle1 ml-2xs mr-4xs">ASTER</div>
                                              <div class="overflow-x-hidden text-ellipsis whitespace-nowrap text-body2 text-t-third">Aster</div>
                                           </div>
@@ -852,7 +852,7 @@
                                     <div class="flex flex-col items-start  mobile:items-center mobile:gap-[24px] noH5:gap-[20px] w-full flex-initial tablet:w-auto tablet:flex-1">
                                        <a href="/en/trade/MEGA_USDT" id="top_crypto_table-1-MEGA_USDT" class="flex w-full items-center justify-between rounded-xs text-PrimaryText hover:text-t-secondary">
                                           <div class="flex w-[45%] items-center">
-                                             <img role="img" aria-label="image" class="bn-lazy-img h-[28px] w-[28px] shrink-0 rounded-xl mobile:h-[24px] mobile:w-[24px]" src="https://bin.bnbstatic.com/image/admin_mgs_image_upload/20260501/8999daed-281a-4ba8-b291-7dcf9f50b474.jpeg" data-src="https://bin.bnbstatic.com/image/admin_mgs_image_upload/20260501/8999daed-281a-4ba8-b291-7dcf9f50b474.jpeg"/>
+                                             <img role="img" aria-label="image" class="bn-lazy-img h-[28px] w-[28px] shrink-0 rounded-xl mobile:h-[24px] mobile:w-[24px]" src="{{ asset('assets/images/icons/8999daed-281a-4ba8-b291-7dcf9f50b474.jpeg') }}" data-src="{{ asset('assets/images/icons/8999daed-281a-4ba8-b291-7dcf9f50b474.jpeg') }}"/>
                                              <div class="text-subtitle1 ml-2xs mr-4xs">MEGA</div>
                                              <div class="overflow-x-hidden text-ellipsis whitespace-nowrap text-body2 text-t-third">MEGA</div>
                                           </div>
@@ -865,7 +865,7 @@
                                        </a>
                                        <a href="/en/trade/CHIP_USDT" id="top_crypto_table-2-CHIP_USDT" class="flex w-full items-center justify-between rounded-xs text-PrimaryText hover:text-t-secondary">
                                           <div class="flex w-[45%] items-center">
-                                             <img role="img" aria-label="image" class="bn-lazy-img h-[28px] w-[28px] shrink-0 rounded-xl mobile:h-[24px] mobile:w-[24px]" src="https://bin.bnbstatic.com/image/admin_mgs_image_upload/20260421/b94239d6-641e-4dbf-8500-44fcb470a723.png" data-src="https://bin.bnbstatic.com/image/admin_mgs_image_upload/20260421/b94239d6-641e-4dbf-8500-44fcb470a723.png"/>
+                                             <img role="img" aria-label="image" class="bn-lazy-img h-[28px] w-[28px] shrink-0 rounded-xl mobile:h-[24px] mobile:w-[24px]" src="{{ asset('assets/images/icons/b94239d6-641e-4dbf-8500-44fcb470a723.png') }}" data-src="{{ asset('assets/images/icons/b94239d6-641e-4dbf-8500-44fcb470a723.png') }}"/>
                                              <div class="text-subtitle1 ml-2xs mr-4xs">CHIP</div>
                                              <div class="overflow-x-hidden text-ellipsis whitespace-nowrap text-body2 text-t-third">USD.AI</div>
                                           </div>
@@ -878,7 +878,7 @@
                                        </a>
                                        <a href="/en/trade/XAUT_USDT" id="top_crypto_table-3-XAUT_USDT" class="flex w-full items-center justify-between rounded-xs text-PrimaryText hover:text-t-secondary">
                                           <div class="flex w-[45%] items-center">
-                                             <img role="img" aria-label="image" class="bn-lazy-img h-[28px] w-[28px] shrink-0 rounded-xl mobile:h-[24px] mobile:w-[24px]" src="https://bin.bnbstatic.com/image/admin_mgs_image_upload/20260326/95524eaf-76d3-4928-baab-1c87147e7c79.png" data-src="https://bin.bnbstatic.com/image/admin_mgs_image_upload/20260326/95524eaf-76d3-4928-baab-1c87147e7c79.png"/>
+                                             <img role="img" aria-label="image" class="bn-lazy-img h-[28px] w-[28px] shrink-0 rounded-xl mobile:h-[24px] mobile:w-[24px]" src="{{ asset('assets/images/icons/95524eaf-76d3-4928-baab-1c87147e7c79.png') }}" data-src="{{ asset('assets/images/icons/95524eaf-76d3-4928-baab-1c87147e7c79.png') }}"/>
                                              <div class="text-subtitle1 ml-2xs mr-4xs">XAUT</div>
                                              <div class="overflow-x-hidden text-ellipsis whitespace-nowrap text-body2 text-t-third">Tether Gold</div>
                                           </div>
@@ -891,7 +891,7 @@
                                        </a>
                                        <a href="/en/trade/KAT_USDT" id="top_crypto_table-4-KAT_USDT" class="flex w-full items-center justify-between rounded-xs text-PrimaryText hover:text-t-secondary">
                                           <div class="flex w-[45%] items-center">
-                                             <img role="img" aria-label="image" class="bn-lazy-img h-[28px] w-[28px] shrink-0 rounded-xl mobile:h-[24px] mobile:w-[24px]" src="https://bin.bnbstatic.com/image/admin_mgs_image_upload/20260313/9bd0c4fb-83ee-4592-ac4a-b483ed2637fb.png" data-src="https://bin.bnbstatic.com/image/admin_mgs_image_upload/20260313/9bd0c4fb-83ee-4592-ac4a-b483ed2637fb.png"/>
+                                             <img role="img" aria-label="image" class="bn-lazy-img h-[28px] w-[28px] shrink-0 rounded-xl mobile:h-[24px] mobile:w-[24px]" src="{{ asset('assets/images/icons/9bd0c4fb-83ee-4592-ac4a-b483ed2637fb.png') }}" data-src="{{ asset('assets/images/icons/9bd0c4fb-83ee-4592-ac4a-b483ed2637fb.png') }}"/>
                                              <div class="text-subtitle1 ml-2xs mr-4xs">KAT</div>
                                              <div class="overflow-x-hidden text-ellipsis whitespace-nowrap text-body2 text-t-third">Katana</div>
                                           </div>
@@ -904,7 +904,7 @@
                                        </a>
                                        <a href="/en/trade/CFG_USDT" id="top_crypto_table-5-CFG_USDT" class="flex w-full items-center justify-between rounded-xs text-PrimaryText hover:text-t-secondary">
                                           <div class="flex w-[45%] items-center">
-                                             <img role="img" aria-label="image" class="bn-lazy-img h-[28px] w-[28px] shrink-0 rounded-xl mobile:h-[24px] mobile:w-[24px]" src="https://bin.bnbstatic.com/image/admin_mgs_image_upload/20260316/55d8deee-e7bd-4114-b650-d8d66abb894c.png" data-src="https://bin.bnbstatic.com/image/admin_mgs_image_upload/20260316/55d8deee-e7bd-4114-b650-d8d66abb894c.png"/>
+                                             <img role="img" aria-label="image" class="bn-lazy-img h-[28px] w-[28px] shrink-0 rounded-xl mobile:h-[24px] mobile:w-[24px]" src="{{ asset('assets/images/icons/55d8deee-e7bd-4114-b650-d8d66abb894c.png') }}" data-src="{{ asset('assets/images/icons/55d8deee-e7bd-4114-b650-d8d66abb894c.png') }}"/>
                                              <div class="text-subtitle1 ml-2xs mr-4xs">CFG</div>
                                              <div class="overflow-x-hidden text-ellipsis whitespace-nowrap text-body2 text-t-third">Centrifuge</div>
                                           </div>
@@ -929,15 +929,15 @@
                         <div class="mobile:block tablet:hidden desktop:hidden mt-xl">
                            <div class="flex items-center" style="gap:40px">
                               <div class="flex items-center flex-1" style="gap:20px;width:368px">
-                                 <img src="https://bin.bnbstatic.com/image/julia/new-homepage/safu/forbes_dark.png" class="filter flex-shrink-0" style="width:64px;height:64px"/>
+                                 <img src="{{ asset('assets/images/icons/forbes_dark.png') }}" class="filter flex-shrink-0" style="width:64px;height:64px"/>
                                  <div class="t-body3 flex-1 min-w-0 text-SecondaryText">Recognized as Forbes&#x27; Most Trusted Crypto Exchanges 2025</div>
                               </div>
                               <div class="flex items-center flex-1" style="gap:20px;width:368px">
-                                 <img src="https://bin.bnbstatic.com/image/julia/new-homepage/safu/fortune_dark.png" class="filter flex-shrink-0" style="width:64px;height:64px"/>
+                                 <img src="{{ asset('assets/images/icons/fortune_dark.png') }}" class="filter flex-shrink-0" style="width:64px;height:64px"/>
                                  <div class="t-body3 flex-1 min-w-0 text-SecondaryText">Listed #1 in Fortune&#x27;s FinTech Innovators Asia 2024 in Blockchain &amp; Crypto</div>
                               </div>
                               <div class="flex items-center flex-1" style="gap:20px;width:368px">
-                                 <img src="https://bin.bnbstatic.com/image/julia/new-homepage/safu/cnbc_dark.png" class="filter flex-shrink-0" style="width:64px;height:64px"/>
+                                 <img src="{{ asset('assets/images/icons/cnbc_dark.png') }}" class="filter flex-shrink-0" style="width:64px;height:64px"/>
                                  <div class="t-body3 flex-1 min-w-0 text-SecondaryText">Named CNBC&#x27;s World&#x27;s Top Fintech Companies 2025 in Digital Assets</div>
                               </div>
                            </div>
@@ -965,15 +965,15 @@
                   <div class="flex w-full flex-col px-[0px] mobile:hidden tablet:px-xl desktop:flex-row desktop:justify-between" style="margin-top:67px">
                      <div class="flex items-center" style="gap:40px">
                         <div class="flex items-center flex-1" style="gap:20px;width:368px">
-                           <img src="https://bin.bnbstatic.com/image/julia/new-homepage/safu/forbes_dark.png" class="filter flex-shrink-0" style="width:64px;height:64px"/>
+                           <img src="{{ asset('assets/images/icons/forbes_dark.png') }}" class="filter flex-shrink-0" style="width:64px;height:64px"/>
                            <div class="t-body3 flex-1 min-w-0 text-SecondaryText">Recognized as Forbes&#x27; Most Trusted Crypto Exchanges 2025</div>
                         </div>
                         <div class="flex items-center flex-1" style="gap:20px;width:368px">
-                           <img src="https://bin.bnbstatic.com/image/julia/new-homepage/safu/fortune_dark.png" class="filter flex-shrink-0" style="width:64px;height:64px"/>
+                           <img src="{{ asset('assets/images/icons/fortune_dark.png') }}" class="filter flex-shrink-0" style="width:64px;height:64px"/>
                            <div class="t-body3 flex-1 min-w-0 text-SecondaryText">Listed #1 in Fortune&#x27;s FinTech Innovators Asia 2024 in Blockchain &amp; Crypto</div>
                         </div>
                         <div class="flex items-center flex-1" style="gap:20px;width:368px">
-                           <img src="https://bin.bnbstatic.com/image/julia/new-homepage/safu/cnbc_dark.png" class="filter flex-shrink-0" style="width:64px;height:64px"/>
+                           <img src="{{ asset('assets/images/icons/cnbc_dark.png') }}" class="filter flex-shrink-0" style="width:64px;height:64px"/>
                            <div class="t-body3 flex-1 min-w-0 text-SecondaryText">Named CNBC&#x27;s World&#x27;s Top Fintech Companies 2025 in Digital Assets</div>
                         </div>
                      </div>
@@ -1022,26 +1022,26 @@
                         <div class="flex flex-row mobile:flex-col mobile:gap-6 mt-[72px] w-full" style="gap:var(--space-xl)">
                            <div class="flex  justify-center aspect-video flex-1 cursor-pointer hover:opacity-90 transition-opacity duration-200">
                               <picture>
-                                 <source media="only screen and (min-width: 1024px)" srcSet="/bapi/fe/resource/image?image=aHR0cHM6Ly9iaW4uYm5ic3RhdGljLmNvbS9pbWFnZS9qdWxpYS9uZXctaG9tZXBhZ2Uvc2FmdS9odW1hbnMtbHVpcy10aHVtYi5wbmc%3D&amp;w=384&amp;h=216"/>
-                                 <source media="only screen and (min-width: 768px)" srcSet="/bapi/fe/resource/image?image=aHR0cHM6Ly9iaW4uYm5ic3RhdGljLmNvbS9pbWFnZS9qdWxpYS9uZXctaG9tZXBhZ2Uvc2FmdS9odW1hbnMtbHVpcy10aHVtYi5wbmc%3D&amp;w=672&amp;h=341"/>
-                                 <source media="only screen and (max-width: 767px)" srcSet="/bapi/fe/resource/image?image=aHR0cHM6Ly9iaW4uYm5ic3RhdGljLmNvbS9pbWFnZS9qdWxpYS9uZXctaG9tZXBhZ2Uvc2FmdS9odW1hbnMtbHVpcy10aHVtYi5wbmc%3D&amp;w=343&amp;h=173"/>
-                                 <img role="img" aria-label="image" alt="Humans of Binance" class="bn-lazy-img w-full h-full object-cover" src="/bapi/fe/resource/image?image=aHR0cHM6Ly9iaW4uYm5ic3RhdGljLmNvbS9pbWFnZS9qdWxpYS9uZXctaG9tZXBhZ2Uvc2FmdS9odW1hbnMtbHVpcy10aHVtYi5wbmc%3D&amp;w=384&amp;h=216" data-src="/bapi/fe/resource/image?image=aHR0cHM6Ly9iaW4uYm5ic3RhdGljLmNvbS9pbWFnZS9qdWxpYS9uZXctaG9tZXBhZ2Uvc2FmdS9odW1hbnMtbHVpcy10aHVtYi5wbmc%3D&amp;w=384&amp;h=216"/>
+                                 <source media="only screen and (min-width: 1024px)" srcSet="{{ asset('assets/images/videos/thumb/1024/humans-luis-thumb.webp') }}" />
+                                 <source media="only screen and (min-width: 768px)" srcSet="{{ asset('assets/images/videos/thumb/768/humans-luis-thumb.webp') }}" />
+                                 <source media="only screen and (max-width: 767px)" srcSet="{{ asset('assets/images/videos/thumb/767/humans-luis-thumb.webp') }}" />
+                                 <img role="img" aria-label="image" alt="Humans of Binance" class="bn-lazy-img w-full h-full object-cover" src="{{ asset('assets/images/videos/thumb/1024/humans-luis-thumb.webp') }}" data-src="{{ asset('assets/images/videos/thumb/1024/humans-luis-thumb.webp') }}" />
                               </picture>
                            </div>
                            <div class="flex  justify-center aspect-video flex-1 cursor-pointer hover:opacity-90 transition-opacity duration-200">
                               <picture>
-                                 <source media="only screen and (min-width: 1024px)" srcSet="/bapi/fe/resource/image?image=aHR0cHM6Ly9iaW4uYm5ic3RhdGljLmNvbS9pbWFnZS9qdWxpYS9uZXctaG9tZXBhZ2Uvc2FmdS9odW1hbnMtbW9oaXQtdGh1bWIucG5n&amp;w=384&amp;h=216"/>
-                                 <source media="only screen and (min-width: 768px)" srcSet="/bapi/fe/resource/image?image=aHR0cHM6Ly9iaW4uYm5ic3RhdGljLmNvbS9pbWFnZS9qdWxpYS9uZXctaG9tZXBhZ2Uvc2FmdS9odW1hbnMtbW9oaXQtdGh1bWIucG5n&amp;w=672&amp;h=341"/>
-                                 <source media="only screen and (max-width: 767px)" srcSet="/bapi/fe/resource/image?image=aHR0cHM6Ly9iaW4uYm5ic3RhdGljLmNvbS9pbWFnZS9qdWxpYS9uZXctaG9tZXBhZ2Uvc2FmdS9odW1hbnMtbW9oaXQtdGh1bWIucG5n&amp;w=343&amp;h=173"/>
-                                 <img role="img" aria-label="image" alt="Humans of Binance" class="bn-lazy-img w-full h-full object-cover" src="/bapi/fe/resource/image?image=aHR0cHM6Ly9iaW4uYm5ic3RhdGljLmNvbS9pbWFnZS9qdWxpYS9uZXctaG9tZXBhZ2Uvc2FmdS9odW1hbnMtbW9oaXQtdGh1bWIucG5n&amp;w=384&amp;h=216" data-src="/bapi/fe/resource/image?image=aHR0cHM6Ly9iaW4uYm5ic3RhdGljLmNvbS9pbWFnZS9qdWxpYS9uZXctaG9tZXBhZ2Uvc2FmdS9odW1hbnMtbW9oaXQtdGh1bWIucG5n&amp;w=384&amp;h=216"/>
+                                 <source media="only screen and (min-width: 1024px)" srcSet="{{ asset('assets/images/videos/thumb/1024/humans-mohit-thumb.webp') }}" />
+                                 <source media="only screen and (min-width: 768px)" srcSet="{{ asset('assets/images/videos/thumb/768/humans-mohit-thumb.webp') }}" />
+                                 <source media="only screen and (max-width: 767px)" srcSet="{{ asset('assets/images/videos/thumb/767/humans-mohit-thumb.webp') }}" />
+                                 <img role="img" aria-label="image" alt="Humans of Binance" class="bn-lazy-img w-full h-full object-cover" src="{{ asset('assets/images/videos/thumb/1024/humans-mohit-thumb.webp') }}" data-src="{{ asset('assets/images/videos/thumb/1024/humans-mohit-thumb.webp') }}" />
                               </picture>
                            </div>
                            <div class="flex  justify-center aspect-video flex-1 cursor-pointer hover:opacity-90 transition-opacity duration-200">
                               <picture>
-                                 <source media="only screen and (min-width: 1024px)" srcSet="/bapi/fe/resource/image?image=aHR0cHM6Ly9iaW4uYm5ic3RhdGljLmNvbS9pbWFnZS9qdWxpYS9uZXctaG9tZXBhZ2Uvc2FmdS9odW1hbnMtZGVubmlzLWNuLnBuZw%3D%3D&amp;w=384&amp;h=216"/>
-                                 <source media="only screen and (min-width: 768px)" srcSet="/bapi/fe/resource/image?image=aHR0cHM6Ly9iaW4uYm5ic3RhdGljLmNvbS9pbWFnZS9qdWxpYS9uZXctaG9tZXBhZ2Uvc2FmdS9odW1hbnMtZGVubmlzLWNuLnBuZw%3D%3D&amp;w=672&amp;h=341"/>
-                                 <source media="only screen and (max-width: 767px)" srcSet="/bapi/fe/resource/image?image=aHR0cHM6Ly9iaW4uYm5ic3RhdGljLmNvbS9pbWFnZS9qdWxpYS9uZXctaG9tZXBhZ2Uvc2FmdS9odW1hbnMtZGVubmlzLWNuLnBuZw%3D%3D&amp;w=343&amp;h=173"/>
-                                 <img role="img" aria-label="image" alt="Humans of Binance" class="bn-lazy-img w-full h-full object-cover" src="/bapi/fe/resource/image?image=aHR0cHM6Ly9iaW4uYm5ic3RhdGljLmNvbS9pbWFnZS9qdWxpYS9uZXctaG9tZXBhZ2Uvc2FmdS9odW1hbnMtZGVubmlzLWNuLnBuZw%3D%3D&amp;w=384&amp;h=216" data-src="/bapi/fe/resource/image?image=aHR0cHM6Ly9iaW4uYm5ic3RhdGljLmNvbS9pbWFnZS9qdWxpYS9uZXctaG9tZXBhZ2Uvc2FmdS9odW1hbnMtZGVubmlzLWNuLnBuZw%3D%3D&amp;w=384&amp;h=216"/>
+                                 <source media="only screen and (min-width: 1024px)" srcSet="{{ asset('assets/images/videos/thumb/1024/humans-dennis-cn.webp') }}" />
+                                 <source media="only screen and (min-width: 768px)" srcSet="{{ asset('assets/images/videos/thumb/768/humans-dennis-cn.webp') }}" />
+                                 <source media="only screen and (max-width: 767px)" srcSet="{{ asset('assets/images/videos/thumb/767/humans-dennis-cn.webp') }}" />
+                                 <img role="img" aria-label="image" alt="Humans of Binance" class="bn-lazy-img w-full h-full object-cover" src="{{ asset('assets/images/videos/thumb/1024/humans-dennis-cn.webp') }}" data-src="{{ asset('assets/images/videos/thumb/1024/humans-dennis-cn.webp') }}" />
                               </picture>
                            </div>
                         </div>
@@ -1059,7 +1059,7 @@
                            <div role="tab" aria-selected="true" id="bn-tab-1" aria-controls="bn-tab-pane-1" tabindex="0" class="bn-tab bn-tab__default-breakline active">Lite</div>
                            <div role="tab" aria-selected="false" id="bn-tab-2" aria-controls="bn-tab-pane-2" tabindex="-1" class="bn-tab bn-tab__default-breakline">Pro</div>
                         </div>
-                        <div class="h-[538px] mobile:h-[496px] tablet:h-[384px]"><img alt="download-v4-tab-lite" class="h-full w-full object-contain" src="https://bin.bnbstatic.com/image/julia/new-homepage/download-lite-dark-en.png"/>
+                        <div class="h-[538px] mobile:h-[496px] tablet:h-[384px]"><img alt="download-v4-tab-lite" class="h-full w-full object-contain" src="{{ asset('assets/images/icons/download-lite-dark-en.png') }}"/>
                         </div>
                         <div role="tablist" aria-orientation="horizontal" class="bn-tab-list bn-tab-list__default-breakline download-tabs w-auto tablet:mt-xl mobile:hidden">
                            <div role="tab" aria-selected="false" id="bn-tab-0" aria-controls="bn-tab-pane-0" tabindex="-1" class="bn-tab bn-tab__default-breakline">Desktop</div>
@@ -1071,13 +1071,13 @@
                         <div class="flex items-start justify-between mobile:flex-col mobile:items-center tablet:flex-col">
                            <h2 class="text-headline2 text-PrimaryText mobile:text-center mobile:text-headline5 tablet:text-headline4">Trade on the go. Anywhere, anytime.</h2>
                         </div>
-                        <div class="hidden justify-center gap-xl mobile:flex"><a class="h-[40px] w-[135px] items-center rounded-xs bg-contain py-2xs pl-2xs" style="background-image:url(&#x27;https://bin.bnbstatic.com/image/julia/new-homepage/download-btn/en-apple.png&#x27;)" href=""></a><a class="h-[40px] w-[135px] items-center rounded-xs bg-contain py-2xs pl-2xs" style="background-image:url(&#x27;https://bin.bnbstatic.com/image/julia/new-homepage/download-btn/en-google.png&#x27;)" href=""></a></div>
+                        <div class="hidden justify-center gap-xl mobile:flex"><a class="h-[40px] w-[135px] items-center rounded-xs bg-contain py-2xs pl-2xs" style="background-image:url({{ asset('assets/images/icons/en-apple.png') }})" href=""></a><a class="h-[40px] w-[135px] items-center rounded-xs bg-contain py-2xs pl-2xs" style="background-image:url({{ asset('assets/images/icons/en-google.png') }})" href=""></a></div>
                         <div class="download-pc flex flex-col gap-5xl mobile:hidden mobile:gap-xl tablet:gap-xl">
                            <div class="mt-[0px] flex items-center mobile:mt-4xl">
                               <div class="items-center rounded-[24px] border border-solid p-l border-[#2B3139] mobile:rounded-xl mobile:p-m tablet:p-m">
                                  <div class="bg-white rounded-[8px] p-xs">
                                     <div class="relative flex items-center justify-center" style="width:156px;height:156px;border-radius:4px;bg:#FFFFFF">
-                                       <div class="absolute left-1/2 top-1/2 rounded-xs" style="width:26px;height:26px;border:3px solid #FFFFFF;transform:translate(-50%,-50%);background-size:85%;background-position:center;background-repeat:no-repeat;background-image:url(&#x27;https://bin.bnbstatic.com/static/images/common/logo.png&#x27;);background-color:#000000"></div>
+                                       <div class="absolute left-1/2 top-1/2 rounded-xs" style="width:26px;height:26px;border:3px solid #FFFFFF;transform:translate(-50%,-50%);background-size:85%;background-position:center;background-repeat:no-repeat;background-image:url({{ asset('assets/images/icons/logo.png') }});background-color:#000000"></div>
                                     </div>
                                  </div>
                               </div>
@@ -16824,7 +16824,7 @@
                     "fullName": "MEGA",
                     "localFullName": "MEGA",
                     "cmcUniqueId": 38770,
-                    "logo": "https://bin.bnbstatic.com/image/admin_mgs_image_upload/20260501/8999daed-281a-4ba8-b291-7dcf9f50b474.jpeg",
+                    "logo": "{{ asset('assets/images/icons/8999daed-281a-4ba8-b291-7dcf9f50b474.jpeg",
                     "symbol": "MEGAUSDT",
                     "circulatingSupply": 1129792788,
                     "maxSupply": 10000000000,
@@ -16893,7 +16893,7 @@
                     "fullName": "USD.AI",
                     "localFullName": "USD.AI",
                     "cmcUniqueId": 39870,
-                    "logo": "https://bin.bnbstatic.com/image/admin_mgs_image_upload/20260421/b94239d6-641e-4dbf-8500-44fcb470a723.png",
+                    "logo": "{{ asset('assets/images/icons/b94239d6-641e-4dbf-8500-44fcb470a723.png",
                     "symbol": "CHIPUSDT",
                     "circulatingSupply": 1999999998,
                     "maxSupply": 10000000000,
@@ -16962,7 +16962,7 @@
                     "fullName": "Tether Gold",
                     "localFullName": "Tether Gold",
                     "cmcUniqueId": 5176,
-                    "logo": "https://bin.bnbstatic.com/image/admin_mgs_image_upload/20260326/95524eaf-76d3-4928-baab-1c87147e7c79.png",
+                    "logo": "{{ asset('assets/images/icons/95524eaf-76d3-4928-baab-1c87147e7c79.png')}}",
                     "symbol": "XAUTUSDT",
                     "circulatingSupply": 592398,
                     "maxSupply": null,
@@ -17025,7 +17025,7 @@
                     "fullName": "Katana",
                     "localFullName": "Katana",
                     "cmcUniqueId": 38769,
-                    "logo": "https://bin.bnbstatic.com/image/admin_mgs_image_upload/20260313/9bd0c4fb-83ee-4592-ac4a-b483ed2637fb.png",
+                    "logo": "{{ asset('assets/images/icons/9bd0c4fb-83ee-4592-ac4a-b483ed2637fb.png",
                     "symbol": "KATUSDT",
                     "circulatingSupply": 2531534866,
                     "maxSupply": 10000000000,
@@ -17097,7 +17097,7 @@
                     "fullName": "Centrifuge",
                     "localFullName": "Centrifuge",
                     "cmcUniqueId": 6748,
-                    "logo": "https://bin.bnbstatic.com/image/admin_mgs_image_upload/20260316/55d8deee-e7bd-4114-b650-d8d66abb894c.png",
+                    "logo": "{{ asset('assets/images/icons/55d8deee-e7bd-4114-b650-d8d66abb894c.png",
                     "symbol": "CFGUSDT",
                     "circulatingSupply": 378045294,
                     "maxSupply": null,
@@ -17166,7 +17166,7 @@
                     "fullName": "Midnight",
                     "localFullName": "Midnight",
                     "cmcUniqueId": 39064,
-                    "logo": "https://bin.bnbstatic.com/image/admin_mgs_image_upload/20260128/4da4d8b7-2cd2-42f0-a130-098d6f520d57.png",
+                    "logo": "{{ asset('assets/images/icons/4da4d8b7-2cd2-42f0-a130-098d6f520d57.png') }}",
                     "symbol": "NIGHTUSDT",
                     "circulatingSupply": 16607399401,
                     "maxSupply": 24000000000,
@@ -17235,7 +17235,7 @@
                     "fullName": "OPINION",
                     "localFullName": "OPINION",
                     "cmcUniqueId": 39564,
-                    "logo": "https://bin.bnbstatic.com/image/admin_mgs_image_upload/20260302/6f8c2bfb-9a6a-4323-a5ba-6101399dfba7.png",
+                    "logo": "{{ asset('assets/images/icons/6f8c2bfb-9a6a-4323-a5ba-6101399dfba7.png') }}",
                     "symbol": "OPNUSDT",
                     "circulatingSupply": 279346666,
                     "maxSupply": 1000000000,
@@ -17304,7 +17304,7 @@
                     "fullName": "Fabric Protocol",
                     "localFullName": "Fabric Protocol",
                     "cmcUniqueId": 39595,
-                    "logo": "https://bin.bnbstatic.com/image/admin_mgs_image_upload/20260304/18bfbdc8-a249-40dd-a351-4feba0700651.png",
+                    "logo": "{{ asset('assets/images/icons/18bfbdc8-a249-40dd-a351-4feba0700651.png') }}",
                     "symbol": "ROBOUSDT",
                     "circulatingSupply": 2402230769,
                     "maxSupply": 10000000000,
@@ -17370,7 +17370,7 @@
                     "fullName": "Espresso",
                     "localFullName": "Espresso",
                     "cmcUniqueId": 39548,
-                    "logo": "https://bin.bnbstatic.com/image/admin_mgs_image_upload/20260212/5cba848a-d675-450d-9a91-6e29ee45cd1b.png",
+                    "logo": "{{ asset('assets/images/icons/5cba848a-d675-450d-9a91-6e29ee45cd1b.png') }}",
                     "symbol": "ESPUSDT",
                     "circulatingSupply": 560810119,
                     "maxSupply": null,
@@ -17436,7 +17436,7 @@
                     "fullName": "ZAMA",
                     "localFullName": "ZAMA",
                     "cmcUniqueId": 39332,
-                    "logo": "https://bin.bnbstatic.com/image/admin_mgs_image_upload/20260202/bc97b1cd-bd31-4980-a9a3-9a34349b63b7.png",
+                    "logo": "{{ asset('assets/images/icons/20260202/bc97b1cd-bd31-4980-a9a3-9a34349b63b7.png') }}",
                     "symbol": "ZAMAUSDT",
                     "circulatingSupply": 2240050045,
                     "maxSupply": null,
