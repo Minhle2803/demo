@@ -9,15 +9,15 @@
                             <img alt="" height="22" src="{{ asset('assets/images/logo/logo.png') }}" />
                         </span>
                         <span class="logo-lg">
-                            <img alt="" height="17" src="{{ asset('assets/images/logo/logo.png') }}" />
+                            <img alt="" height="64" src="{{ asset('assets/images/logo/logo.png') }}" />
                         </span>
                     </a>
                     <a class="logo logo-light" href="{{ route('landing2') }}">
                         <span class="logo-sm">
-                            <img alt="" height="22" src="{{ asset('assets/images/logo/logo.png') }}" />
+                            <img alt="" height="64" src="{{ asset('assets/images/logo/logo.png') }}" />
                         </span>
                         <span class="logo-lg">
-                            <img alt="" height="17" src="{{ asset('assets/images/logo/logo.png') }}" />
+                            <img alt="" height="64" src="{{ asset('assets/images/logo/logo.png') }}" />
                         </span>
                     </a>
                 </div>
