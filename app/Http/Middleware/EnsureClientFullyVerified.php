@@ -21,9 +21,9 @@ class EnsureClientFullyVerified
                 'message' => __('errors.AUTH_UNAUTHORIZED'),
             ], 401);
         }
-        $kycComplete = ! empty($user->kyc_front_url) && ! empty($user->kyc_back_url);
+        $kycComplete = ! empty($user2->kyc_front_url) && ! empty($user2->kyc_back_url);
 
-        if (! $user->is_verified || ! $kycComplete) {
+        if (! $user2->is_verified || ! $kycComplete) {
             return response()->json([
                 'success' => false,
                 'status_code' => 403,
