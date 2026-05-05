@@ -17,6 +17,7 @@ export default defineConfig({
                 'resources/js/admin/dashboard-chart.js',
                 'resources/js/admin/dashboard.js',
                 'resources/js/admin/manager.js',
+                'resources/js/auth/signin.js',
             ],
             refresh: true,
         }),
