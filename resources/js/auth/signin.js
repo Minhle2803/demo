@@ -1,3 +1,11 @@
+function getCsrfToken() {
+    return document.querySelector('meta[name="csrf-token"]')?.content ?? '';
+}
+
+function getAuthToken() {
+    return localStorage.getItem('token');
+}
+
 const form = document.querySelector('#loginForm');
 
 form.addEventListener('submit', async (e) => {
@@ -15,6 +23,7 @@ form.addEventListener('submit', async (e) => {
       headers: {
         'Content-Type': 'application/json',
         'Accept': 'application/json',
+        'X-CSRF-TOKEN': getCsrfToken(),
       },
       body: JSON.stringify(payload),
     });
