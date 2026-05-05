@@ -56,8 +56,8 @@ return [
     'auth' => [
         'welcome_back' => 'Chào mừng trở lại!',
         'sign_in_continue' => 'Đăng nhập để tiếp tục với Binance.',
-        'email_or_phone' => 'Email hoặc Số điện thoại',
-        'enter_email_or_phone' => 'Nhập email hoặc số điện thoại',
+        'email_or_phone' => 'Tài khoản',
+        'enter_email_or_phone' => 'Nhập tài khoản',
         'password' => 'Mật khẩu',
         'enter_password' => 'Nhập mật khẩu',
         'forgot_password' => 'Quên mật khẩu?',

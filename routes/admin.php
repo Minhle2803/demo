@@ -10,7 +10,7 @@ use App\Http\Controllers\Admin\AdminWithdrawController;
 use Illuminate\Support\Facades\Route;
 
 Route::name('admin.')->group(function () {
-    Route::get('/admin/signin', [AdminAuthController::class, 'showLoginForm'])->name('signin');
+    Route::get('/admin/signin', [AdminAuthController::class, 'showLoginForm'])->name('login');
     Route::post('/admin/login', [AdminAuthController::class, 'login'])->name('login');
     Route::post('/admin/logout', [AdminAuthController::class, 'logout'])->name('logout');
 

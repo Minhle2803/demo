@@ -56,8 +56,8 @@ return [
     'auth' => [
         'welcome_back' => 'Welcome Back!',
         'sign_in_continue' => 'Sign in to continue to Binance.',
-        'email_or_phone' => 'Email or Phone Number',
-        'enter_email_or_phone' => 'Enter email or phone number',
+        'email_or_phone' => 'Username',
+        'enter_email_or_phone' => 'Enter username',
         'password' => 'Password',
         'enter_password' => 'Enter password',
         'forgot_password' => 'Forgot password?',
