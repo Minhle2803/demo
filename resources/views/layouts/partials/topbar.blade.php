@@ -4,20 +4,20 @@
             <div class="d-flex">
                 <!-- LOGO -->
                 <div class="navbar-brand-box horizontal-logo">
-                    <a class="logo logo-dark" href="{{ route('dashboard') }}">
+                    <a class="logo logo-dark" href="{{ route('landing2') }}">
                         <span class="logo-sm">
-                            <img alt="" height="22" src="{{ asset('assets/images/logo-sm.png') }}" />
+                            <img alt="" height="22" src="{{ asset('assets/images/logo/logo.png') }}" />
                         </span>
                         <span class="logo-lg">
-                            <img alt="" height="17" src="{{ asset('assets/images/logo-dark.png') }}" />
+                            <img alt="" height="17" src="{{ asset('assets/images/logo/logo.png') }}" />
                         </span>
                     </a>
-                    <a class="logo logo-light" href="{{ route('dashboard') }}">
+                    <a class="logo logo-light" href="{{ route('landing2') }}">
                         <span class="logo-sm">
-                            <img alt="" height="22" src="{{ asset('assets/images/logo-sm.png') }}" />
+                            <img alt="" height="22" src="{{ asset('assets/images/logo/logo.png') }}" />
                         </span>
                         <span class="logo-lg">
-                            <img alt="" height="17" src="{{ asset('assets/images/logo-light.png') }}" />
+                            <img alt="" height="17" src="{{ asset('assets/images/logo/logo.png') }}" />
                         </span>
                     </a>
                 </div>
@@ -42,8 +42,8 @@
                                 <h6 class="text-overflow text-muted mb-0 text-uppercase">Recent Searches</h6>
                             </div>
                             <div class="dropdown-item bg-transparent text-wrap">
-                                <a class="btn btn-soft-secondary btn-sm rounded-pill" href="{{ route('dashboard') }}">how to setup <i class="mdi mdi-magnify ms-1"></i></a>
-                                <a class="btn btn-soft-secondary btn-sm rounded-pill" href="{{ route('dashboard') }}">buttons <i class="mdi mdi-magnify ms-1"></i></a>
+                                <a class="btn btn-soft-secondary btn-sm rounded-pill" href="{{ route('landing2') }}">how to setup <i class="mdi mdi-magnify ms-1"></i></a>
+                                <a class="btn btn-soft-secondary btn-sm rounded-pill" href="{{ route('landing2') }}">buttons <i class="mdi mdi-magnify ms-1"></i></a>
                             </div>
                             <!-- item-->
                             <div class="dropdown-header mt-2">
