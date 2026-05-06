@@ -141,6 +141,11 @@ class TradingSessionController extends Controller
     public function latest(Request $request)
     {
         $lastId = $request->get('last_id', 0);
+        $userId = -1;
+        $user = $request->user();
+        if (! $user) {
+            $userId = $user->id;
+        }
 
         $trades = Trade::query()
             ->join('trading_sessions', 'trades.session_id', '=', 'trading_sessions.id')
@@ -158,6 +163,7 @@ class TradingSessionController extends Controller
                 'trading_sessions.close_price as session_close_price',
             ])
             ->where('trades.id', '>=', $lastId)
+            ->where('trades.user_id', $userId)
             ->orderByDesc('trades.session_id')
             ->orderByDesc('trades.id')
             ->limit(20)

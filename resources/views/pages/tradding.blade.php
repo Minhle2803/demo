@@ -24,6 +24,7 @@
 <!-- end page title -->
 
 <div class="row">
+    @if(1 > 2)
     <div class="col-xxl-3">
         <div class="card card-height-100">
             <div class="card-header align-items-center d-flex">
@@ -35,8 +36,8 @@
             </div><!-- end card body -->
         </div><!-- end card -->
     </div><!-- end col -->
-
-    <div class="col-xxl-6">
+    @endif
+    <div class="col-xxl-9">
         <div class="card card-height-100">
             <div class="card-header border-0 align-items-center d-flex">
                 <h4 class="card-title mb-0 flex-grow-1" >{{ __('messages.trading.market_graph') }}</h4>
@@ -276,6 +277,38 @@
     <!--end card-body-->
 </div>
 <!--end card-->
+<!-- Trade Confirmation Modal -->
+<div class="modal fade" id="tradeConfirmModal" tabindex="-1" aria-labelledby="tradeConfirmModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="tradeConfirmModalLabel">{{ __('messages.trading.confirm_order') }}</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body text-center">
+                <div class="mb-3">
+                    <h4 id="confirm-type" class="fw-bold"></h4>
+                </div>
+                <div class="mb-3">
+                    <p class="text-muted mb-1">{{ __('messages.trading.symbol') }}</p>
+                    <h5 id="confirm-symbol"></h5>
+                </div>
+                <div class="mb-3">
+                    <p class="text-muted mb-1">{{ __('messages.trading.price') }}</p>
+                    <h5 id="confirm-price"></h5>
+                </div>
+                <div class="mb-3">
+                    <p class="text-muted mb-1">{{ __('messages.trading.amount') }}</p>
+                    <h5 id="confirm-amount"></h5>
+                </div>
+            </div>
+            <div class="modal-footer justify-content-center">
+                <button type="button" class="btn btn-light" data-bs-dismiss="modal">{{ __('messages.common.cancel') }}</button>
+                <button type="button" class="btn btn-success" id="confirmTradeBtn">{{ __('messages.common.confirm') }}</button>
+            </div>
+        </div>
+    </div>
+</div>
 @endsection
 @push('scripts')
 

@@ -139,7 +139,7 @@
                     </div>
                 </div>
                 @auth('client')
-                <div class="dropdown topbar-head-dropdown ms-1 header-item" id="notificationDropdown">
+                <!-- <div class="dropdown topbar-head-dropdown ms-1 header-item" id="notificationDropdown">
                     <button aria-expanded="false" aria-haspopup="true" class="btn btn-icon btn-topbar material-shadow-none btn-ghost-secondary rounded-circle" data-bs-auto-close="outside" data-bs-toggle="dropdown" id="page-header-notifications-dropdown" type="button">
                         <i class="bx bx-bell fs-22"></i>
                         <span class="position-absolute topbar-badge fs-10 translate-middle badge rounded-pill bg-danger">3<span class="visually-hidden">unread messages</span></span>
@@ -386,7 +386,7 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> -->
                 <div class="dropdown ms-sm-3 header-item topbar-user">
                     <button aria-expanded="false" aria-haspopup="true" class="btn material-shadow-none" data-bs-toggle="dropdown" id="page-header-user-dropdown" type="button">
                         <span class="d-flex align-items-center">
@@ -400,15 +400,18 @@
                         <!-- item-->
                         <h6 class="dropdown-header">{{ __('messages.auth.welcome_user', ['name' => Auth::guard('client')->user()->nickname]) }}</h6>
                         <a class="dropdown-item" href="{{ route('client.profile.show') }}"><i class="mdi mdi-account-circle text-muted fs-16 align-middle me-1"></i> <span class="align-middle">{{ __('messages.common.profile') }}</span></a>
-                        <a class="dropdown-item" href="apps-chat.html"><i class="mdi mdi-message-text-outline text-muted fs-16 align-middle me-1"></i> <span class="align-middle">{{ __('messages.common.messages') }}</span></a>
-                        <a class="dropdown-item" href="pages-faqs.html"><i class="mdi mdi-lifebuoy text-muted fs-16 align-middle me-1"></i> <span class="align-middle">{{ __('messages.common.help') }}</span></a>
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item" href="{{ route('client.profile.show') }}"><i class="mdi mdi-wallet text-muted fs-16 align-middle me-1"></i> <span class="align-middle">{{ __('messages.common.balance') }} : <b>{{ Auth::guard('client')->user()->balance }}</b></span></a>
-                        <a class="dropdown-item" href="auth-lockscreen-basic.html"><i class="mdi mdi-lock text-muted fs-16 align-middle me-1"></i> <span class="align-middle">{{ __('messages.auth.lock_screen') }}</span></a>
-                        <a class="dropdown-item" href="auth-logout-basic.html"><i class="mdi mdi-logout text-muted fs-16 align-middle me-1"></i> <span class="align-middle">{{ __('messages.common.logout') }}</span></a>
+                        <a class="dropdown-item" href="{{ route('client.logout') }}"><i class="mdi mdi-logout text-muted fs-16 align-middle me-1"></i> <span class="align-middle">{{ __('messages.common.logout') }}</span></a>
                     </div>
                 </div>
                 @endauth
+                @guest('client')
+                <div class="dropdown ms-sm-3 ">
+                    <a href="{{ route('signin') }}" style="border-color: white; color: white;" class="btn btn-light waves-effect me-1 rounded-1">{{ __('messages.auth.sign_in') }}</a>
+                    <a href="{{ route('signup') }}" class="btn btn-warning waves-effect waves-light">{{ __('messages.auth.sign_up') }}</a>
+                </div>
+                @endguest
             </div>
         </div>
     </div>

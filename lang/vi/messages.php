@@ -54,6 +54,7 @@ return [
     ],
 
     'auth' => [
+        'sign_up' => 'Đăng ký',
         'welcome_back' => 'Chào mừng trở lại!',
         'sign_in_continue' => 'Đăng nhập để tiếp tục với Binance.',
         'email_or_phone' => 'Tài khoản',
@@ -234,6 +235,8 @@ return [
         'sell' => 'Bán',
         'win' => 'Thắng',
         'lose' => 'Thua',
+        'confirm_order' => 'Xác nhận lệnh',
+        'price' => 'Giá',
         'market_graph' => 'Biểu đồ thị trường',
         'high' => 'Cao',
         'low' => 'Thấp',

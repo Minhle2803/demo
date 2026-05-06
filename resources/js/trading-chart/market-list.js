@@ -18,20 +18,20 @@ export function stopMarketList() {
 }
 
 async function fetchMarketList({ apiBase, interval = '1m', range = '1H' }) {
-    const url = new URL(`${apiBase}/market-list`, window.location.origin)
+    // const url = new URL(`${apiBase}/market-list`, window.location.origin)
 
-    url.searchParams.set('interval', interval)
-    url.searchParams.set('range', range)
+    // url.searchParams.set('interval', interval)
+    // url.searchParams.set('range', range)
 
-    const res = await fetch(url, {
-        headers: { Accept: 'application/json' },
-    })
+    // const res = await fetch(url, {
+    //     headers: { Accept: 'application/json' },
+    // })
 
-    const json = await res.json()
+    // const json = await res.json()
 
-    if (!json.success) return
+    // if (!json.success) return
 
-    renderMarketList(json.data)
+    // renderMarketList(json.data)
 }
 
 function renderMarketList(items) {

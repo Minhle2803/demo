@@ -3,6 +3,7 @@
 use App\Console\Commands\SeedTradingChartCandles;
 use App\Console\Commands\TradingChartWorker;
 use App\Http\Middleware\AdminMiddleware;
+use App\Http\Middleware\RedirectIfAuthenticated;
 use App\Http\Middleware\SetLocale;
 use Illuminate\Auth\AuthenticationException;
 use Illuminate\Foundation\Application;
@@ -44,6 +45,7 @@ return Application::configure(basePath: dirname(__DIR__))
     ->withMiddleware(function (Middleware $middleware): void {
         $middleware->alias([
             'admin' => AdminMiddleware::class,
+            'guest' => RedirectIfAuthenticated::class,
         ]);
 
         $middleware->api(prepend: [

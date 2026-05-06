@@ -50,7 +50,7 @@ Route::prefix('client')->name('client.')->group(function () {
     Route::middleware(['auth:client'])->group(function () {
 
         // Logout
-        Route::post('/logout', ClientLogoutController::class)
+        Route::get('/logout', ClientLogoutController::class)
             ->name('logout');
 
         // Email verification

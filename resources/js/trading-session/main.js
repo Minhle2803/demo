@@ -6,6 +6,7 @@ import { validateAmount } from './validation.js';
 import { updateTrades, initTradesTable  } from './service.js';
 
 let echo = null;
+let pendingTrade = null;
 
 async function init() {
     await loadSession();
@@ -13,6 +14,7 @@ async function init() {
     updateTrades();
     bindButtons();
     initReverb();
+    initConfirmModal();
 }
 
 async function loadSession() {
@@ -82,6 +84,47 @@ function bindButtons() {
     document.getElementById('sellBtn')?.addEventListener('click', () => handleTrade('sell'));
 }
 
+function initConfirmModal() {
+    const modal = document.getElementById('tradeConfirmModal');
+    if (!modal) return;
+
+    document.getElementById('confirmTradeBtn')?.addEventListener('click', () => {
+        const bsModal = bootstrap.Modal.getInstance(modal);
+        bsModal?.hide();
+        if (pendingTrade) {
+            executeTrade(pendingTrade.type, pendingTrade.amount);
+        }
+    });
+
+    modal.addEventListener('hidden.bs.modal', () => {
+        if (pendingTrade) {
+            const now    = getServerNow();
+            const lockAt = state.session ? new Date(state.session.lock_time).getTime() : 0;
+            if (now < lockAt) enableTrading();
+            pendingTrade = null;
+        }
+    });
+}
+
+function showTradeConfirm(type, amount) {
+    const priceEl = document.getElementById('market-price');
+    const symbolEl = document.getElementById('market-symbol');
+    const amountSelect = document.getElementById('trade-amount');
+
+    const price = priceEl?.textContent ?? '—';
+    const symbol = symbolEl?.textContent ?? '—';
+    const amountLabel = amountSelect?.selectedOptions?.[0]?.textContent ?? amount;
+
+    document.getElementById('confirm-type').textContent = type === 'buy' ? 'BUY' : 'SELL';
+    document.getElementById('confirm-type').className = type === 'buy' ? 'text-success fw-bold' : 'text-danger fw-bold';
+    document.getElementById('confirm-symbol').textContent = symbol;
+    document.getElementById('confirm-price').textContent = price;
+    document.getElementById('confirm-amount').textContent = amountLabel;
+
+    const modal = new bootstrap.Modal(document.getElementById('tradeConfirmModal'));
+    modal.show();
+}
+
 async function handleTrade(type) {
     if (state.tradePlaced) return;
 
@@ -93,6 +136,11 @@ async function handleTrade(type) {
         return;
     }
 
+    pendingTrade = { type, amount };
+    showTradeConfirm(type, amount);
+}
+
+async function executeTrade(type, amount) {
     disableTrading();
 
     const res = type === 'buy' ? await placeBuy(amount) : await placeSell(amount);
@@ -103,13 +151,12 @@ async function handleTrade(type) {
         return;
     }
 
-     // Handle specific error codes
+    // Handle specific error codes
     if (res.code === 'AUTH_UNAUTHORIZED') {
         window.location.href = '/signin';
         return;
     }
 
-    // Handle specific error codes
     if (res.code === 'USER_NOT_FULLY_VERIFIED') {
         if (confirm(res.message)) {
             window.location.href = '/profile';

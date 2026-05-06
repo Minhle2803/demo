@@ -54,6 +54,7 @@ return [
     ],
 
     'auth' => [
+        'sign_up' => 'Sign Up',
         'welcome_back' => 'Welcome Back!',
         'sign_in_continue' => 'Sign in to continue to Binance.',
         'email_or_phone' => 'Username',
@@ -234,10 +235,12 @@ return [
         'sell' => 'Sell',
         'win' => 'Win',
         'lose' => 'Lose',
+        'confirm_order' => 'Confirm Order',
         'market_graph' => 'Market Graph',
         'high' => 'High',
         'low' => 'Low',
         'market_volume' => 'Market Volume',
+        'price' => 'Price',
     ],
 
     'profile' => [
