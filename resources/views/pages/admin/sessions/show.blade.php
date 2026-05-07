@@ -20,7 +20,7 @@
 
 <div class="row">
     <div class="col-lg-6">
-        <div class="card">
+        <div class="card" data-session-detail>
             <div class="card-header">
                 <h5 class="card-title mb-0">Session Details</h5>
             </div>
@@ -36,7 +36,7 @@
                     </tr>
                     <tr>
                         <th class="text-muted">Status</th>
-                        <td>
+                        <td data-field="status">
                             @if ($session->status === 'future')
                                 <span class="badge bg-info-subtle text-info">Future</span>
                             @elseif ($session->status === 'open')
@@ -66,7 +66,23 @@
                     </tr>
                     <tr>
                         <th class="text-muted">Close Price</th>
-                        <td>{{ $session->close_price ? number_format((float) $session->close_price, 8) : '—' }}</td>
+                        <td data-field="close_price">{{ $session->close_price ? number_format((float) $session->close_price, 8) : '—' }}</td>
+                    </tr>
+                    <tr>
+                        <th class="text-muted">Kết quả</th>
+                        <td data-field="result">
+                            @if ($session->close_price && $session->open_price)
+                                @if ((float) $session->close_price > (float) $session->open_price)
+                                    <span class="text-success fw-bold">Mua</span>
+                                @elseif ((float) $session->close_price < (float) $session->open_price)
+                                    <span class="text-danger fw-bold">Bán</span>
+                                @else
+                                    —
+                                @endif
+                            @else
+                                —
+                            @endif
+                        </td>
                     </tr>
                     <tr>
                         <th class="text-muted">Candle Timestamp (ms)</th>
@@ -106,3 +122,7 @@
     </div>
 </div>
 @endsection
+
+@push('scripts')
+    @vite(['resources/js/admin/session-realtime.js'])
+@endpush

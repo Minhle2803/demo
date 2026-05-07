@@ -66,12 +66,13 @@
                                 <th>End Time</th>
                                 <th>Open Price</th>
                                 <th>Close Price</th>
+                                <th>Kết quả</th>
                                 <th></th>
                             </tr>
                         </thead>
                         <tbody>
                             @forelse ($sessions as $session)
-                                <tr>
+                                <tr data-session-id="{{ $session->id }}">
                                     <td>{{ $session->id }}</td>
                                     <td>{{ $session->symbol }}</td>
                                     <td>{{ $session->interval }}</td>
@@ -92,13 +93,26 @@
                                     <td>{{ $session->open_price ? number_format((float) $session->open_price, 8) : '—' }}</td>
                                     <td>{{ $session->close_price ? number_format((float) $session->close_price, 8) : '—' }}</td>
                                     <td>
+                                        @if ($session->close_price && $session->open_price)
+                                            @if ((float) $session->close_price > (float) $session->open_price)
+                                                <span class="text-success fw-bold">Mua</span>
+                                            @elseif ((float) $session->close_price < (float) $session->open_price)
+                                                <span class="text-danger fw-bold">Bán</span>
+                                            @else
+                                                —
+                                            @endif
+                                        @else
+                                            —
+                                        @endif
+                                    </td>
+                                    <td>
                                         <a href="{{ route('admin.sessions.show', $session->id) }}" class="btn btn-sm btn-soft-info">
                                             <i class="ri-eye-line align-bottom"></i>
                                         </a>
                                     </td>
                                 </tr>
                             @empty
-                                <tr><td colspan="10" class="text-center text-muted py-3">No sessions found. The workers will generate sessions automatically.</td></tr>
+                                <tr><td colspan="11" class="text-center text-muted py-3">No sessions found. The workers will generate sessions automatically.</td></tr>
                             @endforelse
                         </tbody>
                     </table>
@@ -111,3 +125,7 @@
     </div>
 </div>
 @endsection
+
+@push('scripts')
+    @vite(['resources/js/admin/session-realtime.js'])
+@endpush

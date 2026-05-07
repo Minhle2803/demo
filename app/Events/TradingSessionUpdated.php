@@ -28,6 +28,8 @@ class TradingSessionUpdated implements ShouldBroadcastNow
     {
         return [
             'id' => $this->session->id,
+            'symbol' => $this->session->symbol,
+            'interval' => $this->session->interval,
             'status' => $this->session->status,
             'start_time' => $this->session->start_time->toIso8601String(),
             'lock_time' => $this->session->lock_time->toIso8601String(),
