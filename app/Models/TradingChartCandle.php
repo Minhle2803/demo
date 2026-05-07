@@ -30,6 +30,7 @@ class TradingChartCandle extends Model
         'status',
         'is_generated',
         'is_modified',
+        'timeline_type',
     ];
 
     // -------------------------------------------------------------------------
@@ -59,6 +60,9 @@ class TradingChartCandle extends Model
             // Flags
             'is_generated' => 'boolean',
             'is_modified' => 'boolean',
+
+            // Timeline type
+            'timeline_type' => 'string',
         ];
     }
 
@@ -88,6 +92,11 @@ class TradingChartCandle extends Model
         self::STATUS_OPEN,
         self::STATUS_CLOSED,
     ];
+
+    // Timeline type values
+    const TIMELINE_REALTIME = 'realtime';
+
+    const TIMELINE_FUTURE = 'future';
 
     // -------------------------------------------------------------------------
     // Scopes
@@ -157,6 +166,22 @@ class TradingChartCandle extends Model
         return $query->orderBy('timestamp', 'desc');
     }
 
+    /**
+     * Only realtime candles — used by client APIs.
+     */
+    public function scopeRealtime(Builder $query): Builder
+    {
+        return $query->where('timeline_type', self::TIMELINE_REALTIME);
+    }
+
+    /**
+     * Only future candles — used by admin future chart.
+     */
+    public function scopeFuture(Builder $query): Builder
+    {
+        return $query->where('timeline_type', self::TIMELINE_FUTURE);
+    }
+
     // -------------------------------------------------------------------------
     // Helpers
     // -------------------------------------------------------------------------
@@ -168,18 +193,30 @@ class TradingChartCandle extends Model
     public static function latestFor(string $symbol, string $interval): ?self
     {
         return static::forPair($symbol, $interval)
+            ->realtime()
             ->latestFirst()
             ->first();
     }
 
     /**
-     * Fetch the current open candle for a symbol+interval.
+     * Fetch the current open candle for a symbol+interval (realtime only).
      */
     public static function currentOpenFor(string $symbol, string $interval): ?self
     {
         return static::forPair($symbol, $interval)
+            ->realtime()
             ->open()
             ->first();
+    }
+
+    /**
+     * Filter candles that don't have a corresponding TradingSession yet.
+     */
+    public function scopeWhereDoesntHaveSession(Builder $query): Builder
+    {
+        return $query->whereNotIn('timestamp', function ($sub) {
+            $sub->select('candle_timestamp')->from('trading_sessions')->whereNotNull('candle_timestamp');
+        });
     }
 
     /**

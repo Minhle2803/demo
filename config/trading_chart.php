@@ -35,6 +35,15 @@ return [
         'SOL_USDT' => '150',
     ],
 
+    /*
+    |--------------------------------------------------------------------------
+    | Future Session Offset
+    | Number of future sessions to maintain ahead of realtime.
+    | Each session = 60 seconds, so 10 sessions ≈ 10 minutes ahead.
+    |--------------------------------------------------------------------------
+    */
+    'future_session_offset' => 10,
+
     'coins' => [
         'BTC_USDT' => [
             'name' => 'Bitcoin',

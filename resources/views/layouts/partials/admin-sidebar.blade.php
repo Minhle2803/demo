@@ -72,6 +72,12 @@
                     </a>
                 </li>
 
+                <li class="nav-item">
+                    <a class="nav-link {{ request()->routeIs('admin.sessions.*') ? 'active' : '' }}" href="{{ route('admin.sessions.index') }}">
+                        <i class="ri-time-line"></i> <span>Sessions</span>
+                    </a>
+                </li>
+
                 <li class="menu-title"><span>{{ __('admin.settings') }}</span></li>
 
                 <li class="nav-item">

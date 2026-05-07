@@ -100,7 +100,20 @@ class TradingSessionService
             ->where('timestamp', $session->candle_timestamp)
             ->first();
 
-        if (! $candle || $candle->status !== 'closed') {
+        if (! $candle) {
+            // Candle was deleted — close with open_price as fallback.
+            Log::warning("TradingSessionService: Candle missing for session {$session->id}, closing with open_price fallback.");
+            DB::transaction(function () use ($session) {
+                $session->update([
+                    'status' => 'closed',
+                    'close_price' => $session->open_price ?? '0',
+                ]);
+            });
+
+            return;
+        }
+
+        if ($candle->status !== 'closed') {
             Log::warning("TradingSessionService: Candle not closed yet for session {$session->id}");
 
             return;
@@ -117,6 +130,43 @@ class TradingSessionService
 
         broadcast(new TradingSessionUpdated($session->fresh()));
         broadcast(new TradingSessionResult($session->fresh()));
+    }
+
+    /**
+     * Create sessions for future candles that don't have sessions yet.
+     * Called on each tick of the session worker to keep future sessions populated.
+     */
+    public function syncFutureSessions(): void
+    {
+        $offset = (int) config('trading_chart.future_session_offset', 10);
+
+        // Fetch future candles that don't have a corresponding session yet.
+        $futureCandles = TradingChartCandle::forPair($this->symbol, $this->interval)
+            ->future()
+            ->whereDoesntHaveSession()
+            ->orderBy('timestamp')
+            ->limit($offset)
+            ->get();
+
+        foreach ($futureCandles as $candle) {
+            $startTime = Carbon::createFromTimestampMs($candle->timestamp);
+            $endTime = $startTime->copy()->addSeconds(60);
+            $lockTime = $endTime->copy()->subSeconds(10);
+
+            DB::transaction(function () use ($candle, $startTime, $lockTime, $endTime) {
+                TradingSession::create([
+                    'symbol' => $this->symbol,
+                    'interval' => $this->interval,
+                    'start_time' => $startTime,
+                    'lock_time' => $lockTime,
+                    'end_time' => $endTime,
+                    'status' => 'future',
+                    'open_price' => $candle->open,
+                    'close_price' => $candle->close,
+                    'candle_timestamp' => $candle->timestamp,
+                ]);
+            });
+        }
     }
 
     /**

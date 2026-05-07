@@ -42,4 +42,23 @@ class TradingSession extends Model
     {
         return $this->status === 'locked' || now()->gte($this->lock_time);
     }
+
+    // -----------------------------------------------------------------
+    // Scopes
+    // -----------------------------------------------------------------
+
+    public function scopeFuture($query)
+    {
+        return $query->where('status', 'future');
+    }
+
+    public function scopeRealtime($query)
+    {
+        return $query->where('status', '!=', 'future');
+    }
+
+    public function scopeCurrent($query)
+    {
+        return $query->whereIn('status', ['open', 'locked']);
+    }
 }

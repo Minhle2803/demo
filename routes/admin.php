@@ -4,6 +4,7 @@ use App\Http\Controllers\Admin\AdminAuthController;
 use App\Http\Controllers\Admin\AdminCryptoAssetController;
 use App\Http\Controllers\Admin\AdminDashboardController;
 use App\Http\Controllers\Admin\AdminDepositController;
+use App\Http\Controllers\Admin\AdminSessionController;
 use App\Http\Controllers\Admin\AdminSettingController;
 use App\Http\Controllers\Admin\AdminUserController;
 use App\Http\Controllers\Admin\AdminWithdrawController;
@@ -11,7 +12,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::name('admin.')->group(function () {
     Route::get('/admin/signin', [AdminAuthController::class, 'showLoginForm'])->name('login');
-    Route::post('/admin/login', [AdminAuthController::class, 'login'])->name('login');
+    Route::post('/admin/signin', [AdminAuthController::class, 'login'])->name('login');
     Route::post('/admin/logout', [AdminAuthController::class, 'logout'])->name('logout');
 
     Route::middleware(['auth', 'admin'])->prefix('admin')->group(function () {
@@ -36,5 +37,8 @@ Route::name('admin.')->group(function () {
         Route::post('/settings/crypto-assets', [AdminCryptoAssetController::class, 'store'])->name('crypto-assets.store');
         Route::put('/settings/crypto-assets/{id}', [AdminCryptoAssetController::class, 'update'])->name('crypto-assets.update');
         Route::delete('/settings/crypto-assets/{id}', [AdminCryptoAssetController::class, 'destroy'])->name('crypto-assets.destroy');
+
+        Route::get('/sessions', [AdminSessionController::class, 'index'])->name('sessions.index');
+        Route::get('/sessions/{id}', [AdminSessionController::class, 'show'])->name('sessions.show');
     });
 });

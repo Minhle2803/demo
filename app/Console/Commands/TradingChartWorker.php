@@ -134,17 +134,14 @@ class TradingChartWorker extends Command
 
                 if ($openCandle === null) {
                     $this->handleNoOpenCandle($symbol, $interval, $currentIntervalTs);
-
-                    return;
-                }
-
-                if ((int) $openCandle->timestamp < $currentIntervalTs) {
+                } elseif ((int) $openCandle->timestamp < $currentIntervalTs) {
                     $this->handleIntervalBoundary($openCandle, $symbol, $interval, $currentIntervalTs);
-
-                    return;
+                } else {
+                    $this->handleCurrentTick($openCandle, $symbol, $interval);
                 }
 
-                $this->handleCurrentTick($openCandle, $symbol, $interval);
+                // Sync future candles on every tick so they stay ahead of realtime.
+                $this->syncFutureCandles($symbol, $interval, $currentIntervalTs, $intervalMs);
 
                 return; // success — exit retry loop
 
@@ -205,6 +202,19 @@ class TradingChartWorker extends Command
         string $interval,
         int $currentIntervalTs,
     ): void {
+        // If a realtime candle already exists at this timestamp (e.g. worker restart after crash),
+        // don't try to create a duplicate — just broadcast it and move on.
+        $existing = TradingChartCandle::forPair($symbol, $interval)
+            ->realtime()
+            ->where('timestamp', $currentIntervalTs)
+            ->first();
+
+        if ($existing) {
+            $this->broadcaster->broadcastUpdate($existing);
+
+            return;
+        }
+
         $latestClosed = TradingChartCandle::forPair($symbol, $interval)
             ->closed()
             ->latestFirst()
@@ -259,43 +269,129 @@ class TradingChartWorker extends Command
         $gapStart = (int) $staleCandle->timestamp + $intervalMs;
 
         while ($gapStart < $currentIntervalTs) {
+            // Skip if a candle already exists at this timestamp (e.g. from a previous partial run).
+            $alreadyExists = TradingChartCandle::forPair($symbol, $interval)
+                ->where('timestamp', $gapStart)
+                ->exists();
+
+            if (! $alreadyExists) {
+                [$direction, $biasPct] = $this->ruleService->getActiveDirectionAndBias(
+                    $symbol, $interval, $gapStart,
+                );
+
+                $gapCandle = DB::transaction(fn () => $this->generator->generateOpenCandle(
+                    symbol: $symbol,
+                    interval: $interval,
+                    timestamp: $gapStart,
+                    previousClose: $previousClose,
+                    direction: $direction,
+                    biasPct: $biasPct,
+                ));
+
+                $gapCandle = DB::transaction(fn () => $this->generator->closeCandle($gapCandle));
+                $previousClose = (string) $gapCandle->close;
+
+                $this->line("[chart:worker] [{$symbol}/{$interval}] Filled gap candle @ {$gapCandle->timestamp}");
+            }
+
+            $gapStart += $intervalMs;
+        }
+
+        // c) Open the current interval candle (skip if already exists from a partial prior run).
+        $alreadyExists = TradingChartCandle::forPair($symbol, $interval)
+            ->realtime()
+            ->where('timestamp', $currentIntervalTs)
+            ->exists();
+
+        if (! $alreadyExists) {
             [$direction, $biasPct] = $this->ruleService->getActiveDirectionAndBias(
-                $symbol, $interval, $gapStart,
+                $symbol, $interval, $currentIntervalTs,
             );
 
-            $gapCandle = DB::transaction(fn () => $this->generator->generateOpenCandle(
+            $newCandle = DB::transaction(fn () => $this->generator->generateOpenCandle(
                 symbol: $symbol,
                 interval: $interval,
-                timestamp: $gapStart,
+                timestamp: $currentIntervalTs,
                 previousClose: $previousClose,
                 direction: $direction,
                 biasPct: $biasPct,
             ));
 
-            $gapCandle = DB::transaction(fn () => $this->generator->closeCandle($gapCandle));
-            $previousClose = (string) $gapCandle->close;
-            $gapStart += $intervalMs;
+            $this->broadcaster->broadcastUpdate($newCandle);
 
-            $this->line("[chart:worker] [{$symbol}/{$interval}] Filled gap candle @ {$gapCandle->timestamp}");
+            $this->line("[chart:worker] [{$symbol}/{$interval}] Opened new candle @ {$currentIntervalTs}");
         }
+    }
 
-        // c) Open the current interval candle.
-        [$direction, $biasPct] = $this->ruleService->getActiveDirectionAndBias(
-            $symbol, $interval, $currentIntervalTs,
-        );
+    /**
+     * Ensure future candles exist for the next N intervals ahead of the current time.
+     * Future candles are generated as immediately-closed previews with timeline_type='future'.
+     */
+    private function syncFutureCandles(string $symbol, string $interval, int $currentIntervalTs, int $intervalMs): void
+    {
+        $offset = (int) config('trading_chart.future_session_offset', 10);
 
-        $newCandle = DB::transaction(fn () => $this->generator->generateOpenCandle(
-            symbol: $symbol,
-            interval: $interval,
-            timestamp: $currentIntervalTs,
-            previousClose: $previousClose,
-            direction: $direction,
-            biasPct: $biasPct,
-        ));
+        // Resolve the previous close: prefer latest realtime candle, then seed price.
+        $latestRealtime = TradingChartCandle::forPair($symbol, $interval)
+            ->realtime()
+            ->closed()
+            ->latestFirst()
+            ->first();
 
-        $this->broadcaster->broadcastUpdate($newCandle);
+        $previousClose = $latestRealtime
+            ? (string) $latestRealtime->close
+            : $this->seedPrice($symbol);
 
-        $this->line("[chart:worker] [{$symbol}/{$interval}] Opened new candle @ {$currentIntervalTs}");
+        $futureTs = $currentIntervalTs + $intervalMs;
+
+        for ($i = 0; $i < $offset; $i++) {
+            // Check if a future candle already exists for this timestamp.
+            $exists = TradingChartCandle::forPair($symbol, $interval)
+                ->where('timestamp', $futureTs)
+                ->where('timeline_type', TradingChartCandle::TIMELINE_FUTURE)
+                ->exists();
+
+            if (! $exists) {
+                [$direction, $biasPct] = $this->ruleService->getActiveDirectionAndBias(
+                    $symbol, $interval, $futureTs,
+                );
+
+                try {
+                    DB::transaction(function () use ($symbol, $interval, $futureTs, $previousClose, $direction, $biasPct) {
+                        $candle = $this->generator->generateOpenCandle(
+                            symbol: $symbol,
+                            interval: $interval,
+                            timestamp: $futureTs,
+                            previousClose: $previousClose,
+                            direction: $direction,
+                            biasPct: $biasPct,
+                        );
+
+                        $candle->timeline_type = TradingChartCandle::TIMELINE_FUTURE;
+                        $candle->save();
+
+                        $this->generator->closeCandle($candle);
+                    });
+                } catch (Throwable $e) {
+                    // Future candle is best-effort — don't crash the tick.
+                    Log::warning('[chart:worker] Failed to sync future candle', [
+                        'symbol' => $symbol,
+                        'interval' => $interval,
+                        'timestamp' => $futureTs,
+                        'error' => $e->getMessage(),
+                    ]);
+                }
+            }
+
+            // Price continuity: use the future candle's close (or realtime close if it was a duplicate).
+            $lastFuture = TradingChartCandle::forPair($symbol, $interval)
+                ->where('timestamp', $futureTs)
+                ->where('timeline_type', TradingChartCandle::TIMELINE_FUTURE)
+                ->first();
+
+            $previousClose = $lastFuture ? (string) $lastFuture->close : $previousClose;
+            $futureTs += $intervalMs;
+        }
     }
 
     /**

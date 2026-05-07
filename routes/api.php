@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Api\Admin\SpotDepositController;
 use App\Http\Controllers\Api\Admin\SpotWithdrawController;
+use App\Http\Controllers\Internal\AdminFutureChartController;
 use App\Http\Controllers\Internal\MarketListController;
 use App\Http\Controllers\Internal\TradingChartController;
 use App\Http\Controllers\Internal\TradingChartSummaryController;
@@ -61,3 +62,11 @@ Route::prefix('admin/spot')->middleware(['auth:sanctum'])->group(function () {
     Route::post('withdraw/process', [SpotWithdrawController::class, 'process'])
         ->name('admin.spot.withdraw.process');
 });
+
+Route::prefix('admin/future-chart')
+    ->name('admin.future-chart.')
+    ->middleware(['auth:sanctum'])
+    ->group(function () {
+        Route::get('candles', [AdminFutureChartController::class, 'candles'])
+            ->name('candles');
+    });

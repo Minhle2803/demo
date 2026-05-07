@@ -113,6 +113,12 @@
                     <div class="card">
                         <div class="card-header border-0 align-items-center d-flex">
                             <h4 class="card-title mb-0 flex-grow-1">{{ __('admin.market_graph') }}</h4>
+                            <div class="flex-shrink-0">
+                                <select class="form-select form-select-sm" id="timelineToggle">
+                                    <option value="realtime">Realtime</option>
+                                    <option value="future">Future (+10 sessions)</option>
+                                </select>
+                            </div>
                         </div>
                         <div class="card-body p-0 pb-3">
                             <div id="chart_container" style="width: 100%; height: 500px; min-height: 500px;"></div>
@@ -249,6 +255,7 @@
     <script>
         window.CHART_CONFIG = {
             apiBase:         '{{ url("/api/internal/chart") }}',
+            futureApiBase:   '{{ url("/api/admin/future-chart") }}',
             reverbHost:      '{{ env('REVERB_HOST', '0.0.0.0') }}',
             reverbPort:      {{ (int) env("REVERB_PORT", 8080) }},
             reverbKey:       '{{ env("REVERB_APP_KEY", "") }}',

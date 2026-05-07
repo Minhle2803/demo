@@ -2,7 +2,6 @@
 
 namespace App\Console\Commands;
 
-use App\Events\TradingSessionUpdated;
 use App\Models\TradingSession;
 use App\Services\Trading\TradingSessionService;
 use Carbon\Carbon;
@@ -12,7 +11,7 @@ class TradingSessionWorker extends Command
 {
     protected $signature = 'trading:session-worker';
 
-    protected $description = 'Manages trading session lifecycle: open → lock → close → repeat';
+    protected $description = 'Manages trading session lifecycle: future → open → lock → close → repeat';
 
     public function handle(TradingSessionService $service): void
     {
@@ -34,37 +33,34 @@ class TradingSessionWorker extends Command
     {
         $now = now();
 
-        // Handle open session state transitions
+        // Step 0: Activate future sessions whose start time has arrived.
+        TradingSession::where('status', 'future')
+            ->where('start_time', '<=', $now)
+            ->update(['status' => 'open']);
+
+        // Step 1: Lock an open session when lock time arrives.
         $openSession = TradingSession::where('status', 'open')->latest('start_time')->first();
 
-        if ($openSession) {
-            if ($now->gte(Carbon::parse($openSession->lock_time))) {
-                $this->info("Locking session #{$openSession->id}");
-                $service->lockSession($openSession);
-            }
+        if ($openSession && $now->gte(Carbon::parse($openSession->lock_time))) {
+            $this->info("Locking session #{$openSession->id}");
+            $service->lockSession($openSession);
+            $service->syncFutureSessions();
 
             return;
         }
 
-        // Handle locked session → close when candle is closed
+        // Step 2: Close a locked session when end time arrives.
         $lockedSession = TradingSession::where('status', 'locked')->latest('start_time')->first();
 
-        if ($lockedSession) {
-            if ($now->gte(Carbon::parse($lockedSession->end_time))) {
-                $this->info("Closing session #{$lockedSession->id}");
-                $service->closeSession($lockedSession);
-            }
+        if ($lockedSession && $now->gte(Carbon::parse($lockedSession->end_time))) {
+            $this->info("Closing session #{$lockedSession->id}");
+            $service->closeSession($lockedSession);
+            $service->syncFutureSessions();
 
             return;
         }
 
-        // No open or locked session — create new one from current candle
-        $this->info('Creating new session from current candle...');
-        $session = $service->createSessionFromCurrentCandle();
-
-        if ($session) {
-            $this->info("New session #{$session->id} created.");
-            broadcast(new TradingSessionUpdated($session));
-        }
+        // Step 3: Ensure future sessions exist for future candles.
+        $service->syncFutureSessions();
     }
 }

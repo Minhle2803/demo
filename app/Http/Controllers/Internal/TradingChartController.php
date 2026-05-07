@@ -75,6 +75,7 @@ class TradingChartController extends Controller
         // Using chronological() + limit() would return the oldest N candles,
         // leaving a gap between the REST batch and the live WebSocket stream.
         $candles = TradingChartCandle::forPair($symbol, $interval)
+            ->realtime()
             ->fromTimestamp($from)
             ->toTimestamp($to)
             ->latestFirst()
