@@ -40,7 +40,7 @@ class TradingSessionWorker extends Command
             ->get();
 
         foreach ($readySessions as $ready) {
-            $ready->update(['status' => 'open']);
+            $service->activateSession($ready);
             broadcast(new TradingSessionUpdated($ready->fresh()));
         }
 

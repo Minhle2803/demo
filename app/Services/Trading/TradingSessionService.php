@@ -38,7 +38,7 @@ class TradingSessionService
             ->first();
 
         if ($nextSession) {
-            $nextSession->update(['status' => 'open']);
+            $this->activateSession($nextSession);
             $session = $nextSession->fresh();
             broadcast(new TradingSessionUpdated($session));
 
@@ -46,6 +46,25 @@ class TradingSessionService
         }
 
         return null;
+    }
+
+    /**
+     * Activate a future session → open, syncing open_price from the realtime candle.
+     */
+    public function activateSession(TradingSession $session): void
+    {
+        $realtimeCandle = TradingChartCandle::forPair($session->symbol, $session->interval)
+            ->realtime()
+            ->where('timestamp', $session->candle_timestamp)
+            ->first();
+
+        $data = ['status' => 'open'];
+
+        if ($realtimeCandle) {
+            $data['open_price'] = $realtimeCandle->open;
+        }
+
+        $session->update($data);
     }
 
     /**
