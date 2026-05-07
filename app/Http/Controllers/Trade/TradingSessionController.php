@@ -168,7 +168,9 @@ class TradingSessionController extends Controller
             ->orderByDesc('trades.id')
             ->limit(20)
             ->get();
-
+        var_dump($lastId); echo "////";
+        print_r($userId);
+        exit;
         return response()->json([
             'status' => true,
             'data' => $trades,

@@ -57,6 +57,13 @@ export function buildTradeRow(trade, coinMeta) {
     const typeClass = trade.type === 'sell' ? 'text-danger' : 'text-success';
     const statusClass = trade.status === 'lose' ? 'text-danger' : 'text-success';
 
+    var amount =  Number(trade.amount).toLocaleString();
+    var symb = "";
+    if (trade.status === 'lose') {
+        symb = "-";
+    } else if(trade.status === 'win') {
+        symb = "+";
+    }
     return `
         <tr data-id="${trade.id}">
             <td>
@@ -69,7 +76,9 @@ export function buildTradeRow(trade, coinMeta) {
             <td>${trade.session_close_price ?? '-'}</td>
             <td class="${statusClass}">${trade.status}</td>
             <td>${Number(trade.amount).toLocaleString()}</td>
-            <td>${Number(trade.payout).toLocaleString()}</td>
+            <td>
+                <h6 class="${statusClass} fs-13 mb-0">${symb}${amount}</h6> 
+            </td>
             <td>${formatDateUTC(trade.created_at)}</td>
         </tr>
     `;

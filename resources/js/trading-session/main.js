@@ -61,12 +61,14 @@ function applySession(session, serverTime) {
     );
 
     listenForResult();
+    setTimeout(async () => {
+        await fetchResult(session.id);
+    }, 2000);
 }
 
 function scheduleResultFetch(sessionId) {
     // Small delay to let backend settle trades, then fetch result and next session.
     setTimeout(async () => {
-        await fetchResult(sessionId);
         // Load next session immediately after result
         setTimeout(loadSession, 1000);
     }, 2000);

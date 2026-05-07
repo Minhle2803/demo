@@ -229,7 +229,7 @@ return [
         'close_price' => 'Close Price',
         'status' => 'Status',
         'amount' => 'Amount',
-        'payout' => 'Payout',
+        'payout' => 'Win / Lose',
         'time' => 'Time',
         'buy' => 'Buy',
         'sell' => 'Sell',

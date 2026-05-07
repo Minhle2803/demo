@@ -247,7 +247,20 @@
                                 <h6 class="{{ $textClass }} fs-13 mb-0">{{ $trade->status }}</h6>    
                             </td>
                             <td>{{ number_format($trade->amount, 0, '.', ',') }}</td>
-                            <td>{{ number_format($trade->payout, 0, '.', ',') }}</td>
+                            <?php 
+                                $amount = number_format($trade->amount, 0, '.', ',');
+                                $textClass = "text-success";
+                                $text = "+" . $amount;
+                                if ($trade->status === 'lose') {
+                                    $textClass = "text-danger";
+                                    $text = "-". $amount;
+                                } else if ($trade->status === 'pending') {
+                                    $text = "";
+                                }
+                            ?>
+                            <td>
+                                <h6 class="{{ $textClass }} fs-13 mb-0">{{ $text }}</h6>  
+                            </td>
                             <td>{{ $trade->created_at }}</td>
                         </tr>
                     @endforeach
@@ -309,6 +322,7 @@
         </div>
     </div>
 </div>
+@include('layouts.modal.modal_message')
 @endsection
 @push('scripts')
 

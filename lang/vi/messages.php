@@ -229,7 +229,7 @@ return [
         'close_price' => 'Giá đóng',
         'status' => 'Trạng thái',
         'amount' => 'Số tiền',
-        'payout' => 'Thanh toán',
+        'payout' => 'Thắng / Thua',
         'time' => 'Thời gian',
         'buy' => 'Mua',
         'sell' => 'Bán',

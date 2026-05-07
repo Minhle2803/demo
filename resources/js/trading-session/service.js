@@ -21,7 +21,8 @@ export async function updateTrades() {
 
     try {
         const res = await fetchLatestTrades(tradeState.lastId);
-
+        console.log("11111111");
+        console.log(res);
         if (!res.status || !res.data?.length) return;
 
         res.data.reverse().forEach((trade) => {
@@ -33,7 +34,20 @@ export async function updateTrades() {
                 'afterbegin',
                 buildTradeRow(trade, tradeState.config.coinMeta)
             );
+            console.log(trade);
+            var modal_win_lose = document.getElementById('modal-win');
+            if (trade.status === 'lose') {
+                modal_win_lose = document.getElementById('modal-lost');
+                const sessionId = parent.querySelector('#session_id');
+                sessionId.innerHTML = trade.session_id;
+                const amountId = parent.querySelector('#amount_id');
+                if (amountId) {
+                    amountId.innerHTML = Number(trade.amount).toLocaleString();
+                }
+            }
 
+            const modalwl = new bootstrap.Modal(modal_win_lose);
+            modalwl.show();
             if (trade.id > tradeState.lastId) {
                 tradeState.lastId = trade.id;
             }
