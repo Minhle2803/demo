@@ -86,9 +86,9 @@
                                             <span class="badge bg-secondary-subtle text-secondary">Closed</span>
                                         @endif
                                     </td>
-                                    <td>{{ $session->start_time }}</td>
-                                    <td>{{ $session->lock_time }}</td>
-                                    <td>{{ $session->end_time }}</td>
+                                    <td>{{ optional($session->start_time)->setTimezone('+07:00')->format('Y-m-d H:i:s') }}</td>
+                                    <td>{{ optional($session->lock_time)->setTimezone('+07:00')->format('Y-m-d H:i:s') }}</td>
+                                    <td>{{ optional($session->end_time)->setTimezone('+07:00')->format('Y-m-d H:i:s') }}</td>
                                     <td>{{ $session->open_price ? number_format((float) $session->open_price, 8) : '—' }}</td>
                                     <td>{{ $session->close_price ? number_format((float) $session->close_price, 8) : '—' }}</td>
                                     <td>

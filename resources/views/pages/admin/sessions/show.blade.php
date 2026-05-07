@@ -50,15 +50,15 @@
                     </tr>
                     <tr>
                         <th class="text-muted">Start Time</th>
-                        <td>{{ $session->start_time }}</td>
+                        <td>{{ optional($session->start_time)->setTimezone('+07:00')->format('Y-m-d H:i:s') }}</td>
                     </tr>
                     <tr>
                         <th class="text-muted">Lock Time</th>
-                        <td>{{ $session->lock_time }}</td>
+                        <td>{{ optional($session->lock_time)->setTimezone('+07:00')->format('Y-m-d H:i:s') }}</td>
                     </tr>
                     <tr>
                         <th class="text-muted">End Time</th>
-                        <td>{{ $session->end_time }}</td>
+                        <td>{{ optional($session->end_time)->setTimezone('+07:00')->format('Y-m-d H:i:s') }}</td>
                     </tr>
                     <tr>
                         <th class="text-muted">Open Price</th>
@@ -86,11 +86,11 @@
                 <table class="table table-borderless">
                     <tr>
                         <th class="text-muted" style="width: 40%">Created At</th>
-                        <td>{{ $session->created_at }}</td>
+                        <td>{{ optional($session->created_at)->setTimezone('+07:00')->format('Y-m-d H:i:s') }}</td>
                     </tr>
                     <tr>
                         <th class="text-muted">Updated At</th>
-                        <td>{{ $session->updated_at }}</td>
+                        <td>{{ optional($session->updated_at)->setTimezone('+07:00')->format('Y-m-d H:i:s') }}</td>
                     </tr>
                 </table>
             </div>

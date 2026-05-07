@@ -19,7 +19,8 @@ class TradingSessionService
     protected string $interval = '1m';
 
     /**
-     * Return the current open session, or create one aligned to the current candle.
+     * Return the current open session for client trading.
+     * Sessions flow: future → open → locked → closed (managed by worker).
      */
     public function getCurrentSession(): ?TradingSession
     {
@@ -29,53 +30,22 @@ class TradingSessionService
             return $session;
         }
 
-        // Try to create one aligned to current candle
-        return $this->createSessionFromCurrentCandle();
-    }
-
-    /**
-     * Creates a session mapped exactly to the current (open) candle.
-     * session.start_time = candle open time
-     * session.end_time   = candle open time + 60s
-     * session.lock_time  = end_time - 10s
-     */
-    public function createSessionFromCurrentCandle(): ?TradingSession
-    {
-        $candle = TradingChartCandle::where('symbol', $this->symbol)
-            ->where('interval', $this->interval)
-            ->where('status', 'open')
-            ->orderByDesc('timestamp')
+        // No open session — try activating the next future session if its time has come.
+        $now = now();
+        $nextSession = TradingSession::where('status', 'future')
+            ->where('start_time', '<=', $now)
+            ->orderBy('start_time')
             ->first();
 
-        if (! $candle) {
-            Log::warning('TradingSessionService: No open candle found to create session.');
+        if ($nextSession) {
+            $nextSession->update(['status' => 'open']);
+            $session = $nextSession->fresh();
+            broadcast(new TradingSessionUpdated($session));
 
-            return null;
+            return $session;
         }
 
-        // Prevent duplicate session for same candle
-        $exists = TradingSession::where('candle_timestamp', $candle->timestamp)->first();
-        if ($exists) {
-            return $exists;
-        }
-
-        $startTime = Carbon::createFromTimestampMs($candle->timestamp);
-        $endTime = $startTime->copy()->addSeconds(60);
-        $lockTime = $endTime->copy()->subSeconds(10);
-
-        return DB::transaction(function () use ($candle, $startTime, $lockTime, $endTime) {
-            return TradingSession::create([
-                'symbol' => $this->symbol,
-                'interval' => $this->interval,
-                'start_time' => $startTime,
-                'lock_time' => $lockTime,
-                'end_time' => $endTime,
-                'status' => 'open',
-                'open_price' => $candle->open,
-                'close_price' => null,
-                'candle_timestamp' => $candle->timestamp,
-            ]);
-        });
+        return null;
     }
 
     /**
@@ -154,6 +124,17 @@ class TradingSessionService
             $lockTime = $endTime->copy()->subSeconds(10);
 
             DB::transaction(function () use ($candle, $startTime, $lockTime, $endTime) {
+                // Guard against duplicate sessions from concurrent worker instances.
+                $exists = TradingSession::where('symbol', $this->symbol)
+                    ->where('interval', $this->interval)
+                    ->where('candle_timestamp', $candle->timestamp)
+                    ->lockForUpdate()
+                    ->exists();
+
+                if ($exists) {
+                    return;
+                }
+
                 TradingSession::create([
                     'symbol' => $this->symbol,
                     'interval' => $this->interval,

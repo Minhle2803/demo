@@ -2,6 +2,7 @@
 
 namespace App\Console\Commands;
 
+use App\Events\TradingSessionUpdated;
 use App\Models\TradingSession;
 use App\Services\Trading\TradingSessionService;
 use Carbon\Carbon;
@@ -34,9 +35,14 @@ class TradingSessionWorker extends Command
         $now = now();
 
         // Step 0: Activate future sessions whose start time has arrived.
-        TradingSession::where('status', 'future')
+        $readySessions = TradingSession::where('status', 'future')
             ->where('start_time', '<=', $now)
-            ->update(['status' => 'open']);
+            ->get();
+
+        foreach ($readySessions as $ready) {
+            $ready->update(['status' => 'open']);
+            broadcast(new TradingSessionUpdated($ready->fresh()));
+        }
 
         // Step 1: Lock an open session when lock time arrives.
         $openSession = TradingSession::where('status', 'open')->latest('start_time')->first();

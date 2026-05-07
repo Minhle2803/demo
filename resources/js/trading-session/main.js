@@ -59,11 +59,17 @@ function applySession(session, serverTime) {
             scheduleResultFetch(session.id);
         }
     );
+
+    listenForResult();
 }
 
 function scheduleResultFetch(sessionId) {
-    // Small delay to let backend settle the result
-    setTimeout(() => fetchResult(sessionId), 5000);
+    // Small delay to let backend settle trades, then fetch result and next session.
+    setTimeout(async () => {
+        await fetchResult(sessionId);
+        // Load next session immediately after result
+        setTimeout(loadSession, 1000);
+    }, 2000);
 }
 
 async function fetchResult(sessionId) {
