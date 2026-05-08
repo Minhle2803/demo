@@ -143,7 +143,7 @@ class TradingSessionController extends Controller
         $lastId = $request->get('last_id', 0);
         $userId = -1;
         $user = $request->user();
-        if (! $user) {
+        if ($user) {
             $userId = $user->id;
         }
 
@@ -168,12 +168,38 @@ class TradingSessionController extends Controller
             ->orderByDesc('trades.id')
             ->limit(20)
             ->get();
-        var_dump($lastId); echo "////";
-        print_r($userId);
-        exit;
-        return response()->json([
-            'status' => true,
-            'data' => $trades,
-        ]);
+
+        return ApiResponse::success($trades);
+    }
+
+    public function getTradeBySession(Request $request)
+    {
+        $sessionId = $request->get('session_id', 0);
+        $userId = -1;
+        $user = $request->user();
+        if ($user) {
+            $userId = $user->id;
+        }
+
+        $trades = Trade::query()
+            ->join('trading_sessions', 'trades.session_id', '=', 'trading_sessions.id')
+            ->select([
+                'trades.id',
+                'trades.session_id',
+                'trades.type',
+                'trades.status',
+                'trades.amount',
+                'trades.payout',
+                'trades.created_at',
+
+                'trading_sessions.symbol as session_symbol',
+                'trading_sessions.open_price as session_open_price',
+                'trading_sessions.close_price as session_close_price',
+            ])
+            ->where('trades.session_id', $sessionId)
+            ->where('trades.user_id', $userId)
+            ->get();
+
+        return ApiResponse::success($trades);
     }
 }

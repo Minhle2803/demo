@@ -3,8 +3,10 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Admin\UpdateUserRequest;
 use App\Models\ClientUser;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class AdminUserController extends Controller
 {
@@ -47,5 +49,34 @@ class AdminUserController extends Controller
         $user = ClientUser::findOrFail($id);
 
         return view('pages.admin.users.show', compact('user'));
+    }
+
+    public function edit(int $id)
+    {
+        $user = ClientUser::findOrFail($id);
+
+        return view('pages.admin.users.edit', compact('user'));
+    }
+
+    public function update(UpdateUserRequest $request, int $id)
+    {
+        $user = ClientUser::findOrFail($id);
+
+        DB::transaction(function () use ($user, $request) {
+            $data = $request->validated();
+
+            if ($data['is_verified'] ?? false) {
+                $data['verified_at'] = $user->verified_at ?? now();
+            } else {
+                $data['verified_at'] = null;
+            }
+
+            unset($data['is_verified']);
+
+            $user->update($data);
+        });
+
+        return redirect()->route('admin.users.show', $user->id)
+            ->with('success', __('admin.user_updated'));
     }
 }

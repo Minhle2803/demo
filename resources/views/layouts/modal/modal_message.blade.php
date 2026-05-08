@@ -11,11 +11,11 @@
                     <h4 class="mb-3 mt-4">Xin chúc mừng !</h4>
                     <p class="text-muted fs-15 mb-4">Xin chúc mừng bạn đã thắng <span id="amount_id">#39282</span> vnđ với giao dịch <span id="session_id">#39282</span></p>
                     <div class="hstack gap-2 justify-content-center">
-                        <button class="btn btn-primary">Đóng</button>
+                        <button class="btn btn-primary"  data-bs-dismiss="modal">Đóng</button>
                     </div>
                 </div>
             </div>
-            <div class="modal-footer bg-light p-3 justify-content-center">
+            <div class="modal-footer bg-light p-3 justify-content-center" >
             </div>
         </div><!-- /.modal-content -->
     </div><!-- /.modal-dialog -->
@@ -32,11 +32,11 @@
                     <h4 class="mb-3 mt-4">Chúc may mắn lần sau !</h4>
                     <p class="text-muted fs-15 mb-4">Rất tiếc, giao dịch <span id="session_id">#39282</span> chưa mang lại phần thưởng cho bạn lần này.</p>
                     <div class="hstack gap-2 justify-content-center">
-                        <button class="btn btn-primary">Đóng</button>
+                        <button class="btn btn-primary"  data-bs-dismiss="modal">Đóng</button>
                     </div>
                 </div>
             </div>
-            <div class="modal-footer bg-light p-3 justify-content-center">
+            <div class="modal-footer bg-light p-3 justify-content-center"> 
             </div>
         </div><!-- /.modal-content -->
     </div><!-- /.modal-dialog -->

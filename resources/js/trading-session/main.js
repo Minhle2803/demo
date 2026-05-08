@@ -4,6 +4,7 @@ import { startTimer, stopTimer } from './timer.js';
 import { setCountdown, setStatus, setSessionId, enableTrading, disableTrading, showResultPopup, showError } from './ui.js';
 import { validateAmount } from './validation.js';
 import { updateTrades, initTradesTable  } from './service.js';
+import { tradeState } from './store';
 
 let echo = null;
 let pendingTrade = null;
@@ -11,7 +12,7 @@ let pendingTrade = null;
 async function init() {
     await loadSession();
     initTradesTable();
-    updateTrades();
+    await updateTrades();
     bindButtons();
     initReverb();
     initConfirmModal();
@@ -40,6 +41,16 @@ function applySession(session, serverTime) {
 
     if (session.status === 'open' && now < lockAt) {
         enableTrading();
+        // if (session.id === tradeState.orderSessionId && tradeState.orderId) {
+        //     console.log("==============================");
+        //     console.log(tradeState.orderSessionId);
+        //     console.log(tradeState.orderId);
+        //     // Optionally, highlight the user's trade in the table or show a pending status
+        //     // This requires additional UI handling to mark the trade as pending until result is fetched
+        //     setTimeout(async () => {
+        //         await fetchResult(session.id);
+        //     }, 2000);
+        // }
     }
 
     startTimer(
@@ -61,29 +72,34 @@ function applySession(session, serverTime) {
     );
 
     listenForResult();
-    setTimeout(async () => {
-        await fetchResult(session.id);
-    }, 2000);
 }
 
 function scheduleResultFetch(sessionId) {
     // Small delay to let backend settle trades, then fetch result and next session.
     setTimeout(async () => {
+        //await fetchResult(sessionId);
         // Load next session immediately after result
         setTimeout(loadSession, 1000);
     }, 2000);
 }
 
 async function fetchResult(sessionId) {
-    if (state.resultFetched) return;
-    state.resultFetched = true;
+    if (window.tradeTableConfig.orderId <= 0 || window.tradeTableConfig.orderSessionId <= 0) return;
 
-    const res = await fetchSessionResult(sessionId);
-    if (res.success) {
-        showResultPopup(res.data.trade, res.data.session);
-        // Load next session
+    try {
+        const res = await fetchSessionResult(sessionId);
+        if (!res.success) {
+            console.error('Fetch session result failed:', res.code, res.message);
+            return;
+        }
+        
+        if (res.data?.session.id === window.tradeTableConfig.orderSessionId &&  window.tradeTableConfig.orderId !== 0 ) {
+            showResultPopup(res.data.trade, res.data.session);
+        }
         setTimeout(loadSession, 3000);
         await updateTrades();
+    } catch (err) {
+        console.error('Fetch session result error:', err);
     }
 }
 
@@ -156,6 +172,11 @@ async function executeTrade(type, amount) {
     if (res.success) {
         state.tradePlaced = true;
         setStatus('Trade placed — waiting for result...');
+        await updateTrades();
+        if (res.data?.trade) {
+            window.tradeTableConfig.orderId = res.data.trade.id;
+            window.tradeTableConfig.orderSessionId = res.data.trade.session_id;
+        }
         return;
     }
 

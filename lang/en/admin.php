@@ -22,6 +22,9 @@ return [
     'recent_spot_buy_orders' => 'Recent Spot Buy Orders',
     'recent_spot_sell_orders' => 'Recent Spot Sell Orders',
 
+    'edit_user' => 'Edit User',
+    'edit' => 'Edit',
+    'user_updated' => 'User updated successfully.',
     'user' => 'User',
     'user_id' => 'User ID',
     'user_info' => 'User Information',
@@ -116,5 +119,6 @@ return [
     'enter_password' => 'Enter password',
     'remember_me' => 'Remember me',
     'sign_in' => 'Sign In',
-    'invalid_credentials' => 'Invalid email or password, or account is not an admin.',
+    'username' => 'Username',
+    'invalid_credentials' => 'Invalid username or password, or account is not an admin.',
 ];

@@ -15,7 +15,7 @@ class AdminMiddleware
                 return response()->json(['message' => 'Unauthorized.'], 403);
             }
 
-            return redirect()->route('admin.signin');
+            return redirect()->route('admin.login');
         }
 
         return $next($request);

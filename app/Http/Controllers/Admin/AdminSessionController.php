@@ -77,6 +77,11 @@ class AdminSessionController extends Controller
     {
         $session = TradingSession::findOrFail($id);
 
-        return view('pages.admin.sessions.show', compact('session'));
+        $trades = $session->trades()
+            ->with('user')
+            ->orderByDesc('id')
+            ->paginate(25);
+
+        return view('pages.admin.sessions.show', compact('session', 'trades'));
     }
 }

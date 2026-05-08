@@ -25,7 +25,7 @@ class SpotOrderController extends Controller
     {
         $user = Auth::guard('client')->user();
 
-        if (!$user) {
+        if (! $user) {
             $user = $request->user();
         }
 
@@ -85,7 +85,7 @@ class SpotOrderController extends Controller
     {
         $user = Auth::guard('client')->user();
 
-        if (!$user) {
+        if (! $user) {
             $user = $request->user();
         }
 
@@ -174,7 +174,7 @@ class SpotOrderController extends Controller
     public function myOrders(Request $request): JsonResponse
     {
         $user = Auth::guard('client')->user();
-        if (!$user) {
+        if (! $user) {
             $user = $request->user();
         }
 

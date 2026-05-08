@@ -37,3 +37,8 @@ export async function placeSell(amount) {
 export async function fetchLatestTrades(lastId = 0) {
     return request('GET', `/latest?last_id=${lastId}`);
 }
+
+export async function fetchTradeBySessionResult(sessionId) {
+    return request('GET', `session/${sessionId}/trades`);
+}
+

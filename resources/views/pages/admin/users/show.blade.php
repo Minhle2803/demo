@@ -18,6 +18,18 @@
     </div>
 </div>
 
+<div class="row mb-3">
+    <div class="col-12">
+        <a href="{{ route('admin.users.edit', $user->id) }}" class="btn btn-primary">
+            <i class="ri-edit-line align-bottom"></i> {{ __('admin.edit_user') }}
+        </a>
+        <a href="{{ route('admin.users.index') }}" class="btn btn-soft-secondary ms-2">
+            <i class="ri-arrow-left-line align-bottom"></i> {{ __('admin.back_to_site') }}
+        </a>
+        </div>
+    </div>
+</div>
+
 <div class="row">
     <div class="col-xxl-4">
         <div class="card">

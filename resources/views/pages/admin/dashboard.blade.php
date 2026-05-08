@@ -18,7 +18,7 @@
 </div>
 
 <div class="row">
-    <div class="col-xxl-9 order-xxl-0 order-first">
+    <div class="col-xxl-12 order-xxl-0 order-first">
         <div class="d-flex flex-column h-100">
             <div class="row h-100">
                 <div class="col-lg-4 col-md-6">

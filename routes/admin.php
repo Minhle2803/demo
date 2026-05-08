@@ -13,13 +13,15 @@ use Illuminate\Support\Facades\Route;
 Route::name('admin.')->group(function () {
     Route::get('/admin/signin', [AdminAuthController::class, 'showLoginForm'])->name('login');
     Route::post('/admin/signin', [AdminAuthController::class, 'login'])->name('login');
-    Route::post('/admin/logout', [AdminAuthController::class, 'logout'])->name('logout');
+    Route::get('/admin/logout', [AdminAuthController::class, 'logout'])->name('logout');
 
     Route::middleware(['auth', 'admin'])->prefix('admin')->group(function () {
         Route::get('/dashboard', [AdminDashboardController::class, 'index'])->name('dashboard');
 
         Route::get('/users', [AdminUserController::class, 'index'])->name('users.index');
         Route::get('/users/{id}', [AdminUserController::class, 'show'])->name('users.show');
+        Route::get('/users/{id}/edit', [AdminUserController::class, 'edit'])->name('users.edit');
+        Route::put('/users/{id}', [AdminUserController::class, 'update'])->name('users.update');
 
         Route::get('/deposits', [AdminDepositController::class, 'index'])->name('deposits.index');
         Route::post('/deposits/{id}/approve', [AdminDepositController::class, 'approve'])->name('deposits.approve');

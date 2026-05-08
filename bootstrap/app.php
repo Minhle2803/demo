@@ -46,6 +46,7 @@ return Application::configure(basePath: dirname(__DIR__))
         $middleware->alias([
             'admin' => AdminMiddleware::class,
             'guest' => RedirectIfAuthenticated::class,
+            'auth' => \App\Http\Middleware\Authenticate::class,
         ]);
 
         $middleware->api(prepend: [
@@ -57,13 +58,22 @@ return Application::configure(basePath: dirname(__DIR__))
         ]);
     })
     ->withExceptions(function (Exceptions $exceptions): void {
-
         $exceptions->render(function (AuthenticationException $e, $request) {
-            return response()->json([
-                'success' => false,
-                'status_code' => 401,
-                'code' => 'AUTH_UNAUTHORIZED',
-                'message' => __('errors.AUTH_UNAUTHORIZED'),
-            ], 401);
+             // API request
+            if ($request->is('api/*') || $request->expectsJson()) {
+
+                return response()->json([
+                    'success' => false,
+                    'status_code' => 401,
+                    'code' => 'AUTH_UNAUTHORIZED',
+                    'message' => __('errors.AUTH_UNAUTHORIZED'),
+                ], 401);
+            }
+
+            if ($request->is('admin/*')) {
+                return redirect()->route('admin.login');
+            }
+            // Web request
+            return redirect()->route('signin');
         });
     })->create();

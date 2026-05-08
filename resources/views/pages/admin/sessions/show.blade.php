@@ -114,6 +114,86 @@
     </div>
 </div>
 
+<div class="row mt-4">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header d-flex align-items-center">
+                <h5 class="card-title mb-0">Trades ({{ $trades->total() }})</h5>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive table-card">
+                    <table class="table align-middle table-nowrap">
+                        <thead class="table-light text-muted">
+                            <tr>
+                                <th>#</th>
+                                <th>User</th>
+                                <th>Type</th>
+                                <th>Amount</th>
+                                <th>Status</th>
+                                <th>Payout</th>
+                                <th>Time</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @forelse ($trades as $trade)
+                                <tr>
+                                    <td>{{ $trade->id }}</td>
+                                    <td>
+                                        @if ($trade->user)
+                                            <div class="d-flex align-items-center">
+                                                <div>
+                                                    <h6 class="mb-0 fs-13">{{ $trade->user->full_name ?? $trade->user->username ?? 'N/A' }}</h6>
+                                                    <small class="text-muted">{{ $trade->user->email ?? '' }}</small>
+                                                </div>
+                                            </div>
+                                        @else
+                                            <span class="text-muted">—</span>
+                                        @endif
+                                    </td>
+                                    <td>
+                                        @if ($trade->type === 'buy')
+                                            <span class="badge bg-success-subtle text-success">Buy</span>
+                                        @else
+                                            <span class="badge bg-danger-subtle text-danger">Sell</span>
+                                        @endif
+                                    </td>
+                                    <td>{{ number_format((float) $trade->amount, 0, '.', ',') }}</td>
+                                    <td>
+                                        @if ($trade->status === 'win')
+                                            <span class="badge bg-success-subtle text-success">Win</span>
+                                        @elseif ($trade->status === 'lose')
+                                            <span class="badge bg-danger-subtle text-danger">Lose</span>
+                                        @else
+                                            <span class="badge bg-warning-subtle text-warning">Pending</span>
+                                        @endif
+                                    </td>
+                                    <td>
+                                        @if ($trade->payout !== null)
+                                            <span class="{{ $trade->status === 'win' ? 'text-success' : 'text-danger' }} fw-medium">
+                                                {{ $trade->status === 'win' ? '+' : '-' }}{{ number_format((float) $trade->payout, 0, '.', ',') }}
+                                            </span>
+                                        @else
+                                            —
+                                        @endif
+                                    </td>
+                                    <td>{{ optional($trade->created_at)->setTimezone('+07:00')->format('Y-m-d H:i:s') }}</td>
+                                </tr>
+                            @empty
+                                <tr>
+                                    <td colspan="7" class="text-center text-muted py-4">No trades for this session.</td>
+                                </tr>
+                            @endforelse
+                        </tbody>
+                    </table>
+                </div>
+                <div class="d-flex justify-content-end mt-3">
+                    {{ $trades->links() }}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
 <div class="row mt-2">
     <div class="col-12">
         <a href="{{ route('admin.sessions.index') }}" class="btn btn-soft-secondary">

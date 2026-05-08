@@ -26,21 +26,24 @@ export function disableTrading() {
 }
 
 export function showResultPopup(trade, session) {
-    const popup = document.getElementById('trade-result-popup');
-    if (!popup) return;
-
     const won = trade?.status === 'win';
+    const modalId = won ? 'modal-win' : 'modal-lost';
+    const modalEl = document.getElementById(modalId);
+    if (!modalEl) return;
 
-    popup.innerHTML = `
-        <div class="result-inner ${won ? 'win' : 'lose'}">
-            <h2>${won ? '🎉 WIN' : '❌ LOSE'}</h2>
-            <p>Open: ${session.open_price} → Close: ${session.close_price}</p>
-            ${trade ? `<p>Payout: ${trade.payout}</p>` : '<p>No trade placed.</p>'}
-        </div>
-    `;
-    popup.classList.remove('hidden');
+    const sessionIdEl = modalEl.querySelector('#session_id');
+    if (sessionIdEl) {
+        sessionIdEl.textContent = `#${trade?.session_id ?? session?.id ?? '—'}`;
+    }
 
-    setTimeout(() => popup.classList.add('hidden'), 6000);
+    const amountEl = modalEl.querySelector('#amount_id');
+    if (amountEl && trade) {
+        amountEl.textContent = Number(trade.amount).toLocaleString();
+    }
+    window.tradeTableConfig.orderId = 0;
+    window.tradeTableConfig.orderSessionId = 0;
+    const modal = new bootstrap.Modal(modalEl);
+    modal.show();
 }
 
 export function showError(message) {

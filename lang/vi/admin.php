@@ -22,6 +22,9 @@ return [
     'recent_spot_buy_orders' => 'Lệnh mua Spot gần đây',
     'recent_spot_sell_orders' => 'Lệnh bán Spot gần đây',
 
+    'edit_user' => 'Chỉnh sửa người dùng',
+    'edit' => 'Sửa',
+    'user_updated' => 'Đã cập nhật thông tin người dùng.',
     'user' => 'Người dùng',
     'user_id' => 'Mã người dùng',
     'user_info' => 'Thông tin người dùng',
@@ -116,5 +119,6 @@ return [
     'enter_password' => 'Nhập mật khẩu',
     'remember_me' => 'Ghi nhớ đăng nhập',
     'sign_in' => 'Đăng nhập',
+    'username' => 'Tên đăng nhập',
     'invalid_credentials' => 'Email hoặc mật khẩu không đúng, hoặc tài khoản không phải quản trị viên.',
 ];

@@ -1,19 +1,20 @@
 <div class="app-menu navbar-menu">
     <div class="navbar-brand-box">
-        <a class="logo logo-dark" href="{{ route('admin.dashboard') }}">
+        <a class="logo logo-dark" href="{{ route('landing2') }}">
             <span class="logo-sm">
-                <img alt="" height="22" src="{{ asset('assets/images/logo-sm.png') }}" />
+                <img alt="" height="64" src="{{ asset('assets/images/logo/logo.png') }}" />
             </span>
             <span class="logo-lg">
-                <img alt="" height="17" src="{{ asset('assets/images/logo-dark.png') }}" />
+                <img alt="" height="64" src="{{ asset('assets/images/logo/logo.png') }}" />
             </span>
         </a>
-        <a class="logo logo-light" href="{{ route('admin.dashboard') }}">
+        <!-- Light Logo-->
+        <a class="logo logo-light" href="{{ route('landing2') }}">
             <span class="logo-sm">
-                <img alt="" height="22" src="{{ asset('assets/images/logo-sm.png') }}" />
+                <img alt="" height="64" src="{{ asset('assets/images/logo/logo.png') }}" />
             </span>
             <span class="logo-lg">
-                <img alt="" height="17" src="{{ asset('assets/images/logo-light.png') }}" />
+                <img alt="" height="64" src="{{ asset('assets/images/logo/logo.png') }}" />
             </span>
         </a>
         <button class="btn btn-sm p-0 fs-20 header-item float-end btn-vertical-sm-hover" id="vertical-hover" type="button">
@@ -93,12 +94,6 @@
                 </li>
 
                 <li class="menu-title"><span>{{ __('messages.menu.link') }}</span></li>
-
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ route('landing2') }}">
-                        <i class="ri-arrow-left-line"></i> <span>{{ __('admin.back_to_site') }}</span>
-                    </a>
-                </li>
             </ul>
         </div>
     </div>

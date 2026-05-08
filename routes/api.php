@@ -47,6 +47,7 @@ Route::prefix('trade')->group(function () {
     Route::middleware(['auth:sanctum'])->group(function () {
         Route::get('session/{id}/result', [TradingSessionController::class, 'result']);
         Route::get('latest', [TradingSessionController::class, 'latest']);
+        Route::get('session/{session_id}/trades', [TradingSessionController::class, 'getTradeBySession']);
 
         Route::middleware([EnsureClientFullyVerified::class])->group(function () {
             Route::post('buy', [TradingSessionController::class, 'buy']);

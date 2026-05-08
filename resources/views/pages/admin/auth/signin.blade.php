@@ -46,7 +46,7 @@
                                 @endif
 
                                 <div class="mb-3">
-                                    <label for="email" class="form-label">{{ __('admin.email') }}</label>
+                                    <label for="email" class="form-label">{{ __('admin.username') }}</label>
                                     <input type="text" class="form-control" id="email" name="email"
                                         value="{{ old('email') }}" placeholder="admin" required autofocus>
                                 </div>

@@ -15,7 +15,7 @@ class SpotTradeController extends Controller
     {
         $user = Auth::guard('client')->user();
 
-        if (!$user) {
+        if (! $user) {
             $user = $request->user();
         }
 

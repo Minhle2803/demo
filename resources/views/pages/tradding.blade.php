@@ -348,6 +348,8 @@
             coinMeta: @json(config('trading_chart.coins', [])),
             maxRows: 20,
             interval: 3000,
+            orderId: 0,
+            orderSessionId: 0,
         };
     </script>
 @endpush

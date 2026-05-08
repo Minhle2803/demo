@@ -101,11 +101,11 @@
                             <i class="far fa-envelope"></i> {{ __('messages.profile.deposit_withdraw') }}
                         </a>
                     </li>
-                    <li class="nav-item">
+                    <!-- <li class="nav-item">
                         <a class="nav-link {{ $activeTab === 'kyc' ? 'active' : '' }}" data-bs-toggle="tab" href="#privacy" role="tab">
                             <i class="far fa-envelope"></i> {{ __('messages.profile.kyc_verification') }}
                         </a>
-                    </li>
+                    </li> -->
                 </ul>
             </div>
 
@@ -204,6 +204,44 @@
                                         <input type="text" class="form-control bg-light" value="{{ $user->verified_at?->format('d/m/Y H:i') ?? '-' }}" readonly>
                                     </div>
                                 </div>
+                                @if ($user->isKycVerified())
+                                    <div class="card">
+                                        <div class="card-body text-center">
+                                            <div class="mb-4">
+                                                <lord-icon src="https://cdn.lordicon.com/lupuorrc.json" trigger="loop" colors="primary:#0ab39c,secondary:#405189" style="width:120px;height:120px"></lord-icon>
+                                            </div>
+                                            <h4 class="fw-semibold">{{ __('messages.profile.kyc_verified_badge') }}</h4>
+                                            <p class="text-muted">{{ __('messages.profile.kyc_verified_msg') }}</p>
+                                            <div class="mt-3">
+                                                @if ($user->kyc_front_url)
+                                                    <a href="{{ Storage::url($user->kyc_front_url) }}" target="_blank" class="btn btn-sm btn-outline-primary me-2">{{ __('messages.profile.view_front_id') }}</a>
+                                                @endif
+                                                @if ($user->kyc_back_url)
+                                                    <a href="{{ Storage::url($user->kyc_back_url) }}" target="_blank" class="btn btn-sm btn-outline-primary">{{ __('messages.profile.view_back_id') }}</a>
+                                                @endif
+                                            </div>
+                                        </div>
+                                    </div>
+                                @else
+                                    <div class="card">
+                                        <div class="card-body text-center">
+                                            <div class="mb-4">
+                                                <i class="ri-shield-check-fill text-muted" style="font-size: 80px;"></i>
+                                            </div>
+                                            <h4 class="fw-semibold">{{ __('messages.profile.kyc_modal_title') }}</h4>
+                                            <p class="text-muted">{{ __('messages.profile.kyc_modal_subtitle') }}</p>
+                                            @if ($user->kyc_front_url && !$user->isKycVerified())
+                                                <div class="alert alert-warning mt-3">
+                                                    <i class="ri-information-line me-1"></i>
+                                                    {{ __('messages.profile.kyc_pending_msg') }}
+                                                </div>
+                                            @endif
+                                            <button type="button" class="btn btn-primary mt-3" data-bs-toggle="modal" data-bs-target="#kycModal">
+                                                <i class="ri-user-shared-line me-1"></i> {{ __('messages.profile.verify_kyc') }}
+                                            </button>
+                                        </div>
+                                    </div>
+                                @endif
                                 <div class="col-lg-12">
                                     <div class="hstack gap-2 justify-content-end">
                                         <button type="submit" class="btn btn-primary">{{ __('messages.profile.updates') }}</button>
@@ -407,44 +445,7 @@
                     <div class="tab-pane {{ $activeTab === 'kyc' ? 'active' : '' }}" id="privacy" role="tabpanel">
                         <div class="row justify-content-center">
                             <div class="col-lg-8">
-                                @if ($user->isKycVerified())
-                                    <div class="card">
-                                        <div class="card-body text-center">
-                                            <div class="mb-4">
-                                                <lord-icon src="https://cdn.lordicon.com/lupuorrc.json" trigger="loop" colors="primary:#0ab39c,secondary:#405189" style="width:120px;height:120px"></lord-icon>
-                                            </div>
-                                            <h4 class="fw-semibold">{{ __('messages.profile.kyc_verified_badge') }}</h4>
-                                            <p class="text-muted">{{ __('messages.profile.kyc_verified_msg') }}</p>
-                                            <div class="mt-3">
-                                                @if ($user->kyc_front_url)
-                                                    <a href="{{ Storage::url($user->kyc_front_url) }}" target="_blank" class="btn btn-sm btn-outline-primary me-2">{{ __('messages.profile.view_front_id') }}</a>
-                                                @endif
-                                                @if ($user->kyc_back_url)
-                                                    <a href="{{ Storage::url($user->kyc_back_url) }}" target="_blank" class="btn btn-sm btn-outline-primary">{{ __('messages.profile.view_back_id') }}</a>
-                                                @endif
-                                            </div>
-                                        </div>
-                                    </div>
-                                @else
-                                    <div class="card">
-                                        <div class="card-body text-center">
-                                            <div class="mb-4">
-                                                <i class="ri-shield-check-fill text-muted" style="font-size: 80px;"></i>
-                                            </div>
-                                            <h4 class="fw-semibold">{{ __('messages.profile.kyc_modal_title') }}</h4>
-                                            <p class="text-muted">{{ __('messages.profile.kyc_modal_subtitle') }}</p>
-                                            @if ($user->kyc_front_url && !$user->isKycVerified())
-                                                <div class="alert alert-warning mt-3">
-                                                    <i class="ri-information-line me-1"></i>
-                                                    {{ __('messages.profile.kyc_pending_msg') }}
-                                                </div>
-                                            @endif
-                                            <button type="button" class="btn btn-primary mt-3" data-bs-toggle="modal" data-bs-target="#kycModal">
-                                                <i class="ri-user-shared-line me-1"></i> {{ __('messages.profile.verify_kyc') }}
-                                            </button>
-                                        </div>
-                                    </div>
-                                @endif
+                                
                             </div>
                         </div>
                     </div>
