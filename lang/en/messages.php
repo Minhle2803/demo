@@ -241,6 +241,9 @@ return [
         'low' => 'Low',
         'market_volume' => 'Market Volume',
         'price' => 'Price',
+        'trading_fee' => 'Trading Fee',
+        'estimated_win_amount' => 'Estimated Win Amount',
+        'fee_warning' => 'A trading fee is deducted from winning trades only.',
     ],
 
     'profile' => [

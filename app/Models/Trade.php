@@ -14,11 +14,13 @@ class Trade extends Model
         'amount',
         'status',
         'payout',
+        'trading_fee',
     ];
 
     protected $casts = [
         'amount' => 'decimal:2',
         'payout' => 'decimal:2',
+        'trading_fee' => 'decimal:2',
     ];
 
     public function session(): BelongsTo

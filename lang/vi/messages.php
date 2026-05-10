@@ -241,6 +241,9 @@ return [
         'high' => 'Cao',
         'low' => 'Thấp',
         'market_volume' => 'Khối lượng thị trường',
+        'trading_fee' => 'Phí giao dịch',
+        'estimated_win_amount' => 'Tiền thắng ước tính',
+        'fee_warning' => 'Phí giao dịch chỉ được khấu trừ từ giao dịch thắng.',
     ],
 
     'profile' => [

@@ -43,4 +43,14 @@ class AdminSettingService
     {
         return ProjectSetting::getValue('project_logo', asset('assets/images/logo/logo.png'));
     }
+
+    public function getFeePercent(): float
+    {
+        return (float) ProjectSetting::getValue('trading_fee_percent', '5');
+    }
+
+    public function updateFeePercent(float $percent): void
+    {
+        ProjectSetting::setValue('trading_fee_percent', (string) $percent, 'numeric');
+    }
 }

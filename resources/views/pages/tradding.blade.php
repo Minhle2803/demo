@@ -204,6 +204,7 @@
                         <th>{{ __('messages.trading.close_price') }}</th>
                         <th>{{ __('messages.trading.status') }}</th>
                         <th>{{ __('messages.trading.amount') }}</th>
+                        <th>{{ __('messages.trading.trading_fee') }}</th>
                         <th>{{ __('messages.trading.payout') }}</th>
                         <th>{{ __('messages.trading.time') }}</th>
                     </tr>
@@ -247,7 +248,8 @@
                                 <h6 class="{{ $textClass }} fs-13 mb-0">{{ $trade->status }}</h6>    
                             </td>
                             <td>{{ number_format($trade->amount, 0, '.', ',') }}</td>
-                            <?php 
+                            <td>{{ $trade->trading_fee ? number_format((float) $trade->trading_fee, 0, '.', ',') : '—' }}</td>
+                            <?php
                                 $amount = number_format($trade->amount, 0, '.', ',');
                                 $textClass = "text-success";
                                 $text = "+" . $amount;
@@ -314,6 +316,15 @@
                     <p class="text-muted mb-1">{{ __('messages.trading.amount') }}</p>
                     <h5 id="confirm-amount"></h5>
                 </div>
+                <div class="mb-3">
+                    <p class="text-muted mb-1">{{ __('messages.trading.trading_fee') }}</p>
+                    <h5 id="confirm-fee" class="text-warning"></h5>
+                </div>
+                <div class="mb-3">
+                    <p class="text-muted mb-1">{{ __('messages.trading.estimated_win_amount') }}</p>
+                    <h5 id="confirm-estimated-payout" class="text-success"></h5>
+                </div>
+                <small class="text-muted">{{ __('messages.trading.fee_warning') }}</small>
             </div>
             <div class="modal-footer justify-content-center">
                 <button type="button" class="btn btn-light" data-bs-dismiss="modal">{{ __('messages.common.cancel') }}</button>

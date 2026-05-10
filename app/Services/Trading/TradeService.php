@@ -11,6 +11,10 @@ use Illuminate\Support\Facades\DB;
 
 class TradeService
 {
+    public function __construct(
+        protected TradingFeeService $feeService,
+    ) {}
+
     /**
      * Validate and place a trade.
      *
@@ -42,6 +46,8 @@ class TradeService
             $freshUser->decrement('balance', $amount);
 
             // Create trade
+            $tradingFee = $this->feeService->calculateFee($amount);
+
             return Trade::create([
                 'user_id' => $freshUser->id,
                 'session_id' => $freshSession->id,
@@ -49,6 +55,7 @@ class TradeService
                 'amount' => $amount,
                 'status' => 'pending',
                 'payout' => 0,
+                'trading_fee' => $tradingFee,
             ]);
         });
     }

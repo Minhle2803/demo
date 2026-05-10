@@ -8,6 +8,7 @@ use App\Http\Responses\ApiResponse;
 use App\Models\Trade;
 use App\Models\TradingSession;
 use App\Services\Trading\TradeService;
+use App\Services\Trading\TradingFeeService;
 use App\Services\Trading\TradingSessionService;
 use App\Support\ErrorCodes;
 use Illuminate\Http\JsonResponse;
@@ -18,7 +19,18 @@ class TradingSessionController extends Controller
     public function __construct(
         protected TradingSessionService $sessionService,
         protected TradeService $tradeService,
+        protected TradingFeeService $feeService,
     ) {}
+
+    /**
+     * GET /api/trade/fee-config
+     */
+    public function feeConfig(): JsonResponse
+    {
+        return ApiResponse::success([
+            'fee_percent' => $this->feeService->getFeePercent(),
+        ]);
+    }
 
     /**
      * GET /api/trade/session/current
@@ -77,6 +89,7 @@ class TradingSessionController extends Controller
                 'amount' => $trade->amount,
                 'status' => $trade->status,
                 'payout' => $trade->payout,
+                'trading_fee' => $trade->trading_fee,
             ] : null,
         ], ErrorCodes::TRADE_RESULT_FETCHED);
     }
@@ -104,6 +117,7 @@ class TradingSessionController extends Controller
                     'amount' => $trade->amount,
                     'status' => $trade->status,
                     'session_id' => $trade->session_id,
+                    'trading_fee' => $trade->trading_fee,
                 ],
             ], ErrorCodes::TRADE_PLACE_SUCCESS, 201);
         } catch (\Exception $e) {
@@ -156,6 +170,7 @@ class TradingSessionController extends Controller
                 'trades.status',
                 'trades.amount',
                 'trades.payout',
+                'trades.trading_fee',
                 'trades.created_at',
 
                 'trading_sessions.symbol as session_symbol',
@@ -190,6 +205,7 @@ class TradingSessionController extends Controller
                 'trades.status',
                 'trades.amount',
                 'trades.payout',
+                'trades.trading_fee',
                 'trades.created_at',
 
                 'trading_sessions.symbol as session_symbol',

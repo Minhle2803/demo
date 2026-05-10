@@ -1,5 +1,5 @@
 import { state, setSession, getServerNow } from './state.js';
-import { fetchCurrentSession, fetchSessionResult, placeBuy, placeSell } from './api.js';
+import { fetchCurrentSession, fetchSessionResult, placeBuy, placeSell, fetchFeeConfig } from './api.js';
 import { startTimer, stopTimer } from './timer.js';
 import { setCountdown, setStatus, setSessionId, enableTrading, disableTrading, showResultPopup, showError } from './ui.js';
 import { validateAmount } from './validation.js';
@@ -8,14 +8,27 @@ import { tradeState } from './store';
 
 let echo = null;
 let pendingTrade = null;
+let feePercent = 5;
 
 async function init() {
+    await loadFeeConfig();
     await loadSession();
     initTradesTable();
     await updateTrades();
     bindButtons();
     initReverb();
     initConfirmModal();
+}
+
+async function loadFeeConfig() {
+    try {
+        const res = await fetchFeeConfig();
+        if (res.success && res.data?.fee_percent != null) {
+            feePercent = parseFloat(res.data.fee_percent);
+        }
+    } catch (err) {
+        console.error('Failed to load fee config:', err);
+    }
 }
 
 async function loadSession() {
@@ -139,11 +152,16 @@ function showTradeConfirm(type, amount) {
     const symbol = symbolEl?.textContent ?? '—';
     const amountLabel = amountSelect?.selectedOptions?.[0]?.textContent ?? amount;
 
+    const feeAmount = Math.round(amount * (feePercent / 100) * 100) / 100;
+    const estimatedPayout = (amount * 2) - feeAmount;
+
     document.getElementById('confirm-type').textContent = type === 'buy' ? 'BUY' : 'SELL';
     document.getElementById('confirm-type').className = type === 'buy' ? 'text-success fw-bold' : 'text-danger fw-bold';
     document.getElementById('confirm-symbol').textContent = symbol;
     document.getElementById('confirm-price').textContent = price;
     document.getElementById('confirm-amount').textContent = amountLabel;
+    document.getElementById('confirm-fee').textContent = feeAmount.toLocaleString() + ' VND';
+    document.getElementById('confirm-estimated-payout').textContent = estimatedPayout.toLocaleString() + ' VND';
 
     const modal = new bootstrap.Modal(document.getElementById('tradeConfirmModal'));
     modal.show();

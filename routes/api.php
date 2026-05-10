@@ -43,6 +43,7 @@ Route::prefix('internal/chart')
 Route::prefix('trade')->group(function () {
 
     Route::get('session/current', [TradingSessionController::class, 'current']);
+    Route::get('fee-config', [TradingSessionController::class, 'feeConfig']);
 
     Route::middleware(['auth:sanctum'])->group(function () {
         Route::get('session/{id}/result', [TradingSessionController::class, 'result']);

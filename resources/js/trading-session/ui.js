@@ -67,6 +67,8 @@ export function buildTradeRow(trade, coinMeta) {
     } else if(trade.status === 'win') {
         symb = "+";
     }
+    var feeDisplay = trade.trading_fee != null ? Number(trade.trading_fee).toLocaleString() : '—';
+
     return `
         <tr data-id="${trade.id}">
             <td>
@@ -79,8 +81,9 @@ export function buildTradeRow(trade, coinMeta) {
             <td>${trade.session_close_price ?? '-'}</td>
             <td class="${statusClass}">${trade.status}</td>
             <td>${Number(trade.amount).toLocaleString()}</td>
+            <td>${feeDisplay}</td>
             <td>
-                <h6 class="${statusClass} fs-13 mb-0">${symb}${amount}</h6> 
+                <h6 class="${statusClass} fs-13 mb-0">${symb}${amount}</h6>
             </td>
             <td>${formatDateUTC(trade.created_at)}</td>
         </tr>

@@ -12,6 +12,10 @@ use Illuminate\Support\Facades\Log;
 
 class TradingSessionService
 {
+    public function __construct(
+        protected TradingFeeService $feeService,
+    ) {}
+
     // Symbol and interval used for session-candle sync.
     // Must match the candle worker configuration.
     protected string $symbol = 'BTC_USDT';
@@ -183,11 +187,18 @@ class TradingSessionService
                 default => false,
             };
 
-            $payout = $win ? $trade->amount * 2 : 0;
+            $payout = 0;
+            $tradingFee = 0;
+
+            if ($win) {
+                $tradingFee = $this->feeService->calculateFee((float) $trade->amount);
+                $payout = $this->feeService->calculatePayout((float) $trade->amount);
+            }
 
             $trade->update([
                 'status' => $win ? 'win' : 'lose',
                 'payout' => $payout,
+                'trading_fee' => $tradingFee,
             ]);
 
             // Credit winnings back to user balance

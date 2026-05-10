@@ -34,6 +34,7 @@ Route::name('admin.')->group(function () {
         Route::get('/settings', [AdminSettingController::class, 'index'])->name('settings.index');
         Route::post('/settings/bank', [AdminSettingController::class, 'updateBank'])->name('settings.bank');
         Route::post('/settings/logo', [AdminSettingController::class, 'updateLogo'])->name('settings.logo');
+        Route::post('/settings/fee', [AdminSettingController::class, 'updateFee'])->name('settings.fee');
 
         Route::get('/settings/crypto-assets', [AdminCryptoAssetController::class, 'index'])->name('crypto-assets.index');
         Route::post('/settings/crypto-assets', [AdminCryptoAssetController::class, 'store'])->name('crypto-assets.store');

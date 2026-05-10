@@ -77,6 +77,23 @@
                         <div class="card-body">
                             <div class="d-flex align-items-center">
                                 <div class="avatar-sm flex-shrink-0">
+                                    <span class="avatar-title bg-light text-secondary rounded-circle fs-3 material-shadow">
+                                        <i class="ri-percent-fill align-middle"></i>
+                                    </span>
+                                </div>
+                                <div class="flex-grow-1 ms-3">
+                                    <p class="text-uppercase fw-semibold fs-12 text-muted mb-1">{{ __('admin.total_trading_fees') }}</p>
+                                    <h4 class="mb-0">{{ number_format($stats['total_trading_fees']) }} VND</h4>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="d-flex align-items-center">
+                                <div class="avatar-sm flex-shrink-0">
                                     <span class="avatar-title bg-light text-primary rounded-circle fs-3 material-shadow">
                                         <i class="ri-bar-chart-fill align-middle"></i>
                                     </span>

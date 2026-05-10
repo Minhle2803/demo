@@ -50,6 +50,26 @@
     <div class="col-xxl-6">
         <div class="card">
             <div class="card-header">
+                <h5 class="card-title mb-0">{{ __('admin.trading_fee_setting') }}</h5>
+            </div>
+            <div class="card-body">
+                <form action="{{ route('admin.settings.fee') }}" method="POST">
+                    @csrf
+                    <div class="mb-3">
+                        <label class="form-label">{{ __('admin.trading_fee_percent') }}</label>
+                        <input type="number" class="form-control" name="fee_percent" value="{{ $feePercent }}" step="0.01" min="0" max="100">
+                        @error('fee_percent') <span class="text-danger">{{ $message }}</span> @enderror
+                        <small class="text-muted">{{ __('admin.trading_fee_desc') }}</small>
+                    </div>
+                    <button type="submit" class="btn btn-primary">{{ __('admin.save') }}</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-xxl-6">
+        <div class="card">
+            <div class="card-header">
                 <h5 class="card-title mb-0">{{ __('admin.logo_setting') }}</h5>
             </div>
             <div class="card-body">

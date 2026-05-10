@@ -119,6 +119,10 @@
         <div class="card">
             <div class="card-header d-flex align-items-center">
                 <h5 class="card-title mb-0">Trades ({{ $trades->total() }})</h5>
+                <div class="ms-auto">
+                    <span class="text-muted">{{ __('admin.total_trading_fees') }}:</span>
+                    <strong>{{ number_format((float) $trades->sum('trading_fee'), 0, '.', ',') }} VND</strong>
+                </div>
             </div>
             <div class="card-body">
                 <div class="table-responsive table-card">
@@ -129,6 +133,7 @@
                                 <th>User</th>
                                 <th>Type</th>
                                 <th>Amount</th>
+                                <th>Fee</th>
                                 <th>Status</th>
                                 <th>Payout</th>
                                 <th>Time</th>
@@ -158,6 +163,7 @@
                                         @endif
                                     </td>
                                     <td>{{ number_format((float) $trade->amount, 0, '.', ',') }}</td>
+                                    <td>{{ $trade->trading_fee ? number_format((float) $trade->trading_fee, 0, '.', ',') : '—' }}</td>
                                     <td>
                                         @if ($trade->status === 'win')
                                             <span class="badge bg-success-subtle text-success">Win</span>
@@ -180,7 +186,7 @@
                                 </tr>
                             @empty
                                 <tr>
-                                    <td colspan="7" class="text-center text-muted py-4">No trades for this session.</td>
+                                    <td colspan="8" class="text-center text-muted py-4">No trades for this session.</td>
                                 </tr>
                             @endforelse
                         </tbody>

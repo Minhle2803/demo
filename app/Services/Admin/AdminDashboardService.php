@@ -14,6 +14,7 @@ class AdminDashboardService
             'total_spot_sell_orders' => (float) CryptoOrder::where('side', 'sell')->sum('total_amount'),
             'total_trading_sell_orders' => (float) Trade::where('type', 'sell')->sum('amount'),
             'total_trading_buy_orders' => (float) Trade::where('type', 'buy')->sum('amount'),
+            'total_trading_fees' => (float) Trade::sum('trading_fee'),
             'revenue' => $this->calculateRevenue(),
         ];
     }
