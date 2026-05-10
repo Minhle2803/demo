@@ -7,6 +7,7 @@ use App\Http\Requests\Auth\ClientRegisterRequest;
 use App\Http\Responses\ApiResponse;
 use App\Models\ClientUser;
 use App\Services\OtpService;
+use App\Services\Referral\ReferralRegistrationService;
 use App\Support\ErrorCodes;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\JsonResponse;
@@ -20,38 +21,39 @@ class ClientRegisterController extends Controller
         return view('pages.auth.signup');
     }
 
-    public function __construct(private readonly OtpService $otpService) {}
+    public function __construct(
+        private readonly OtpService $otpService,
+        private readonly ReferralRegistrationService $referralService,
+    ) {}
 
     /**
      * POST /client/register
      *
-     * 1. Validate → 2. Create user → 3. Send email verification →
-     * 4. Send phone OTP → 5. Return 201
+     * 1. Validate → 2. Process referral → 3. Create user → 4. Send email verification →
+     * 5. Send phone OTP → 6. Return 201
      */
     public function __invoke(ClientRegisterRequest $request): JsonResponse|RedirectResponse
     {
         $validated = $request->validated();
 
-        $user = ClientUser::create([
+        $referralData = $this->referralService->processReferralCode(
+            $validated['referral_code'] ?? null
+        );
+
+        $user = ClientUser::create(array_merge([
             'nickname' => $validated['nickname'],
             'phone_number' => $validated['phone_number'],
-            'password' => $validated['password'], // cast 'hashed' handles bcrypt
-            'referral_code' => $validated['referral_code'] ?? null,
+            'password' => $validated['password'],
             'is_verified' => false,
             'balance' => 0,
             'trading_balance' => 0,
-            // Email verification token for custom flow
             'email_verification_token' => Str::random(64),
-        ]);
+        ], $referralData));
 
-        // Fire Laravel's Registered event → triggers MustVerifyEmail if needed
         event(new Registered($user));
 
-        // Optionally send a custom verification email here:
-        // Mail::to($user->email)->send(new ClientEmailVerificationMail($user));
-
-        // Send phone OTP (mocked by default)
         $this->otpService->sendOtp($user);
+
         if ($request->expectsJson()) {
             return ApiResponse::success(
                 data: ['user_id' => $user->user_id],

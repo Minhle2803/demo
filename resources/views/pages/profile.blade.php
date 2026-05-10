@@ -168,6 +168,19 @@
                                         <input type="text" class="form-control bg-light" value="{{ number_format($user->balance, 2) }} VND" readonly>
                                     </div>
                                 </div>
+                                @if ($user->invite_code)
+                                <div class="col-12">
+                                    <div class="mb-3">
+                                        <label class="form-label">{{ __('admin.invite_link') }}</label>
+                                        <div class="input-group">
+                                            <input type="text" class="form-control" id="clientInviteLink" value="{{ config('app.url') }}/signup?ref={{ $user->invite_code }}" readonly>
+                                            <button type="button" class="btn btn-primary" onclick="copyClientInviteLink()">
+                                                {{ __('admin.copy_link') }}
+                                            </button>
+                                        </div>
+                                        <small class="text-muted">{{ __('admin.invite_code') }}: <code>{{ $user->invite_code }}</code></small>
+                                    </div>
+                                </div>
                                 <div class="col-lg-6">
                                     <div class="mb-3">
                                         <label for="kycStatus" class="form-label">KYC Status</label>
@@ -538,6 +551,7 @@
 </div>
 
 @push('scripts')
+@vite(['resources/js/referral.js'])
 <script>
     window.profileConfig = {
         depositQrUrl: "{{ route('client.profile.deposit.qr') }}",

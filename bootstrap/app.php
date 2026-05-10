@@ -3,6 +3,7 @@
 use App\Console\Commands\SeedTradingChartCandles;
 use App\Console\Commands\TradingChartWorker;
 use App\Http\Middleware\AdminMiddleware;
+use App\Http\Middleware\Authenticate;
 use App\Http\Middleware\RedirectIfAuthenticated;
 use App\Http\Middleware\SetLocale;
 use Illuminate\Auth\AuthenticationException;
@@ -46,7 +47,7 @@ return Application::configure(basePath: dirname(__DIR__))
         $middleware->alias([
             'admin' => AdminMiddleware::class,
             'guest' => RedirectIfAuthenticated::class,
-            'auth' => \App\Http\Middleware\Authenticate::class,
+            'auth' => Authenticate::class,
         ]);
 
         $middleware->api(prepend: [
@@ -59,7 +60,7 @@ return Application::configure(basePath: dirname(__DIR__))
     })
     ->withExceptions(function (Exceptions $exceptions): void {
         $exceptions->render(function (AuthenticationException $e, $request) {
-             // API request
+            // API request
             if ($request->is('api/*') || $request->expectsJson()) {
 
                 return response()->json([
@@ -73,6 +74,7 @@ return Application::configure(basePath: dirname(__DIR__))
             if ($request->is('admin/*')) {
                 return redirect()->route('admin.login');
             }
+
             // Web request
             return redirect()->route('signin');
         });

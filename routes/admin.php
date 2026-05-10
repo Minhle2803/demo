@@ -4,6 +4,7 @@ use App\Http\Controllers\Admin\AdminAuthController;
 use App\Http\Controllers\Admin\AdminCryptoAssetController;
 use App\Http\Controllers\Admin\AdminDashboardController;
 use App\Http\Controllers\Admin\AdminDepositController;
+use App\Http\Controllers\Admin\AdminReferralController;
 use App\Http\Controllers\Admin\AdminSessionController;
 use App\Http\Controllers\Admin\AdminSettingController;
 use App\Http\Controllers\Admin\AdminUserController;
@@ -40,6 +41,9 @@ Route::name('admin.')->group(function () {
         Route::post('/settings/crypto-assets', [AdminCryptoAssetController::class, 'store'])->name('crypto-assets.store');
         Route::put('/settings/crypto-assets/{id}', [AdminCryptoAssetController::class, 'update'])->name('crypto-assets.update');
         Route::delete('/settings/crypto-assets/{id}', [AdminCryptoAssetController::class, 'destroy'])->name('crypto-assets.destroy');
+
+        Route::get('/referrals', [AdminReferralController::class, 'index'])->name('referrals.index');
+        Route::get('/referrals/{clientUserId}', [AdminReferralController::class, 'show'])->name('referrals.show');
 
         Route::get('/sessions', [AdminSessionController::class, 'index'])->name('sessions.index');
         Route::get('/sessions/{id}', [AdminSessionController::class, 'show'])->name('sessions.show');

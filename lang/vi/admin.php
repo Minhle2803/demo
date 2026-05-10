@@ -135,4 +135,15 @@ return [
     'sign_in' => 'Đăng nhập',
     'username' => 'Tên đăng nhập',
     'invalid_credentials' => 'Email hoặc mật khẩu không đúng, hoặc tài khoản không phải quản trị viên.',
+
+    'invite_link' => 'Link mời',
+    'copy_link' => 'Sao chép',
+    'invite_code' => 'Mã mời',
+    'total_played_amount' => 'Tổng tiền đã chơi',
+    'total_won_amount' => 'Tổng tiền đã thắng',
+    'invited_members' => 'Thành viên được mời',
+    'invited_by' => 'Được mời bởi',
+    'agent_stats' => 'Thống kê đại lý',
+    'invited_users_by_agent' => 'Người dùng được mời bởi đại lý này',
+    'view' => 'Xem',
 ];

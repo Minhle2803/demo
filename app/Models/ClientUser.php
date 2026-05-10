@@ -4,6 +4,8 @@ namespace App\Models;
 
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Str;
@@ -41,6 +43,9 @@ class ClientUser extends Authenticatable
         'phone_otp_code',
         'phone_otp_expired_at',
         'referral_code',
+        'invite_code',
+        'invited_by_admin_id',
+        'invited_by_client_id',
         'account_name',
         'bank_account',
         'bank_number',
@@ -146,5 +151,25 @@ class ClientUser extends Authenticatable
         return $this->kyc_verified_at !== null
             && ! empty($this->kyc_front_url)
             && ! empty($this->kyc_back_url);
+    }
+
+    public function invitedByAdmin(): BelongsTo
+    {
+        return $this->belongsTo(User::class, 'invited_by_admin_id');
+    }
+
+    public function invitedByClient(): BelongsTo
+    {
+        return $this->belongsTo(ClientUser::class, 'invited_by_client_id');
+    }
+
+    public function invitedUsers(): HasMany
+    {
+        return $this->hasMany(ClientUser::class, 'invited_by_client_id');
+    }
+
+    public function trades()
+    {
+        return $this->hasMany(Trade::class, 'user_id');
     }
 }

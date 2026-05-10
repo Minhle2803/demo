@@ -74,6 +74,12 @@
                 </li>
 
                 <li class="nav-item">
+                    <a class="nav-link {{ request()->routeIs('admin.referrals.*') ? 'active' : '' }}" href="{{ route('admin.referrals.index') }}">
+                        <i class="ri-links-line"></i> <span>Referrals</span>
+                    </a>
+                </li>
+
+                <li class="nav-item">
                     <a class="nav-link {{ request()->routeIs('admin.sessions.*') ? 'active' : '' }}" href="{{ route('admin.sessions.index') }}">
                         <i class="ri-time-line"></i> <span>Sessions</span>
                     </a>

@@ -135,4 +135,15 @@ return [
     'sign_in' => 'Sign In',
     'username' => 'Username',
     'invalid_credentials' => 'Invalid username or password, or account is not an admin.',
+
+    'invite_link' => 'Invite Link',
+    'copy_link' => 'Copy Link',
+    'invite_code' => 'Invite Code',
+    'total_played_amount' => 'Total Played Amount',
+    'total_won_amount' => 'Total Won Amount',
+    'invited_members' => 'Invited Members',
+    'invited_by' => 'Invited By',
+    'agent_stats' => 'Agent Stats',
+    'invited_users_by_agent' => 'Invited Users by This Agent',
+    'view' => 'View',
 ];
