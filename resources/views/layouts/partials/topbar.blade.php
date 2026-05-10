@@ -141,7 +141,7 @@
                 @auth('client')
                 
                 <div class="dropdown ms-1 topbar-head-dropdown header-item">
-                    <a class="btn btn-warning btn-label waves-effect waves-light" href="{{ route('client.profile.show') }}"><i class="ri-error-warning-line label-icon align-middle fs-16 me-2"></i> Nạp Tiền</a>
+                    <a class="btn btn-outline-warning btn-label waves-effect waves-light" href="{{ route('client.profile.show') }}"><i class="bx bx-money label-icon align-middle fs-16 me-2"></i> Nạp Tiền</a>
                 </div>
                 <div class="dropdown ms-sm-3 header-item topbar-user">
                     <button aria-expanded="false" aria-haspopup="true" class="btn material-shadow-none" data-bs-toggle="dropdown" id="page-header-user-dropdown" type="button">
