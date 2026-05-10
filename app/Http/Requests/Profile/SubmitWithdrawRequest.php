@@ -18,7 +18,7 @@ class SubmitWithdrawRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'amount' => ['required', 'numeric', 'min:10000'],
+            'amount' => ['required', 'numeric'],
         ];
     }
 
@@ -27,7 +27,6 @@ class SubmitWithdrawRequest extends FormRequest
         return [
             'amount.required' => __('errors.'.ErrorCodes::DEPOSIT_AMOUNT_REQUIRED),
             'amount.numeric' => 'Amount must be a valid number.',
-            'amount.min' => 'Minimum withdrawal amount is 10,000 VND.',
         ];
     }
 

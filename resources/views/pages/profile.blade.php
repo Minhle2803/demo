@@ -217,25 +217,7 @@
                                         <input type="text" class="form-control bg-light" value="{{ $user->verified_at?->format('d/m/Y H:i') ?? '-' }}" readonly>
                                     </div>
                                 </div>
-                                @if ($user->isKycVerified())
-                                    <div class="card">
-                                        <div class="card-body text-center">
-                                            <div class="mb-4">
-                                                <lord-icon src="https://cdn.lordicon.com/lupuorrc.json" trigger="loop" colors="primary:#0ab39c,secondary:#405189" style="width:120px;height:120px"></lord-icon>
-                                            </div>
-                                            <h4 class="fw-semibold">{{ __('messages.profile.kyc_verified_badge') }}</h4>
-                                            <p class="text-muted">{{ __('messages.profile.kyc_verified_msg') }}</p>
-                                            <div class="mt-3">
-                                                @if ($user->kyc_front_url)
-                                                    <a href="{{ Storage::url($user->kyc_front_url) }}" target="_blank" class="btn btn-sm btn-outline-primary me-2">{{ __('messages.profile.view_front_id') }}</a>
-                                                @endif
-                                                @if ($user->kyc_back_url)
-                                                    <a href="{{ Storage::url($user->kyc_back_url) }}" target="_blank" class="btn btn-sm btn-outline-primary">{{ __('messages.profile.view_back_id') }}</a>
-                                                @endif
-                                            </div>
-                                        </div>
-                                    </div>
-                                @else
+                                @if (!$user->isKycVerified())
                                     <div class="card">
                                         <div class="card-body text-center">
                                             <div class="mb-4">
@@ -377,8 +359,8 @@
                                         <form id="withdrawForm">
                                             @csrf
                                             <div class="mb-3">
-                                                <label for="withdrawAmount" class="form-label">{{ __('messages.profile.withdraw_amount_min') }} <span class="text-danger">*</span></label>
-                                                <input type="number" class="form-control" id="withdrawAmount" name="amount" placeholder="{{ __('messages.profile.enter_withdraw_amount') }}" min="10000" required>
+                                                <label for="withdrawAmount" class="form-label">{{ __('messages.profile.enter_withdraw_amount') }} <span class="text-danger">*</span></label>
+                                                <input type="number" class="form-control" id="withdrawAmount" name="amount" placeholder="{{ __('messages.profile.enter_withdraw_amount') }}"  required>
                                                 <p class="text-danger mt-1" id="withdrawError" style="display:none;"></p>
                                             </div>
                                             <div class="mb-3">
