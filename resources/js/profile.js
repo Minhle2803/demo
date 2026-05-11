@@ -52,7 +52,6 @@ function initTabFromUrl() {
         profile: '#personalDetails',
         password: '#changePassword',
         deposit: '#experience',
-        kyc: '#privacy',
     };
 
     const selector = tabMap[tab];
@@ -310,98 +309,92 @@ function initWithdraw() {
 // ---------------------------------------------------------------------------
 // KYC Modal 2-step navigation
 // ---------------------------------------------------------------------------
-function initKycModal() {
-    const step1Content = document.getElementById('kycStep1Content');
-    const step2Content = document.getElementById('kycStep2Content');
-    const step1Badge = document.getElementById('kycStep1Badge');
-    const step2Badge = document.getElementById('kycStep2Badge');
-    const nextBtn = document.getElementById('kycNextStep');
-    const prevBtn = document.getElementById('kycPrevStep');
-    const bankForm = document.getElementById('kycBankForm');
-    const uploadForm = document.getElementById('kycUploadForm');
+function initKycInline() {
+    const submitBtn = document.getElementById('kycSubmitBtn');
+    if (!submitBtn) return;
 
-    if (!step1Content || !step2Content) return;
+    const bankName = document.getElementById('kycBankName');
+    const bankNumber = document.getElementById('kycBankNumber');
+    const bankBranch = document.getElementById('kycBankBranch');
+    const fullName = document.getElementById('kycFullName');
+    const dob = document.getElementById('kycDob');
+    const cccdNumber = document.getElementById('kycCccdNumber');
+    const frontInput = document.getElementById('kycFrontInput');
+    const backInput = document.getElementById('kycBackInput');
+    const statusEl = document.getElementById('kycUploadStatus');
 
-    function showStep(step) {
-        if (step === 1) {
-            step1Content.style.display = '';
-            step2Content.style.display = 'none';
-            if (step1Badge) step1Badge.className = 'badge bg-primary fs-6 px-3 py-2 me-2';
-            if (step2Badge) step2Badge.className = 'badge bg-light text-dark fs-6 px-3 py-2 ms-2';
-        } else {
-            step1Content.style.display = 'none';
-            step2Content.style.display = '';
-            if (step1Badge) step1Badge.className = 'badge bg-light text-dark fs-6 px-3 py-2 me-2';
-            if (step2Badge) step2Badge.className = 'badge bg-primary fs-6 px-3 py-2 ms-2';
-        }
+    function showKycStatus(msg, success) {
+        if (!statusEl) return;
+        statusEl.innerHTML = `<div class="alert alert-${success ? 'success' : 'danger'}">${msg}</div>`;
     }
 
-    if (nextBtn) {
-        nextBtn.addEventListener('click', async () => {
-            const config = window.profileConfig || {};
-            const accountName = document.getElementById('kycBankName')?.value?.trim();
-            const bankNumber = document.getElementById('kycBankNumber')?.value?.trim();
-            const bankAccount = document.getElementById('kycBankBranch')?.value?.trim();
+    submitBtn.addEventListener('click', async () => {
+        const config = window.profileConfig || {};
 
-            if (!accountName || !bankNumber || !bankAccount) {
-                showFlash('error', 'Vui lòng điền đầy đủ thông tin ngân hàng.');
+        if (!bankName?.value?.trim() || !bankNumber?.value?.trim() || !bankBranch?.value?.trim()) {
+            showKycStatus('Vui lòng điền đầy đủ thông tin ngân hàng.', false);
+            return;
+        }
+        if (!fullName?.value?.trim() || !dob?.value?.trim() || !cccdNumber?.value?.trim()) {
+            showKycStatus('Vui lòng điền đầy đủ thông tin CCCD.', false);
+            return;
+        }
+        if (!frontInput?.files?.[0] || !backInput?.files?.[0]) {
+            showKycStatus('Vui lòng tải lên cả mặt trước và mặt sau CCCD.', false);
+            return;
+        }
+
+        submitBtn.disabled = true;
+        submitBtn.innerHTML = '<span class="spinner-border spinner-border-sm me-1"></span> Processing...';
+        if (statusEl) statusEl.innerHTML = '';
+
+        try {
+            const bankRes = await fetchWithAuth(config.updateBankUrl || '/profile/bank', {
+                method: 'POST',
+                body: JSON.stringify({
+                    account_name: bankName.value.trim(),
+                    bank_number: bankNumber.value.trim(),
+                    bank_account: bankBranch.value.trim(),
+                }),
+            });
+            const bankData = await bankRes.json();
+            if (!bankData.success) {
+                showKycStatus(bankData.message || 'Failed to save bank info.', false);
                 return;
             }
 
-            try {
-                const res = await fetchWithAuth(config.updateBankUrl || '/profile/bank', {
-                    method: 'POST',
-                    body: JSON.stringify({ account_name: accountName, bank_number: bankNumber, bank_account: bankAccount }),
-                });
-                const data = await res.json();
-                if (data.success) {
-                    showStep(2);
-                } else {
-                    showFlash('error', data.message || 'Failed to save bank info.');
-                }
-            } catch {
-                showFlash('error', 'Network error.');
+            const formData = new FormData();
+            formData.append('full_name', fullName.value.trim());
+            formData.append('date_of_birth', dob.value.trim());
+            formData.append('cccd_number', cccdNumber.value.trim());
+            formData.append('kyc_front', frontInput.files[0]);
+            formData.append('kyc_back', backInput.files[0]);
+
+            const kycRes = await fetch(config.kycSubmitUrl || '/profile/kyc', {
+                method: 'POST',
+                headers: {
+                    'X-CSRF-TOKEN': getCsrfToken(),
+                    'Accept': 'application/json',
+                    'Authorization': `Bearer ${getAuthToken()}`,
+                },
+                body: formData,
+            });
+            const kycData = await kycRes.json();
+
+            if (kycData.success) {
+                showKycStatus(kycData.message || 'KYC submitted successfully. Pending admin approval.', true);
+                setTimeout(() => window.location.reload(), 2000);
+            } else {
+                showKycStatus(kycData.message || 'Verification failed.', false);
             }
-        });
-    }
+        } catch {
+            showKycStatus('Network error. Please try again.', false);
+        } finally {
+            submitBtn.disabled = false;
+            submitBtn.innerHTML = '<i class="ri-user-shared-line me-1"></i> Submit Verification';
+        }
+    });
 
-    if (prevBtn) {
-        prevBtn.addEventListener('click', () => showStep(1));
-    }
-
-    // KYC Upload form submission
-    if (uploadForm) {
-        uploadForm.addEventListener('submit', async (e) => {
-            e.preventDefault();
-            const config = window.profileConfig || {};
-            const statusEl = document.getElementById('kycUploadStatus');
-            const formData = new FormData(uploadForm);
-
-            try {
-                const res = await fetch(config.kycSubmitUrl || '/profile/kyc', {
-                    method: 'POST',
-                    headers: {
-                        'X-CSRF-TOKEN': getCsrfToken(),
-                        'Accept': 'application/json',
-                        'Authorization': `Bearer ${getAuthToken()}`,
-                    },
-                    body: formData,
-                });
-                const data = await res.json();
-
-                if (data.success) {
-                    if (statusEl) statusEl.innerHTML = '<div class="alert alert-success">KYC verification successful! Reloading page...</div>';
-                    setTimeout(() => window.location.reload(), 2000);
-                } else {
-                    if (statusEl) statusEl.textContent = data.message || 'Verification failed.';
-                }
-            } catch {
-                if (statusEl) statusEl.innerHTML = '<div class="alert alert-danger">Network error.</div>';
-            }
-        });
-    }
-
-    // KYC file previews
     function previewFile(input, previewEl) {
         if (!input || !previewEl) return;
         input.addEventListener('change', () => {
@@ -484,7 +477,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initTabFromUrl();
     initDeposit();
     initWithdraw();
-    initKycModal();
+    initKycInline();
     initForms();
     loadDepositHistory();
     loadWithdrawHistory();

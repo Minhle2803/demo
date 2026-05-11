@@ -45,19 +45,7 @@ class ProfileService
             'cccd_number' => $identityData['cccd_number'],
         ]);
 
-        // Try QR scan on front image for CCCD verification
-        $qrResult = $this->scanCccdQr($frontFile);
-
-        if ($qrResult === null) {
-            return ['code' => ErrorCodes::KYC_QR_SCAN_FAILED];
-        }
-
-        if (! $this->matchKycData($user, $qrResult)) {
-            return ['code' => ErrorCodes::KYC_DATA_MISMATCH];
-        }
-
-        $user->forceFill(['kyc_verified_at' => now()])->save();
-
+        // KYC documents saved — admin approval required to set kyc_verified_at
         return ['code' => ErrorCodes::KYC_VERIFIED_SUCCESS];
     }
 
