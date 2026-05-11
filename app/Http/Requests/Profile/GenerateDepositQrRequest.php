@@ -18,7 +18,7 @@ class GenerateDepositQrRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'amount' => ['required', 'numeric', 'min:10000'],
+            'amount' => ['required', 'numeric', 'min:300000'],
         ];
     }
 
@@ -26,8 +26,8 @@ class GenerateDepositQrRequest extends FormRequest
     {
         return [
             'amount.required' => __('errors.'.ErrorCodes::DEPOSIT_AMOUNT_REQUIRED),
-            'amount.numeric' => 'Amount must be a valid number.',
-            'amount.min' => 'Minimum deposit amount is 10,000 VND.',
+            'amount.numeric' => 'Cần nhập số tiền.',
+            'amount.min' => 'Số tiền tối thiểu là 300,000 VND.',
         ];
     }
 

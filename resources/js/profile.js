@@ -197,7 +197,7 @@ function initDeposit() {
 
     depositBtn.addEventListener('click', async () => {
         const amount = amountInput?.value?.trim();
-        if (!amount || isNaN(amount) || Number(amount) < 10000) {
+        if (!amount || isNaN(amount) || Number(amount) < 300000) {
             if (errorEl) {
                 errorEl.textContent = 'Vui lòng nhập số tiền tối thiểu 10,000 VND.';
                 errorEl.style.display = 'block';

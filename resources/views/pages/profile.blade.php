@@ -436,7 +436,8 @@
                                     </div>
                                     <div class="modal-body text-center">
                                         <h5 class="fs-15">{{ __('messages.profile.enter_amount') }}</h5>
-                                        <input type="number" class="form-control mb-3" id="depositAmount" placeholder="{{ __('messages.profile.enter_deposit_amount') }}" min="10000">
+                                        <p class="text-warning"><i>Số tiền tối thiểu 300.000 VNĐ</i></p>
+                                        <input type="number" class="form-control mb-3" id="depositAmount" placeholder="{{ __('messages.profile.enter_deposit_amount') }}" min="300000">
                                         <p class="mb-2 text-danger" id="depositError" style="display:none;"></p>
                                         <p class="mb-2">{{ __('messages.profile.deposit_payment_note') }}</p>
                                         <p class="mb-2"><strong>{{ __('messages.common.balance') }}: <span id="depositContent">{{ $user->nickname }}</span></strong></p>
