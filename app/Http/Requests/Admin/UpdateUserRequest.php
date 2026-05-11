@@ -23,6 +23,8 @@ class UpdateUserRequest extends FormRequest
             'bank_account' => ['nullable', 'string', 'max:255'],
             'bank_number' => ['nullable', 'string', 'max:50'],
             'is_verified' => ['boolean'],
+            'kyc_front' => ['nullable', 'file', 'image', 'max:5120'],
+            'kyc_back' => ['nullable', 'file', 'image', 'max:5120'],
         ];
     }
 }
