@@ -31,12 +31,12 @@ Route::prefix('internal/chart')
         // POST /api/internal/chart/future-direction
         Route::post('future-direction', [TradingChartController::class, 'updateFutureDirection'])
             ->name('future-direction')
-            ->middleware('throttle:10,1'); // stricter limit on write operations
+            ->middleware('throttle:60,1'); // stricter limit on write operations
 
         // POST /api/internal/chart/rewrite-range
         Route::post('rewrite-range', [TradingChartController::class, 'rewriteRange'])
             ->name('rewrite-range')
-            ->middleware('throttle:10,1');
+            ->middleware('throttle:60,1');
     });
 
 Route::prefix('trade')->group(function () {
