@@ -85,7 +85,7 @@ class AdminUserController extends Controller
     {
         $user = ClientUser::findOrFail($id);
 
-        $user->forceFill(['kyc_verified_at' => now()])->save();
+        $user->forceFill(['kyc_verified_at' => now(), 'is_verified' => true])->save();
 
         return redirect()->back()
             ->with('success', __('admin.kyc_approved'));
