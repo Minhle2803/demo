@@ -39,7 +39,7 @@ return [
     'bank_account' => 'Bank Account',
     'bank_number' => 'Bank Number',
     'bank_info' => 'Bank Information',
-    'bank_settings' => 'Bank Settings',
+    'bank_settings' => 'Settings system',
     'logo_setting' => 'Logo Setting',
     'current_logo' => 'Current Logo',
     'upload_new_logo' => 'Upload New Logo',

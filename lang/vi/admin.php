@@ -39,7 +39,7 @@ return [
     'bank_account' => 'Tài khoản ngân hàng',
     'bank_number' => 'Số tài khoản',
     'bank_info' => 'Thông tin ngân hàng',
-    'bank_settings' => 'Cài đặt ngân hàng',
+    'bank_settings' => 'Cài đặt hệ thống',
     'logo_setting' => 'Cài đặt logo',
     'current_logo' => 'Logo hiện tại',
     'upload_new_logo' => 'Tải lên logo mới',
