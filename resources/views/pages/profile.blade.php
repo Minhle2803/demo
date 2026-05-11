@@ -452,6 +452,9 @@
     .profile-wid-bg::before {
         background: none !important;
     }
+    .profile-setting-img {
+        height: 100px !important;
+    }
 </style>
 @endsection
 
