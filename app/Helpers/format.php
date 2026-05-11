@@ -13,21 +13,21 @@ if (! function_exists('format_currency_short')) {
         $sign = $amount < 0 ? '-' : '';
         $amount = abs($amount);
 
-        if ($amount >= 1_000_000_000) {
-            $formatted = number_format($amount / 1_000_000_000, 1);
-            $formatted = rtrim(rtrim($formatted, '0'), '.');
-            $result = $sign.$formatted.'B';
-        } elseif ($amount >= 1_000_000) {
-            $formatted = number_format($amount / 1_000_000, 1);
-            $formatted = rtrim(rtrim($formatted, '0'), '.');
-            $result = $sign.$formatted.'M';
-        } elseif ($amount >= 1_000) {
-            $formatted = number_format($amount / 1_000, 1);
-            $formatted = rtrim(rtrim($formatted, '0'), '.');
-            $result = $sign.$formatted.'k';
-        } else {
+        // if ($amount >= 1_000_000_000) {
+        //     $formatted = number_format($amount / 1_000_000_000, 1);
+        //     $formatted = rtrim(rtrim($formatted, '0'), '.');
+        //     $result = $sign.$formatted.'B';
+        // } elseif ($amount >= 1_000_000) {
+        //     $formatted = number_format($amount / 1_000_000, 1);
+        //     $formatted = rtrim(rtrim($formatted, '0'), '.');
+        //     $result = $sign.$formatted.'M';
+        // } elseif ($amount >= 1_000) {
+        //     $formatted = number_format($amount / 1_000, 1);
+        //     $formatted = rtrim(rtrim($formatted, '0'), '.');
+        //     $result = $sign.$formatted.'k';
+        // } else {
             $result = $sign.number_format($amount, 0);
-        }
+        // }
 
         return $suffix ? $result.' '.$suffix : $result;
     }
