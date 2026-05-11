@@ -15,8 +15,7 @@ class SetLocale
     {
         $locale = Session::get('locale')
             ?? $request->query('lang')
-            ?? $this->parseAcceptLanguage($request->header('Accept-Language'))
-            ?? config('app.locale', 'en');
+            ?? config('app.locale', 'vi');
 
         if (! in_array($locale, $this->supportedLocales, true)) {
             $locale = config('app.locale', 'en');
@@ -29,24 +28,5 @@ class SetLocale
         App::setLocale($locale);
 
         return $next($request);
-    }
-
-    protected function parseAcceptLanguage(?string $header): ?string
-    {
-        if (! $header) {
-            return null;
-        }
-
-        foreach (explode(',', $header) as $part) {
-            $segments = explode(';q=', $part);
-            $code = strtolower(trim($segments[0]));
-            $lang = substr($code, 0, 2);
-
-            if (in_array($lang, $this->supportedLocales, true)) {
-                return $lang;
-            }
-        }
-
-        return null;
     }
 }

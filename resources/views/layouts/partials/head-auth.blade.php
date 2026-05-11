@@ -4,7 +4,7 @@
 <meta content="Themesbrand" name="author">
 <meta name="csrf-token" content="{{ csrf_token() }}">
 <!-- App favicon -->
-<link href="{{ asset('assets/images/favicon.ico') }}" rel="shortcut icon"/>
+<link href="{{ asset('assets/images/icons/brand.png') }}" rel="shortcut icon"/>
 <!-- Layout config Js -->
 <script src="{{ asset('assets/js/layout.js') }}"></script>
 <!-- Bootstrap Css -->

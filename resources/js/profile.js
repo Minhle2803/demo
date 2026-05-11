@@ -1,3 +1,9 @@
+function escapeHtml(str) {
+    const div = document.createElement('div');
+    div.textContent = str;
+    return div.innerHTML;
+}
+
 function getCsrfToken() {
     return document.querySelector('meta[name="csrf-token"]')?.content ?? '';
 }
@@ -97,7 +103,7 @@ async function loadDepositHistory(page = 1) {
                 <tr>
                     <td>${Number(d.amount).toLocaleString()} VND</td>
                     <td>${statusBadge(d.status)}</td>
-                    <td>${d.admin_note || '-'}</td>
+                    <td>${escapeHtml(d.admin_note || '-')}</td>
                     <td>${new Date(d.created_at).toLocaleDateString('vi-VN')}</td>
                 </tr>
             `).join('');
@@ -150,7 +156,7 @@ async function loadWithdrawHistory(page = 1) {
                 <tr>
                     <td>${Number(d.amount).toLocaleString()} VND</td>
                     <td>${statusBadge(d.status)}</td>
-                    <td>${d.admin_note || '-'}</td>
+                    <td>${escapeHtml(d.admin_note || '-')}</td>
                     <td>${new Date(d.created_at).toLocaleDateString('vi-VN')}</td>
                 </tr>
             `).join('');
@@ -256,7 +262,7 @@ function initWithdraw() {
     function showWithdrawError(msg, isKycError) {
         if (errorEl) {
             if (isKycError) {
-                errorEl.innerHTML = `${msg} <a href="?tab=kyc" class="alert-link">Go to KYC Verification tab</a>.`;
+                errorEl.innerHTML = `${escapeHtml(msg)} <a href="?tab=kyc" class="alert-link">Go to KYC Verification tab</a>.`;
             } else {
                 errorEl.textContent = msg;
             }
@@ -387,7 +393,7 @@ function initKycModal() {
                     if (statusEl) statusEl.innerHTML = '<div class="alert alert-success">KYC verification successful! Reloading page...</div>';
                     setTimeout(() => window.location.reload(), 2000);
                 } else {
-                    if (statusEl) statusEl.innerHTML = `<div class="alert alert-danger">${data.message || 'Verification failed.'}</div>`;
+                    if (statusEl) statusEl.textContent = data.message || 'Verification failed.';
                 }
             } catch {
                 if (statusEl) statusEl.innerHTML = '<div class="alert alert-danger">Network error.</div>';

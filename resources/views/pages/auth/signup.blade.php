@@ -93,10 +93,10 @@
 
                                 <div id="password-contain" class="p-3 bg-light mb-2 rounded">
                                     <h5 class="fs-13">{{ __('messages.auth.password_requirements') }}</h5>
-                                    <p id="pass-length" class="invalid fs-12 mb-2">{!! __('messages.auth.min_chars') !!}</p>
-                                    <p id="pass-lower" class="invalid fs-12 mb-2">{!! __('messages.auth.lowercase') !!}</p>
-                                    <p id="pass-upper" class="invalid fs-12 mb-2">{!! __('messages.auth.uppercase') !!}</p>
-                                    <p id="pass-number" class="invalid fs-12 mb-0">{!! __('messages.auth.number') !!}</p>
+                                    <p id="pass-length" class="invalid fs-12 mb-2">{{ __('messages.auth.min_chars') }}</p>
+                                    <p id="pass-lower" class="invalid fs-12 mb-2">{{ __('messages.auth.lowercase') }}</p>
+                                    <p id="pass-upper" class="invalid fs-12 mb-2">{{ __('messages.auth.uppercase') }}</p>
+                                    <p id="pass-number" class="invalid fs-12 mb-0">{{ __('messages.auth.number') }}</p>
                                 </div>
 
                                 <div class="mt-4">

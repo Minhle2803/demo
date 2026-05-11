@@ -149,7 +149,7 @@
                             <img alt="Header Avatar" class="rounded-circle header-profile-user" src="{{ asset('assets/images/users/avatar-1.jpg') }}" />
                             <span class="text-start ms-xl-2">
                                 <span class="d-none d-xl-inline-block ms-1 fw-medium user-name-text">{{ Auth::guard('client')->user()->nickname }}</span>
-                                <span class="d-none d-xl-block ms-1 fs-12 user-name-sub-text">{{ Auth::guard('client')->user()->balance }} VND</span>
+                                <span class="d-none d-xl-block ms-1 fs-12 user-name-sub-text" id="balance-display">{{ format_currency_short((float) Auth::guard('client')->user()->balance, 'VND') }}</span>
                             </span>
                         </span>
                     </button>
