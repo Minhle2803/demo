@@ -19,7 +19,7 @@
     </div>
 </div>
 
-<form method="POST" action="{{ route('admin.users.update', $user->id) }}">
+<form method="POST" action="{{ route('admin.users.update', $user->id) }}" enctype="multipart/form-data">
     @csrf
     @method('PUT')
 
@@ -114,32 +114,33 @@
                     <h5 class="card-title mb-0">{{ __('admin.kyc_status') }}</h5>
                 </div>
                 <div class="card-body">
-                    @if ($user->kyc_front_url || $user->kyc_back_url)
-                        <div class="row g-3">
-                            @if ($user->kyc_front_url)
-                                <div class="col-lg-6">
-                                    <p class="mb-1"><strong>{{ __('admin.kyc_front') }}:</strong></p>
-                                    <img src="{{ asset('storage/' . $user->kyc_front_url) }}" class="img-fluid rounded border" style="max-height:250px" alt="KYC Front">
-                                </div>
-                            @endif
-                            @if ($user->kyc_back_url)
-                                <div class="col-lg-6">
-                                    <p class="mb-1"><strong>{{ __('admin.kyc_back') }}:</strong></p>
-                                    <img src="{{ asset('storage/' . $user->kyc_back_url) }}" class="img-fluid rounded border" style="max-height:250px" alt="KYC Back">
-                                </div>
-                            @endif
+                    @if ($user->kyc_front_url)
+                        <div class="mb-3">
+                            <p class="mb-1"><strong>{{ __('admin.kyc_front') }}:</strong></p>
+                            <img src="{{ asset('storage/' . $user->kyc_front_url) }}" class="img-fluid rounded border" style="max-height:250px" alt="KYC Front">
                         </div>
-                        @if (!$user->isKycVerified())
-                            <form action="{{ route('admin.users.approve-kyc', $user->id) }}" method="POST" class="mt-3">
-                                @csrf
-                                <button type="submit" class="btn btn-sm btn-success">
-                                    <i class="ri-shield-check-line align-bottom me-1"></i>{{ __('admin.kyc_approve') }}
-                                </button>
-                            </form>
-                        @endif
-                    @else
-                        <p class="text-muted mb-0">{{ __('admin.no_data') }}</p>
                     @endif
+                    @if ($user->kyc_back_url)
+                        <div class="mb-3">
+                            <p class="mb-1"><strong>{{ __('admin.kyc_back') }}:</strong></p>
+                            <img src="{{ asset('storage/' . $user->kyc_back_url) }}" class="img-fluid rounded border" style="max-height:250px" alt="KYC Back">
+                        </div>
+                    @endif
+
+                    <hr class="text-muted">
+
+                    <div class="row g-3">
+                        <div class="col-lg-6">
+                            <label for="kyc_front" class="form-label">{{ __('admin.kyc_front') }}</label>
+                            <input type="file" name="kyc_front" id="kyc_front" class="form-control @error('kyc_front') is-invalid @enderror" accept="image/jpeg,image/png,image/jpg">
+                            @error('kyc_front') <div class="invalid-feedback">{{ $message }}</div> @enderror
+                        </div>
+                        <div class="col-lg-6">
+                            <label for="kyc_back" class="form-label">{{ __('admin.kyc_back') }}</label>
+                            <input type="file" name="kyc_back" id="kyc_back" class="form-control @error('kyc_back') is-invalid @enderror" accept="image/jpeg,image/png,image/jpg">
+                            @error('kyc_back') <div class="invalid-feedback">{{ $message }}</div> @enderror
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -156,4 +157,17 @@
         </div>
     </div>
 </form>
+
+@if (!$user->isKycVerified() && ($user->kyc_front_url || $user->kyc_back_url))
+    <div class="row mt-2">
+        <div class="col-lg-6">
+            <form action="{{ route('admin.users.approve-kyc', $user->id) }}" method="POST">
+                @csrf
+                <button type="submit" class="btn btn-success">
+                    <i class="ri-shield-check-line align-bottom me-1"></i>{{ __('admin.kyc_approve') }}
+                </button>
+            </form>
+        </div>
+    </div>
+@endif
 @endsection

@@ -7,7 +7,9 @@ use App\Http\Requests\Admin\UpdateUserRequest;
 use App\Models\ClientUser;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
 
 class AdminUserController extends Controller
 {
@@ -74,11 +76,27 @@ class AdminUserController extends Controller
 
             unset($data['is_verified']);
 
+            if ($request->hasFile('kyc_front')) {
+                $data['kyc_front_url'] = $this->storeKycFile($user, $request->file('kyc_front'), 'front');
+            }
+            if ($request->hasFile('kyc_back')) {
+                $data['kyc_back_url'] = $this->storeKycFile($user, $request->file('kyc_back'), 'back');
+            }
+
+            unset($data['kyc_front'], $data['kyc_back']);
+
             $user->update($data);
         });
 
         return redirect()->route('admin.users.show', $user->id)
             ->with('success', __('admin.user_updated'));
+    }
+
+    private function storeKycFile(ClientUser $user, UploadedFile $file, string $type): string
+    {
+        $filename = $user->user_id.'_'.$type.'_'.time().'.'.$file->getClientOriginalExtension();
+
+        return Storage::disk('public')->putFileAs('kyc', $file, $filename);
     }
 
     public function kyc(Request $request)
