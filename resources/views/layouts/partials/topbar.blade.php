@@ -55,12 +55,12 @@
                 @auth('client')
                 
                 <div class="dropdown ms-1 topbar-head-dropdown header-item">
+                    <span class=" d-xl-block ms-1 fs-12 user-name-sub-text" id="balance-display"><b class="balance-display" data-amount="{{ (float) Auth::guard('client')->user()->balance }}">{{ format_currency_short((float) Auth::guard('client')->user()->balance, 'VND') }}</b></span>
+                </div>
+                <div class="dropdown ms-1 topbar-head-dropdown header-item">
                     <a class="btn btn-outline-warning btn-label waves-effect waves-light" href="{{ route('client.profile.show', ['tab' => 'deposit']) }}"><i class="bx bx-money label-icon align-middle fs-16 me-2"></i> Nạp / Rút Tiền</a>
                 </div>
                 
-                <div class="dropdown ms-1 topbar-head-dropdown header-item">
-                    <span class=" d-xl-block ms-1 fs-12 user-name-sub-text" id="balance-display">{{ format_currency_short((float) Auth::guard('client')->user()->balance, 'VND') }}</span>
-                </div>
                 <div class="dropdown ms-sm-3 header-item topbar-user">
                     <button aria-expanded="false" aria-haspopup="true" class="btn material-shadow-none" data-bs-toggle="dropdown" id="page-header-user-dropdown" type="button">
                         <span class="d-flex align-items-center">
@@ -75,7 +75,7 @@
                         <h6 class="dropdown-header">{{ __('messages.auth.welcome_user', ['name' => Auth::guard('client')->user()->nickname]) }}</h6>
                         <a class="dropdown-item" href="{{ route('client.profile.show') }}"><i class="mdi mdi-account-circle text-muted fs-16 align-middle me-1"></i> <span class="align-middle">{{ __('messages.common.profile') }}</span></a>
                         <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="{{ route('client.profile.show') }}"><i class="mdi mdi-wallet text-muted fs-16 align-middle me-1"></i> <span class="align-middle">{{ __('messages.common.balance') }} : <b>{{ format_currency_short((float) Auth::guard('client')->user()->balance, 'VND') }}</b></span></a>
+                        <a class="dropdown-item" href="{{ route('client.profile.show') }}"><i class="mdi mdi-wallet text-muted fs-16 align-middle me-1"></i> <span class="align-middle">{{ __('messages.common.balance') }} : <b data-amount="{{ (float) Auth::guard('client')->user()->balance }}"  class="balance-display">{{ format_currency_short((float) Auth::guard('client')->user()->balance, 'VND') }}</b></span></a>
                         <a class="dropdown-item" href="{{ route('client.logout') }}"><i class="mdi mdi-logout text-muted fs-16 align-middle me-1"></i> <span class="align-middle">{{ __('messages.common.logout') }}</span></a>
                     </div>
                 </div>
