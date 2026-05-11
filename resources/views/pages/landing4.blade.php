@@ -29,147 +29,150 @@
       <meta name="apple-mobile-web-app-status-bar-style" content="black" data-shuvi-head="true" />
       <meta name="apple-mobile-web-app-capable" content="yes" data-shuvi-head="true" />
       <meta name="format-detection" content="email=no" data-shuvi-head="true" />
-      <link rel="preconnect" href="{{ route('tradding') }}" crossorigin="anonymous" />
-      <link rel="preconnect" href="{{ route('tradding') }}" crossorigin="anonymous" />
-      <link rel="preload" as="fetch" href="{{ route('tradding') }}" crossorigin="anonymous" fetchpriority="low" />
-      <link rel="preload" as="fetch" href="{{ route('tradding') }}" crossorigin="anonymous" fetchpriority="low" />
-      <link rel="preload" as="script" href="{{ route('tradding') }}" />
-      <link rel="preload" as="script" href="{{ route('tradding') }}" />
-      <link rel="preload" href="{{ route('tradding') }}" as="script" />
-      <link rel="preload" href="{{ route('tradding') }}" as="script" />
-      <link rel="preload" href="{{ route('tradding') }}" as="script" />
-      <link rel="preload" href="{{ route('tradding') }}" as="script" />
-      <link rel="preload" href="{{ route('tradding') }}" as="script" />
-      <link rel="preload" href="{{ route('tradding') }}" as="script" />
-      <link rel="preload" as="script" href="{{ route('tradding') }}" />
-      <link rel="preload" as="script" href="{{ route('tradding') }}" />
-      <link rel="preload" as="script" href="{{ route('tradding') }}" />
-      <link rel="preload" as="script" href="{{ route('tradding') }}" />
-      <link rel="preload" as="script" href="{{ route('tradding') }}" />
-      <link rel="preload" as="script" href="{{ route('tradding') }}" />
-      <link rel="preload" as="script" href="{{ route('tradding') }}" />
-      <link rel="preload" as="script" href="{{ route('tradding') }}" />
-      <link rel="preload" as="script" href="{{ route('tradding') }}" />
-      <link rel="preload" as="script" href="{{ route('tradding') }}" />
+       <link rel="preconnect" href="https://bin.bnbstatic.com" crossorigin="anonymous" />
+      <link rel="preconnect" href="https://public.bnbstatic.com" crossorigin="anonymous" />
+      <link rel="preload" as="fetch" href="https://bin.bnbstatic.com/api/i18n/-/web/cms/en/LocalHomepage" crossorigin="anonymous" fetchpriority="low" />
+      <link rel="preload" as="fetch" href="https://bin.bnbstatic.com/api/i18n/-/web/cms/en/home-extra" crossorigin="anonymous" fetchpriority="low" />
+      <link rel="preload" as="script" href="https://public.bnbstatic.com/unpkg/essential/essential@0.3.73.js" />
+      <link rel="preload" as="script" href="https://public.bnbstatic.com/unpkg/vendor/vendor.umd.0.0.13.production.min.18.2.0.js" />
+      <link rel="preload" href="https://bin.bnbstatic.com/static/chunks/ws-http-sdk.49ecd7b4.js" as="script" />
+      <link rel="preload" href="https://bin.bnbstatic.com/static/chunks/832.77dbb554.js" as="script" />
+      <link rel="preload" href="https://bin.bnbstatic.com/static/chunks/layout-8ea2.c3b4a237.js" as="script" />
+      <link rel="preload" href="https://bin.bnbstatic.com/static/chunks/810.87e5902a.js" as="script" />
+      <link rel="preload" href="https://bin.bnbstatic.com/static/chunks/336.92abd6db.js" as="script" />
+      <link rel="preload" href="https://bin.bnbstatic.com/static/chunks/page-8e28.856847c9.js" as="script" />
+      <link rel="preload" as="script" href="https://bin.bnbstatic.com/static/configs/newbase/common-widget-icon.js" />
+      <link rel="preload" as="script" href="https://public.bnbstatic.com/unpkg/themis/themis@0.0.39.js" />
+      <link rel="preload" as="script" href="https://public.bnbstatic.com/unpkg/common-widget/vendor@1.4.110.min.js" />
+      <link rel="preload" as="script" href="https://public.bnbstatic.com/unpkg/common-widget/utils@1.4.110.min.js" />
+      <link rel="preload" as="script" href="https://public.bnbstatic.com/unpkg/common-widget/data@1.4.110.min.js" />
+      <link rel="preload" as="script" href="https://public.bnbstatic.com/unpkg/common-widget/common@1.4.110.min.js" />
+      <link rel="preload" as="script" href="https://bin.bnbstatic.com/static/webpack-runtime.1a1fbe87.js" />
+      <link rel="preload" as="script" href="https://bin.bnbstatic.com/static/main.bbf1535a.js" />
+      <link rel="preload" as="script" href="https://public.bnbstatic.com/unpkg/config/remote-config.js" />
+      <link rel="preload" as="script" href="https://public.bnbstatic.com/unpkg/common-widget/common-widget-render-control@1.4.110.min.js" />
       <link rel="shortcut icon" href="{{ asset('assets/images/icons/favicon.ico') }}" />
       <link rel="apple-touch-icon" href="{{ asset('assets/images/icons/brand.png') }}" />
       <link rel="icon" href="{{ asset('assets/images/icons/brand.png') }}" />
-      <link rel="alternate" hreflang="es-NI" href="{{ route('tradding') }}" />
-      <link rel="alternate" hreflang="pl" href="{{ route('tradding') }}" />
-      <link rel="alternate" hreflang="es-VI" href="{{ route('tradding') }}" />
-      <link rel="alternate" hreflang="es-VG" href="{{ route('tradding') }}" />
-      <link rel="alternate" hreflang="es-MX" href="{{ route('tradding') }}" />
-      <link rel="alternate" hreflang="fr-MG" href="{{ route('tradding') }}" />
-      <link rel="alternate" hreflang="es-VE" href="{{ route('tradding') }}" />
-      <link rel="alternate" hreflang="kk-KZ" href="{{ route('tradding') }}" />
-      <link rel="alternate" hreflang="es-ES" href="{{ route('tradding') }}" />
-      <link rel="alternate" hreflang="ar-BH" href="{{ route('tradding') }}" />
-      <link rel="alternate" hreflang="es-VC" href="{{ route('tradding') }}" />
-      <link rel="alternate" hreflang="es-UY" href="{{ route('tradding') }}" />
-      <link rel="alternate" hreflang="es-MQ" href="{{ route('tradding') }}" />
-      <link rel="alternate" hreflang="pt-BR" href="{{ route('tradding') }}" />
-      <link rel="alternate" hreflang="en-TR" href="{{ route('tradding') }}" />
-      <link rel="alternate" hreflang="es-MS" href="{{ route('tradding') }}" />
-      <link rel="alternate" hreflang="es-MF" href="{{ route('tradding') }}" />
-      <link rel="alternate" hreflang="lo-LA" href="{{ route('tradding') }}" />
-      <link rel="alternate" hreflang="fr-CM" href="{{ route('tradding') }}" />
-      <link rel="alternate" hreflang="fr-CI" href="{{ route('tradding') }}" />
-      <link rel="alternate" hreflang="fr-CF" href="{{ route('tradding') }}" />
-      <link rel="alternate" hreflang="fr-CG" href="{{ route('tradding') }}" />
-      <link rel="alternate" hreflang="fr-ST" href="{{ route('tradding') }}" />
-      <link rel="alternate" hreflang="fr-CD" href="{{ route('tradding') }}" />
-      <link rel="alternate" hreflang="si-LK" href="{{ route('tradding') }}" />
-      <link rel="alternate" hreflang="fr-KM" href="{{ route('tradding') }}" />
-      <link rel="alternate" hreflang="en-KZ" href="{{ route('tradding') }}" />
-      <link rel="alternate" hreflang="es-DO" href="{{ route('tradding') }}" />
-      <link rel="alternate" hreflang="fr" href="{{ route('tradding') }}" />
-      <link rel="alternate" hreflang="es-DM" href="{{ route('tradding') }}" />
-      <link rel="alternate" hreflang="ar-AE" href="{{ route('tradding') }}" />
-      <link rel="alternate" hreflang="fr-TG" href="{{ route('tradding') }}" />
-      <link rel="alternate" hreflang="fr-TF" href="{{ route('tradding') }}" />
-      <link rel="alternate" hreflang="az-AZ" href="{{ route('tradding') }}" />
-      <link rel="alternate" hreflang="fr-TD" href="{{ route('tradding') }}" />
-      <link rel="alternate" hreflang="en-GB" href="{{ route('tradding') }}" />
-      <link rel="alternate" hreflang="es-PA" href="{{ route('tradding') }}" />
-      <link rel="alternate" hreflang="vi" href="{{ route('tradding') }}" />
-      <link rel="alternate" hreflang="en-NZ" href="{{ route('tradding') }}" />
-      <link rel="alternate" hreflang="es-PE" href="{{ route('tradding') }}" />
-      <link rel="alternate" hreflang="es" href="{{ route('tradding') }}" />
-      <link rel="alternate" hreflang="es-GP" href="{{ route('tradding') }}" />
-      <link rel="alternate" hreflang="fr-GA" href="{{ route('tradding') }}" />
-      <link rel="alternate" hreflang="en" href="{{ route('tradding') }}" />
-      <link rel="alternate" hreflang="es-GT" href="{{ route('tradding') }}" />
-      <link rel="alternate" hreflang="el" href="{{ route('tradding') }}" />
-      <link rel="alternate" hreflang="en-NG" href="{{ route('tradding') }}" />
-      <link rel="alternate" hreflang="es-GD" href="{{ route('tradding') }}" />
-      <link rel="alternate" hreflang="fr-ML" href="{{ route('tradding') }}" />
-      <link rel="alternate" hreflang="lv" href="{{ route('tradding') }}" />
-      <link rel="alternate" hreflang="fr-NE" href="{{ route('tradding') }}" />
-      <link rel="alternate" hreflang="uk-UA" href="{{ route('tradding') }}" />
-      <link rel="alternate" hreflang="de" href="{{ route('tradding') }}" />
-      <link rel="alternate" hreflang="es-BB" href="{{ route('tradding') }}" />
-      <link rel="alternate" hreflang="da-DK" href="{{ route('tradding') }}" />
-      <link rel="alternate" hreflang="es-AR" href="{{ route('tradding') }}" />
-      <link rel="alternate" hreflang="es-AW" href="{{ route('tradding') }}" />
-      <link rel="alternate" hreflang="cs" href="{{ route('tradding') }}" />
-      <link rel="alternate" hreflang="fr-YT" href="{{ route('tradding') }}" />
-      <link rel="alternate" hreflang="sv" href="{{ route('tradding') }}" />
-      <link rel="alternate" hreflang="es-AI" href="{{ route('tradding') }}" />
-      <link rel="alternate" hreflang="es-AG" href="{{ route('tradding') }}" />
-      <link rel="alternate" hreflang="fr-GQ" href="{{ route('tradding') }}" />
-      <link rel="alternate" hreflang="sl" href="{{ route('tradding') }}" />
-      <link rel="alternate" hreflang="fr-GN" href="{{ route('tradding') }}" />
-      <link rel="alternate" hreflang="sk" href="{{ route('tradding') }}" />
-      <link rel="alternate" hreflang="es-HT" href="{{ route('tradding') }}" />
-      <link rel="alternate" hreflang="es-PY" href="{{ route('tradding') }}" />
-      <link rel="alternate" hreflang="ru-KZ" href="{{ route('tradding') }}" />
-      <link rel="alternate" hreflang="es-PR" href="{{ route('tradding') }}" />
-      <link rel="alternate" hreflang="bg" href="{{ route('tradding') }}" />
-      <link rel="alternate" hreflang="ru" href="{{ route('tradding') }}" />
-      <link rel="alternate" hreflang="es-HN" href="{{ route('tradding') }}" />
-      <link rel="alternate" hreflang="fr-GW" href="{{ route('tradding') }}" />
-      <link rel="alternate" hreflang="ro" href="{{ route('tradding') }}" />
-      <link rel="alternate" hreflang="es-TT" href="{{ route('tradding') }}" />
-      <link rel="alternate" hreflang="fr-BJ" href="{{ route('tradding') }}" />
-      <link rel="alternate" hreflang="ja" href="{{ route('tradding') }}" />
-      <link rel="alternate" hreflang="es-CW" href="{{ route('tradding') }}" />
-      <link rel="alternate" hreflang="es-CU" href="{{ route('tradding') }}" />
-      <link rel="alternate" hreflang="fr-BF" href="{{ route('tradding') }}" />
-      <link rel="alternate" hreflang="es-LC" href="{{ route('tradding') }}" />
-      <link rel="alternate" hreflang="ar" href="{{ route('tradding') }}" />
-      <link rel="alternate" hreflang="es-CO" href="{{ route('tradding') }}" />
-      <link rel="alternate" hreflang="fr-SN" href="{{ route('tradding') }}" />
-      <link rel="alternate" hreflang="es-CL" href="{{ route('tradding') }}" />
-      <link rel="alternate" hreflang="it" href="{{ route('tradding') }}" />
-      <link rel="alternate" hreflang="en-JP" href="{{ route('tradding') }}" />
-      <link rel="alternate" hreflang="en-BH" href="{{ route('tradding') }}" />
-      <link rel="alternate" hreflang="ru-UA" href="{{ route('tradding') }}" />
-      <link rel="alternate" hreflang="es-TC" href="{{ route('tradding') }}" />
-      <link rel="alternate" hreflang="es-CR" href="{{ route('tradding') }}" />
-      <link rel="alternate" hreflang="es-KY" href="{{ route('tradding') }}" />
-      <link rel="alternate" hreflang="es-SV" href="{{ route('tradding') }}" />
-      <link rel="alternate" hreflang="es-KN" href="{{ route('tradding') }}" />
-      <link rel="alternate" hreflang="es-SX" href="{{ route('tradding') }}" />
-      <link rel="alternate" hreflang="id" href="{{ route('tradding') }}" />
-      <link rel="alternate" hreflang="en-AU" href="{{ route('tradding') }}" />
-      <link rel="alternate" hreflang="es-BS" href="{{ route('tradding') }}" />
-      <link rel="alternate" hreflang="es-BZ" href="{{ route('tradding') }}" />
-      <link rel="alternate" hreflang="zh-Hant" href="{{ route('tradding') }}" />
-      <link rel="alternate" hreflang="zh-Hans" href="{{ route('tradding') }}" />
-      <link rel="alternate" hreflang="hu" href="{{ route('tradding') }}" />
-      <link rel="alternate" hreflang="es-BL" href="{{ route('tradding') }}" />
-      <link rel="alternate" hreflang="es-BR" href="{{ route('tradding') }}" />
-      <link rel="alternate" hreflang="es-BQ" href="{{ route('tradding') }}" />
-      <link rel="alternate" hreflang="en-ZA" href="{{ route('tradding') }}" />
-      <link rel="alternate" hreflang="en-AE" href="{{ route('tradding') }}" />
-      <link rel="alternate" hreflang="es-BO" href="{{ route('tradding') }}" />
-      <link rel="alternate" hreflang="en-IN" href="{{ route('tradding') }}" />
-      <link rel="alternate" hreflang="es-JM" href="{{ route('tradding') }}" />
-      <link rel="alternate" hreflang="fr-RE" href="{{ route('tradding') }}" />
-      <link rel="alternate" hreflang="pt" href="{{ route('tradding') }}" />
-      <link rel="alternate" hreflang="x-default" href="{{ route('tradding') }}" />
-      <link rel="shortcut icon" type="image/x-icon" href="{{ route('tradding') }}" data-shuvi-head="true" />
-      <link rel="canonical" href="{{ route('tradding') }}" data-shuvi-head="true" />
+          <link rel="shortcut icon" href="{{ asset('assets/images/icons/favicon.ico') }}" />
+      <link rel="apple-touch-icon" href="{{ asset('assets/images/icons/brand.png') }}" />
+      <link rel="icon" href="{{ asset('assets/images/icons/brand.png') }}" />
+      <link rel="alternate" hreflang="es-NI" href="https://www.binance.com/es-LA" />
+      <link rel="alternate" hreflang="pl" href="https://www.binance.com/pl" />
+      <link rel="alternate" hreflang="es-VI" href="https://www.binance.com/es" />
+      <link rel="alternate" hreflang="es-VG" href="https://www.binance.com/es" />
+      <link rel="alternate" hreflang="es-MX" href="https://www.binance.com/es-MX" />
+      <link rel="alternate" hreflang="fr-MG" href="https://www.binance.com/fr-AF" />
+      <link rel="alternate" hreflang="es-VE" href="https://www.binance.com/es-LA" />
+      <link rel="alternate" hreflang="kk-KZ" href="https://www.binance.com/kk-KZ" />
+      <link rel="alternate" hreflang="es-ES" href="https://www.binance.com/es" />
+      <link rel="alternate" hreflang="ar-BH" href="https://www.binance.com/ar" />
+      <link rel="alternate" hreflang="es-VC" href="https://www.binance.com/es" />
+      <link rel="alternate" hreflang="es-UY" href="https://www.binance.com/es-LA" />
+      <link rel="alternate" hreflang="es-MQ" href="https://www.binance.com/es-LA" />
+      <link rel="alternate" hreflang="pt-BR" href="https://www.binance.com/pt-BR" />
+      <link rel="alternate" hreflang="en-TR" href="https://www.binance.com/en-TR" />
+      <link rel="alternate" hreflang="es-MS" href="https://www.binance.com/es-LA" />
+      <link rel="alternate" hreflang="es-MF" href="https://www.binance.com/es-LA" />
+      <link rel="alternate" hreflang="lo-LA" href="https://www.binance.com/lo-LA" />
+      <link rel="alternate" hreflang="fr-CM" href="https://www.binance.com/fr-AF" />
+      <link rel="alternate" hreflang="fr-CI" href="https://www.binance.com/fr-AF" />
+      <link rel="alternate" hreflang="fr-CF" href="https://www.binance.com/fr-AF" />
+      <link rel="alternate" hreflang="fr-CG" href="https://www.binance.com/fr-AF" />
+      <link rel="alternate" hreflang="fr-ST" href="https://www.binance.com/fr-AF" />
+      <link rel="alternate" hreflang="fr-CD" href="https://www.binance.com/fr-AF" />
+      <link rel="alternate" hreflang="si-LK" href="https://www.binance.com/si-LK" />
+      <link rel="alternate" hreflang="fr-KM" href="https://www.binance.com/fr-AF" />
+      <link rel="alternate" hreflang="en-KZ" href="https://www.binance.com/en-KZ" />
+      <link rel="alternate" hreflang="es-DO" href="https://www.binance.com/es-LA" />
+      <link rel="alternate" hreflang="fr" href="https://www.binance.com/fr" />
+      <link rel="alternate" hreflang="es-DM" href="https://www.binance.com/es-LA" />
+      <link rel="alternate" hreflang="ar-AE" href="https://www.binance.com/ar" />
+      <link rel="alternate" hreflang="fr-TG" href="https://www.binance.com/fr-AF" />
+      <link rel="alternate" hreflang="fr-TF" href="https://www.binance.com/fr-AF" />
+      <link rel="alternate" hreflang="az-AZ" href="https://www.binance.com/az-AZ" />
+      <link rel="alternate" hreflang="fr-TD" href="https://www.binance.com/fr-AF" />
+      <link rel="alternate" hreflang="en-GB" href="https://www.binance.com/en-GB" />
+      <link rel="alternate" hreflang="es-PA" href="https://www.binance.com/es-LA" />
+      <link rel="alternate" hreflang="vi" href="https://www.binance.com/vi" />
+      <link rel="alternate" hreflang="en-NZ" href="https://www.binance.com/en-NZ" />
+      <link rel="alternate" hreflang="es-PE" href="https://www.binance.com/es-LA" />
+      <link rel="alternate" hreflang="es" href="https://www.binance.com/es" />
+      <link rel="alternate" hreflang="es-GP" href="https://www.binance.com/es-LA" />
+      <link rel="alternate" hreflang="fr-GA" href="https://www.binance.com/fr-AF" />
+      <link rel="alternate" hreflang="en" href="https://www.binance.com/en" />
+      <link rel="alternate" hreflang="es-GT" href="https://www.binance.com/es-LA" />
+      <link rel="alternate" hreflang="el" href="https://www.binance.com/el" />
+      <link rel="alternate" hreflang="en-NG" href="https://www.binance.com/en-NG" />
+      <link rel="alternate" hreflang="es-GD" href="https://www.binance.com/es-LA" />
+      <link rel="alternate" hreflang="fr-ML" href="https://www.binance.com/fr-AF" />
+      <link rel="alternate" hreflang="lv" href="https://www.binance.com/lv" />
+      <link rel="alternate" hreflang="fr-NE" href="https://www.binance.com/fr-AF" />
+      <link rel="alternate" hreflang="uk-UA" href="https://www.binance.com/uk-UA" />
+      <link rel="alternate" hreflang="de" href="https://www.binance.com/de" />
+      <link rel="alternate" hreflang="es-BB" href="https://www.binance.com/es-LA" />
+      <link rel="alternate" hreflang="da-DK" href="https://www.binance.com/da-DK" />
+      <link rel="alternate" hreflang="es-AR" href="https://www.binance.com/es-AR" />
+      <link rel="alternate" hreflang="es-AW" href="https://www.binance.com/es-LA" />
+      <link rel="alternate" hreflang="cs" href="https://www.binance.com/cs" />
+      <link rel="alternate" hreflang="fr-YT" href="https://www.binance.com/fr-AF" />
+      <link rel="alternate" hreflang="sv" href="https://www.binance.com/sv" />
+      <link rel="alternate" hreflang="es-AI" href="https://www.binance.com/es-LA" />
+      <link rel="alternate" hreflang="es-AG" href="https://www.binance.com/es-LA" />
+      <link rel="alternate" hreflang="fr-GQ" href="https://www.binance.com/fr-AF" />
+      <link rel="alternate" hreflang="sl" href="https://www.binance.com/sl" />
+      <link rel="alternate" hreflang="fr-GN" href="https://www.binance.com/fr-AF" />
+      <link rel="alternate" hreflang="sk" href="https://www.binance.com/sk" />
+      <link rel="alternate" hreflang="es-HT" href="https://www.binance.com/es-LA" />
+      <link rel="alternate" hreflang="es-PY" href="https://www.binance.com/es-LA" />
+      <link rel="alternate" hreflang="ru-KZ" href="https://www.binance.com/ru-KZ" />
+      <link rel="alternate" hreflang="es-PR" href="https://www.binance.com/es-LA" />
+      <link rel="alternate" hreflang="bg" href="https://www.binance.com/bg" />
+      <link rel="alternate" hreflang="ru" href="https://www.binance.com/ru" />
+      <link rel="alternate" hreflang="es-HN" href="https://www.binance.com/es-LA" />
+      <link rel="alternate" hreflang="fr-GW" href="https://www.binance.com/fr-AF" />
+      <link rel="alternate" hreflang="ro" href="https://www.binance.com/ro" />
+      <link rel="alternate" hreflang="es-TT" href="https://www.binance.com/es-LA" />
+      <link rel="alternate" hreflang="fr-BJ" href="https://www.binance.com/fr-AF" />
+      <link rel="alternate" hreflang="ja" href="https://www.binance.com/ja" />
+      <link rel="alternate" hreflang="es-CW" href="https://www.binance.com/es-LA" />
+      <link rel="alternate" hreflang="es-CU" href="https://www.binance.com/es-LA" />
+      <link rel="alternate" hreflang="fr-BF" href="https://www.binance.com/fr-AF" />
+      <link rel="alternate" hreflang="es-LC" href="https://www.binance.com/es-LA" />
+      <link rel="alternate" hreflang="ar" href="https://www.binance.com/ar" />
+      <link rel="alternate" hreflang="es-CO" href="https://www.binance.com/es-LA" />
+      <link rel="alternate" hreflang="fr-SN" href="https://www.binance.com/fr-AF" />
+      <link rel="alternate" hreflang="es-CL" href="https://www.binance.com/es-LA" />
+      <link rel="alternate" hreflang="it" href="https://www.binance.com/it" />
+      <link rel="alternate" hreflang="en-JP" href="https://www.binance.com/en-JP" />
+      <link rel="alternate" hreflang="en-BH" href="https://www.binance.com/en-BH" />
+      <link rel="alternate" hreflang="ru-UA" href="https://www.binance.com/ru-UA" />
+      <link rel="alternate" hreflang="es-TC" href="https://www.binance.com/es-LA" />
+      <link rel="alternate" hreflang="es-CR" href="https://www.binance.com/es-LA" />
+      <link rel="alternate" hreflang="es-KY" href="https://www.binance.com/es-LA" />
+      <link rel="alternate" hreflang="es-SV" href="https://www.binance.com/es-LA" />
+      <link rel="alternate" hreflang="es-KN" href="https://www.binance.com/es-LA" />
+      <link rel="alternate" hreflang="es-SX" href="https://www.binance.com/es-LA" />
+      <link rel="alternate" hreflang="id" href="https://www.binance.com/id" />
+      <link rel="alternate" hreflang="en-AU" href="https://www.binance.com/en-AU" />
+      <link rel="alternate" hreflang="es-BS" href="https://www.binance.com/es-LA" />
+      <link rel="alternate" hreflang="es-BZ" href="https://www.binance.com/es-LA" />
+      <link rel="alternate" hreflang="zh-Hant" href="https://www.binance.com/zh-TC" />
+      <link rel="alternate" hreflang="zh-Hans" href="https://www.binance.com/zh-CN" />
+      <link rel="alternate" hreflang="hu" href="https://www.binance.com/hu" />
+      <link rel="alternate" hreflang="es-BL" href="https://www.binance.com/es-LA" />
+      <link rel="alternate" hreflang="es-BR" href="https://www.binance.com/es-LA" />
+      <link rel="alternate" hreflang="es-BQ" href="https://www.binance.com/es-LA" />
+      <link rel="alternate" hreflang="en-ZA" href="https://www.binance.com/en-ZA" />
+      <link rel="alternate" hreflang="en-AE" href="https://www.binance.com/en-AE" />
+      <link rel="alternate" hreflang="es-BO" href="https://www.binance.com/es-LA" />
+      <link rel="alternate" hreflang="en-IN" href="https://www.binance.com/en-IN" />
+      <link rel="alternate" hreflang="es-JM" href="https://www.binance.com/es-LA" />
+      <link rel="alternate" hreflang="fr-RE" href="https://www.binance.com/fr-AF" />
+      <link rel="alternate" hreflang="pt" href="https://www.binance.com/pt" />
+      <link rel="alternate" hreflang="x-default" href="https://www.binance.com/en" />
+      <link rel="shortcut icon" type="image/x-icon" href="https://public.bnbstatic.com/static/images/common/favicon.ico" data-shuvi-head="true" />
+      <link rel="canonical" href="https://www.binance.com/en" data-shuvi-head="true" />
       
         <script id="OneTrust-sdk" nonce="25b28dca-3fd5-41bd-944e-3713ed4bf0eb">
             (function() {
@@ -17263,23 +17266,23 @@
       </script>
       @endverbatim
       <div id="__APP_EXTENSION" style="position: absolute;"></div>
-      <noscript><iframe src="{{ route('tradding') }}" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-      <script id="remote-config" src="{{ route('tradding') }}" nonce="25b28dca-3fd5-41bd-944e-3713ed4bf0eb" fetchpriority="high"></script>
-      <script src="{{ route('tradding') }}" nomodule data-ot-ignore nonce="25b28dca-3fd5-41bd-944e-3713ed4bf0eb" fetchpriority="high"></script>
-      <script id="essential-js" src="{{ route('tradding') }}" nonce="25b28dca-3fd5-41bd-944e-3713ed4bf0eb" fetchpriority="high"></script>
-      <script id="vendor-umd" src="{{ route('tradding') }}" nonce="25b28dca-3fd5-41bd-944e-3713ed4bf0eb" fetchpriority="high"></script>
-      <script src="{{ route('tradding') }}" data-ot-ignore nonce="25b28dca-3fd5-41bd-944e-3713ed4bf0eb" fetchpriority="high"></script>
-      <script src="{{ route('tradding') }}" nonce="25b28dca-3fd5-41bd-944e-3713ed4bf0eb" fetchpriority="high"></script>
-      <script src="{{ route('tradding') }}" nonce="25b28dca-3fd5-41bd-944e-3713ed4bf0eb" fetchpriority="high"></script>
-      <script src="{{ route('tradding') }}" nonce="25b28dca-3fd5-41bd-944e-3713ed4bf0eb" fetchpriority="high"></script>
-      <script src="{{ route('tradding') }}" nonce="25b28dca-3fd5-41bd-944e-3713ed4bf0eb" fetchpriority="high"></script>
-      <script src="{{ route('tradding') }}" nonce="25b28dca-3fd5-41bd-944e-3713ed4bf0eb" fetchpriority="high"></script>
-      <script src="{{ route('tradding') }}" data-ot-ignore nonce="25b28dca-3fd5-41bd-944e-3713ed4bf0eb" fetchpriority="high"></script>
-      <script src="{{ route('tradding') }}" data-ot-ignore nonce="25b28dca-3fd5-41bd-944e-3713ed4bf0eb" fetchpriority="high"></script>
-      <script defer src="{{ route('tradding') }}" nonce="25b28dca-3fd5-41bd-944e-3713ed4bf0eb" fetchpriority="high"></script>
-      <script src="{{ route('tradding') }}" nonce="25b28dca-3fd5-41bd-944e-3713ed4bf0eb"></script>
-      <script src="{{ route('tradding') }}" nonce="25b28dca-3fd5-41bd-944e-3713ed4bf0eb"></script>
-      <script src="{{ route('tradding') }}" nonce="25b28dca-3fd5-41bd-944e-3713ed4bf0eb"></script>
+          <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-M86QHGF" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+      <script id="remote-config" src="https://public.bnbstatic.com/unpkg/config/remote-config.js" nonce="25b28dca-3fd5-41bd-944e-3713ed4bf0eb" fetchpriority="high"></script>
+      <script src="https://bin.bnbstatic.com/static/polyfills.d7582762.js" nomodule data-ot-ignore nonce="25b28dca-3fd5-41bd-944e-3713ed4bf0eb" fetchpriority="high"></script>
+      <script id="essential-js" src="https://public.bnbstatic.com/unpkg/essential/essential@0.3.73.js" nonce="25b28dca-3fd5-41bd-944e-3713ed4bf0eb" fetchpriority="high"></script>
+      <script id="vendor-umd" src="https://public.bnbstatic.com/unpkg/vendor/vendor.umd.0.0.13.production.min.18.2.0.js" nonce="25b28dca-3fd5-41bd-944e-3713ed4bf0eb" fetchpriority="high"></script>
+      <script src="https://bin.bnbstatic.com/static/configs/newbase/common-widget-icon.js" data-ot-ignore nonce="25b28dca-3fd5-41bd-944e-3713ed4bf0eb" fetchpriority="high"></script>
+      <script src="https://public.bnbstatic.com/unpkg/themis/themis@0.0.39.js" nonce="25b28dca-3fd5-41bd-944e-3713ed4bf0eb" fetchpriority="high"></script>
+      <script src="https://public.bnbstatic.com/unpkg/common-widget/vendor@1.4.110.min.js" nonce="25b28dca-3fd5-41bd-944e-3713ed4bf0eb" fetchpriority="high"></script>
+      <script src="https://public.bnbstatic.com/unpkg/common-widget/utils@1.4.110.min.js" nonce="25b28dca-3fd5-41bd-944e-3713ed4bf0eb" fetchpriority="high"></script>
+      <script src="https://public.bnbstatic.com/unpkg/common-widget/data@1.4.110.min.js" nonce="25b28dca-3fd5-41bd-944e-3713ed4bf0eb" fetchpriority="high"></script>
+      <script src="https://public.bnbstatic.com/unpkg/common-widget/common@1.4.110.min.js" nonce="25b28dca-3fd5-41bd-944e-3713ed4bf0eb" fetchpriority="high"></script>
+      <script src="https://bin.bnbstatic.com/static/webpack-runtime.1a1fbe87.js" data-ot-ignore nonce="25b28dca-3fd5-41bd-944e-3713ed4bf0eb" fetchpriority="high"></script>
+      <script src="https://bin.bnbstatic.com/static/main.bbf1535a.js" data-ot-ignore nonce="25b28dca-3fd5-41bd-944e-3713ed4bf0eb" fetchpriority="high"></script>
+      <script defer src="https://public.bnbstatic.com/unpkg/common-widget/common-widget-render-control@1.4.110.min.js" nonce="25b28dca-3fd5-41bd-944e-3713ed4bf0eb" fetchpriority="high"></script>
+      <script src="https://public.bnbstatic.com/unpkg/web-push-odin/web-push-odin-pre.js" nonce="25b28dca-3fd5-41bd-944e-3713ed4bf0eb"></script>
+      <script src="https://public.bnbstatic.com/unpkg/common-widget/header@1.4.110.min.js" nonce="25b28dca-3fd5-41bd-944e-3713ed4bf0eb"></script>
+      <script src="https://public.bnbstatic.com/unpkg/common-widget/extension@1.4.110.min.js" nonce="25b28dca-3fd5-41bd-944e-3713ed4bf0eb"></script>
       <script type="application/javascript" id="__COMMON_WIDGET_RENDER_CONFIG__" nonce="25b28dca-3fd5-41bd-944e-3713ed4bf0eb">window._COMMON_WIDGET_RENDER_CONFIG_ = {"useHeader":true,"useFooter":true,"useSidebar":false,"usePPFooter":false,"widgetExtends":{"useStickyHeader":true},"isDemo":false}</script>
    </body>
 </html>
