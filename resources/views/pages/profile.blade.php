@@ -448,6 +448,11 @@
     <!--end col-->
 </div>
 <!--end row-->
+<style>
+    .profile-wid-bg::before {
+        background: none !important;
+    }
+</style>
 @endsection
 
 @push('scripts')
