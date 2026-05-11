@@ -8,13 +8,40 @@ use App\Support\ErrorCodes;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
-use Zxing\QrReader;
 
 class ProfileService
 {
     public function updateProfile(ClientUser $user, array $data): void
     {
-        $user->update(['nickname' => $data['nickname']]);
+        $profileData = ['nickname' => $data['nickname']];
+
+        if (! empty($data['account_name'])) {
+            $profileData['account_name'] = $data['account_name'];
+        }
+        if (! empty($data['bank_number'])) {
+            $profileData['bank_number'] = $data['bank_number'];
+        }
+        if (! empty($data['bank_account'])) {
+            $profileData['bank_account'] = $data['bank_account'];
+        }
+        if (! empty($data['full_name'])) {
+            $profileData['full_name'] = $data['full_name'];
+        }
+        if (! empty($data['date_of_birth'])) {
+            $profileData['date_of_birth'] = $data['date_of_birth'];
+        }
+        if (! empty($data['cccd_number'])) {
+            $profileData['cccd_number'] = $data['cccd_number'];
+        }
+
+        if (! empty($data['kyc_front'])) {
+            $profileData['kyc_front_url'] = $this->storeKycFile($user, $data['kyc_front'], 'front');
+        }
+        if (! empty($data['kyc_back'])) {
+            $profileData['kyc_back_url'] = $this->storeKycFile($user, $data['kyc_back'], 'back');
+        }
+
+        $user->update($profileData);
     }
 
     public function updatePassword(ClientUser $user, string $currentPassword, string $newPassword): bool
@@ -56,62 +83,6 @@ class ProfileService
         return Storage::disk('public')->putFileAs('kyc', $file, $filename);
     }
 
-    private function scanCccdQr(UploadedFile $file): ?array
-    {
-        try {
-            $qrReader = new QrReader($file->getRealPath());
-            $qrText = $qrReader->text();
-
-            if (empty($qrText)) {
-                return null;
-            }
-
-            // Vietnamese CCCD QR format: cccd|fullname|dob|gender|...
-            $parts = explode('|', $qrText);
-
-            return [
-                'cccd' => $parts[0] ?? '',
-                'full_name' => $parts[1] ?? '',
-                'dob' => $parts[2] ?? '',
-            ];
-        } catch (\Exception) {
-            return null;
-        }
-    }
-
-    private function matchKycData(ClientUser $user, array $qrData): bool
-    {
-        $matches = 0;
-        $checks = 0;
-
-        if (! empty($user->cccd_number) && ! empty($qrData['cccd'])) {
-            $checks++;
-            if ($this->normalize($user->cccd_number) === $this->normalize($qrData['cccd'])) {
-                $matches++;
-            }
-        }
-
-        if (! empty($user->full_name) && ! empty($qrData['full_name'])) {
-            $checks++;
-            if ($this->normalize($user->full_name) === $this->normalize($qrData['full_name'])) {
-                $matches++;
-            }
-        }
-
-        if (! empty($user->date_of_birth) && ! empty($qrData['dob'])) {
-            $checks++;
-            $userDob = $user->date_of_birth instanceof \DateTime
-                ? $user->date_of_birth->format('d/m/Y')
-                : $user->date_of_birth;
-            if ($this->normalize($userDob) === $this->normalize($qrData['dob'])) {
-                $matches++;
-            }
-        }
-
-        // Require at least 2 fields to match for verification to pass
-        return $checks > 0 && $matches >= min($checks, 2);
-    }
-
     public function submitWithdraw(ClientUser $user, float $amount): array
     {
         if (! $user->isKycVerified()) {
@@ -133,14 +104,5 @@ class ProfileService
         ]);
 
         return ['code' => ErrorCodes::WITHDRAW_REQUESTED];
-    }
-
-    private function normalize(string $value): string
-    {
-        $value = trim(mb_strtolower($value));
-        // Remove extra spaces
-        $value = preg_replace('/\s+/', ' ', $value);
-
-        return $value;
     }
 }

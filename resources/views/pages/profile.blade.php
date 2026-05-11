@@ -135,7 +135,7 @@
                 <div class="tab-content">
                     {{-- Tab 1: Personal Info --}}
                     <div class="tab-pane {{ $activeTab === 'profile' ? 'active' : '' }}" id="personalDetails" role="tabpanel">
-                        <form action="{{ route('client.profile.update') }}" method="POST" id="profileForm">
+                        <form action="{{ route('client.profile.update') }}" method="POST" id="profileForm" enctype="multipart/form-data">
                             @csrf
                             <div class="row">
                                 <div class="col-lg-6">
@@ -261,14 +261,6 @@
                                     </div>
 
                                     <div class="col-12" id="kycUploadStatus"></div>
-
-                                    <div class="col-lg-12">
-                                        <div class="hstack gap-2">
-                                            <button type="button" class="btn btn-primary" id="kycSubmitBtn">
-                                                <i class="ri-user-shared-line me-1"></i> {{ __('messages.profile.submit_verification') }}
-                                            </button>
-                                        </div>
-                                    </div>
                                 @else
                                     <div class="col-12">
                                         <div class="alert alert-success d-flex align-items-center" role="alert">
@@ -496,10 +488,8 @@
         depositHistoryUrl: "{{ route('client.profile.deposit.history') }}",
         withdrawSubmitUrl: "{{ route('client.profile.withdraw') }}",
         withdrawHistoryUrl: "{{ route('client.profile.withdraw.history') }}",
-        kycSubmitUrl: "{{ route('client.profile.kyc') }}",
         updateProfileUrl: "{{ route('client.profile.update') }}",
         updatePasswordUrl: "{{ route('client.profile.password') }}",
-        updateBankUrl: "{{ route('client.profile.bank') }}",
         activeTab: "{{ $activeTab }}",
         nickname: "{{ $user->nickname }}",
     };
