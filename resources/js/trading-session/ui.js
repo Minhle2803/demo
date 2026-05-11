@@ -25,21 +25,50 @@ export function disableTrading() {
     document.getElementById('sellBtn').disabled = true;
 }
 
-export function showResultPopup(trade, session) {
-    const won = trade?.status === 'win';
-    const modalId = won ? 'modal-win' : 'modal-lost';
+export function showResultPopup(summary, session) {
+    const net = summary?.net ?? 0;
+    const modalId = net >= 0 ? 'modal-win' : 'modal-lost';
     const modalEl = document.getElementById(modalId);
     if (!modalEl) return;
 
     const sessionIdEl = modalEl.querySelector('#session_id');
     if (sessionIdEl) {
-        sessionIdEl.textContent = `#${trade?.session_id ?? session?.id ?? '—'}`;
+        sessionIdEl.textContent = `#${session?.id ?? '—'}`;
     }
 
-    const amountEl = modalEl.querySelector('#amount_id');
-    if (amountEl && trade) {
-        amountEl.textContent = Number(trade.amount).toLocaleString();
+    const totalAmountEl = modalEl.querySelector('#summary-total-amount');
+    if (totalAmountEl) {
+        totalAmountEl.textContent = (summary?.total_amount ?? 0).toLocaleString() + ' VND';
     }
+
+    const winEl = modalEl.querySelector('#summary-win');
+    if (winEl) {
+        winEl.textContent = (summary?.total_win ?? 0).toLocaleString() + ' VND';
+    }
+
+    const loseEl = modalEl.querySelector('#summary-lose');
+    if (loseEl) {
+        loseEl.textContent = '-' + (summary?.total_lose ?? 0).toLocaleString() + ' VND';
+    }
+
+    const netEl = modalEl.querySelector('#summary-net');
+    if (netEl) {
+        const prefix = net >= 0 ? '+' : '';
+        netEl.textContent = prefix + net.toLocaleString() + ' VND';
+        netEl.className = net >= 0 ? 'fw-bold text-end text-success' : 'fw-bold text-end text-danger';
+    }
+
+    const feeEl = modalEl.querySelector('#summary-fee');
+    if (feeEl) {
+        const totalFee = summary?.total_fee ?? 0;
+        feeEl.textContent = '-' + totalFee.toLocaleString() + ' VND';
+    }
+
+    const countEl = modalEl.querySelector('#trade-count');
+    if (countEl) {
+        countEl.textContent = (summary?.trade_count ?? 0);
+    }
+
     window.tradeTableConfig.orderId = 0;
     window.tradeTableConfig.orderSessionId = 0;
     const modal = new bootstrap.Modal(modalEl);
@@ -60,14 +89,22 @@ export function buildTradeRow(trade, coinMeta) {
     const typeClass = trade.type === 'sell' ? 'text-danger' : 'text-success';
     const statusClass = trade.status === 'lose' ? 'text-danger' : 'text-success';
 
-    var amount =  Number(trade.amount).toLocaleString();
-    var symb = "";
+    const amount = Number(trade.amount).toLocaleString();
+    const feeDisplay = trade.trading_fee != null && trade.trading_fee > 0
+        ? Number(trade.trading_fee).toLocaleString()
+        : '—';
+
+    let resultSymb = '';
+    let resultAmount = '';
     if (trade.status === 'lose') {
-        symb = "-";
-    } else if(trade.status === 'win') {
-        symb = "+";
+        resultSymb = '-';
+        resultAmount = amount;
+    } else if (trade.status === 'win') {
+        resultSymb = '+';
+        resultAmount = Number(trade.payout || 0).toLocaleString();
+    } else {
+        resultAmount = amount;
     }
-    var feeDisplay = trade.trading_fee != null ? Number(trade.trading_fee).toLocaleString() : '—';
 
     return `
         <tr data-id="${trade.id}">
@@ -80,10 +117,10 @@ export function buildTradeRow(trade, coinMeta) {
             <td>${trade.session_open_price ?? '-'}</td>
             <td>${trade.session_close_price ?? '-'}</td>
             <td class="${statusClass}">${trade.status}</td>
-            <td>${Number(trade.amount).toLocaleString()}</td>
+            <td>${amount}</td>
             <td>${feeDisplay}</td>
             <td>
-                <h6 class="${statusClass} fs-13 mb-0">${symb}${amount}</h6>
+                <h6 class="${statusClass} fs-13 mb-0">${resultSymb}${resultAmount}</h6>
             </td>
             <td>${formatDateUTC(trade.created_at)}</td>
         </tr>

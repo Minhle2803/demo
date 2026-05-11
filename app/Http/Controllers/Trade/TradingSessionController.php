@@ -80,17 +80,29 @@ class TradingSessionController extends Controller
         if (! $user) {
             $user = request()->user();
         }
-        $trade = $session->trades()->where('user_id', $user->id)->first();
+
+        $trades = $session->trades()->where('user_id', $user->id)->get();
+
+        $totalAmount = $trades->sum('amount');
+        $totalPayout = $trades->where('status', 'win')->sum('payout');
 
         return ApiResponse::success([
             'session' => $this->formatSession($session),
-            'trade' => $trade ? [
-                'type' => $trade->type,
-                'amount' => $trade->amount,
-                'status' => $trade->status,
-                'payout' => $trade->payout,
-                'trading_fee' => $trade->trading_fee,
-            ] : null,
+            'trades' => $trades->map(fn ($t) => [
+                'type' => $t->type,
+                'amount' => $t->amount,
+                'status' => $t->status,
+                'payout' => $t->payout,
+                'trading_fee' => $t->trading_fee,
+            ]),
+            'summary' => [
+                'total_amount' => (float) $totalAmount,
+                'total_win' => (float) $totalPayout,
+                'total_lose' => (float) $trades->where('status', 'lose')->sum('amount'),
+                'total_fee' => (float) $trades->where('status', 'win')->sum('trading_fee'),
+                'net' => (float) ($totalPayout - $totalAmount),
+                'trade_count' => $trades->count(),
+            ],
         ], ErrorCodes::TRADE_RESULT_FETCHED);
     }
 
@@ -123,10 +135,8 @@ class TradingSessionController extends Controller
         } catch (\Exception $e) {
             $code = $e->getMessage();
             $httpStatus = match ($code) {
-                ErrorCodes::USER_NOT_FULLY_VERIFIED => 403,
                 ErrorCodes::TRADE_SESSION_LOCKED,
                 ErrorCodes::TRADE_SESSION_NOT_OPEN => 422,
-                ErrorCodes::TRADE_ALREADY_PLACED => 409,
                 ErrorCodes::TRADE_INSUFFICIENT_BALANCE => 422,
                 default => 500,
             };
@@ -187,9 +197,9 @@ class TradingSessionController extends Controller
         return ApiResponse::success($trades);
     }
 
-    public function getTradeBySession(Request $request)
+    public function getTradeBySession(Request $request, $session_id = null)
     {
-        $sessionId = $request->get('session_id', 0);
+        $sessionId = $session_id ?? $request->route('session_id') ?? $request->get('session_id', 0);
         $userId = -1;
         $user = $request->user();
         if ($user) {

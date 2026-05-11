@@ -14,7 +14,7 @@ class ReferralStatsService
      */
     public function getAdminStats(int $adminId): array
     {
-        $userIds = ClientUser::where('invited_by_admin_id', $adminId)->pluck('id');
+        $userIds = ClientUser::where('invited_by_admin_id', $adminId)->whereNull('invited_by_client_id')->pluck('id');
 
         return $this->aggregateStats($userIds);
     }
@@ -35,6 +35,7 @@ class ReferralStatsService
     public function getAdminInvitedUsers(int $adminId, int $perPage = 25): LengthAwarePaginator
     {
         return ClientUser::where('invited_by_admin_id', $adminId)
+            ->whereNull('invited_by_client_id')
             ->withSum(['trades as total_played' => function ($q) {
                 $q->whereIn('status', ['win', 'lose']);
             }], 'amount')

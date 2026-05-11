@@ -16,17 +16,19 @@ class TradingFeeService
 
     /**
      * Calculate the fee amount from a bet amount.
+     * Fee = fee_percent of the gross win (amount * 2).
      */
     public function calculateFee(float $betAmount): float
     {
         $percent = $this->getFeePercent();
+        $grossPayout = $betAmount * 2;
 
-        return round($betAmount * ($percent / 100), 2);
+        return round($grossPayout * ($percent / 100), 2);
     }
 
     /**
      * Calculate the final payout for a winning trade after fee deduction.
-     * Current payout logic: win = amount * 2. Fee is deducted from that.
+     * Payout = (amount * 2) - fee.
      */
     public function calculatePayout(float $betAmount): float
     {

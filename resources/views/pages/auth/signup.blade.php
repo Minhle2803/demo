@@ -120,3 +120,6 @@
 <!-- end row -->
 @endsection
 
+@push('scripts')
+    @vite(['resources/js/referral.js'])
+@endpush

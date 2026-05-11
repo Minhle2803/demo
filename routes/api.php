@@ -7,7 +7,6 @@ use App\Http\Controllers\Internal\MarketListController;
 use App\Http\Controllers\Internal\TradingChartController;
 use App\Http\Controllers\Internal\TradingChartSummaryController;
 use App\Http\Controllers\Trade\TradingSessionController;
-use App\Http\Middleware\EnsureClientFullyVerified;
 use Illuminate\Support\Facades\Route;
 
 Route::prefix('internal/chart')
@@ -50,10 +49,8 @@ Route::prefix('trade')->group(function () {
         Route::get('latest', [TradingSessionController::class, 'latest']);
         Route::get('session/{session_id}/trades', [TradingSessionController::class, 'getTradeBySession']);
 
-        Route::middleware([EnsureClientFullyVerified::class])->group(function () {
-            Route::post('buy', [TradingSessionController::class, 'buy']);
-            Route::post('sell', [TradingSessionController::class, 'sell']);
-        });
+        Route::post('buy', [TradingSessionController::class, 'buy']);
+        Route::post('sell', [TradingSessionController::class, 'sell']);
     });
 });
 

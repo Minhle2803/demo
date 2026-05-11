@@ -7,6 +7,7 @@ use App\Http\Requests\Admin\UpdateBankSettingRequest;
 use App\Http\Requests\Admin\UpdateFeePercentRequest;
 use App\Http\Requests\Admin\UpdateLogoRequest;
 use App\Services\Admin\AdminSettingService;
+use Illuminate\Support\Facades\Auth;
 
 class AdminSettingController extends Controller
 {
@@ -15,8 +16,10 @@ class AdminSettingController extends Controller
         $bankInfo = $service->getBankInfo();
         $logo = $service->getLogo();
         $feePercent = $service->getFeePercent();
+        $admin = Auth::user();
+        $inviteLink = $admin->invite_code ? route('signup', ['ref' => $admin->invite_code]) : null;
 
-        return view('pages.admin.settings.index', compact('bankInfo', 'logo', 'feePercent'));
+        return view('pages.admin.settings.index', compact('bankInfo', 'logo', 'feePercent', 'admin', 'inviteLink'));
     }
 
     public function updateBank(UpdateBankSettingRequest $request, AdminSettingService $service)

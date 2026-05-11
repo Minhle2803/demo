@@ -1,4 +1,4 @@
-import { fetchLatestTrades } from './api';
+import { fetchLatestTrades, fetchTradesBySession } from './api';
 import { buildTradeRow } from './ui';
 import { tradeState } from './store';
 
@@ -15,6 +15,21 @@ export function initTradesTable() {
 
 let isUpdating = false;
 
+export function upsertTradeRow(trade) {
+    const existingRow = tradeState.table.querySelector(`tr[data-id="${trade.id}"]`);
+    if (existingRow) {
+        existingRow.outerHTML = buildTradeRow(trade, tradeState.config.coinMeta);
+    } else {
+        tradeState.tbody.insertAdjacentHTML(
+            'afterbegin',
+            buildTradeRow(trade, tradeState.config.coinMeta)
+        );
+    }
+    if (trade.id > tradeState.lastId) {
+        tradeState.lastId = trade.id;
+    }
+}
+
 export async function updateTrades() {
 
     if (isUpdating) return;
@@ -25,21 +40,7 @@ export async function updateTrades() {
         if (!res.success || !res.data?.length) return;
 
         res.data.reverse().forEach((trade) => {
-            const existingRow = tradeState.table.querySelector(`tr[data-id="${trade.id}"]`);
-
-            if (existingRow) {
-                existingRow.outerHTML = buildTradeRow(trade, tradeState.config.coinMeta);
-                return;
-            }
-
-            tradeState.tbody.insertAdjacentHTML(
-                'afterbegin',
-                buildTradeRow(trade, tradeState.config.coinMeta)
-            );
-
-            if (trade.id > tradeState.lastId) {
-                tradeState.lastId = trade.id;
-            }
+            upsertTradeRow(trade);
         });
 
         while (tradeState.tbody.children.length > tradeState.config.maxRows) {
@@ -48,5 +49,18 @@ export async function updateTrades() {
 
     } finally {
         isUpdating = false;
+    }
+}
+
+export async function refreshSessionTrades(sessionId) {
+    try {
+        const res = await fetchTradesBySession(sessionId);
+        if (!res.success || !res.data?.length) return;
+
+        res.data.forEach((trade) => {
+            upsertTradeRow(trade);
+        });
+    } catch (err) {
+        console.error('Failed to refresh session trades:', err);
     }
 }

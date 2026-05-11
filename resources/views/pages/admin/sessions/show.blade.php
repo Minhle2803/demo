@@ -174,9 +174,13 @@
                                         @endif
                                     </td>
                                     <td>
-                                        @if ($trade->payout !== null)
-                                            <span class="{{ $trade->status === 'win' ? 'text-success' : 'text-danger' }} fw-medium">
-                                                {{ $trade->status === 'win' ? '+' : '-' }}{{ number_format((float) $trade->payout, 0, '.', ',') }}
+                                        @if ($trade->status === 'win')
+                                            <span class="text-success fw-medium">
+                                                +{{ number_format((float) $trade->payout, 0, '.', ',') }}
+                                            </span>
+                                        @elseif ($trade->status === 'lose')
+                                            <span class="text-danger fw-medium">
+                                                -{{ number_format((float) $trade->amount, 0, '.', ',') }}
                                             </span>
                                         @else
                                             —

@@ -22,9 +22,7 @@ class TradeService
      */
     public function placeTrade(ClientUser $user, TradingSession $session, string $type, float $amount): Trade
     {
-        $this->assertUserFullyVerified($user);
         $this->assertSessionAcceptingTrades($session);
-        $this->assertNoExistingTrade($user, $session);
         $this->assertSufficientBalance($user, $amount);
 
         return DB::transaction(function () use ($user, $session, $type, $amount) {
@@ -45,9 +43,7 @@ class TradeService
             // Deduct from balance
             $freshUser->decrement('balance', $amount);
 
-            // Create trade
-            $tradingFee = $this->feeService->calculateFee($amount);
-
+            // Create trade — fee is calculated and stored at settlement time.
             return Trade::create([
                 'user_id' => $freshUser->id,
                 'session_id' => $freshSession->id,
@@ -55,18 +51,9 @@ class TradeService
                 'amount' => $amount,
                 'status' => 'pending',
                 'payout' => 0,
-                'trading_fee' => $tradingFee,
+                'trading_fee' => 0,
             ]);
         });
-    }
-
-    protected function assertUserFullyVerified(ClientUser $user): void
-    {
-        $kycComplete = ! empty($user->kyc_front_url) && ! empty($user->kyc_back_url);
-
-        if (! $user->is_verified || ! $kycComplete) {
-            throw new \Exception(ErrorCodes::USER_NOT_FULLY_VERIFIED);
-        }
     }
 
     protected function assertSessionAcceptingTrades(TradingSession $session): void
@@ -78,17 +65,6 @@ class TradeService
         // Server-side lock enforcement — do not trust frontend timer
         if (now()->gte(Carbon::parse($session->lock_time))) {
             throw new \Exception(ErrorCodes::TRADE_SESSION_LOCKED);
-        }
-    }
-
-    protected function assertNoExistingTrade(ClientUser $user, TradingSession $session): void
-    {
-        $exists = Trade::where('user_id', $user->id)
-            ->where('session_id', $session->id)
-            ->exists();
-
-        if ($exists) {
-            throw new \Exception(ErrorCodes::TRADE_ALREADY_PLACED);
         }
     }
 

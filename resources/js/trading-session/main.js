@@ -3,7 +3,7 @@ import { fetchCurrentSession, fetchSessionResult, placeBuy, placeSell, fetchFeeC
 import { startTimer, stopTimer } from './timer.js';
 import { setCountdown, setStatus, setSessionId, enableTrading, disableTrading, showResultPopup, showError } from './ui.js';
 import { validateAmount } from './validation.js';
-import { updateTrades, initTradesTable  } from './service.js';
+import { updateTrades, initTradesTable, refreshSessionTrades } from './service.js';
 import { tradeState } from './store';
 
 let echo = null;
@@ -106,10 +106,11 @@ async function fetchResult(sessionId) {
             return;
         }
         
-        if (res.data?.session.id === window.tradeTableConfig.orderSessionId &&  window.tradeTableConfig.orderId !== 0 ) {
-            showResultPopup(res.data.trade, res.data.session);
+        if (res.data?.session.id === window.tradeTableConfig.orderSessionId && window.tradeTableConfig.orderId !== 0) {
+            showResultPopup(res.data.summary, res.data.session);
         }
         setTimeout(loadSession, 3000);
+        await refreshSessionTrades(sessionId);
         await updateTrades();
     } catch (err) {
         console.error('Fetch session result error:', err);
@@ -168,8 +169,6 @@ function showTradeConfirm(type, amount) {
 }
 
 async function handleTrade(type) {
-    if (state.tradePlaced) return;
-
     const raw = document.getElementById('trade-amount')?.value;
     const { valid, amount, error } = validateAmount(raw);
 
@@ -188,7 +187,6 @@ async function executeTrade(type, amount) {
     const res = type === 'buy' ? await placeBuy(amount) : await placeSell(amount);
 
     if (res.success) {
-        state.tradePlaced = true;
         setStatus('Trade placed — waiting for result...');
         await updateTrades();
         if (res.data?.trade) {
@@ -201,13 +199,6 @@ async function executeTrade(type, amount) {
     // Handle specific error codes
     if (res.code === 'AUTH_UNAUTHORIZED') {
         window.location.href = '/signin';
-        return;
-    }
-
-    if (res.code === 'USER_NOT_FULLY_VERIFIED') {
-        if (confirm(res.message)) {
-            window.location.href = '/profile';
-        }
         return;
     }
 

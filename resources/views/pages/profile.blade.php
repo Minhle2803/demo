@@ -181,6 +181,7 @@
                                         <small class="text-muted">{{ __('admin.invite_code') }}: <code>{{ $user->invite_code }}</code></small>
                                     </div>
                                 </div>
+                                @endif
                                 <div class="col-lg-6">
                                     <div class="mb-3">
                                         <label for="kycStatus" class="form-label">KYC Status</label>

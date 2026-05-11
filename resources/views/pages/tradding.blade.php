@@ -145,7 +145,7 @@
                                         <select class="form-select" id="trade-amount">
                                             <option value="20000">20,000 VND</option>
                                             <option value="50000">50,000 VND</option>
-                                            <option value="100000" active>100,000 VND</option>
+                                            <option value="100000" selected>100,000 VND</option>
                                             <option value="200000">200,000 VND</option>
                                             <option value="500000">500,000 VND</option>
                                             <option value="1000000">1,000,000 VND</option>
@@ -250,18 +250,17 @@
                             <td>{{ number_format($trade->amount, 0, '.', ',') }}</td>
                             <td>{{ $trade->trading_fee ? number_format((float) $trade->trading_fee, 0, '.', ',') : '—' }}</td>
                             <?php
-                                $amount = number_format($trade->amount, 0, '.', ',');
                                 $textClass = "text-success";
-                                $text = "+" . $amount;
+                                $text = "";
                                 if ($trade->status === 'lose') {
                                     $textClass = "text-danger";
-                                    $text = "-". $amount;
-                                } else if ($trade->status === 'pending') {
-                                    $text = "";
+                                    $text = "-". number_format($trade->amount, 0, '.', ',');
+                                } else if ($trade->status === 'win') {
+                                    $text = "+". number_format($trade->payout, 0, '.', ',');
                                 }
                             ?>
                             <td>
-                                <h6 class="{{ $textClass }} fs-13 mb-0">{{ $text }}</h6>  
+                                <h6 class="{{ $textClass }} fs-13 mb-0">{{ $text }}</h6>
                             </td>
                             <td>{{ $trade->created_at }}</td>
                         </tr>
