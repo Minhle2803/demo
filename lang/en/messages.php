@@ -324,7 +324,7 @@ return [
 
     'footer' => [
         'copyright' => '© :year Binance. All rights reserved.',
-        'design_by' => 'Design & Develop by Themesbrand',
+        'design_by' => 'Design & Develop by Binance',
         'trading_risk' => 'Trading involves risk.',
         'company' => 'Company',
         'about_us' => 'About Us',

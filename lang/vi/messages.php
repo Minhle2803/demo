@@ -322,7 +322,7 @@ return [
 
     'footer' => [
         'copyright' => '© :year Binance. Đã đăng ký bản quyền.',
-        'design_by' => 'Thiết kế & Phát triển bởi Themesbrand',
+        'design_by' => 'Thiết kế & Phát triển bởi Binance',
         'trading_risk' => 'Giao dịch có rủi ro.',
         'company' => 'Công ty',
         'about_us' => 'Về chúng tôi',

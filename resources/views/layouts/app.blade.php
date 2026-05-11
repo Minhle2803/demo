@@ -5,7 +5,7 @@
     <title>Binance: Sàn giao dịch tiền điện tử đáng tin cậy nhất thế giới để mua, giao dịch và đầu tư vào tiền điện tử.</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta content="Premium Multipurpose Admin & Dashboard Template" name="description" />
-    <meta content="Themesbrand" name="author" />
+    <meta content="Binance" name="author" />
     @include('layouts.partials.head')
     @stack('styles')
     

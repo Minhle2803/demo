@@ -6,7 +6,6 @@
 
 <div class="position-relative mx-n4 mt-n4">
     <div class="profile-wid-bg profile-setting-img">
-        <img src="assets/images/profile-bg.jpg" class="profile-wid-img" alt="">
         <div class="overlay-content">
             <div class="text-end p-3">
             </div>
@@ -449,6 +448,14 @@
     <!--end col-->
 </div>
 <!--end row-->
+<style>
+    .profile-wid-bg::before {
+        background: none !important;
+    }
+    .profile-setting-img {
+        height: 100px !important;
+    }
+</style>
 @endsection
 
 @push('scripts')
