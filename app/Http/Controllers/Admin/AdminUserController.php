@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\UpdateUserRequest;
 use App\Models\ClientUser;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -78,5 +79,15 @@ class AdminUserController extends Controller
 
         return redirect()->route('admin.users.show', $user->id)
             ->with('success', __('admin.user_updated'));
+    }
+
+    public function approveKyc(int $id): RedirectResponse
+    {
+        $user = ClientUser::findOrFail($id);
+
+        $user->forceFill(['kyc_verified_at' => now()])->save();
+
+        return redirect()->back()
+            ->with('success', __('admin.kyc_approved'));
     }
 }

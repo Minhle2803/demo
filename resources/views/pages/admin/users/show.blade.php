@@ -75,16 +75,25 @@
                 @if ($user->isKycVerified())
                     <span class="badge bg-success-subtle text-success fs-13">{{ __('admin.kyc_verified') }}</span>
                     <p class="mt-2 text-muted">{{ __('admin.kyc_verified_at') }}: {{ $user->kyc_verified_at?->format('Y-m-d H:i:s') }}</p>
-                    @if ($user->kyc_front_url)
-                        <p class="mt-2"><strong>{{ __('admin.kyc_front') }}:</strong></p>
-                        <img src="{{ asset('storage/' . $user->kyc_front_url) }}" class="img-fluid rounded" style="max-height:200px" alt="KYC Front">
-                    @endif
-                    @if ($user->kyc_back_url)
-                        <p class="mt-2"><strong>{{ __('admin.kyc_back') }}:</strong></p>
-                        <img src="{{ asset('storage/' . $user->kyc_back_url) }}" class="img-fluid rounded" style="max-height:200px" alt="KYC Back">
-                    @endif
+                @elseif ($user->kyc_front_url && $user->kyc_back_url)
+                    <span class="badge bg-warning-subtle text-warning fs-13">{{ __('admin.kyc_pending_approval') }}</span>
+                    <form action="{{ route('admin.users.approve-kyc', $user->id) }}" method="POST" class="mt-2">
+                        @csrf
+                        <button type="submit" class="btn btn-sm btn-success">
+                            <i class="ri-shield-check-line align-bottom me-1"></i>{{ __('admin.kyc_approve') }}
+                        </button>
+                    </form>
                 @else
                     <span class="badge bg-danger-subtle text-danger fs-13">{{ __('admin.kyc_unverified') }}</span>
+                @endif
+
+                @if ($user->kyc_front_url)
+                    <p class="mt-2"><strong>{{ __('admin.kyc_front') }}:</strong></p>
+                    <img src="{{ asset('storage/' . $user->kyc_front_url) }}" class="img-fluid rounded" style="max-height:200px" alt="KYC Front">
+                @endif
+                @if ($user->kyc_back_url)
+                    <p class="mt-2"><strong>{{ __('admin.kyc_back') }}:</strong></p>
+                    <img src="{{ asset('storage/' . $user->kyc_back_url) }}" class="img-fluid rounded" style="max-height:200px" alt="KYC Back">
                 @endif
             </div>
         </div>

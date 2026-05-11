@@ -51,6 +51,10 @@ return [
     'kyc_front' => 'KYC mặt trước',
     'kyc_back' => 'KYC mặt sau',
     'all_kyc_status' => 'Tất cả trạng thái KYC',
+    'kyc_approve' => 'Phê duyệt KYC',
+    'kyc_approved' => 'KYC đã được phê duyệt thành công.',
+    'kyc_pending_approval' => 'Chờ phê duyệt',
+    'kyc_docs_uploaded' => 'Đã tải lên',
 
     'symbol' => 'Mã',
     'name' => 'Tên',

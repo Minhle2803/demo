@@ -23,6 +23,7 @@ Route::name('admin.')->group(function () {
         Route::get('/users/{id}', [AdminUserController::class, 'show'])->name('users.show');
         Route::get('/users/{id}/edit', [AdminUserController::class, 'edit'])->name('users.edit');
         Route::put('/users/{id}', [AdminUserController::class, 'update'])->name('users.update');
+        Route::post('/users/{id}/approve-kyc', [AdminUserController::class, 'approveKyc'])->name('users.approve-kyc');
 
         Route::get('/deposits', [AdminDepositController::class, 'index'])->name('deposits.index');
         Route::post('/deposits/{id}/approve', [AdminDepositController::class, 'approve'])->name('deposits.approve');

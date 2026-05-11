@@ -69,15 +69,27 @@
                                     <td>
                                         @if ($user->isKycVerified())
                                             <span class="badge bg-success-subtle text-success">{{ __('admin.kyc_verified') }}</span>
+                                        @elseif ($user->kyc_front_url && $user->kyc_back_url)
+                                            <span class="badge bg-warning-subtle text-warning">{{ __('admin.kyc_pending_approval') }}</span>
                                         @else
                                             <span class="badge bg-danger-subtle text-danger">{{ __('admin.kyc_unverified') }}</span>
                                         @endif
                                     </td>
                                     <td>{{ $user->created_at->format('Y-m-d H:i') }}</td>
                                     <td>
-                                        <a href="{{ route('admin.users.show', $user->id) }}" class="btn btn-sm btn-soft-info">
-                                            <i class="ri-eye-line align-bottom"></i>
-                                        </a>
+                                        <div class="d-flex gap-1">
+                                            <a href="{{ route('admin.users.show', $user->id) }}" class="btn btn-sm btn-soft-info">
+                                                <i class="ri-eye-line align-bottom"></i>
+                                            </a>
+                                            @if ($user->kyc_front_url && $user->kyc_back_url && !$user->isKycVerified())
+                                                <form action="{{ route('admin.users.approve-kyc', $user->id) }}" method="POST" onsubmit="return confirm('{{ __('admin.kyc_approve') }}?')">
+                                                    @csrf
+                                                    <button type="submit" class="btn btn-sm btn-soft-success">
+                                                        <i class="ri-shield-check-line align-bottom"></i>
+                                                    </button>
+                                                </form>
+                                            @endif
+                                        </div>
                                     </td>
                                 </tr>
                             @empty

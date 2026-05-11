@@ -146,12 +146,6 @@
                                 </div>
                                 <div class="col-lg-6">
                                     <div class="mb-3">
-                                        <label for="emailDisplay" class="form-label">{{ __('messages.profile.email') }}</label>
-                                        <input type="email" class="form-control bg-light" value="{{ $user->email }}" readonly>
-                                    </div>
-                                </div>
-                                <div class="col-lg-6">
-                                    <div class="mb-3">
                                         <label for="nicknameInput" class="form-label">{{ __('messages.profile.nickname') }} <span class="text-danger">*</span></label>
                                         <input type="text" class="form-control" name="nickname" id="nicknameInput" value="{{ old('nickname', $user->nickname) }}" required>
                                     </div>
@@ -188,24 +182,6 @@
                                         <input type="text" class="form-control bg-light" value="{{ $user->isKycVerified() ? __('messages.common.verified') : ($user->kyc_front_url || $user->kyc_back_url ? __('messages.common.pending') : __('messages.common.not_submitted')) }}" readonly>
                                     </div>
                                 </div>
-                                <div class="col-lg-4">
-                                    <div class="mb-3">
-                                        <label for="bankAccountDisplay" class="form-label">{{ __('messages.profile.bank_name_label') }}</label>
-                                        <input type="text" class="form-control bg-light" value="{{ $user->bank_account ?? '-' }}" readonly>
-                                    </div>
-                                </div>
-                                <div class="col-lg-4">
-                                    <div class="mb-3">
-                                        <label for="bankNumberDisplay" class="form-label">{{ __('messages.profile.account_number') }}</label>
-                                        <input type="text" class="form-control bg-light" value="{{ $user->bank_number ?? '-' }}" readonly>
-                                    </div>
-                                </div>
-                                <div class="col-lg-4">
-                                    <div class="mb-3">
-                                        <label for="bankNameDisplay" class="form-label">{{ __('messages.profile.account_holder') }}</label>
-                                        <input type="text" class="form-control bg-light" value="{{ $user->account_name ?? '-' }}" readonly>
-                                    </div>
-                                </div>
                                 <div class="col-lg-6">
                                     <div class="mb-3">
                                         <label for="createdAtDisplay" class="form-label">{{ __('messages.profile.join_date') }}</label>
@@ -219,22 +195,88 @@
                                     </div>
                                 </div>
                                 @if (!$user->isKycVerified())
-                                    <div class="card">
-                                        <div class="card-body text-center">
-                                            <div class="mb-4">
-                                                <i class="ri-shield-check-fill text-muted" style="font-size: 80px;"></i>
+                                    <div class="col-12"><hr class="my-4"></div>
+                                    <div class="col-12"><h5 class="mb-3">{{ __('messages.profile.kyc_modal_title') }}</h5></div>
+
+                                    @if ($user->kyc_front_url && $user->kyc_back_url)
+                                        <div class="col-12">
+                                            <div class="alert alert-warning">
+                                                <i class="ri-information-line me-1"></i>
+                                                {{ __('messages.profile.kyc_pending_msg') }}
                                             </div>
-                                            <h4 class="fw-semibold">{{ __('messages.profile.kyc_modal_title') }}</h4>
-                                            <p class="text-muted">{{ __('messages.profile.kyc_modal_subtitle') }}</p>
-                                            @if ($user->kyc_front_url && !$user->isKycVerified())
-                                                <div class="alert alert-warning mt-3">
-                                                    <i class="ri-information-line me-1"></i>
-                                                    {{ __('messages.profile.kyc_pending_msg') }}
-                                                </div>
-                                            @endif
-                                            <button type="button" class="btn btn-primary mt-3" data-bs-toggle="modal" data-bs-target="#kycModal">
-                                                <i class="ri-user-shared-line me-1"></i> {{ __('messages.profile.verify_kyc') }}
+                                        </div>
+                                    @endif
+
+                                    <div class="col-lg-4">
+                                        <div class="mb-3">
+                                            <label for="kycBankName" class="form-label">{{ __('messages.profile.account_name') }} <span class="text-danger">*</span></label>
+                                            <input type="text" class="form-control" id="kycBankName" name="account_name" value="{{ $user->account_name }}" placeholder="NGUYEN VAN A">
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-4">
+                                        <div class="mb-3">
+                                            <label for="kycBankNumber" class="form-label">{{ __('messages.profile.account_number') }} <span class="text-danger">*</span></label>
+                                            <input type="text" class="form-control" id="kycBankNumber" name="bank_number" value="{{ $user->bank_number }}" placeholder="{{ __('messages.profile.enter_account_number') }}">
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-4">
+                                        <div class="mb-3">
+                                            <label for="kycBankBranch" class="form-label">{{ __('messages.profile.bank_name_label') }} <span class="text-danger">*</span></label>
+                                            <input type="text" class="form-control" id="kycBankBranch" name="bank_account" value="{{ $user->bank_account }}" placeholder="{{ __('messages.profile.enter_bank_name') }}">
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-4">
+                                        <div class="mb-3">
+                                            <label for="kycFullName" class="form-label">{{ __('messages.profile.full_name_cccd') }} <span class="text-danger">*</span></label>
+                                            <input type="text" class="form-control" id="kycFullName" name="full_name" value="{{ $user->full_name }}" placeholder="NGUYEN VAN A">
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-4">
+                                        <div class="mb-3">
+                                            <label for="kycDob" class="form-label">{{ __('messages.profile.date_of_birth') }} <span class="text-danger">*</span></label>
+                                            <input type="date" class="form-control" id="kycDob" name="date_of_birth" value="{{ $user->date_of_birth?->format('Y-m-d') }}">
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-4">
+                                        <div class="mb-3">
+                                            <label for="kycCccdNumber" class="form-label">{{ __('messages.profile.cccd_number') }} <span class="text-danger">*</span></label>
+                                            <input type="text" class="form-control" id="kycCccdNumber" name="cccd_number" value="{{ $user->cccd_number }}" placeholder="{{ __('messages.profile.enter_cccd') }}">
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-6">
+                                        <div class="mb-3">
+                                            <label for="kycFrontInput" class="form-label">{{ __('messages.profile.cccd_front') }} <span class="text-danger">*</span></label>
+                                            <input type="file" class="form-control" name="kyc_front" id="kycFrontInput" accept="image/jpeg,image/png,image/jpg">
+                                            <div class="mt-2" id="kycFrontPreview"></div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="mb-3">
+                                            <label for="kycBackInput" class="form-label">{{ __('messages.profile.cccd_back') }} <span class="text-danger">*</span></label>
+                                            <input type="file" class="form-control" name="kyc_back" id="kycBackInput" accept="image/jpeg,image/png,image/jpg">
+                                            <div class="mt-2" id="kycBackPreview"></div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-12" id="kycUploadStatus"></div>
+
+                                    <div class="col-lg-12">
+                                        <div class="hstack gap-2">
+                                            <button type="button" class="btn btn-primary" id="kycSubmitBtn">
+                                                <i class="ri-user-shared-line me-1"></i> {{ __('messages.profile.submit_verification') }}
                                             </button>
+                                        </div>
+                                    </div>
+                                @else
+                                    <div class="col-12">
+                                        <div class="alert alert-success d-flex align-items-center" role="alert">
+                                            <i class="ri-shield-check-fill me-2" style="font-size: 24px;"></i>
+                                            <div>
+                                                <strong>{{ __('admin.kyc_verified') }}</strong><br>
+                                                <small>{{ __('admin.kyc_verified_at') }}: {{ $user->kyc_verified_at?->format('d/m/Y H:i') }}</small>
+                                            </div>
                                         </div>
                                     </div>
                                 @endif
@@ -437,15 +479,6 @@
                     </div>
                     {{-- end tab-pane --}}
 
-                    {{-- Tab 4: KYC Verification --}}
-                    <div class="tab-pane {{ $activeTab === 'kyc' ? 'active' : '' }}" id="privacy" role="tabpanel">
-                        <div class="row justify-content-center">
-                            <div class="col-lg-8">
-                                
-                            </div>
-                        </div>
-                    </div>
-                    {{-- end tab-pane --}}
                 </div>
             </div>
         </div>
@@ -454,84 +487,6 @@
 </div>
 <!--end row-->
 @endsection
-
-{{-- KYC 2-Step Modal --}}
-<div id="kycModal" class="modal fade" tabindex="-1" aria-labelledby="kycModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="kycModalLabel">{{ __('messages.profile.kyc_modal_title') }}</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                {{-- Step indicators --}}
-                <div class="d-flex justify-content-center mb-4" id="kycSteps">
-                    <span class="badge bg-primary fs-6 px-3 py-2 me-2" id="kycStep1Badge">{{ __('messages.profile.kyc_step1') }}</span>
-                    <span class="text-muted fs-5">→</span>
-                    <span class="badge bg-light text-dark fs-6 px-3 py-2 ms-2" id="kycStep2Badge">{{ __('messages.profile.kyc_step2') }}</span>
-                </div>
-
-                {{-- Step 1: Bank Info --}}
-                <div id="kycStep1Content">
-                    <form id="kycBankForm">
-                        @csrf
-                        <div class="mb-3">
-                            <label for="kycBankName" class="form-label">{{ __('messages.profile.account_name') }} <span class="text-danger">*</span></label>
-                            <input type="text" class="form-control" id="kycBankName" name="account_name" value="{{ $user->account_name }}" placeholder="NGUYEN VAN A" required>
-                        </div>
-                        <div class="mb-3">
-                            <label for="kycBankNumber" class="form-label">{{ __('messages.profile.account_number') }} <span class="text-danger">*</span></label>
-                            <input type="text" class="form-control" id="kycBankNumber" name="bank_number" value="{{ $user->bank_number }}" placeholder="{{ __('messages.profile.enter_account_number') }}" required>
-                        </div>
-                        <div class="mb-3">
-                            <label for="kycBankBranch" class="form-label">{{ __('messages.profile.bank_name_label') }} <span class="text-danger">*</span></label>
-                            <input type="text" class="form-control" id="kycBankBranch" name="bank_account" value="{{ $user->bank_account }}" placeholder="{{ __('messages.profile.enter_bank_name') }}" required>
-                        </div>
-                        <div class="text-end">
-                            <button type="button" class="btn btn-primary" id="kycNextStep">{{ __('messages.profile.next_step') }}</button>
-                        </div>
-                    </form>
-                </div>
-
-                {{-- Step 2: Upload CCCD --}}
-                <div id="kycStep2Content" style="display:none;">
-                    <form id="kycUploadForm" enctype="multipart/form-data">
-                        @csrf
-                        <div class="mb-3">
-                            <label for="kycFullName" class="form-label">{{ __('messages.profile.full_name_cccd') }} <span class="text-danger">*</span></label>
-                            <input type="text" class="form-control" id="kycFullName" name="full_name" value="{{ $user->full_name }}" placeholder="NGUYEN VAN A" required>
-                        </div>
-                        <div class="mb-3">
-                            <label for="kycDob" class="form-label">{{ __('messages.profile.date_of_birth') }} <span class="text-danger">*</span></label>
-                            <input type="date" class="form-control" id="kycDob" name="date_of_birth" value="{{ $user->date_of_birth?->format('Y-m-d') }}" required>
-                        </div>
-                        <div class="mb-3">
-                            <label for="kycCccdNumber" class="form-label">{{ __('messages.profile.cccd_number') }} <span class="text-danger">*</span></label>
-                            <input type="text" class="form-control" id="kycCccdNumber" name="cccd_number" value="{{ $user->cccd_number }}" placeholder="{{ __('messages.profile.enter_cccd') }}" required>
-                        </div>
-                        <div class="row g-3">
-                            <div class="col-lg-6">
-                                <label for="kycFrontInput" class="form-label">{{ __('messages.profile.cccd_front') }} <span class="text-danger">*</span></label>
-                                <input type="file" class="form-control" name="kyc_front" id="kycFrontInput" accept="image/jpeg,image/png,image/jpg" required>
-                                <div class="mt-2" id="kycFrontPreview"></div>
-                            </div>
-                            <div class="col-lg-6">
-                                <label for="kycBackInput" class="form-label">{{ __('messages.profile.cccd_back') }} <span class="text-danger">*</span></label>
-                                <input type="file" class="form-control" name="kyc_back" id="kycBackInput" accept="image/jpeg,image/png,image/jpg" required>
-                                <div class="mt-2" id="kycBackPreview"></div>
-                            </div>
-                        </div>
-                        <div class="mt-3" id="kycUploadStatus"></div>
-                        <div class="d-flex justify-content-between mt-3">
-                            <button type="button" class="btn btn-light" id="kycPrevStep">{{ __('messages.profile.back') }}</button>
-                            <button type="submit" class="btn btn-primary">{{ __('messages.profile.submit_verification') }}</button>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
 
 @push('scripts')
 @vite(['resources/js/referral.js'])
