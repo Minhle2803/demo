@@ -42,12 +42,6 @@
                     </div>
 
                     <div class="mb-3">
-                        <label for="email" class="form-label">{{ __('admin.email') }} <span class="text-danger">*</span></label>
-                        <input type="email" name="email" id="email" class="form-control @error('email') is-invalid @enderror" value="{{ old('email', $user->email) }}" required>
-                        @error('email') <div class="invalid-feedback">{{ $message }}</div> @enderror
-                    </div>
-
-                    <div class="mb-3">
                         <label for="full_name" class="form-label">{{ __('admin.full_name') }}</label>
                         <input type="text" name="full_name" id="full_name" class="form-control @error('full_name') is-invalid @enderror" value="{{ old('full_name', $user->full_name) }}">
                         @error('full_name') <div class="invalid-feedback">{{ $message }}</div> @enderror

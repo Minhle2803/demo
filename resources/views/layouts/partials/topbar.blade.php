@@ -57,13 +57,16 @@
                 <div class="dropdown ms-1 topbar-head-dropdown header-item">
                     <a class="btn btn-outline-warning btn-label waves-effect waves-light" href="{{ route('client.profile.show', ['tab' => 'deposit']) }}"><i class="bx bx-money label-icon align-middle fs-16 me-2"></i> Nạp / Rút Tiền</a>
                 </div>
+                
+                <div class="dropdown ms-1 topbar-head-dropdown header-item">
+                    <span class=" d-xl-block ms-1 fs-12 user-name-sub-text" id="balance-display">{{ format_currency_short((float) Auth::guard('client')->user()->balance, 'VND') }}</span>
+                </div>
                 <div class="dropdown ms-sm-3 header-item topbar-user">
                     <button aria-expanded="false" aria-haspopup="true" class="btn material-shadow-none" data-bs-toggle="dropdown" id="page-header-user-dropdown" type="button">
                         <span class="d-flex align-items-center">
                             <img alt="Header Avatar" class="rounded-circle header-profile-user" src="{{ asset('assets/images/users/avatar-1.jpg') }}" />
                             <span class="text-start ms-xl-2">
                                 <span class="d-none d-xl-inline-block ms-1 fw-medium user-name-text">{{ Auth::guard('client')->user()->nickname }}</span>
-                                <span class="d-none d-xl-block ms-1 fs-12 user-name-sub-text" id="balance-display">{{ format_currency_short((float) Auth::guard('client')->user()->balance, 'VND') }}</span>
                             </span>
                         </span>
                     </button>

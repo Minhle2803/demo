@@ -170,18 +170,6 @@
                                         <input type="text" class="form-control bg-light" value="{{ $user->isKycVerified() ? __('messages.common.verified') : ($user->kyc_front_url || $user->kyc_back_url ? __('messages.common.pending') : __('messages.common.not_submitted')) }}" readonly>
                                     </div>
                                 </div>
-                                <div class="col-lg-6">
-                                    <div class="mb-3">
-                                        <label for="createdAtDisplay" class="form-label">{{ __('messages.profile.join_date') }}</label>
-                                        <input type="text" class="form-control bg-light" value="{{ $user->created_at?->format('d/m/Y H:i') }}" readonly>
-                                    </div>
-                                </div>
-                                <div class="col-lg-6">
-                                    <div class="mb-3">
-                                        <label for="verifiedAtDisplay" class="form-label">{{ __('messages.profile.verification_date') }}</label>
-                                        <input type="text" class="form-control bg-light" value="{{ $user->verified_at?->format('d/m/Y H:i') ?? '-' }}" readonly>
-                                    </div>
-                                </div>
                                 @if (!$user->isKycVerified())
                                     <div class="col-12"><hr class="my-4"></div>
                                     <div class="col-12"><h5 class="mb-3">{{ __('messages.profile.kyc_modal_title') }}</h5></div>
@@ -218,12 +206,6 @@
                                         <div class="mb-3">
                                             <label for="kycFullName" class="form-label">{{ __('messages.profile.full_name_cccd') }} <span class="text-danger">*</span></label>
                                             <input type="text" class="form-control" id="kycFullName" name="full_name" value="{{ $user->full_name }}" placeholder="NGUYEN VAN A">
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-4">
-                                        <div class="mb-3">
-                                            <label for="kycDob" class="form-label">{{ __('messages.profile.date_of_birth') }} <span class="text-danger">*</span></label>
-                                            <input type="date" class="form-control" id="kycDob" name="date_of_birth" value="{{ $user->date_of_birth?->format('Y-m-d') }}">
                                         </div>
                                     </div>
                                     <div class="col-lg-4">
@@ -436,7 +418,8 @@
                                     </div>
                                     <div class="modal-body text-center">
                                         <h5 class="fs-15">{{ __('messages.profile.enter_amount') }}</h5>
-                                        <input type="number" class="form-control mb-3" id="depositAmount" placeholder="{{ __('messages.profile.enter_deposit_amount') }}" min="10000">
+                                        <p class="text-warning"><i>Số tiền tối thiểu 300.000 VNĐ</i></p>
+                                        <input type="number" class="form-control mb-3" id="depositAmount" placeholder="{{ __('messages.profile.enter_deposit_amount') }}" min="300000">
                                         <p class="mb-2 text-danger" id="depositError" style="display:none;"></p>
                                         <p class="mb-2">{{ __('messages.profile.deposit_payment_note') }}</p>
                                         <p class="mb-2"><strong>{{ __('messages.common.balance') }}: <span id="depositContent">{{ $user->nickname }}</span></strong></p>
