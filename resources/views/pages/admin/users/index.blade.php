@@ -81,6 +81,9 @@
                                             <a href="{{ route('admin.users.show', $user->id) }}" class="btn btn-sm btn-soft-info">
                                                 <i class="ri-eye-line align-bottom"></i>
                                             </a>
+                                            <a href="{{ route('admin.users.edit', $user->id) }}" class="btn btn-sm btn-soft-warning">
+                                                <i class="ri-edit-line align-bottom"></i>
+                                            </a>
                                             @if ($user->kyc_front_url && $user->kyc_back_url && !$user->isKycVerified())
                                                 <form action="{{ route('admin.users.approve-kyc', $user->id) }}" method="POST" onsubmit="return confirm('{{ __('admin.kyc_approve') }}?')">
                                                     @csrf

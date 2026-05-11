@@ -114,6 +114,44 @@
     </div>
 
     <div class="row mt-2">
+        <div class="col-lg-6">
+            <div class="card">
+                <div class="card-header">
+                    <h5 class="card-title mb-0">{{ __('admin.kyc_status') }}</h5>
+                </div>
+                <div class="card-body">
+                    @if ($user->kyc_front_url || $user->kyc_back_url)
+                        <div class="row g-3">
+                            @if ($user->kyc_front_url)
+                                <div class="col-lg-6">
+                                    <p class="mb-1"><strong>{{ __('admin.kyc_front') }}:</strong></p>
+                                    <img src="{{ asset('storage/' . $user->kyc_front_url) }}" class="img-fluid rounded border" style="max-height:250px" alt="KYC Front">
+                                </div>
+                            @endif
+                            @if ($user->kyc_back_url)
+                                <div class="col-lg-6">
+                                    <p class="mb-1"><strong>{{ __('admin.kyc_back') }}:</strong></p>
+                                    <img src="{{ asset('storage/' . $user->kyc_back_url) }}" class="img-fluid rounded border" style="max-height:250px" alt="KYC Back">
+                                </div>
+                            @endif
+                        </div>
+                        @if (!$user->isKycVerified())
+                            <form action="{{ route('admin.users.approve-kyc', $user->id) }}" method="POST" class="mt-3">
+                                @csrf
+                                <button type="submit" class="btn btn-sm btn-success">
+                                    <i class="ri-shield-check-line align-bottom me-1"></i>{{ __('admin.kyc_approve') }}
+                                </button>
+                            </form>
+                        @endif
+                    @else
+                        <p class="text-muted mb-0">{{ __('admin.no_data') }}</p>
+                    @endif
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row mt-2">
         <div class="col-12">
             <button type="submit" class="btn btn-success">
                 <i class="ri-check-line align-bottom"></i> {{ __('admin.save') }}
