@@ -12,6 +12,7 @@ return [
     'withdraw_management' => 'Withdraw Management',
     'settings' => 'Settings',
     'crypto_asset_management' => 'Crypto Asset Management',
+    'kyc_verification' => 'KYC Verification',
 
     'total_spot_buy_orders' => 'Total Spot Buy Orders',
     'total_spot_sell_orders' => 'Total Spot Sell Orders',

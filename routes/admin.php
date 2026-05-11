@@ -20,6 +20,7 @@ Route::name('admin.')->group(function () {
         Route::get('/dashboard', [AdminDashboardController::class, 'index'])->name('dashboard');
 
         Route::get('/users', [AdminUserController::class, 'index'])->name('users.index');
+        Route::get('/users/kyc', [AdminUserController::class, 'kyc'])->name('users.kyc');
         Route::get('/users/{id}', [AdminUserController::class, 'show'])->name('users.show');
         Route::get('/users/{id}/edit', [AdminUserController::class, 'edit'])->name('users.edit');
         Route::put('/users/{id}', [AdminUserController::class, 'update'])->name('users.update');

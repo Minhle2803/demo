@@ -81,6 +81,28 @@ class AdminUserController extends Controller
             ->with('success', __('admin.user_updated'));
     }
 
+    public function kyc(Request $request)
+    {
+        $query = ClientUser::whereNotNull('kyc_front_url')
+            ->whereNotNull('kyc_back_url')
+            ->where('kyc_front_url', '!=', '')
+            ->where('kyc_back_url', '!=', '')
+            ->whereNull('kyc_verified_at');
+
+        if ($request->filled('search')) {
+            $search = $request->input('search');
+            $query->where(function ($q) use ($search) {
+                $q->where('nickname', 'like', "%{$search}%")
+                    ->orWhere('email', 'like', "%{$search}%")
+                    ->orWhere('phone_number', 'like', "%{$search}%");
+            });
+        }
+
+        $users = $query->latest()->paginate(20)->withQueryString();
+
+        return view('pages.admin.users.kyc', compact('users'));
+    }
+
     public function approveKyc(int $id): RedirectResponse
     {
         $user = ClientUser::findOrFail($id);
