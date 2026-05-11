@@ -69,7 +69,7 @@ export function showResultPopup(summary, session) {
         countEl.textContent = (summary?.trade_count ?? 0);
     }
 
-    updateBalanceDisplay(net);
+    updateBalanceDisplay(summary?.total_win ?? 0);
 
     window.tradeTableConfig.orderId = 0;
     window.tradeTableConfig.orderSessionId = 0;
@@ -77,10 +77,10 @@ export function showResultPopup(summary, session) {
     modal.show();
 }
 
-function updateBalanceDisplay(net) {
+function updateBalanceDisplay(payout) {
     document.querySelectorAll('.balance-display').forEach(el => {
         const current = parseFloat(el.getAttribute('data-amount')) || 0;
-        const newBalance = current + net;
+        const newBalance = current + payout;
         el.setAttribute('data-amount', newBalance);
         el.innerHTML = newBalance.toLocaleString('vi-VN') + ' VND';
     });

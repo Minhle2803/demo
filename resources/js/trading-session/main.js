@@ -189,6 +189,7 @@ async function executeTrade(type, amount) {
     if (res.success) {
         setStatus('Trade placed — waiting for result...');
         await updateTrades();
+        deductBalanceDisplay(amount);
         if (res.data?.trade) {
             window.tradeTableConfig.orderId = res.data.trade.id;
             window.tradeTableConfig.orderSessionId = res.data.trade.session_id;
@@ -208,6 +209,15 @@ async function executeTrade(type, amount) {
     const now    = getServerNow();
     const lockAt = state.session ? new Date(state.session.lock_time).getTime() : 0;
     if (now < lockAt) enableTrading();
+}
+
+function deductBalanceDisplay(amount) {
+    document.querySelectorAll('.balance-display').forEach(el => {
+        const current = parseFloat(el.getAttribute('data-amount')) || 0;
+        const newBalance = current - amount;
+        el.setAttribute('data-amount', newBalance);
+        el.innerHTML = newBalance.toLocaleString('vi-VN') + ' VND';
+    });
 }
 
 function initReverb() {
