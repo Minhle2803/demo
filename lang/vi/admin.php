@@ -12,6 +12,7 @@ return [
     'withdraw_management' => 'Quản lý rút tiền',
     'settings' => 'Cài đặt',
     'crypto_asset_management' => 'Quản lý tài sản crypto',
+    'kyc_verification' => 'Xác minh KYC',
 
     'total_spot_buy_orders' => 'Tổng lệnh mua Spot',
     'total_spot_sell_orders' => 'Tổng lệnh bán Spot',

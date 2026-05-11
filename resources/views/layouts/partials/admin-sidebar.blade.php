@@ -56,8 +56,14 @@
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link {{ request()->routeIs('admin.users.*') ? 'active' : '' }}" href="{{ route('admin.users.index') }}">
+                    <a class="nav-link {{ request()->routeIs('admin.users.index') || request()->routeIs('admin.users.show') || request()->routeIs('admin.users.edit') ? 'active' : '' }}" href="{{ route('admin.users.index') }}">
                         <i class="ri-user-settings-line"></i> <span>{{ __('admin.user_management') }}</span>
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link {{ request()->routeIs('admin.users.kyc') ? 'active' : '' }}" href="{{ route('admin.users.kyc') }}">
+                        <i class="ri-shield-check-line"></i> <span>{{ __('admin.kyc_verification') }}</span>
                     </a>
                 </li>
 
