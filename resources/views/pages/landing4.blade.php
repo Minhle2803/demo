@@ -6,18 +6,18 @@
       <title data-shuvi-head="true">Binance: The World’s Most Trusted Cryptocurrency Exchange to Buy, Trade &amp; Invest in Crypto</title>
       <meta name="keywords" content="Blockchain Crypto Exchange, Cryptocurrency Exchange, Bitcoin Trading, Ethereum price trend, BNB, CZ, BTC price, ETH wallet registration, LTC price, Binance, Poloniex, Bittrex" data-shuvi-head="true" />
       <meta name="description" content="Discover why Binance is the world’s best cryptocurrency exchange. Secure, low fees, trusted by millions of users worldwide." data-shuvi-head="true" />
-      <meta property="og:url" content="{{ route('tradding') }}" data-shuvi-head="true" />
+      <meta property="og:url" content="https://www.binance.com/en" data-shuvi-head="true" />
       <meta property="og:type" content="website" data-shuvi-head="true" />
       <meta property="og:title" content="Binance: The World’s Most Trusted Cryptocurrency Exchange to Buy, Trade &amp; Invest in Crypto" data-shuvi-head="true" />
       <meta property="og:description" content="Discover why Binance is the world’s best cryptocurrency exchange. Secure, low fees, trusted by millions of users worldwide." data-shuvi-head="true" />
       <meta property="og:site_name" content="Binance" data-shuvi-head="true" />
-      <meta property="og:image" content="{{ route('tradding') }}" data-shuvi-head="true" />
+      <meta property="og:image" content="https://public.bnbstatic.com/static/images/common/ogImage.jpg" data-shuvi-head="true" />
       <meta name="twitter:card" content="summary_large_image" data-shuvi-head="true" />
       <meta name="twitter:title" content="Binance: The World’s Most Trusted Cryptocurrency Exchange to Buy, Trade &amp; Invest in Crypto" data-shuvi-head="true" />
       <meta name="twitter:description" content="Discover why Binance is the world’s best cryptocurrency exchange. Secure, low fees, trusted by millions of users worldwide." data-shuvi-head="true" />
       <meta name="twitter:site" content="Binance" data-shuvi-head="true" />
-      <meta name="twitter:image" content="{{ route('tradding') }}" data-shuvi-head="true" />
-      <meta name="twitter:image:src" content="{{ route('tradding') }}" data-shuvi-head="true" />
+      <meta name="twitter:image" content="https://public.bnbstatic.com/static/images/common/ogImage.jpg" data-shuvi-head="true" />
+      <meta name="twitter:image:src" content="https://public.bnbstatic.com/static/images/common/ogImage.jpg" data-shuvi-head="true" />
       <meta http-equiv="etag" content="dbb0f6e750dfb5b32469b08db668fdfd2d4b7291" />
       <meta name="msapplication-TileImage" content="{{ asset('assets/images/icons/brand.png') }}" />
       <meta name="robots" content="all" />
@@ -29,7 +29,7 @@
       <meta name="apple-mobile-web-app-status-bar-style" content="black" data-shuvi-head="true" />
       <meta name="apple-mobile-web-app-capable" content="yes" data-shuvi-head="true" />
       <meta name="format-detection" content="email=no" data-shuvi-head="true" />
-       <link rel="preconnect" href="https://bin.bnbstatic.com" crossorigin="anonymous" />
+      <link rel="preconnect" href="https://bin.bnbstatic.com" crossorigin="anonymous" />
       <link rel="preconnect" href="https://public.bnbstatic.com" crossorigin="anonymous" />
       <link rel="preload" as="fetch" href="https://bin.bnbstatic.com/api/i18n/-/web/cms/en/LocalHomepage" crossorigin="anonymous" fetchpriority="low" />
       <link rel="preload" as="fetch" href="https://bin.bnbstatic.com/api/i18n/-/web/cms/en/home-extra" crossorigin="anonymous" fetchpriority="low" />
@@ -52,9 +52,6 @@
       <link rel="preload" as="script" href="https://public.bnbstatic.com/unpkg/config/remote-config.js" />
       <link rel="preload" as="script" href="https://public.bnbstatic.com/unpkg/common-widget/common-widget-render-control@1.4.110.min.js" />
       <link rel="shortcut icon" href="{{ asset('assets/images/icons/favicon.ico') }}" />
-      <link rel="apple-touch-icon" href="{{ asset('assets/images/icons/brand.png') }}" />
-      <link rel="icon" href="{{ asset('assets/images/icons/brand.png') }}" />
-          <link rel="shortcut icon" href="{{ asset('assets/images/icons/favicon.ico') }}" />
       <link rel="apple-touch-icon" href="{{ asset('assets/images/icons/brand.png') }}" />
       <link rel="icon" href="{{ asset('assets/images/icons/brand.png') }}" />
       <link rel="alternate" hreflang="es-NI" href="https://www.binance.com/es-LA" />
@@ -196,8 +193,8 @@
                     return {};
                 }
             }
-            var AutoBlockScriptMap = getJSON('{"binance.com": "{{ route('tradding') }}","binance.info": "{{ route('tradding') }}","binance.me": "{{ route('tradding') }}","binance.bh": "{{ route('tradding') }}"}');
-            var SDKStubInfoMap = getJSON('{"binance.com":{"src": "{{ route('tradding') }}","hash":"e21a0e13-40c2-48a6-9ca2-57738356cdab"},"binance.info":{"src": "{{ route('tradding') }}","hash":"03246444-2043-432d-afae-413a91f535e9"},"binance.me":{"src": "{{ route('tradding') }}","hash":"39df5304-ea83-4bd5-8550-d57bca54d95a"}, "binance.bh":{"src": "{{ route('tradding') }}","hash":"0196a4bb-fb7b-7ae6-a24c-893547b9e467"}}');
+            var AutoBlockScriptMap = getJSON('{"binance.com":"https://cdn.cookielaw.org/consent/e21a0e13-40c2-48a6-9ca2-57738356cdab/OtAutoBlock.js","binance.info":"https://cdn.cookielaw.org/consent/03246444-2043-432d-afae-413a91f535e9/OtAutoBlock.js","binance.me":"https://cdn.cookielaw.org/consent/39df5304-ea83-4bd5-8550-d57bca54d95a/OtAutoBlock.js","binance.bh":"https://cdn.cookielaw.org/consent/0196a4bb-fb7b-7ae6-a24c-893547b9e467/OtAutoBlock.js"}');
+            var SDKStubInfoMap = getJSON('{"binance.com":{"src":"https://cdn.cookielaw.org/scripttemplates/otSDKStub.js","hash":"e21a0e13-40c2-48a6-9ca2-57738356cdab"},"binance.info":{"src":"https://cdn.cookielaw.org/scripttemplates/otSDKStub.js","hash":"03246444-2043-432d-afae-413a91f535e9"},"binance.me":{"src":"https://cdn.cookielaw.org/scripttemplates/otSDKStub.js","hash":"39df5304-ea83-4bd5-8550-d57bca54d95a"}, "binance.bh":{"src":"https://cdn.cookielaw.org/scripttemplates/otSDKStub.js","hash":"0196a4bb-fb7b-7ae6-a24c-893547b9e467"}}');
             var domain = location.hostname.split('.').slice(-2).join('.');
             var mapKey = domain === 'localhost' ? location.host : domain;
 
@@ -234,7 +231,7 @@
                 s.nonce = '25b28dca-3fd5-41bd-944e-3713ed4bf0eb';
                 document.head.appendChild(s);
                 var ss = document.createElement('script');
-                ss.src = '{{ route('tradding') }}';
+                ss.src = 'https://bin.bnbstatic.com/static/one-trust/onetrust-trigger.js';
                 ss.type = 'text/javascript';
                 script.async = false;
                 ss.setAttribute('charSet', 'UTF-8');
@@ -256,7 +253,7 @@
              data: {
                  "packageName": "template-ui",
                  "apiId": "cc1ljun9gpbp8ciciolg",
-                 "apiDomain": "{{ route('tradding') }}",
+                 "apiDomain": "https://api.saasexch.com",
                  "ssr": true,
                  "COMMIT_HEAD": "dbb0f6e750dfb5b32469b08db668fdfd2d4b7291",
                  "pikaVersion": "0.8.5",
@@ -309,30 +306,30 @@
          }, true);
       </script>
         @endverbatim
-      <script src="{{ route('tradding') }}" data-ot-ignore nonce="25b28dca-3fd5-41bd-944e-3713ed4bf0eb"></script>
-      <script src="{{ route('tradding') }}" data-ot-ignore nonce="25b28dca-3fd5-41bd-944e-3713ed4bf0eb"></script>
+      <script src="https://bin.bnbstatic.com/static/sw-load/cache-control-load@0.0.5.js" data-ot-ignore nonce="25b28dca-3fd5-41bd-944e-3713ed4bf0eb"></script>
+      <script src="https://bin.bnbstatic.com/static/js/common-widget/globalthis@0.4.4.min.js" data-ot-ignore nonce="25b28dca-3fd5-41bd-944e-3713ed4bf0eb"></script>
        @verbatim
       <script type="application/ld+json" nonce="25b28dca-3fd5-41bd-944e-3713ed4bf0eb">
          {
              "@context": "https://schema.org",
              "@graph": [{
                  "@type": "CollectionPage",
-                 "@id": "{{ route('tradding') }}",
-                 "url": "{{ route('tradding') }}",
+                 "@id": "https://www.binance.com/",
+                 "url": "https://www.binance.com/",
                  "name": "Binance - Cryptocurrency Exchange Marketplace",
                  "isPartOf": {
-                     "@id": "{{ route('tradding') }}"
+                     "@id": "https://www.binance.com/#website"
                  },
                  "about": {
-                     "@id": "{{ route('tradding') }}"
+                     "@id": "https://www.binance.com/en/about#organization"
                  },
                  "description": "Discover why Binance is the world's best cryptocurrency exchange. Secure, low fees, trusted by millions of users worldwide.",
                  "breadcrumb": {
-                     "@id": "{{ route('tradding') }}"
+                     "@id": "https://www.binance.com/#breadcrumb"
                  }
              }, {
                  "@type": "BreadcrumbList",
-                 "@id": "{{ route('tradding') }}",
+                 "@id": "https://www.binance.com/#breadcrumb",
                  "itemListElement": [{
                      "@type": "ListItem",
                      "position": 1,
@@ -340,39 +337,39 @@
                  }]
              }, {
                  "@type": "WebSite",
-                 "@id": "{{ route('tradding') }}",
-                 "url": "{{ route('tradding') }}",
+                 "@id": "https://www.binance.com/#website",
+                 "url": "https://www.binance.com/",
                  "name": "Binance",
                  "description": "Discover why Binance is the world's best cryptocurrency exchange. Secure, low fees, trusted by millions of users worldwide.",
                  "publisher": {
-                     "@id": "{{ route('tradding') }}"
+                     "@id": "https://www.binance.com/#organization"
                  },
                  "potentialAction": {
                      "@type": "SearchAction",
                      "target": {
                          "@type": "EntryPoint",
-                         "urlTemplate": "{{ route('tradding') }}"
+                         "urlTemplate": "https://www.binance.com/{locale}/support/search?query={search_term_string}"
                      },
                      "query-input": "required name=search_term_string"
                  }
              }, {
                  "@type": "Organization",
-                 "@id": "{{ route('tradding') }}",
+                 "@id": "https://www.binance.com/#organization",
                  "name": "Binance",
-                 "url": "{{ route('tradding') }}",
+                 "url": "https://www.binance.com/",
                  "logo": {
                      "@type": "ImageObject",
-                     "@id": "{{ route('tradding') }}",
-                     "url": "{{ route('tradding') }}",
-                     "contentUrl": "{{ route('tradding') }}",
+                     "@id": "https://www.binance.com/#/schema/logo/image/",
+                     "url": "https://public.bnbstatic.com/20190405/eb2349c3-b2f8-4a93-a286-8f86a62ea9d8.png",
+                     "contentUrl": "https://public.bnbstatic.com/static/images/common/ogImage.jpg",
                      "width": 1280,
                      "height": 720,
                      "caption": "Binance - Exchange the World"
                  },
                  "image": {
-                     "@id": "{{ route('tradding') }}"
+                     "@id": "https://www.binance.com/#/schema/logo/image/"
                  },
-                 "sameAs": ["{{ route('tradding') }}", "{{ route('tradding') }}", "{{ route('tradding') }}", "{{ route('tradding') }}", "{{ route('tradding') }}", "{{ route('tradding') }}", "{{ route('tradding') }}", "{{ route('tradding') }}", "{{ route('tradding') }}", "{{ route('tradding') }}"]
+                 "sameAs": ["https://en.wikipedia.org/wiki/Binance", "https://www.facebook.com/binance/", "https://twitter.com/binance", "https://www.linkedin.com/company/binance", "https://www.youtube.com/c/BinanceYoutube", "https://www.instagram.com/binance/", "https://www.reddit.com/r/binance/", "https://vk.com/binance", "https://apps.apple.com/us/app/binance-buy-bitcoin-crypto/id1436799971", "https://play.google.com/store/apps/details?id=com.binance.dev"]
              }]
          }
       </script>
@@ -390,53 +387,53 @@
               "name": "Why is Binance the best exchange for crypto traders?",
               "acceptedAnswer": {
                   "@type": "Answer",
-                  "text": "Binance is the best cryptocurrency exchange for traders because it offers deep liquidity, low fees, and a complete range of products including &lt;a class=&apos;answer-link&apos; href={{ route('tradding') }} &lt;a class=&apos;answer-link&apos; href={{ route('tradding') }} &lt;a class=&apos;answer-link&apos; href={{ route('tradding') }} and &lt;a class=&apos;answer-link&apos; href={{ route('tradding') }} markets. Users can track &lt;a class=&apos;answer-link&apos; href={{ route('tradding') }} live prices&lt;/a&gt;, explore &lt;a class=&apos;answer-link&apos; href={{ route('tradding') }} cryptocurrencies&lt;/a&gt;, and discover &lt;a class=&apos;answer-link&apos; href={{ route('tradding') }} gaining cryptos&lt;/a&gt; or &lt;a class=&apos;answer-link&apos; href={{ route('tradding') }} losing cryptocurrencies&lt;/a&gt; directly on the platform. Binance also provides exclusive early access to token launches through &lt;a class=&apos;answer-link&apos; href={{ route('tradding') }} MegaDrop&lt;/a&gt; and innovative pre-listing projects via &lt;a class=&apos;answer-link&apos; href={{ route('tradding') }} Alpha&lt;/a&gt;. With strong security, global liquidity, and an easy-to-use interface, Binance remains the trusted choice for millions of crypto traders worldwide."
+                  "text": "Binance is the best cryptocurrency exchange for traders because it offers deep liquidity, low fees, and a complete range of products including &lt;a class=&apos;answer-link&apos; href=https://www./en/trade&gt;Spot&lt;/a&gt;, &lt;a class=&apos;answer-link&apos; href=https://www./en/futures&gt;Futures&lt;/a&gt;, &lt;a class=&apos;answer-link&apos; href=https://www./en/earn&gt;Earn&lt;/a&gt;, and &lt;a class=&apos;answer-link&apos; href=https://p2p./en&gt;P2P&lt;/a&gt; markets. Users can track &lt;a class=&apos;answer-link&apos; href=https://www./en/price&gt;crypto live prices&lt;/a&gt;, explore &lt;a class=&apos;answer-link&apos; href=https://www./en/price/new-cryptocurrency&gt;new cryptocurrencies&lt;/a&gt;, and discover &lt;a class=&apos;answer-link&apos; href=https://www./en/price/top-gaining-crypto&gt;top gaining cryptos&lt;/a&gt; or &lt;a class=&apos;answer-link&apos; href=https://www./en/price/top-losing-crypto&gt;top losing cryptocurrencies&lt;/a&gt; directly on the platform. Binance also provides exclusive early access to token launches through &lt;a class=&apos;answer-link&apos; href=https://www./en/price/binance-megadrop&gt;Binance MegaDrop&lt;/a&gt; and innovative pre-listing projects via &lt;a class=&apos;answer-link&apos; href=https://www./en/price/binance-alpha&gt;Binance Alpha&lt;/a&gt;. With strong security, global liquidity, and an easy-to-use interface, Binance remains the trusted choice for millions of crypto traders worldwide."
               }
           }, {
               "@type": "Question",
               "name": "What products does Binance provide?",
               "acceptedAnswer": {
                   "@type": "Answer",
-                  "text": "Binance is the world&apos;s leading cryptocurrency exchange, catering to over 270 million registered users in over 180 countries. With low fees and over 500 cryptocurrencies to trade, Binance is the preferred exchange to trade Bitcoin, Altcoins, and other virtual assets.&lt;br&gt;&lt;br&gt;With Binance users can:&lt;br&gt;&lt;li class=&apos;list-item-content&apos;&gt;Trade hundreds of cryptocurrencies on &lt;a class=&apos;answer-link&apos; href={{ route('tradding') }} &lt;a class=&apos;answer-link&apos; href={{ route('tradding') }} and &lt;a class=&apos;answer-link&apos; href={{ route('tradding') }} markets.&lt;/li&gt; &lt;li class=&apos;list-item-content&apos;&gt;Buy and sell cryptocurrencies with &lt;a class=&apos;answer-link&apos; href={{ route('tradding') }} P2P&lt;/a&gt;.&lt;/li&gt;&lt;li class=&apos;list-item-content&apos;&gt;Earn interest on your crypto with &lt;a class=&apos;answer-link&apos; href={{ route('tradding') }} Earn&lt;/a&gt;.&lt;/li&gt;&lt;li class=&apos;list-item-content&apos;&gt;Buy or earn new tokens on &lt;a class=&apos;answer-link&apos; href={{ route('tradding') }} Launchpool&lt;/a&gt;, Airdrop, Megadrop, etc.&lt;/li&gt;&lt;li class=&apos;list-item-content&apos;&gt;Trade, stake, and loan NFTs on &lt;a class=&apos;answer-link&apos; href={{ route('tradding') }} NFT&lt;/a&gt; marketplace.&lt;/li&gt;&lt;br&gt;To get started, check out our &lt;a class=&apos;answer-link&apos; href={{ route('tradding') }}"
+                  "text": "Binance is the world&apos;s leading cryptocurrency exchange, catering to over 270 million registered users in over 180 countries. With low fees and over 500 cryptocurrencies to trade, Binance is the preferred exchange to trade Bitcoin, Altcoins, and other virtual assets.&lt;br&gt;&lt;br&gt;With Binance users can:&lt;br&gt;&lt;li class=&apos;list-item-content&apos;&gt;Trade hundreds of cryptocurrencies on &lt;a class=&apos;answer-link&apos; href=https://www./en/trade/BTC_USDT?theme=light&amp;amp;type=spot&gt;Spot&lt;/a&gt;, &lt;a class=&apos;answer-link&apos; href=https://www./en/trade/BTC_USDT?theme=light&amp;amp;type=spot&gt;Margin&lt;/a&gt;, and &lt;a class=&apos;answer-link&apos; href=https://www./en/futures/markets/um&gt;Futures&lt;/a&gt; markets.&lt;/li&gt; &lt;li class=&apos;list-item-content&apos;&gt;Buy and sell cryptocurrencies with &lt;a class=&apos;answer-link&apos; href=https://p2p./en/trade/all-payments/USDT?fiat=EUR&gt;Binance P2P&lt;/a&gt;.&lt;/li&gt;&lt;li class=&apos;list-item-content&apos;&gt;Earn interest on your crypto with &lt;a class=&apos;answer-link&apos; href=https://www./en/earn&gt;Binance Earn&lt;/a&gt;.&lt;/li&gt;&lt;li class=&apos;list-item-content&apos;&gt;Buy or earn new tokens on &lt;a class=&apos;answer-link&apos; href=https://launchpad./en&gt;Binance Launchpool&lt;/a&gt;, Airdrop, Megadrop, etc.&lt;/li&gt;&lt;li class=&apos;list-item-content&apos;&gt;Trade, stake, and loan NFTs on &lt;a class=&apos;answer-link&apos; href=https://www./en/nft/home&gt;Binance NFT&lt;/a&gt; marketplace.&lt;/li&gt;&lt;br&gt;To get started, check out our &lt;a class=&apos;answer-link&apos; href=https://www./en/support/faq&gt;learning&lt;/a&gt;."
               }
           }, {
               "@type": "Question",
               "name": "How to buy Bitcoin and other cryptocurrencies on Binance",
               "acceptedAnswer": {
                   "@type": "Answer",
-                  "text": "There are several ways to buy cryptocurrencies on Binance. You can use a credit/debit card, cash balance, or Apple Pay/Google Pay to &lt;a class=&apos;answer-link&apos; href={{ route('tradding') }} crypto&lt;/a&gt; on Binance. Before getting started, please make sure you’ve completed &lt;a class=&apos;answer-link&apos; href={{ route('tradding') }} Verification&lt;/a&gt; for your Binance account."
+                  "text": "There are several ways to buy cryptocurrencies on Binance. You can use a credit/debit card, cash balance, or Apple Pay/Google Pay to &lt;a class=&apos;answer-link&apos; href=https://www./en/support/faq/how-to-buy-cryptocurrency-on-binance-homepage-400c38f5e0cd4b46a1d0805c296b5582&gt;purchase crypto&lt;/a&gt; on Binance. Before getting started, please make sure you’ve completed &lt;a class=&apos;answer-link&apos; href=https://www./en/support/faq/how-to-complete-identity-verification-360027287111&gt;Identity Verification&lt;/a&gt; for your Binance account."
               }
           }, {
               "@type": "Question",
               "name": "How to track cryptocurrency prices",
               "acceptedAnswer": {
                   "@type": "Answer",
-                  "text": "The easiest way to track the latest cryptocurrency prices, trading volumes, trending altcoins, and market cap is the &lt;a class=&apos;answer-link&apos; href={{ route('tradding') }} Cryptocurrency Directory&lt;/a&gt;. Click on the coins to know historical coin prices, 24-hour trading volume, and the price of cryptocurrencies like &lt;a class=&apos;answer-link&apos; href={{ route('tradding') }} &lt;a class=&apos;answer-link&apos; href={{ route('tradding') }} &lt;a class=&apos;answer-link&apos; href={{ route('tradding') }} and others in real-time."
+                  "text": "The easiest way to track the latest cryptocurrency prices, trading volumes, trending altcoins, and market cap is the &lt;a class=&apos;answer-link&apos; href=https://www./en/price&gt;Binance Cryptocurrency Directory&lt;/a&gt;. Click on the coins to know historical coin prices, 24-hour trading volume, and the price of cryptocurrencies like &lt;a class=&apos;answer-link&apos; href=https://www./en/price/bitcoin&gt;Bitcoin&lt;/a&gt;, &lt;a class=&apos;answer-link&apos; href=https://www./en/price/ethereum&gt;Ethereum&lt;/a&gt;, &lt;a class=&apos;answer-link&apos; href=https://www./en/price/bnb&gt;BNB&lt;/a&gt; and others in real-time."
               }
           }, {
               "@type": "Question",
               "name": "How to trade cryptocurrencies on Binance",
               "acceptedAnswer": {
                   "@type": "Answer",
-                  "text": "You can trade hundreds of cryptocurrencies on Binance via the &lt;a class=&apos;answer-link&apos; href={{ route('tradding') }} &lt;a class=&apos;answer-link&apos; href={{ route('tradding') }} &lt;a class=&apos;answer-link&apos; href={{ route('tradding') }} and &lt;a class=&apos;answer-link&apos; href={{ route('tradding') }} markets. To &lt;a class=&apos;answer-link&apos; href={{ route('tradding') }} trading&lt;/a&gt;, users need to register an account, complete identity verification, buy/deposit crypto, and start trading."
+                  "text": "You can trade hundreds of cryptocurrencies on Binance via the &lt;a class=&apos;answer-link&apos; href=https://www./en/support/faq/spot-margin-trading?c=3&amp;navId=3#15&gt;Spot&lt;/a&gt;, &lt;a class=&apos;answer-link&apos; href=https://www./en/support/faq/spot-margin-trading?c=3&amp;navId=3#16&gt;Margin&lt;/a&gt;, &lt;a class=&apos;answer-link&apos; href=https://www./en/support/faq/crypto-derivatives?c=4&amp;navId=4#18&gt;Futures&lt;/a&gt;, and &lt;a class=&apos;answer-link&apos; href=https://www./en/support/faq/374321c9317c473480243365298b8706&gt;Options&lt;/a&gt; markets. To &lt;a class=&apos;answer-link&apos; href=https://www./en/support/faq/binance-beginner-s-guide-c780097f75dd450a82d17f1e84153276&gt;begin trading&lt;/a&gt;, users need to register an account, complete identity verification, buy/deposit crypto, and start trading."
               }
           }, {
               "@type": "Question",
               "name": "How to earn from crypto on Binance",
               "acceptedAnswer": {
                   "@type": "Answer",
-                  "text": "Users can earn rewards on more than 180+ cryptocurrencies by using one of the products offered on &lt;a class=&apos;answer-link&apos; href={{ route('tradding') }} Earn&lt;/a&gt;. Our platform offers dozens of digital assets like &lt;a class=&apos;answer-link&apos; href={{ route('tradding') }} &lt;a class=&apos;answer-link&apos; href={{ route('tradding') }} and stablecoins."
+                  "text": "Users can earn rewards on more than 180+ cryptocurrencies by using one of the products offered on &lt;a class=&apos;answer-link&apos; href=https://www./en/earn&gt;Binance Earn&lt;/a&gt;. Our platform offers dozens of digital assets like &lt;a class=&apos;answer-link&apos; href=https://www./en/price/bitcoin&gt;Bitcoin&lt;/a&gt;, &lt;a class=&apos;answer-link&apos; href=https://www./en/price/ethereum&gt;Ethereum&lt;/a&gt;, and stablecoins."
               }
           }]
       }
    </script>
    @endverbatim
       <link rel="stylesheet" href="{{ asset('assets/css/landing/40b6faad.chunk.css') }}" />
-      <link rel="stylesheet" href="{{ route('tradding') }}" />
-      <link rel="stylesheet" href="{{ route('tradding') }}" />
-      <link rel="stylesheet" href="{{ route('tradding') }}" />
-      <link rel="stylesheet" href="{{ route('tradding') }}" />
-      <link rel="stylesheet" href="{{ route('tradding') }}" />
+      <link rel="stylesheet" href="https://public.bnbstatic.com/unpkg/common-widget/header@1.4.110.css" />
+      <link rel="stylesheet" href="https://public.bnbstatic.com/unpkg/common-widget/footer@1.4.110.css" />
+      <link rel="stylesheet" href="https://public.bnbstatic.com/unpkg/common-widget/extension@1.4.110.css" />
+      <link rel="stylesheet" href="https://public.bnbstatic.com/unpkg/common-widget/vendor@1.4.110.css" />
+      <link rel="stylesheet" href="https://public.bnbstatic.com/unpkg/common-widget/common@1.4.110.css" />
       <style>body #__APP_HEADER{position:sticky;top:0;z-index:999;}</style>
       <style id="webstudio-universal-uikit-colors" data-shuvi-head="true">
          body {
@@ -518,54 +515,54 @@
          @font-face {
            font-family: "BinanceNova";
            font-display: swap;
-           src: url("{{ route('tradding') }}")
+           src: url("https://bin.bnbstatic.com/static/fonts/bn/BinanceNova-Light.woff2")
                format("woff2"),
-             url("{{ route('tradding') }}")
+             url("https://bin.bnbstatic.com/static/fonts/bn/BinanceNova-Light.otf")
                format("opentype");
            font-weight: 200 300;
          }
          @font-face {
            font-family: "BinanceNova";
            font-display: swap;
-           src: url("{{ route('tradding') }}")
+           src: url("https://bin.bnbstatic.com/static/fonts/bn/BinanceNova-Regular.woff2")
                format("woff2"),
-             url("{{ route('tradding') }}")
+             url("https://bin.bnbstatic.com/static/fonts/bn/BinanceNova-Regular.otf")
                format("opentype");
            font-weight: 400;
          }
          @font-face {
            font-family: "BinanceNova";
            font-display: swap;
-           src: url("{{ route('tradding') }}")
+           src: url("https://bin.bnbstatic.com/static/fonts/bn/BinanceNova-Medium.woff2")
                format("woff2"),
-             url("{{ route('tradding') }}")
+             url("https://bin.bnbstatic.com/static/fonts/bn/BinanceNova-Medium.otf")
                format("opentype");
            font-weight: 500;
          }
          @font-face {
            font-family: "BinanceNova";
            font-display: swap;
-           src: url("{{ route('tradding') }}")
+           src: url("https://bin.bnbstatic.com/static/fonts/bn/BinanceNova-SemiBold.woff2")
                format("woff2"),
-             url("{{ route('tradding') }}")
+             url("https://bin.bnbstatic.com/static/fonts/bn/BinanceNova-SemiBold.otf")
                format("opentype");
            font-weight: 600;
          }
          @font-face {
            font-family: "BinanceNova";
            font-display: swap;
-           src: url("{{ route('tradding') }}")
+           src: url("https://bin.bnbstatic.com/static/fonts/bn/BinanceNova-Bold.woff2")
                format("woff2"),
-             url("{{ route('tradding') }}")
+             url("https://bin.bnbstatic.com/static/fonts/bn/BinanceNova-Bold.otf")
                format("opentype");
            font-weight: 700 800;
          }
          @font-face {
            font-family: "BinanceNova";
            font-display: swap;
-           src: url("{{ route('tradding') }}")
+           src: url("https://bin.bnbstatic.com/static/fonts/bn/BinanceNova-Black.woff2")
                format("woff2"),
-             url("{{ route('tradding') }}")
+             url("https://bin.bnbstatic.com/static/fonts/bn/BinanceNova-Black.otf")
                format("opentype");
            font-weight: 900;
          }
@@ -583,9 +580,9 @@
             <div class="theme-root dark _CWC common-widget-provider">
                <header class="header-container hidden-in-bnc-app common-widget-css_wrap theme-root bg1 dark-color">
                   <div class="header-leftside menu-aim-enabled">
-                     <a class="logo-link" href="{{ route('tradding') }}"><img alt="Binance" height="64" src="data:image/png;base64,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"/>
+                     <a class="logo-link" href="https://www.binance.com/en"><img alt="Binance" height="64" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAWgAAADACAYAAAAp3fniAAAACXBIWXMAACE4AAAhOAFFljFgAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAABEeSURBVHgB7d1ddhNJmsbxiJRNUchzkFYwYgXjWkGbC3DRczGwgjIrKFhBmRUAKyj3CoCLGdrFBe4VlGsH6hVYnrJpDrYyOt6Q0mVcUmZkZuSX9P+do4MB2Wl95KOIyDffVAoAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHTG6eGdn04/3PlJAQDaQ8J5ctg3ciOkAUAprVpAwtkovX/933Rk9u8++PRCAcCaajygF4VzgpAGsM4aDei0cE4Q0gDWVWMB7RPOCUIawDpqJKDzhHOCkAawbmoP6CLhnCCkAayTWgO6TDgnCGkA66K2gA4RzglCGsA6qCWgQ4ZzgpAGsOoqD+gqwjlBSANYZZUGdJXhnCCkAayqygK6jnBOENIAVlElAV1nOCcIaQCrJnhANxHOCUIaWG0nbwYD1b8Y2S+3ldGjr/4zMhMVR2P5c/jg7EitgKABXTacjVJ/kz/tL/WDKqhtIX16uPXSaLOtQjFmolU0jrX5zf7tePjw/FgF4vO7Dh6e31eeTj5s7WhjlreOtY9lsPvpiQrg9Jf+z/b9M1JLN2X+Mdz9tK8qcPJLf08b9XPKXSbm0+a94ZPJRFUg+7FHr4e7v79VJWW+nrKt6ebT4aPJWAUk241U/BcT68dKgtmXVkfa6OM43nhd9Hea/NL/qGqmtT6+++DsuXy9oQIpPXKOzNvhg0978uXJYb9wSNsXcf/0wx3VlpB2gWfUjgpG2x9nn2kz+9vksD/WOn4VT795V3bHCP67GjNK/3lanX7ov7z74Py5Kr0pt53Rsv+PtB6ritjXIqt/+UDduXxm/9xXFch67FrF2yfvB8elgzPz9Qzr6gMhNjumyFjS/q52X9nR0cUzG7RHRusXuUfWNT7ePzb5h0gFEGBZ49ic3Xqa/GW4e76XjKaLmIf0ujT9H9kR0iv7Jvx48vdvn6mOMbF69v+H/cIzpqadvN/aUSnhmLAfqz+q5gzs++ONWx7ogJP3t0cyctWx+RgsIO3PkZ8nsw37YTVSHVE6oIOE86fN+zenf4R0biOto5cyIlUdEyv1qks7zXVRz/h+uAxkRKiasx1tXbR+fzj95dsfda/3a1UjVzvb2LMfVr/KspTqgFIBXVU4Jwjp/GRE2sGQ7tQILyEjPdnhfe+ftX5btbbPVk4P+y9lNmjDuer3wUCOGXQhGwoHdNXhnCCk85MdseHRWhGdGOFdF/V6+X5fOyq0I7dwB4wLaOtsZX6gs9YlOsmGto+kCwd0rPQ9VZxXOCfKhnQcR41eOaYJTY/WinAfLB1aRzdFpuGx3lPNGrjjFS2arcxGzv4zkYDGarp5pFqscECXCM1c4Vx2e3aU/2K4e7av2koreR7Gnjd/LRitFWHX0X/qwnr0fOQ1UjlpbX5oQTiO2jJbkTXngiPnsdbqwBj9Wm4q0m/tk3uU5/tNbHMocElgaKXK7CQ0c5bEFQrnottrfTgrV/P99u7u+VOf+7od+/bFYx25sq5R5jfEboQXrE66JskI77uq6oZD0Er/+HVBlLdKS+58zWcr/xx+/69XqiGzNfzIf/t2MGOmNow/b7xa9t7w2kfczwkTzvIhcfeh3/5bROkqjhwj21LhnHd7XQjnvOS5Gz46PzC3Nr9TXiNqPVLdNIr6F6090OlK60zxk4+08q78qJSbrTQ4y9Ibkfdr7EbK55v3ho/O9tMyJNlHBrvn9+yHkATn+E8/6zJ62vaRcyJIHbRHaAYJZ9/trWI4Xze8P5nYAxyZn9pRZO6qjpI1ybauR2eW1s2WrdKMWnIQV6oZGqmecR9yszMDM7n9+fuzZ7mXReeDmetZ4X7WX8ufVVmXIAEtUkIzaDhnbS9POHetrOsrtzcyly7iWJ+qDmt6hLeIT2mdmarncppx2n1adBC3kdmK7vk9/rKDLRnMuKyI9YsuDtxSA1pK6SaH/V99g2xBaOYKZym1kZvydHN7ecNZ37n4uNoleGasuq2xEd4yUbSRdUbg2I3cYvUu9V4tOohb92xFPuS8TkSxB/1CBapbGungrHppQF+rc96WICsQ0rnDWd4ocisS0kXC2X653dk66c+X2Tt3lD6K64iRvvPF+/1QNaNM6rTcmPi1++KbzYPMpY7mS+6uyFmotX1g6J7f0sZ0o7KDb12xMKAXnISSP6QLhHPy9yIhXSScr7bXsZB2jyEyWc/POGSnu8pkr9fKnR63YT3aq7TOfOPWN+fHCVIPZtdWcuf1HLumT7XMVnSk/ifzPloddOVAXpX+FNApZwjmC+mC4ZzIG9I+FoXz1fY6ENLy+5986D+zj+FXlREUdordib7YxkReoyQ3wmv4wFpWeeefQsWorINRA/XtxZ6qmJRySrdIj7uOdP/ijaqax/JGrHXhE9NWyVd10B6nbychHeSg37JwTsxDWoWoM0wL56vtNdCqVM5Gy+w5O+tNYG8XIzlXN/tn6td2ze1AdUHcO7bLAs91T2UeqNKx+bmp+uiT/+1ntmK9GSr2NTiSNpdp32dHkxL6r1TFzMatp/rLhbz3R+l3tGvjdrZSVX20ex6zdabhvmSUPU63pwIwkb5/83FfjaBz9NbINZJeJiucEyFG0j7hfLW9+kfSswMmabfZ7z3y+WGyHi8lSapDhn89f+VZS1/PCG+BaFNlHxxcECoeBwu365gZuCUXrZ74LHdUOlvZiEaZ99G6/UtzNXEBXaDxUamQ9g3nRJmQzhPOV9vr4oFDOTvKqOeyHq+66NamfKiMM+9nP7Dqfm28SuuWLSl5HCysq+ROjkmYS7+lLzdbqeKUex1nZobufvVRMFGJrnTbReon84ZzomhI6y1XAZD76HTnQtrYEIjUpKt9lWcH1ab3fUZ4rgtZnevRXlUHi5vu+BwsdMsKNb1ubrYivSuyjXTvInz1zM3rCC7Q9fr9kKIynd7iAtehKfI9f3yv/qfKyZR4sTvWBW8kPW5dH4uONCO/afjo87jxEd6iben05Y3MioOpOVBZoss9VZdvNvZVU7MVY2o/ftBlkRRwy1k2Kie31llgOl13V7qV7YK33GjWjLx7V1YRjY/wbvAprYunm6n7z/C/z48zzyxU5se6TshpdLYSZW+zyy0KQnNr0HlDumg4J/KGZunTPWveXhu4K6sELlOsjYzwtEcXPjfCq/aDKLNzopzt5lGvK1fWzrhLLSV3CTdbkVPSPdjZyptgsxUTZX8oFFiSXFVXZXYS0ifvt5SOMi6rXjKcr7YnrUP/vjXROv1imqHC0rdVaQPhfGy3+c773kbacar/snv8TuZdZ6fw/tZkS8kiZIRnD8w9mV+bLnVUOb96zDtZOwvNp7ROrnSdWSbp7udxcGx2Akdtr5Wckm73we2sfVDNL0lmn2GfmU26+OJYRb30+5j8fbYb42YhgapOFiz/fFUHnRXSocL5anvfnz2z25ss317YsMwK6SZGznb98njwMP82XT8DtbGX9YHqGg69GRy0ubfyIjLCO3nff25DK3MWICM8d2QjcEZLaZ3J/pmjYIEiBwvtckKdNcCyD9oPmL9IuV/GXbft0lnp9Wh5Xe32JhkfvIO6n4eiXD/3h2f19YNettyRN5y9zzhcur1qutKF6ILXBvJGd89d9nrtQPWnHlUI7eOaDvmtRw9U4AuN5r0gbChNdLkz06lXfbRSwUa2mSNOHcdZo/q1sLAXx83QzBvOsvaZ67TwP22vQFe6mrrgtc7siHy6uHhz+aa5k250A1eF6fV2VBNkFF1z9z63Hu15yn0ImSfvOPpxV0tGQ1razS4JzSLhPB95bBcJ6cJd6WrogtdGsl6rMkum4pHqsBwjvGBCTOcLm10Sq1bD3d/fes5WypOTdzyErtLpYv/31H7Qsx6qhcI5kTukS3Wlq7ALXqvp9Om9jqJOly3NKg70E1WToheEDaXOkrvr5rOVI1UxN6jw2U7AOmy5OK00GevaqDzYFVVSzhAM0rvjutSudBV0wWuzeaVB50YGeUnjoSL1+kVo/4sgV6XWkrvr7Gxl4XX8wm/H77UMcUbv6WH/5fzitCN3IleHQjpIQHucvh0spL260q1JSLvnYkNlNg8ycbwSp87KDKvqEZ7X1T5myy3jkrf0TXj0TK6Cm614XO+y/HbOjjxboM5C2u7PeYNVKkHkilB2KfP6klGnQnpDlZSjt0bpVqW5utIFbFXaNvLmija+/GDMxTOv0bOO6j/IVhEZ4emoJ++BkapA1Ov9lFVaZ6ab35VtJu9qp9M+CBoouUtIeJ6833qRVcJZlrmUNrO9HZ/3sOzPNlhlyeMgvrz1t7TnX543Vw0TLz1XIAnp+22/KECpgC7Q+KhwSBfqSteBkLZZ8Nh+yu/k+JaRUhcyqvD/jtW49JUzq4/esiFtsk8OycmrtM7zzMEsMsW3j2En7T7zkrsj1QCZrczro3dURdxrefgfT7WKfVvIjmQ0bcN13+4zx3LNTa2isfsfbQZGarm13T9i4zNTDxLSIftBXzfYPXc7eOEljqJd6VSB5Y4i4Zxo/XLHbPQwynHLa9yV5ue+3Hq052nKuXiU1pmpyd3XZRE3xc+qTGmg5O6rzW9uyoHZsaqQqx4pdmxhW0rxjDLP3G1eOZbzeIwN6S+t7llTOKDjaf7Octd4h3SZcE4U6YK3KlyT9hUkTZVCr0d7lNa5K3arQOwoOrusrYGSu8RVk/+qt1OwYVsAx+bTrVYvgRYO6ABPamZIhwjnVWh8VJR77F24cGxBIUd4PqV1OvQBytsbr7Lu0lTJXcI1+a9itnJzO3WHtF2qynNh66aUquKoMqQJ53JmV1dZ7ccecoTnU1qX1VY0L8964MZK7hJutuJZcVFqOy5PVOVlfpILg4dnrQ9nUbrMroqQJpxLkJFBrO8Pvz/PHJ2tghAjPJ/SOmPMuyqO+PvUAzdVcnedXHRW1VAf7fqvxNP7pkAPdw/Hbt/oUC4EqYMOE9Jfrg7kFb1MVWLtwtkebJKresibz40MHq3WQcEsOS46u5CU1mXeSfcOVAW8DxbWeYmvBfJcdLb0tqQRmLRiiKf3ggS1G7Sop4Pd8++6tm+UroNO+PaTXk4/Tqot7JP5WBXUtnCWxjBRFGbkYbQe6HnPWHfgU7uLax6HWmcO+bs6Uz3WvfTLPZnPgXZ4uejsxeV/LvvvODa/Lfr3k4+Dgbm4HKUuNdhQGj74vbIpvlzmS2/o9FHypRvhHy38fqPfpV2FJJ6qf6gA5H128n/99N/1c7gAl6C2f+zZGc6+Ur0dt91Z469R6jfOezSb2eM+KhPKMvBRDcpRTOvHhvR+1QXuy6zzmjOwLtxy6O3L2Qw70gN3pXA7GFA9O3iZbk7afvJJHsEDWjQR0oQzgFVTSUCLOkOacAawiioLaFFHSBPOAFZVpQEtqgxpwhnAKqs8oEUVIU04A1h1tQS0CBnShDOAdVBbQIsQIU04A1gXtQa0KBPShDOAdVJ7QIsiIU04A1g3jQS0yBPShDOAddRYQAufkCacAayrRgNapIU04QxgnTUe0GJRSBPOANASEtKTw76R28nh1r4CALSHhDThDAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAMDHvwGK6vzkica1lwAAAABJRU5ErkJggg=="/>
                      </a>
-                     <div class="header-menu-item rwd-1024-hide-flex"><a class="header-menu-item_view typography-Subtitle4" id="ba-tableMarkets" href="{{ route('tradding') }}">Markets</a></div>
+                     <div class="header-menu-item rwd-1024-hide-flex"><a class="header-menu-item_view typography-Subtitle4" id="ba-tableMarkets" href="https://www.binance.com/en/markets/overview">Markets</a></div>
                      <div class="header-menu-item header-dropdown-menu rwd-1024-hide-flex header-menu-align_frist">
                         <span id="ba-trade" class="header-menu-item_view typography-Subtitle4">
                            Trade
@@ -593,7 +590,7 @@
                               <path d="M11.432 15.698a.9.9 0 001.205-.061l6-6 .061-.069a.9.9 0 00-1.266-1.266l-.069.061L12 13.727 6.637 8.363a.9.9 0 00-1.274 1.274l6 6 .069.061z" fill="currentColor"></path>
                            </svg>
                         </span>
-                        <div class="header-menu-subgrid header-menu-subgrid-1"><div class="header-menu-subgrid-group"><div class="typography-Subtitle4 header-menu-subgrid-group-li color-t_disabled">Basic</div><div class="header-menu-subgrid-group-li"><a class="header-nav-subitem" id="ba-spot-only" href="{{ route('tradding') }}" target="_self"><div class="header-nav-subicon_warp"><svg class="header-nav-subicon_icon" xmlns="http://www.w3.org/2000/svg" fill="currentColor"><use xlink:href="#Spot2C"></use></svg></div><div class="header-nav-subitemtext"><div class="header-nav-subtitle"><div class="typography-Subtitle4">Spot</div><svg class="bn-svg header-nav-subarrow" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M4 12.9h13.826l-4.463 4.463a.9.9 0 001.274 1.274l6-6 .061-.069a.9.9 0 00-.061-1.205l-6-6-.069-.061a.9.9 0 00-1.266 1.266l.061.069 4.463 4.463H4a.9.9 0 000 1.8z" fill="currentColor"></path></svg></div><p class="header-nav-subdesc typography-caption1">Buy and sell on the Spot market with advanced tools</p></div></a></div><div class="header-menu-subgrid-group-li"><a class="header-nav-subitem" id="ba-margin" href="{{ route('tradding') }}" target="_self"><div class="header-nav-subicon_warp"><svg class="header-nav-subicon_icon" xmlns="http://www.w3.org/2000/svg" fill="currentColor"><use xlink:href="#Margin2C"></use></svg></div><div class="header-nav-subitemtext"><div class="header-nav-subtitle"><div class="typography-Subtitle4">Margin</div><svg class="bn-svg header-nav-subarrow" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M4 12.9h13.826l-4.463 4.463a.9.9 0 001.274 1.274l6-6 .061-.069a.9.9 0 00-.061-1.205l-6-6-.069-.061a.9.9 0 00-1.266 1.266l.061.069 4.463 4.463H4a.9.9 0 000 1.8z" fill="currentColor"></path></svg></div><p class="header-nav-subdesc typography-caption1">Increase your profits with leverage</p></div></a></div></div></div>
+                        <div class="header-menu-subgrid header-menu-subgrid-1"><div class="header-menu-subgrid-group"><div class="typography-Subtitle4 header-menu-subgrid-group-li color-t_disabled">Basic</div><div class="header-menu-subgrid-group-li"><a class="header-nav-subitem" id="ba-spot-only" href="http://localhost:8000/spot-trading" target="_self"><div class="header-nav-subicon_warp"><svg class="header-nav-subicon_icon" xmlns="http://www.w3.org/2000/svg" fill="currentColor"><use xlink:href="#Spot2C"></use></svg></div><div class="header-nav-subitemtext"><div class="header-nav-subtitle"><div class="typography-Subtitle4">Spot</div><svg class="bn-svg header-nav-subarrow" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M4 12.9h13.826l-4.463 4.463a.9.9 0 001.274 1.274l6-6 .061-.069a.9.9 0 00-.061-1.205l-6-6-.069-.061a.9.9 0 00-1.266 1.266l.061.069 4.463 4.463H4a.9.9 0 000 1.8z" fill="currentColor"></path></svg></div><p class="header-nav-subdesc typography-caption1">Buy and sell on the Spot market with advanced tools</p></div></a></div><div class="header-menu-subgrid-group-li"><a class="header-nav-subitem" id="ba-margin" href="http://localhost:8000/tradding" target="_self"><div class="header-nav-subicon_warp"><svg class="header-nav-subicon_icon" xmlns="http://www.w3.org/2000/svg" fill="currentColor"><use xlink:href="#Margin2C"></use></svg></div><div class="header-nav-subitemtext"><div class="header-nav-subtitle"><div class="typography-Subtitle4">Margin</div><svg class="bn-svg header-nav-subarrow" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M4 12.9h13.826l-4.463 4.463a.9.9 0 001.274 1.274l6-6 .061-.069a.9.9 0 00-.061-1.205l-6-6-.069-.061a.9.9 0 00-1.266 1.266l.061.069 4.463 4.463H4a.9.9 0 000 1.8z" fill="currentColor"></path></svg></div><p class="header-nav-subdesc typography-caption1">Increase your profits with leverage</p></div></a></div></div></div>
                      </div>
                   </div>
                   <div class="header-rightside">
@@ -790,7 +787,7 @@
                               <div class="bn-tab-pane-list">
                                  <div role="tabpanel" aria-hidden="false" id="bn-tab-pane-0" aria-labelledby="bn-tab-0" class="bn-tab-pane active">
                                     <div class="flex flex-col items-start  mobile:items-center mobile:gap-[24px] noH5:gap-[20px] w-full flex-initial tablet:w-auto tablet:flex-1">
-                                       <a href="{{ route('tradding') }}" id="top_crypto_table-1-BTC_USDT" class="flex w-full items-center justify-between rounded-xs text-PrimaryText hover:text-t-secondary">
+                                       <a href="/en/price/bitcoin" id="top_crypto_table-1-BTC_USDT" class="flex w-full items-center justify-between rounded-xs text-PrimaryText hover:text-t-secondary">
                                           <div class="flex w-[45%] items-center">
                                              <img role="img" aria-label="image" class="bn-lazy-img h-[28px] w-[28px] shrink-0 rounded-xl mobile:h-[24px] mobile:w-[24px]" src="{{ asset('assets/images/icons/87496d50-2408-43e1-ad4c-78b47b448a6a.png') }}" data-src="{{ asset('assets/images/icons/87496d50-2408-43e1-ad4c-78b47b448a6a.png') }}"/>
                                              <div class="text-subtitle1 ml-2xs mr-4xs">BTC</div>
@@ -803,7 +800,7 @@
                                              <div class="lock-ltr text-subtitle1 font-medium text-TextBuy">+0.14%</div>
                                           </div>
                                        </a>
-                                       <a href="{{ route('tradding') }}" id="top_crypto_table-2-ETH_USDT" class="flex w-full items-center justify-between rounded-xs text-PrimaryText hover:text-t-secondary">
+                                       <a href="/en/price/ethereum" id="top_crypto_table-2-ETH_USDT" class="flex w-full items-center justify-between rounded-xs text-PrimaryText hover:text-t-secondary">
                                           <div class="flex w-[45%] items-center">
                                              <img role="img" aria-label="image" class="bn-lazy-img h-[28px] w-[28px] shrink-0 rounded-xl mobile:h-[24px] mobile:w-[24px]" src="{{ asset('assets/images/icons/3a8c9fe6-2a76-4ace-aa07-415d994de6f0.png') }}" data-src="{{ asset('assets/images/icons/3a8c9fe6-2a76-4ace-aa07-415d994de6f0.png') }}"/>
                                              <div class="text-subtitle1 ml-2xs mr-4xs">ETH</div>
@@ -816,7 +813,7 @@
                                              <div class="lock-ltr text-subtitle1 font-medium text-TextBuy">+0.59%</div>
                                           </div>
                                        </a>
-                                       <a href="{{ route('tradding') }}" id="top_crypto_table-3-BNB_USDT" class="flex w-full items-center justify-between rounded-xs text-PrimaryText hover:text-t-secondary">
+                                       <a href="/en/price/bnb" id="top_crypto_table-3-BNB_USDT" class="flex w-full items-center justify-between rounded-xs text-PrimaryText hover:text-t-secondary">
                                           <div class="flex w-[45%] items-center">
                                              <img role="img" aria-label="image" class="bn-lazy-img h-[28px] w-[28px] shrink-0 rounded-xl mobile:h-[24px] mobile:w-[24px]" src="{{ asset('assets/images/icons/94863af2-c980-42cf-a139-7b9f462a36c2.png') }}" data-src="{{ asset('assets/images/icons/94863af2-c980-42cf-a139-7b9f462a36c2.png') }}"/>
                                              <div class="text-subtitle1 ml-2xs mr-4xs">BNB</div>
@@ -829,7 +826,7 @@
                                              <div class="lock-ltr text-subtitle1 font-medium text-TextBuy">+0.59%</div>
                                           </div>
                                        </a>
-                                       <a href="{{ route('tradding') }}" id="top_crypto_table-4-XRP_USDT" class="flex w-full items-center justify-between rounded-xs text-PrimaryText hover:text-t-secondary">
+                                       <a href="/en/price/xrp" id="top_crypto_table-4-XRP_USDT" class="flex w-full items-center justify-between rounded-xs text-PrimaryText hover:text-t-secondary">
                                           <div class="flex w-[45%] items-center">
                                              <img role="img" aria-label="image" class="bn-lazy-img h-[28px] w-[28px] shrink-0 rounded-xl mobile:h-[24px] mobile:w-[24px]" src="{{ asset('assets/images/icons/4766a9cc-8545-4c2b-bfa4-cad2be91c135.png') }}" data-src="{{ asset('assets/images/icons/4766a9cc-8545-4c2b-bfa4-cad2be91c135.png') }}"/>
                                              <div class="text-subtitle1 ml-2xs mr-4xs">XRP</div>
@@ -842,7 +839,7 @@
                                              <div class="lock-ltr text-subtitle1 font-medium text-TextSell">-0.14%</div>
                                           </div>
                                        </a>
-                                       <a href="{{ route('tradding') }}" id="top_crypto_table-5-ASTER_USDT" class="flex w-full items-center justify-between rounded-xs text-PrimaryText hover:text-t-secondary">
+                                       <a href="/en/price/aster" id="top_crypto_table-5-ASTER_USDT" class="flex w-full items-center justify-between rounded-xs text-PrimaryText hover:text-t-secondary">
                                           <div class="flex w-[45%] items-center">
                                              <img role="img" aria-label="image" class="bn-lazy-img h-[28px] w-[28px] shrink-0 rounded-xl mobile:h-[24px] mobile:w-[24px]" src="{{ asset('assets/images/icons/5dc769cc-c302-4e3e-a5d4-fe5199f1cb7e.png') }}" data-src="{{ asset('assets/images/icons/5dc769cc-c302-4e3e-a5d4-fe5199f1cb7e.png') }}"/>
                                              <div class="text-subtitle1 ml-2xs mr-4xs">ASTER</div>
@@ -865,7 +862,7 @@
                                  </div>
                                  <div role="tabpanel" aria-hidden="true" id="bn-tab-pane-1" aria-labelledby="bn-tab-1" style="display:none" class="bn-tab-pane">
                                     <div class="flex flex-col items-start  mobile:items-center mobile:gap-[24px] noH5:gap-[20px] w-full flex-initial tablet:w-auto tablet:flex-1">
-                                       <a href="{{ route('tradding') }}" id="top_crypto_table-1-MEGA_USDT" class="flex w-full items-center justify-between rounded-xs text-PrimaryText hover:text-t-secondary">
+                                       <a href="/en/trade/MEGA_USDT" id="top_crypto_table-1-MEGA_USDT" class="flex w-full items-center justify-between rounded-xs text-PrimaryText hover:text-t-secondary">
                                           <div class="flex w-[45%] items-center">
                                              <img role="img" aria-label="image" class="bn-lazy-img h-[28px] w-[28px] shrink-0 rounded-xl mobile:h-[24px] mobile:w-[24px]" src="{{ asset('assets/images/icons/8999daed-281a-4ba8-b291-7dcf9f50b474.jpeg') }}" data-src="{{ asset('assets/images/icons/8999daed-281a-4ba8-b291-7dcf9f50b474.jpeg') }}"/>
                                              <div class="text-subtitle1 ml-2xs mr-4xs">MEGA</div>
@@ -878,7 +875,7 @@
                                              <div class="lock-ltr text-subtitle1 font-medium text-TextSell">-2.20%</div>
                                           </div>
                                        </a>
-                                       <a href="{{ route('tradding') }}" id="top_crypto_table-2-CHIP_USDT" class="flex w-full items-center justify-between rounded-xs text-PrimaryText hover:text-t-secondary">
+                                       <a href="/en/trade/CHIP_USDT" id="top_crypto_table-2-CHIP_USDT" class="flex w-full items-center justify-between rounded-xs text-PrimaryText hover:text-t-secondary">
                                           <div class="flex w-[45%] items-center">
                                              <img role="img" aria-label="image" class="bn-lazy-img h-[28px] w-[28px] shrink-0 rounded-xl mobile:h-[24px] mobile:w-[24px]" src="{{ asset('assets/images/icons/b94239d6-641e-4dbf-8500-44fcb470a723.png') }}" data-src="{{ asset('assets/images/icons/b94239d6-641e-4dbf-8500-44fcb470a723.png') }}"/>
                                              <div class="text-subtitle1 ml-2xs mr-4xs">CHIP</div>
@@ -891,7 +888,7 @@
                                              <div class="lock-ltr text-subtitle1 font-medium text-TextBuy">+1.01%</div>
                                           </div>
                                        </a>
-                                       <a href="{{ route('tradding') }}" id="top_crypto_table-3-XAUT_USDT" class="flex w-full items-center justify-between rounded-xs text-PrimaryText hover:text-t-secondary">
+                                       <a href="/en/trade/XAUT_USDT" id="top_crypto_table-3-XAUT_USDT" class="flex w-full items-center justify-between rounded-xs text-PrimaryText hover:text-t-secondary">
                                           <div class="flex w-[45%] items-center">
                                              <img role="img" aria-label="image" class="bn-lazy-img h-[28px] w-[28px] shrink-0 rounded-xl mobile:h-[24px] mobile:w-[24px]" src="{{ asset('assets/images/icons/95524eaf-76d3-4928-baab-1c87147e7c79.png') }}" data-src="{{ asset('assets/images/icons/95524eaf-76d3-4928-baab-1c87147e7c79.png') }}"/>
                                              <div class="text-subtitle1 ml-2xs mr-4xs">XAUT</div>
@@ -904,7 +901,7 @@
                                              <div class="lock-ltr text-subtitle1 font-medium text-TextSell">-1.18%</div>
                                           </div>
                                        </a>
-                                       <a href="{{ route('tradding') }}" id="top_crypto_table-4-KAT_USDT" class="flex w-full items-center justify-between rounded-xs text-PrimaryText hover:text-t-secondary">
+                                       <a href="/en/trade/KAT_USDT" id="top_crypto_table-4-KAT_USDT" class="flex w-full items-center justify-between rounded-xs text-PrimaryText hover:text-t-secondary">
                                           <div class="flex w-[45%] items-center">
                                              <img role="img" aria-label="image" class="bn-lazy-img h-[28px] w-[28px] shrink-0 rounded-xl mobile:h-[24px] mobile:w-[24px]" src="{{ asset('assets/images/icons/9bd0c4fb-83ee-4592-ac4a-b483ed2637fb.png') }}" data-src="{{ asset('assets/images/icons/9bd0c4fb-83ee-4592-ac4a-b483ed2637fb.png') }}"/>
                                              <div class="text-subtitle1 ml-2xs mr-4xs">KAT</div>
@@ -917,7 +914,7 @@
                                              <div class="lock-ltr text-subtitle1 font-medium text-TextSell">-3.14%</div>
                                           </div>
                                        </a>
-                                       <a href="{{ route('tradding') }}" id="top_crypto_table-5-CFG_USDT" class="flex w-full items-center justify-between rounded-xs text-PrimaryText hover:text-t-secondary">
+                                       <a href="/en/trade/CFG_USDT" id="top_crypto_table-5-CFG_USDT" class="flex w-full items-center justify-between rounded-xs text-PrimaryText hover:text-t-secondary">
                                           <div class="flex w-[45%] items-center">
                                              <img role="img" aria-label="image" class="bn-lazy-img h-[28px] w-[28px] shrink-0 rounded-xl mobile:h-[24px] mobile:w-[24px]" src="{{ asset('assets/images/icons/55d8deee-e7bd-4114-b650-d8d66abb894c.png') }}" data-src="{{ asset('assets/images/icons/55d8deee-e7bd-4114-b650-d8d66abb894c.png') }}"/>
                                              <div class="text-subtitle1 ml-2xs mr-4xs">CFG</div>
@@ -931,7 +928,7 @@
                                           </div>
                                        </a>
                                     </div>
-                                    <a target="_blank" rel="noreferrer" href="{{ route('tradding') }}" class="bg-transparent mb-[0px] flex items-center p-[0px] mobile:justify-center mobile:text-center tablet:top-[10px] noH5:absolute ltr:noH5:right-0 rtl:noH5:left-0 desktop:top-[10px] t-body3 text-t-third hover:text-t-secondary mobile:mt-[13px]">
+                                    <a target="_blank" rel="noreferrer" href="/markets/newListing" class="bg-transparent mb-[0px] flex items-center p-[0px] mobile:justify-center mobile:text-center tablet:top-[10px] noH5:absolute ltr:noH5:right-0 rtl:noH5:left-0 desktop:top-[10px] t-body3 text-t-third hover:text-t-secondary mobile:mt-[13px]">
                                        View More Coins
                                        <svg size="16" class="bn-svg icon-dir mt-[3px] h-[16px] w-[16px]" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                                           <path d="M15.698 12.568a.9.9 0 00-.061-1.205l-6-6-.069-.061a.9.9 0 00-1.266 1.266l.061.069L13.727 12l-5.364 5.363a.9.9 0 001.274 1.274l6-6 .061-.069z" fill="currentColor"></path>
@@ -967,8 +964,8 @@
                                  </svg>
                               </a>
                            </div>
-                           <div class="flex w-full flex-col flex-wrap gap-m"><a href="{{ route('tradding') }}" class="cursor-pointer overflow-hidden text-PrimaryText text-subtitle1 font-normal hover:text-t-secondary mobile:leading-[22px] line-clamp-2" style="overflow-wrap:break-word;white-space:normal">Whale Makes Significant Bitcoin Purchase at $78,848.05</a><a href="{{ route('tradding') }}" class="cursor-pointer overflow-hidden text-PrimaryText text-subtitle1 font-normal hover:text-t-secondary mobile:leading-[22px] line-clamp-2" style="overflow-wrap:break-word;white-space:normal">Western Union&#x27;s Stablecoin USDPT Launches on Solana</a><a href="{{ route('tradding') }}" class="cursor-pointer overflow-hidden text-PrimaryText text-subtitle1 font-normal hover:text-t-secondary mobile:leading-[22px] line-clamp-2" style="overflow-wrap:break-word;white-space:normal">Galaxy Digital&#x27;s Alex Thorn Urges Clarity Act Passage Before Midterms</a><a href="{{ route('tradding') }}" class="cursor-pointer overflow-hidden text-PrimaryText text-subtitle1 font-normal hover:text-t-secondary mobile:leading-[22px] line-clamp-2" style="overflow-wrap:break-word;white-space:normal">Cerebras Systems Plans IPO to Raise $3.5 Billion</a></div>
-                           <a target="_blank" rel="noreferrer" href="{{ route('tradding') }}" class="bg-transparent inline-flex items-center text-t-third hover:bg-transparent hover:text-t-secondary p-[0px] pr-s mt-m h-[22px] noH5:hidden">
+                           <div class="flex w-full flex-col flex-wrap gap-m"><a href="https://www.binance.com/en/square/post/319503667947522" class="cursor-pointer overflow-hidden text-PrimaryText text-subtitle1 font-normal hover:text-t-secondary mobile:leading-[22px] line-clamp-2" style="overflow-wrap:break-word;white-space:normal">Whale Makes Significant Bitcoin Purchase at $78,848.05</a><a href="https://www.binance.com/en/square/post/319503642417346" class="cursor-pointer overflow-hidden text-PrimaryText text-subtitle1 font-normal hover:text-t-secondary mobile:leading-[22px] line-clamp-2" style="overflow-wrap:break-word;white-space:normal">Western Union&#x27;s Stablecoin USDPT Launches on Solana</a><a href="https://www.binance.com/en/square/post/319502918044865" class="cursor-pointer overflow-hidden text-PrimaryText text-subtitle1 font-normal hover:text-t-secondary mobile:leading-[22px] line-clamp-2" style="overflow-wrap:break-word;white-space:normal">Galaxy Digital&#x27;s Alex Thorn Urges Clarity Act Passage Before Midterms</a><a href="https://www.binance.com/en/square/post/319501194330449" class="cursor-pointer overflow-hidden text-PrimaryText text-subtitle1 font-normal hover:text-t-secondary mobile:leading-[22px] line-clamp-2" style="overflow-wrap:break-word;white-space:normal">Cerebras Systems Plans IPO to Raise $3.5 Billion</a></div>
+                           <a target="_blank" rel="noreferrer" href="/en/register?registerChannel=homepage_square" class="bg-transparent inline-flex items-center text-t-third hover:bg-transparent hover:text-t-secondary p-[0px] pr-s mt-m h-[22px] noH5:hidden">
                               <div class="t-body3">View All News</div>
                               <svg class="bn-svg icon-dir mt-[3px] h-[16px] w-[16px]" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                                  <path d="M15.698 12.568a.9.9 0 00-.061-1.205l-6-6-.069-.061a.9.9 0 00-1.266 1.266l.061.069L13.727 12l-5.364 5.363a.9.9 0 001.274 1.274l6-6 .061-.069z" fill="currentColor"></path>
@@ -1017,7 +1014,7 @@
                                           <div class="text-PrimaryText t-body3">
                                              SAFU Wallet<!-- -->: 
                                           </div>
-                                          <a href="{{ route('tradding') }}" target="_blank" rel="noopener noreferrer" class="text-TertiaryText t-body3">1BAuq7Vho2CEkVkUxbfU26LhwQjbCmWQkD</a>
+                                          <a href="https://www.blockchain.com/explorer/addresses/btc/1BAuq7Vho2CEkVkUxbfU26LhwQjbCmWQkD" target="_blank" rel="noopener noreferrer" class="text-TertiaryText t-body3">1BAuq7Vho2CEkVkUxbfU26LhwQjbCmWQkD</a>
                                        </div>
                                     </div>
                                  </div>
@@ -1121,7 +1118,7 @@
                                  <div class="mt-2xs text-subtitle1 text-PrimaryText mobile:text-subtitle2 tablet:text-subtitle2">Linux</div>
                               </a>
                            </div>
-                           <a id="Download_2023_more" href="{{ route('tradding') }}" class="bg-transparent flex h-[48px] w-fit items-center text-PrimaryText hover:text-t-secondary mobile:mt-[40px] mobile:h-[40px]">
+                           <a id="Download_2023_more" href="/en/download" class="bg-transparent flex h-[48px] w-fit items-center text-PrimaryText hover:text-t-secondary mobile:mt-[40px] mobile:h-[40px]">
                               <svg class="bn-svg text-[20px] text-iconNormal" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                                  <path d="M20.002 15.1a.9.9 0 01.9.9v4.5a1.4 1.4 0 01-1.4 1.4h-15a1.4 1.4 0 01-1.4-1.4V16a.9.9 0 011.8 0v4.1h14.2V16a.9.9 0 01.9-.9zm-8-8a.9.9 0 01.9.9v5.826l.963-.963a.9.9 0 011.274 1.274l-2.5 2.5a.9.9 0 01-1.274 0l-2.5-2.5-.061-.069a.9.9 0 011.266-1.266l.069.061.963.963V8a.9.9 0 01.9-.9zm7.5-5a1.4 1.4 0 011.4 1.4V8a.9.9 0 01-1.8 0V3.9h-14.2V8a.9.9 0 01-1.8 0V3.5a1.4 1.4 0 011.4-1.4h15z" fill="currentColor"></path>
                               </svg>
@@ -1146,7 +1143,7 @@
                            </svg>
                         </div>
                      </div>
-                     <div class="mt-m px-[48px] text-body1 text-t-third  mobile:t-body1-1 mobile:pl-[32px] mobile:pr-[48px] hidden">Binance is the best cryptocurrency exchange for traders because it offers deep liquidity, low fees, and a complete range of products including <a class='answer-link' href={{ route('tradding') }} <a class='answer-link' href={{ route('tradding') }} <a class='answer-link' href={{ route('tradding') }} and <a class='answer-link' href={{ route('tradding') }} markets. Users can track <a class='answer-link' href={{ route('tradding') }} live prices</a>, explore <a class='answer-link' href={{ route('tradding') }} cryptocurrencies</a>, and discover <a class='answer-link' href={{ route('tradding') }} gaining cryptos</a> or <a class='answer-link' href={{ route('tradding') }} losing cryptocurrencies</a> directly on the platform. Binance also provides exclusive early access to token launches through <a class='answer-link' href={{ route('tradding') }} MegaDrop</a> and innovative pre-listing projects via <a class='answer-link' href={{ route('tradding') }} Alpha</a>. With strong security, global liquidity, and an easy-to-use interface, Binance remains the trusted choice for millions of crypto traders worldwide.</div>
+                     <div class="mt-m px-[48px] text-body1 text-t-third  mobile:t-body1-1 mobile:pl-[32px] mobile:pr-[48px] hidden">Binance is the best cryptocurrency exchange for traders because it offers deep liquidity, low fees, and a complete range of products including <a class='answer-link' href=https://www./en/trade>Spot</a>, <a class='answer-link' href=https://www./en/futures>Futures</a>, <a class='answer-link' href=https://www./en/earn>Earn</a>, and <a class='answer-link' href=https://p2p./en>P2P</a> markets. Users can track <a class='answer-link' href=https://www./en/price>crypto live prices</a>, explore <a class='answer-link' href=https://www./en/price/new-cryptocurrency>new cryptocurrencies</a>, and discover <a class='answer-link' href=https://www./en/price/top-gaining-crypto>top gaining cryptos</a> or <a class='answer-link' href=https://www./en/price/top-losing-crypto>top losing cryptocurrencies</a> directly on the platform. Binance also provides exclusive early access to token launches through <a class='answer-link' href=https://www./en/price/binance-megadrop>Binance MegaDrop</a> and innovative pre-listing projects via <a class='answer-link' href=https://www./en/price/binance-alpha>Binance Alpha</a>. With strong security, global liquidity, and an easy-to-use interface, Binance remains the trusted choice for millions of crypto traders worldwide.</div>
                   </div>
                   <div class="faq-item-widget dark  mb-m w-full rounded-[10px] px-xl py-m mobile:bg-inherit last:mb-[0px] mobile:mb-[0px] mobile:px-[0px] mobile:py-[16px]">
                      <div class="flex cursor-pointer items-center ">
@@ -1160,12 +1157,12 @@
                      </div>
                      <div class="mt-m px-[48px] text-body1 text-t-third  mobile:t-body1-1 mobile:pl-[32px] mobile:pr-[48px] hidden">
                         Binance is the world's leading cryptocurrency exchange, catering to over 270 million registered users in over 180 countries. With low fees and over 500 cryptocurrencies to trade, Binance is the preferred exchange to trade Bitcoin, Altcoins, and other virtual assets.<br><br>With Binance users can:<br>
-                        <li class='list-item-content'>Trade hundreds of cryptocurrencies on <a class='answer-link' href={{ route('tradding') }} <a class='answer-link' href={{ route('tradding') }} and <a class='answer-link' href={{ route('tradding') }} markets.</li>
-                        <li class='list-item-content'>Buy and sell cryptocurrencies with <a class='answer-link' href={{ route('tradding') }} P2P</a>.</li>
-                        <li class='list-item-content'>Earn interest on your crypto with <a class='answer-link' href={{ route('tradding') }} Earn</a>.</li>
-                        <li class='list-item-content'>Buy or earn new tokens on <a class='answer-link' href={{ route('tradding') }} Launchpool</a>, Airdrop, Megadrop, etc.</li>
-                        <li class='list-item-content'>Trade, stake, and loan NFTs on <a class='answer-link' href={{ route('tradding') }} NFT</a> marketplace.</li>
-                        <br>To get started, check out our <a class='answer-link' href={{ route('tradding') }}
+                        <li class='list-item-content'>Trade hundreds of cryptocurrencies on <a class='answer-link' href=https://www./en/trade/BTC_USDT?theme=light&amp;type=spot>Spot</a>, <a class='answer-link' href=https://www./en/trade/BTC_USDT?theme=light&amp;type=spot>Margin</a>, and <a class='answer-link' href=https://www./en/futures/markets/um>Futures</a> markets.</li>
+                        <li class='list-item-content'>Buy and sell cryptocurrencies with <a class='answer-link' href=https://p2p./en/trade/all-payments/USDT?fiat=EUR>Binance P2P</a>.</li>
+                        <li class='list-item-content'>Earn interest on your crypto with <a class='answer-link' href=https://www./en/earn>Binance Earn</a>.</li>
+                        <li class='list-item-content'>Buy or earn new tokens on <a class='answer-link' href=https://launchpad./en>Binance Launchpool</a>, Airdrop, Megadrop, etc.</li>
+                        <li class='list-item-content'>Trade, stake, and loan NFTs on <a class='answer-link' href=https://www./en/nft/home>Binance NFT</a> marketplace.</li>
+                        <br>To get started, check out our <a class='answer-link' href=https://www./en/support/faq>learning</a>.
                      </div>
                   </div>
                   <div class="faq-item-widget dark  mb-m w-full rounded-[10px] px-xl py-m mobile:bg-inherit last:mb-[0px] mobile:mb-[0px] mobile:px-[0px] mobile:py-[16px]">
@@ -1178,7 +1175,7 @@
                            </svg>
                         </div>
                      </div>
-                     <div class="mt-m px-[48px] text-body1 text-t-third  mobile:t-body1-1 mobile:pl-[32px] mobile:pr-[48px] hidden">There are several ways to buy cryptocurrencies on Binance. You can use a credit/debit card, cash balance, or Apple Pay/Google Pay to <a class='answer-link' href={{ route('tradding') }} crypto</a> on Binance. Before getting started, please make sure you’ve completed <a class='answer-link' href={{ route('tradding') }} Verification</a> for your Binance account.</div>
+                     <div class="mt-m px-[48px] text-body1 text-t-third  mobile:t-body1-1 mobile:pl-[32px] mobile:pr-[48px] hidden">There are several ways to buy cryptocurrencies on Binance. You can use a credit/debit card, cash balance, or Apple Pay/Google Pay to <a class='answer-link' href=https://www./en/support/faq/how-to-buy-cryptocurrency-on-binance-homepage-400c38f5e0cd4b46a1d0805c296b5582>purchase crypto</a> on Binance. Before getting started, please make sure you’ve completed <a class='answer-link' href=https://www./en/support/faq/how-to-complete-identity-verification-360027287111>Identity Verification</a> for your Binance account.</div>
                   </div>
                   <div class="faq-item-widget dark  mb-m w-full rounded-[10px] px-xl py-m mobile:bg-inherit last:mb-[0px] mobile:mb-[0px] mobile:px-[0px] mobile:py-[16px]">
                      <div class="flex cursor-pointer items-center ">
@@ -1190,7 +1187,7 @@
                            </svg>
                         </div>
                      </div>
-                     <div class="mt-m px-[48px] text-body1 text-t-third  mobile:t-body1-1 mobile:pl-[32px] mobile:pr-[48px] hidden">The easiest way to track the latest cryptocurrency prices, trading volumes, trending altcoins, and market cap is the <a class='answer-link' href={{ route('tradding') }} Cryptocurrency Directory</a>. Click on the coins to know historical coin prices, 24-hour trading volume, and the price of cryptocurrencies like <a class='answer-link' href={{ route('tradding') }} <a class='answer-link' href={{ route('tradding') }} <a class='answer-link' href={{ route('tradding') }} and others in real-time.</div>
+                     <div class="mt-m px-[48px] text-body1 text-t-third  mobile:t-body1-1 mobile:pl-[32px] mobile:pr-[48px] hidden">The easiest way to track the latest cryptocurrency prices, trading volumes, trending altcoins, and market cap is the <a class='answer-link' href=https://www./en/price>Binance Cryptocurrency Directory</a>. Click on the coins to know historical coin prices, 24-hour trading volume, and the price of cryptocurrencies like <a class='answer-link' href=https://www./en/price/bitcoin>Bitcoin</a>, <a class='answer-link' href=https://www./en/price/ethereum>Ethereum</a>, <a class='answer-link' href=https://www./en/price/bnb>BNB</a> and others in real-time.</div>
                   </div>
                   <div class="faq-item-widget dark  mb-m w-full rounded-[10px] px-xl py-m mobile:bg-inherit last:mb-[0px] mobile:mb-[0px] mobile:px-[0px] mobile:py-[16px]">
                      <div class="flex cursor-pointer items-center ">
@@ -1202,7 +1199,7 @@
                            </svg>
                         </div>
                      </div>
-                     <div class="mt-m px-[48px] text-body1 text-t-third  mobile:t-body1-1 mobile:pl-[32px] mobile:pr-[48px] hidden">You can trade hundreds of cryptocurrencies on Binance via the <a class='answer-link' href={{ route('tradding') }} <a class='answer-link' href={{ route('tradding') }} <a class='answer-link' href={{ route('tradding') }} and <a class='answer-link' href={{ route('tradding') }} markets. To <a class='answer-link' href={{ route('tradding') }} trading</a>, users need to register an account, complete identity verification, buy/deposit crypto, and start trading.</div>
+                     <div class="mt-m px-[48px] text-body1 text-t-third  mobile:t-body1-1 mobile:pl-[32px] mobile:pr-[48px] hidden">You can trade hundreds of cryptocurrencies on Binance via the <a class='answer-link' href=https://www./en/support/faq/spot-margin-trading?c=3&navId=3#15>Spot</a>, <a class='answer-link' href=https://www./en/support/faq/spot-margin-trading?c=3&navId=3#16>Margin</a>, <a class='answer-link' href=https://www./en/support/faq/crypto-derivatives?c=4&navId=4#18>Futures</a>, and <a class='answer-link' href=https://www./en/support/faq/374321c9317c473480243365298b8706>Options</a> markets. To <a class='answer-link' href=https://www./en/support/faq/binance-beginner-s-guide-c780097f75dd450a82d17f1e84153276>begin trading</a>, users need to register an account, complete identity verification, buy/deposit crypto, and start trading.</div>
                   </div>
                   <div class="faq-item-widget dark  mb-m w-full rounded-[10px] px-xl py-m mobile:bg-inherit last:mb-[0px] mobile:mb-[0px] mobile:px-[0px] mobile:py-[16px]">
                      <div class="flex cursor-pointer items-center ">
@@ -1214,7 +1211,7 @@
                            </svg>
                         </div>
                      </div>
-                     <div class="mt-m px-[48px] text-body1 text-t-third  mobile:t-body1-1 mobile:pl-[32px] mobile:pr-[48px] hidden">Users can earn rewards on more than 180+ cryptocurrencies by using one of the products offered on <a class='answer-link' href={{ route('tradding') }} Earn</a>. Our platform offers dozens of digital assets like <a class='answer-link' href={{ route('tradding') }} <a class='answer-link' href={{ route('tradding') }} and stablecoins.</div>
+                     <div class="mt-m px-[48px] text-body1 text-t-third  mobile:t-body1-1 mobile:pl-[32px] mobile:pr-[48px] hidden">Users can earn rewards on more than 180+ cryptocurrencies by using one of the products offered on <a class='answer-link' href=https://www./en/earn>Binance Earn</a>. Our platform offers dozens of digital assets like <a class='answer-link' href=https://www./en/price/bitcoin>Bitcoin</a>, <a class='answer-link' href=https://www./en/price/ethereum>Ethereum</a>, and stablecoins.</div>
                   </div>
                </div>
             </div>
@@ -1238,57 +1235,57 @@
                      <div class="footer-community">
                         <h3 class="footer-navlist-title">Community</h3>
                         <div class="footer-icongroup">
-                           <a href="{{ route('tradding') }}" target="_self">
+                           <a href="https://discord.gg/jE4wt8g2H2" target="_self">
                               <svg class="footer-icon" xmlns="http://www.w3.org/2000/svg" fill="currentColor">
                                  <use xlink:href="#icon-h-discord"></use>
                               </svg>
                            </a>
-                           <a href="{{ route('tradding') }}" target="_self">
+                           <a href="https://www.binance.com/en/community" target="_self">
                               <svg class="footer-icon" xmlns="http://www.w3.org/2000/svg" fill="currentColor">
                                  <use xlink:href="#icon-social-telegram-f"></use>
                               </svg>
                            </a>
-                           <a href="{{ route('tradding') }}" target="_self">
+                           <a href="https://www.tiktok.com/@binance?lang=en" target="_self">
                               <svg class="footer-icon" xmlns="http://www.w3.org/2000/svg" fill="currentColor">
                                  <use xlink:href="#icon-h-tiktok"></use>
                               </svg>
                            </a>
-                           <a href="{{ route('tradding') }}" target="_self">
+                           <a href="https://www.facebook.com/binance" target="_self">
                               <svg class="footer-icon" xmlns="http://www.w3.org/2000/svg" fill="currentColor">
                                  <use xlink:href="#icon-h-facebook"></use>
                               </svg>
                            </a>
-                           <a href="{{ route('tradding') }}" target="_self">
+                           <a href="https://twitter.com/binance" target="_self">
                               <svg class="footer-icon" xmlns="http://www.w3.org/2000/svg" fill="currentColor">
                                  <use xlink:href="#icon-social-x-f"></use>
                               </svg>
                            </a>
-                           <a href="{{ route('tradding') }}" target="_self">
+                           <a href="https://www.reddit.com/r/binance" target="_self">
                               <svg class="footer-icon" xmlns="http://www.w3.org/2000/svg" fill="currentColor">
                                  <use xlink:href="#icon-h-reddit"></use>
                               </svg>
                            </a>
-                           <a href="{{ route('tradding') }}" target="_self">
+                           <a href="https://www.instagram.com/Binance/" target="_self">
                               <svg class="footer-icon" xmlns="http://www.w3.org/2000/svg" fill="currentColor">
                                  <use xlink:href="#icon-h-instagram"></use>
                               </svg>
                            </a>
-                           <a href="{{ route('tradding') }}" target="_self">
+                           <a href="https://coinmarketcap.com/exchanges/binance/" target="_self">
                               <svg class="footer-icon" xmlns="http://www.w3.org/2000/svg" fill="currentColor">
                                  <use xlink:href="#icon-h-coinmarketcap"></use>
                               </svg>
                            </a>
-                           <a href="{{ route('tradding') }}" target="_self">
+                           <a href="https://www.youtube.com/binanceyoutube" target="_self">
                               <svg class="footer-icon" xmlns="http://www.w3.org/2000/svg" fill="currentColor">
                                  <use xlink:href="#icon-h-youtube"></use>
                               </svg>
                            </a>
-                           <a href="{{ route('tradding') }}" target="_self">
+                           <a href="https://www.whatsapp.com/channel/0029VarQ6LL6rsQq7nwhmn1y" target="_self">
                               <svg class="footer-icon" xmlns="http://www.w3.org/2000/svg" fill="currentColor">
                                  <use xlink:href="#icon-social-whatsapp"></use>
                               </svg>
                            </a>
-                           <a href="{{ route('tradding') }}" target="_self">
+                           <a href="https://www.binance.com/en/community" target="_self">
                               <svg class="footer-icon" xmlns="http://www.w3.org/2000/svg" fill="currentColor">
                                  <use xlink:href="#icon-more-f"></use>
                               </svg>
@@ -1411,7 +1408,7 @@
              console.error(e)
          }
       </script>
-      <script id="Sentry-sdk" src="{{ route('tradding') }}" data-ot-ignore nonce="25b28dca-3fd5-41bd-944e-3713ed4bf0eb"></script>
+      <script id="Sentry-sdk" src="https://bin.bnbstatic.com/static/runtime/sentry/7.38.0/bundle.es5.min.js" data-ot-ignore nonce="25b28dca-3fd5-41bd-944e-3713ed4bf0eb"></script>
       <script id="Sentry-init" nonce="25b28dca-3fd5-41bd-944e-3713ed4bf0eb">
          if (typeof Sentry !== 'undefined') {
              var originalSentry = Sentry;
@@ -1432,7 +1429,7 @@
                  originalSentry.captureMessage(event.reason);
              });
              originalSentry.init({
-                 dsn: '{{ route('tradding') }}',
+                 dsn: 'https://949d37812f604f039041170b5601fa1a@o529943.ingest.sentry.io/6149229',
                  release: '20260427-dbb0f6e7-265959',
                  attachStacktrace: true,
                  environment: 'prod',
@@ -1517,7 +1514,7 @@
       </script>
       <script type="application/json" id="bnc-cpl-headers" nonce="25b28dca-3fd5-41bd-944e-3713ed4bf0eb">{}</script>
       <script nonce="25b28dca-3fd5-41bd-944e-3713ed4bf0eb">
-         __template_ui_dynamic_public_path__ = "{{ route('tradding') }}"
+         __template_ui_dynamic_public_path__ = "https://bin.bnbstatic.com/"
       </script>
       <script id="prefetch-rules" nonce="25b28dca-3fd5-41bd-944e-3713ed4bf0eb">
          var runtimeConfig = {
@@ -13233,7 +13230,7 @@
                     "rate": 3.67,
                     "symbol": "د.إ",
                     "fullName": "UAE dirham",
-                    "imageUrl": "{{ route('tradding') }}",
+                    "imageUrl": "https://public.bnbstatic.com/image/currencies/AED.png",
                     "displayName": "UAE Dirham",
                     "value": "AED"
                 }, {
@@ -13242,7 +13239,7 @@
                     "rate": 1479.8,
                     "symbol": "ARS$",
                     "fullName": "Argentine Peso",
-                    "imageUrl": "{{ route('tradding') }}",
+                    "imageUrl": "https://public.bnbstatic.com/image/currencies/ARS.png",
                     "displayName": "Argentine Peso",
                     "value": "ARS"
                 }, {
@@ -13251,7 +13248,7 @@
                     "rate": 1.39,
                     "symbol": "A$",
                     "fullName": "Australian Dollar",
-                    "imageUrl": "{{ route('tradding') }}",
+                    "imageUrl": "https://public.bnbstatic.com/image/currencies/AUD.png",
                     "displayName": "Australian Dollar",
                     "value": "AUD"
                 }, {
@@ -13260,7 +13257,7 @@
                     "rate": 1.7,
                     "symbol": "₼",
                     "fullName": "Azerbaijani Manat",
-                    "imageUrl": "{{ route('tradding') }}",
+                    "imageUrl": "https://public.bnbstatic.com/image/currencies/AZN.png",
                     "displayName": "Azerbaijani Manat",
                     "value": "AZN"
                 }, {
@@ -13269,7 +13266,7 @@
                     "rate": 122.72,
                     "symbol": "৳",
                     "fullName": "Bangladeshi Taka",
-                    "imageUrl": "{{ route('tradding') }}",
+                    "imageUrl": "https://public.bnbstatic.com/image/currencies/BDT.png",
                     "displayName": "Bangladeshi taka",
                     "value": "BDT"
                 }, {
@@ -13278,7 +13275,7 @@
                     "rate": 1.67,
                     "symbol": "лв",
                     "fullName": "Bulgarian Lev",
-                    "imageUrl": "{{ route('tradding') }}",
+                    "imageUrl": "https://public.bnbstatic.com/image/currencies/BGN.png",
                     "displayName": "Bulgarian Lev",
                     "value": "BGN"
                 }, {
@@ -13287,7 +13284,7 @@
                     "rate": 0.376,
                     "symbol": ".د.ب",
                     "fullName": "Bahraini Dinar",
-                    "imageUrl": "{{ route('tradding') }}",
+                    "imageUrl": "https://public.bnbstatic.com/image/currencies/BHD.png",
                     "displayName": "Bahraini dinar",
                     "value": "BHD"
                 }, {
@@ -13296,7 +13293,7 @@
                     "rate": 6.93,
                     "symbol": "$b",
                     "fullName": "Bolivian Boliviano",
-                    "imageUrl": "{{ route('tradding') }}",
+                    "imageUrl": "https://public.bnbstatic.com/image/currencies/BOB.png",
                     "displayName": "Bolivian boliviano",
                     "value": "BOB"
                 }, {
@@ -13305,7 +13302,7 @@
                     "rate": 4.97,
                     "symbol": "R$",
                     "fullName": "Brazilian Real",
-                    "imageUrl": "{{ route('tradding') }}",
+                    "imageUrl": "https://public.bnbstatic.com/image/currencies/BRL.png",
                     "displayName": "Brazilian Real",
                     "value": "BRL"
                 }, {
@@ -13314,7 +13311,7 @@
                     "rate": 1.36,
                     "symbol": "C$",
                     "fullName": "Canadian Dollar",
-                    "imageUrl": "{{ route('tradding') }}",
+                    "imageUrl": "https://public.bnbstatic.com/image/currencies/CAD.png",
                     "displayName": "Canadian Dollar",
                     "value": "CAD"
                 }, {
@@ -13323,7 +13320,7 @@
                     "rate": 0.7843,
                     "symbol": "CHF",
                     "fullName": "Swiss Franc",
-                    "imageUrl": "{{ route('tradding') }}",
+                    "imageUrl": "https://public.bnbstatic.com/image/currencies/CHF.png",
                     "displayName": "Swiss Franc",
                     "value": "CHF"
                 }, {
@@ -13332,7 +13329,7 @@
                     "rate": 899.9,
                     "symbol": "CLP$",
                     "fullName": "Chilean Peso",
-                    "imageUrl": "{{ route('tradding') }}",
+                    "imageUrl": "https://public.bnbstatic.com/image/currencies/CLP.png",
                     "displayName": "Chilean Peso",
                     "value": "CLP"
                 }, {
@@ -13341,7 +13338,7 @@
                     "rate": 6.83,
                     "symbol": "¥",
                     "fullName": "Chinese Yuan",
-                    "imageUrl": "{{ route('tradding') }}",
+                    "imageUrl": "https://public.bnbstatic.com/image/currencies/CNY.png",
                     "displayName": "Chinese Yuan",
                     "value": "CNY"
                 }, {
@@ -13350,7 +13347,7 @@
                     "rate": 3656.91,
                     "symbol": "COL$",
                     "fullName": "Colombian Peso",
-                    "imageUrl": "{{ route('tradding') }}",
+                    "imageUrl": "https://public.bnbstatic.com/image/currencies/COP.png",
                     "displayName": "Colombian Peso",
                     "value": "COP"
                 }, {
@@ -13359,7 +13356,7 @@
                     "rate": 20.85,
                     "symbol": "Kč",
                     "fullName": "Czech Koruna",
-                    "imageUrl": "{{ route('tradding') }}",
+                    "imageUrl": "https://public.bnbstatic.com/image/currencies/CZK.png",
                     "displayName": "Czech Koruna",
                     "value": "CZK"
                 }, {
@@ -13368,7 +13365,7 @@
                     "rate": 6.39,
                     "symbol": "KR",
                     "fullName": "Danish Krone",
-                    "imageUrl": "{{ route('tradding') }}",
+                    "imageUrl": "https://public.bnbstatic.com/image/currencies/DKK.png",
                     "displayName": "Danish Krone",
                     "value": "DKK"
                 }, {
@@ -13377,7 +13374,7 @@
                     "rate": 53.51,
                     "symbol": "E£",
                     "fullName": "Egyptian Pound",
-                    "imageUrl": "{{ route('tradding') }}",
+                    "imageUrl": "https://public.bnbstatic.com/image/currencies/EGP.png",
                     "displayName": "Egyptian Pound",
                     "value": "EGP"
                 }, {
@@ -13386,7 +13383,7 @@
                     "rate": 0.8548,
                     "symbol": "€",
                     "fullName": "Euro",
-                    "imageUrl": "{{ route('tradding') }}",
+                    "imageUrl": "https://public.bnbstatic.com/image/currencies/EUR.png",
                     "displayName": "Euro",
                     "value": "EUR"
                 }, {
@@ -13395,7 +13392,7 @@
                     "rate": 0.7385,
                     "symbol": "£",
                     "fullName": "Pound Sterling",
-                    "imageUrl": "{{ route('tradding') }}",
+                    "imageUrl": "https://public.bnbstatic.com/image/currencies/GBP.png",
                     "displayName": "Pound Sterling",
                     "value": "GBP"
                 }, {
@@ -13404,7 +13401,7 @@
                     "rate": 7.83,
                     "symbol": "HKD",
                     "fullName": "Hong Kong Dollar",
-                    "imageUrl": "{{ route('tradding') }}",
+                    "imageUrl": "https://public.bnbstatic.com/image/currencies/HKD.png",
                     "displayName": "Hong Kong Dollar",
                     "value": "HKD"
                 }, {
@@ -13413,7 +13410,7 @@
                     "rate": 7.03,
                     "symbol": "kn",
                     "fullName": "Croatian Kuna",
-                    "imageUrl": "{{ route('tradding') }}",
+                    "imageUrl": "https://public.bnbstatic.com/image/currencies/HRK.png",
                     "displayName": "Croatia Kuna",
                     "value": "HRK"
                 }, {
@@ -13422,7 +13419,7 @@
                     "rate": 310.87,
                     "symbol": "Ft",
                     "fullName": "Hungarian Forint",
-                    "imageUrl": "{{ route('tradding') }}",
+                    "imageUrl": "https://public.bnbstatic.com/image/currencies/HUF.png",
                     "displayName": "Hungarian Forint",
                     "value": "HUF"
                 }, {
@@ -13431,7 +13428,7 @@
                     "rate": 17413.97,
                     "symbol": "Rp",
                     "fullName": "Indonesian Rupiah",
-                    "imageUrl": "{{ route('tradding') }}",
+                    "imageUrl": "https://public.bnbstatic.com/image/currencies/IDR.png",
                     "displayName": "Indonesia Rupiah",
                     "value": "IDR"
                 }, {
@@ -13440,7 +13437,7 @@
                     "rate": 95.16,
                     "symbol": "₹",
                     "fullName": "Indian Rupee",
-                    "imageUrl": "{{ route('tradding') }}",
+                    "imageUrl": "https://public.bnbstatic.com/image/currencies/INR.png",
                     "displayName": "Indian Rupee",
                     "value": "INR"
                 }, {
@@ -13449,7 +13446,7 @@
                     "rate": 157.16,
                     "symbol": "¥",
                     "fullName": "Japanese Yen",
-                    "imageUrl": "{{ route('tradding') }}",
+                    "imageUrl": "https://public.bnbstatic.com/image/currencies/JPY.png",
                     "displayName": "Japanese Yen",
                     "value": "JPY"
                 }, {
@@ -13458,7 +13455,7 @@
                     "rate": 129.17,
                     "symbol": "KSh",
                     "fullName": "Kenyan Shilling",
-                    "imageUrl": "{{ route('tradding') }}",
+                    "imageUrl": "https://public.bnbstatic.com/image/currencies/KES.png",
                     "displayName": "Kenyan Shilling",
                     "value": "KES"
                 }, {
@@ -13467,7 +13464,7 @@
                     "rate": 0.3075,
                     "symbol": "ك.د",
                     "fullName": "Kuwaiti Dinar",
-                    "imageUrl": "{{ route('tradding') }}",
+                    "imageUrl": "https://public.bnbstatic.com/image/currencies/KWD.png",
                     "displayName": "Kuwaiti Dinar",
                     "value": "KWD"
                 }, {
@@ -13476,7 +13473,7 @@
                     "rate": 464.54,
                     "symbol": "₸",
                     "fullName": "Kazakhstani Tenge",
-                    "imageUrl": "{{ route('tradding') }}",
+                    "imageUrl": "https://public.bnbstatic.com/image/currencies/KZT.png",
                     "displayName": "Kazakhstani Tenge",
                     "value": "KZT"
                 }, {
@@ -13485,7 +13482,7 @@
                     "rate": 9.25,
                     "symbol": "م.د.",
                     "fullName": "Moroccan Dirham",
-                    "imageUrl": "{{ route('tradding') }}",
+                    "imageUrl": "https://public.bnbstatic.com/image/currencies/MAD.png",
                     "displayName": "Moroccan dirham",
                     "value": "MAD"
                 }, {
@@ -13494,7 +13491,7 @@
                     "rate": 3578.46,
                     "symbol": "₮",
                     "fullName": "Mongolian Tugrik",
-                    "imageUrl": "{{ route('tradding') }}",
+                    "imageUrl": "https://public.bnbstatic.com/image/currencies/MNT.png",
                     "displayName": "Mongolian Tugrik",
                     "value": "MNT"
                 }, {
@@ -13503,7 +13500,7 @@
                     "rate": 17.5,
                     "symbol": "Mex$",
                     "fullName": "Mexican Peso",
-                    "imageUrl": "{{ route('tradding') }}",
+                    "imageUrl": "https://public.bnbstatic.com/image/currencies/MXN.png",
                     "displayName": "Mexican Peso",
                     "value": "MXN"
                 }, {
@@ -13512,7 +13509,7 @@
                     "rate": 1.7,
                     "symbol": "NZ$",
                     "fullName": "New Zealand Dollar",
-                    "imageUrl": "{{ route('tradding') }}",
+                    "imageUrl": "https://public.bnbstatic.com/image/currencies/NZD.png",
                     "displayName": "New Zealand Dollar",
                     "value": "NZD"
                 }, {
@@ -13521,7 +13518,7 @@
                     "rate": 0.385,
                     "symbol": "ر.ع.",
                     "fullName": "Omani Rial",
-                    "imageUrl": "{{ route('tradding') }}",
+                    "imageUrl": "https://public.bnbstatic.com/image/currencies/OMR.png",
                     "displayName": "Omani Rial",
                     "value": "OMR"
                 }, {
@@ -13530,7 +13527,7 @@
                     "rate": 3.51,
                     "symbol": "S/.",
                     "fullName": "Nuevo Sol",
-                    "imageUrl": "{{ route('tradding') }}",
+                    "imageUrl": "https://public.bnbstatic.com/image/currencies/PEN.png",
                     "displayName": "Peruvian Nuevo Sol",
                     "value": "PEN"
                 }, {
@@ -13539,7 +13536,7 @@
                     "rate": 61.64,
                     "symbol": "₱",
                     "fullName": "Philippine Peso",
-                    "imageUrl": "{{ route('tradding') }}",
+                    "imageUrl": "https://public.bnbstatic.com/image/currencies/PHP.png",
                     "displayName": "Philippine Peso",
                     "value": "PHP"
                 }, {
@@ -13548,7 +13545,7 @@
                     "rate": 278.7,
                     "symbol": "₨",
                     "fullName": "Pakistani Rupee",
-                    "imageUrl": "{{ route('tradding') }}",
+                    "imageUrl": "https://public.bnbstatic.com/image/currencies/PKR.png",
                     "displayName": "Pakistani rupee",
                     "value": "PKR"
                 }, {
@@ -13557,7 +13554,7 @@
                     "rate": 3.64,
                     "symbol": "zł",
                     "fullName": "Polish Zloty",
-                    "imageUrl": "{{ route('tradding') }}",
+                    "imageUrl": "https://public.bnbstatic.com/image/currencies/PLN.png",
                     "displayName": "Polish Zloty",
                     "value": "PLN"
                 }, {
@@ -13566,7 +13563,7 @@
                     "rate": 3.64,
                     "symbol": "ر.ق",
                     "fullName": "Qatari Riyal",
-                    "imageUrl": "{{ route('tradding') }}",
+                    "imageUrl": "https://public.bnbstatic.com/image/currencies/QAR.png",
                     "displayName": "Qatari Riyal",
                     "value": "QAR"
                 }, {
@@ -13575,7 +13572,7 @@
                     "rate": 4.44,
                     "symbol": "lei",
                     "fullName": "Romanian Leu",
-                    "imageUrl": "{{ route('tradding') }}",
+                    "imageUrl": "https://public.bnbstatic.com/image/currencies/RON.png",
                     "displayName": "Romania Leu",
                     "value": "RON"
                 }, {
@@ -13584,7 +13581,7 @@
                     "rate": 75.61,
                     "symbol": "₽",
                     "fullName": "Russian Ruble",
-                    "imageUrl": "{{ route('tradding') }}",
+                    "imageUrl": "https://public.bnbstatic.com/image/currencies/RUB.png",
                     "displayName": "Russian Ruble",
                     "value": "RUB"
                 }, {
@@ -13593,7 +13590,7 @@
                     "rate": 3.75,
                     "symbol": "ر.س",
                     "fullName": "Saudi Riyal",
-                    "imageUrl": "{{ route('tradding') }}",
+                    "imageUrl": "https://public.bnbstatic.com/image/currencies/SAR.png",
                     "displayName": "Saudi Riyal",
                     "value": "SAR"
                 }, {
@@ -13602,7 +13599,7 @@
                     "rate": 9.27,
                     "symbol": "kr",
                     "fullName": "Swedish Krona",
-                    "imageUrl": "{{ route('tradding') }}",
+                    "imageUrl": "https://public.bnbstatic.com/image/currencies/SEK.png",
                     "displayName": "Swedish Krona",
                     "value": "SEK"
                 }, {
@@ -13611,7 +13608,7 @@
                     "rate": 32.65,
                     "symbol": "฿",
                     "fullName": "Thai Baht",
-                    "imageUrl": "{{ route('tradding') }}",
+                    "imageUrl": "https://public.bnbstatic.com/image/currencies/THB.png",
                     "displayName": "Thai Baht",
                     "value": "THB"
                 }, {
@@ -13620,7 +13617,7 @@
                     "rate": 45.2,
                     "symbol": "₺",
                     "fullName": "Turkish Lira",
-                    "imageUrl": "{{ route('tradding') }}",
+                    "imageUrl": "https://public.bnbstatic.com/image/currencies/TRY.png",
                     "displayName": "Turkish Lira",
                     "value": "TRY"
                 }, {
@@ -13629,7 +13626,7 @@
                     "rate": 31.64,
                     "symbol": "NT$",
                     "fullName": "New Taiwan dollar",
-                    "imageUrl": "{{ route('tradding') }}",
+                    "imageUrl": "https://public.bnbstatic.com/image/currencies/TWD.png",
                     "displayName": "New Taiwan Dollar",
                     "value": "TWD"
                 }, {
@@ -13638,7 +13635,7 @@
                     "rate": 44.06,
                     "symbol": "₴",
                     "fullName": "Ukrainian Hryvnia",
-                    "imageUrl": "{{ route('tradding') }}",
+                    "imageUrl": "https://public.bnbstatic.com/image/currencies/UAH.png",
                     "displayName": "Ukrainian Hryvnia",
                     "value": "UAH"
                 }, {
@@ -13647,7 +13644,7 @@
                     "rate": 3751.01,
                     "symbol": "USh",
                     "fullName": "Uganda Shilling",
-                    "imageUrl": "{{ route('tradding') }}",
+                    "imageUrl": "https://public.bnbstatic.com/image/currencies/UGX.png",
                     "displayName": "Uganda Shilling",
                     "value": "UGX"
                 }, {
@@ -13656,7 +13653,7 @@
                     "rate": 11990.63,
                     "symbol": "UZS",
                     "fullName": "Uzbekistani Sum",
-                    "imageUrl": "{{ route('tradding') }}",
+                    "imageUrl": "https://public.bnbstatic.com/image/currencies/UZS.png",
                     "displayName": "Uzbekistani Som",
                     "value": "UZS"
                 }, {
@@ -13665,7 +13662,7 @@
                     "rate": 488.93,
                     "symbol": "Bs",
                     "fullName": "Venezuelan Bolivar",
-                    "imageUrl": "{{ route('tradding') }}",
+                    "imageUrl": "https://public.bnbstatic.com/image/currencies/VES.png",
                     "displayName": "Venezuelan bolívar",
                     "value": "VES"
                 }, {
@@ -13674,7 +13671,7 @@
                     "rate": 26311.21,
                     "symbol": "₫",
                     "fullName": "Vietnamese Dong",
-                    "imageUrl": "{{ route('tradding') }}",
+                    "imageUrl": "https://public.bnbstatic.com/image/currencies/VND.png",
                     "displayName": "Vietnamese Dong",
                     "value": "VND"
                 }, {
@@ -13683,7 +13680,7 @@
                     "rate": 16.73,
                     "symbol": "R",
                     "fullName": "South African Rand",
-                    "imageUrl": "{{ route('tradding') }}",
+                    "imageUrl": "https://public.bnbstatic.com/image/currencies/ZAR.png",
                     "displayName": "South African Rand",
                     "value": "ZAR"
                 }, {
@@ -13693,7 +13690,7 @@
                     "symbol": "$",
                     "fullName": "US Dollar",
                     "value": "USD",
-                    "imageUrl": "{{ route('tradding') }}"
+                    "imageUrl": "https://public.bnbstatic.com/image/currencies/USD.png"
                 }
             ],
             "isSeo": false,
@@ -14724,10 +14721,10 @@
                 "Binance Ai Pro": "Binance Ai Pro"
             },
             "commonEnv": {
-                "API_HOST": "{{ route('tradding') }}",
-                "STATIC_HOST": "{{ route('tradding') }}",
-                "STATIC_HOST_SHARE": "{{ route('tradding') }}",
-                "THEMIS_ADDRESS": "{{ route('tradding') }}",
+                "API_HOST": "https://www.binance.com",
+                "STATIC_HOST": "https://bin.bnbstatic.com",
+                "STATIC_HOST_SHARE": "https://public.bnbstatic.com",
+                "THEMIS_ADDRESS": "https://api.saasexch.com/bapi/themis/api/",
                 "THEMIS_ENV": "PROD",
                 "GOOGLE_CLIENT_ID": "960821425630-aclsesu662patrhhq95iuuijekgg15p3.apps.googleusercontent.com",
                 "MARKET_STREAM_HOST": "wss://nbstream.binance.com",
@@ -14853,7 +14850,7 @@
                                 {
                                     "icon": "P2P2C",
                                     "title": "ba-titile2-1",
-                                    "link": "{{ route('tradding') }}",
+                                    "link": "https://p2p.binance.com/en",
                                     "linkTarget": "_self",
                                     "langMapping": "",
                                     "type": "normal",
@@ -14865,7 +14862,7 @@
                                 {
                                     "icon": "Convert2C",
                                     "title": "ba-convert-block",
-                                    "link": "{{ route('tradding') }}",
+                                    "link": "https://www.binance.com/en/convert",
                                     "linkTarget": "_self",
                                     "langMapping": "",
                                     "type": "normal",
@@ -14884,7 +14881,7 @@
                                 // {
                                 //     "icon": "icdex-wallet-2c",
                                 //     "title": "ba-DEX",
-                                //     "link": "{{ route('tradding') }}",
+                                //     "link": "https://web3.binance.com/en",
                                 //     "linkTarget": "_self",
                                 //     "langMapping": "",
                                 //     "type": "normal",
@@ -14896,7 +14893,7 @@
                                 // {
                                 //     "icon": "alpha-2c",
                                 //     "title": "ba-Alpha",
-                                //     "link": "{{ route('tradding') }}",
+                                //     "link": "https://www.binance.com/en/alpha",
                                 //     "linkTarget": "_self",
                                 //     "langMapping": "",
                                 //     "type": "normal",
@@ -14907,7 +14904,7 @@
                                 // {
                                 //     "icon": "TradingBot2C",
                                 //     "title": "ba-StrategyTrading",
-                                //     "link": "{{ route('tradding') }}",
+                                //     "link": "https://www.binance.com/en/trading-bots",
                                 //     "linkTarget": "_self",
                                 //     "langMapping": "",
                                 //     "type": "normal",
@@ -14918,7 +14915,7 @@
                                 // {
                                 //     "icon": "CopyTrading2C",
                                 //     "title": "ba-copy-trading",
-                                //     "link": "{{ route('tradding') }}",
+                                //     "link": "https://www.binance.com/en/copy-trading",
                                 //     "linkTarget": "_self",
                                 //     "langMapping": "",
                                 //     "type": "normal",
@@ -14929,7 +14926,7 @@
                                 // {
                                 //     "icon": "Api2C",
                                 //     "title": "header-tier2-api",
-                                //     "link": "{{ route('tradding') }}",
+                                //     "link": "https://www.binance.com/en/binance-api",
                                 //     "linkTarget": "_self",
                                 //     "langMapping": "",
                                 //     "type": "normal",
@@ -14941,8 +14938,8 @@
                        ],
                     "userInfo": {
                         "noLogged": {
-                            "login": "{{ route('tradding') }}",
-                            "register": "{{ route('tradding') }}",
+                            "login": "https://accounts.binance.com/en/login",
+                            "register": "https://accounts.binance.com/en/register",
                             "returnToList": [{
                                 "regexp": "/([a-z]{2})?(-[A-Z]{2})?/?$",
                                 "return_to": ""
@@ -14998,83 +14995,83 @@
                         "title": "ba-aboutUs",
                         "columnNumber": 1,
                         "list": [{
-                            "link": "{{ route('tradding') }}",
+                            "link": "https://www.binance.com/en/about",
                             "linkTarget": "_self",
                             "title": "ba-About",
                             "langMapping": ""
                         }, {
-                            "link": "{{ route('tradding') }}",
+                            "link": "https://www.binance.com/en/careers",
                             "linkTarget": "_self",
                             "title": "ba-joinUs",
                             "langMapping": ""
                         }, {
-                            "link": "{{ route('tradding') }}",
+                            "link": "https://www.binance.com/en/support/announcement",
                             "linkTarget": "_self",
                             "title": "ba-Announcement",
                             "langMapping": ""
                         }, {
-                            "link": "{{ route('tradding') }}",
+                            "link": "https://www.binance.com/en/square/news/all",
                             "linkTarget": "_self",
                             "title": "ba-news",
                             "langMapping": ""
                         }, {
-                            "link": "{{ route('tradding') }}",
+                            "link": "https://www.binance.com/en/press",
                             "linkTarget": "_self",
                             "title": "ba-Press",
                             "langMapping": ""
                         }, {
-                            "link": "{{ route('tradding') }}",
+                            "link": "https://www.binance.com/en/legal/home",
                             "linkTarget": "_self",
                             "title": "footer-legal",
                             "langMapping": ""
                         }, {
-                            "link": "{{ route('tradding') }}",
+                            "link": "https://www.binance.com/en/terms",
                             "linkTarget": "_self",
                             "title": "ba-Terms",
                             "langMapping": ""
                         }, {
-                            "link": "{{ route('tradding') }}",
+                            "link": "https://www.binance.com/en/about-legal/privacy-portal",
                             "linkTarget": "_self",
                             "title": "ba-Privacy",
                             "langMapping": ""
                         }, {
-                            "link": "{{ route('tradding') }}",
+                            "link": "https://www.binance.com/en/land/building_trust",
                             "linkTarget": "_self",
                             "title": "footer-building-trust",
                             "langMapping": ""
                         }, {
-                            "link": "{{ route('tradding') }}",
+                            "link": "https://www.binance.com/en/blog",
                             "linkTarget": "_self",
                             "title": "ba-binanceBlog",
                             "langMapping": "en-KZ(en),hi(en),hu(en),kk-kZ(en),sl(en)"
                         }, {
-                            "link": "{{ route('tradding') }}",
+                            "link": "https://www.binance.com/en/community",
                             "linkTarget": "_self",
                             "title": "ba-Community",
                             "langMapping": ""
                         }, {
-                            "link": "{{ route('tradding') }}",
+                            "link": "https://www.binance.com/en/risk-warning",
                             "linkTarget": "_self",
                             "title": "ba-risk-warning",
                             "langMapping": ""
                         }, {
-                            "link": "{{ route('tradding') }}",
+                            "link": "https://www.binance.com/en/support/list/notices",
                             "linkTarget": "_self",
                             "sceneNames": "exclude-local-kz",
                             "title": "ba-Notices",
                             "langMapping": ""
                         }, {
-                            "link": "{{ route('tradding') }}",
+                            "link": "https://www.binance.com/en/download",
                             "linkTarget": "_self",
                             "title": "ba-Download",
                             "langMapping": ""
                         }, {
-                            "link": "{{ route('tradding') }}",
+                            "link": "https://www.binance.com/en/desktop-download",
                             "linkTarget": "_self",
                             "title": "ba-Desktop Application",
                             "langMapping": ""
                         }, {
-                            "link": "{{ route('tradding') }}",
+                            "link": "https://www.binance.com/en/whistleblowing/welcome",
                             "linkTarget": "_self",
                             "title": "ba-whistleblowing",
                             "langMapping": ""
@@ -15083,86 +15080,86 @@
                         "title": "ba-Products",
                         "columnNumber": 2,
                         "list": [{
-                            "link": "{{ route('tradding') }}",
+                            "link": "https://www.binance.com/en/trade",
                             "linkTarget": "_self",
                             "title": "ba-Exchange",
                             "langMapping": ""
                         }, {
-                            "link": "{{ route('tradding') }}",
+                            "link": "https://www.binance.com/en/crypto/buy",
                             "linkTarget": "_self",
                             "title": "ba-creditCard",
                             "langMapping": ""
                         }, {
-                            "link": "{{ route('tradding') }}",
+                            "link": "https://www.binance.com/en/my/wallet/account/payment",
                             "linkTarget": "_self",
                             "title": "ba-Binance Pay",
                             "langMapping": "vi(en)",
                             "businessKeys": "binancepay"
                         }, {
-                            "link": "{{ route('tradding') }}",
+                            "link": "https://pay.binance.com/en",
                             "linkTarget": "_self",
                             "title": "ba-crypto-payments",
                             "langMapping": "vi(en)",
                             "businessKeys": "binancepay"
                         }, {
-                            "link": "{{ route('tradding') }}",
+                            "link": "https://www.binance.com/en/binance-junior",
                             "linkTarget": "_self",
                             "title": "ba-binance-junior",
                             "langMapping": "",
                             "businessKeys": "fea-title-BinanceJunior"
                         }, {
-                            "link": "{{ route('tradding') }}",
+                            "link": "https://www.binance.com/en/cards/dashboard",
                             "linkTarget": "_self",
                             "sceneNames": "after-login-only",
                             "title": "ba-card",
                             "langMapping": "",
                             "businessKeys": "fea-title-binancecard"
                         }, {
-                            "link": "{{ route('tradding') }}",
+                            "link": "https://academy.binance.com/en",
                             "linkTarget": "_self",
                             "title": "ba-Academy",
                             "langMapping": "en-IN(en),en-KZ(en),en-NG(en),es-AR(es),es-ES(es),es-LA(es),es-MX(es),fr-AF(en),fr-FR(en),fr-FR(en),hi(en),kk-KZ(en),pt-PT(pt),ua(uk),ru-UA(en),sl(en),uk-UA(uk),zh-TC(zt)"
                         }, {
-                            "link": "{{ route('tradding') }}",
+                            "link": "https://www.binance.com/en/gift-card",
                             "linkTarget": "_self",
                             "title": "ba-GiftCard",
                             "langMapping": ""
                         }, {
-                            "link": "{{ route('tradding') }}",
+                            "link": "https://www.binance.com/en/launchpool",
                             "linkTarget": "_self",
                             "sceneNames": "exclude-local-kz",
                             "title": "ba-launchpad-launchpool",
                             "langMapping": "",
                             "businessKeys": "launchpad"
                         }, {
-                            "link": "{{ route('tradding') }}",
+                            "link": "https://www.binance.com/en/auto-invest",
                             "linkTarget": "_self",
                             "title": "ba-auto-invest",
                             "langMapping": ""
                         }, {
-                            "link": "{{ route('tradding') }}",
+                            "link": "https://www.binance.com/en/eth2",
                             "linkTarget": "_self",
                             "title": "ba-eth2",
                             "langMapping": ""
                         }, {
-                            "link": "{{ route('tradding') }}",
+                            "link": "https://www.binance.com/en/nft/home",
                             "linkTarget": "_self",
                             "sceneNames": "exclude-local-kz",
                             "title": "ba-NFT",
                             "langMapping": ""
                         }, {
-                            "link": "{{ route('tradding') }}",
+                            "link": "https://www.binance.com/en/BABT?source=footer",
                             "linkTarget": "_self",
                             "sceneNames": "exclude-local-kz",
                             "title": "BABT",
                             "langMapping": ""
                         }, {
-                            "link": "{{ route('tradding') }}",
+                            "link": "https://www.binance.com/en/research",
                             "linkTarget": "_self",
                             "title": "ba-Research",
                             "langMapping": ""
                         }, {
-                            "link": "{{ route('tradding') }}",
+                            "link": "https://www.binance.charity",
                             "linkTarget": "_self",
                             "title": "ba-Charity",
                             "langMapping": ""
@@ -15171,38 +15168,38 @@
                         "title": "ba-Service",
                         "columnNumber": 4,
                         "list": [{
-                            "link": "{{ route('tradding') }}",
+                            "link": "https://www.binance.com/en/activity/referral?stopRedirectToActivity=true",
                             "linkTarget": "_self",
                             "title": "ba-Affiliate",
                             "langMapping": ""
                         }, {
-                            "link": "{{ route('tradding') }}",
+                            "link": "https://www.binance.com/en/activity/referral",
                             "linkTarget": "_self",
                             "title": "ba-referral",
                             "langMapping": ""
                         }, {
-                            "link": "{{ route('tradding') }}",
+                            "link": "https://www.binance.com/en/bnb",
                             "linkTarget": "_self",
                             "title": "ba-binanceCoin",
                             "langMapping": ""
                         }, {
-                            "link": "{{ route('tradding') }}",
+                            "link": "https://www.binance.com/en/otc",
                             "linkTarget": "_self",
                             "sceneNames": "exclude-local-kz",
                             "title": "ba-otctrading",
                             "langMapping": ""
                         }, {
-                            "link": "{{ route('tradding') }}",
+                            "link": "https://data.binance.vision",
                             "linkTarget": "_self",
                             "title": "landing-data-title",
                             "langMapping": ""
                         }, {
-                            "link": "{{ route('tradding') }}",
+                            "link": "https://www.binance.com/en/trading_insight/glass?id=22&token=BTC",
                             "linkTarget": "_self",
                             "title": "footer-trading-insight",
                             "langMapping": ""
                         }, {
-                            "link": "{{ route('tradding') }}",
+                            "link": "https://www.binance.com/en/proof-of-reserves",
                             "linkTarget": "_self",
                             "title": "ba-Proof-of-Reserves",
                             "langMapping": ""
@@ -15211,35 +15208,35 @@
                         "title": "ba-business-footer",
                         "columnNumber": 3,
                         "list": [{
-                            "link": "{{ route('tradding') }}",
+                            "link": "https://c2c.binance.com/en/merchantApplication",
                             "linkTarget": "_self",
                             "sceneNames": "exclude-local-kz",
                             "title": "ba-applyP2P",
                             "langMapping": ""
                         }, {
-                            "link": "{{ route('tradding') }}",
+                            "link": "https://p2p.binance.com/en/p2pro",
                             "linkTarget": "_self",
                             "sceneNames": "exclude-local-kz",
                             "title": "ba-p2pro",
                             "langMapping": ""
                         }, {
-                            "link": "{{ route('tradding') }}",
+                            "link": "https://www.binance.com/en/my/coin-apply",
                             "linkTarget": "_self",
                             "title": "ba-ListingApplication",
                             "langMapping": ""
                         }, {
-                            "link": "{{ route('tradding') }}",
+                            "link": "https://www.binance.com/en/vip-institutional-services",
                             "linkTarget": "_self",
                             "sceneNames": "exclude-local-kz",
                             "title": "ba-institutional",
                             "langMapping": ""
                         }, {
-                            "link": "{{ route('tradding') }}",
+                            "link": "https://labs.binance.com/",
                             "linkTarget": "_self",
                             "title": "ba-Labs",
                             "langMapping": ""
                         }, {
-                            "link": "{{ route('tradding') }}",
+                            "link": "https://www.binance.com/en/binance-connect",
                             "linkTarget": "_self",
                             "title": "header-title-bifinity",
                             "langMapping": "",
@@ -15249,54 +15246,54 @@
                         "title": "ba-Support",
                         "columnNumber": 4,
                         "list": [{
-                            "link": "{{ route('tradding') }}",
+                            "link": "https://www.binance.com/en/chat?sourceEntry=4",
                             "linkTarget": "_self",
                             "title": "ba-SubmitARequest",
                             "langMapping": ""
                         }, {
-                            "link": "{{ route('tradding') }}",
+                            "link": "https://www.binance.com/en/support",
                             "linkTarget": "_self",
                             "title": "ba-SupportCenter",
                             "langMapping": ""
                         }, {
-                            "link": "{{ route('tradding') }}",
+                            "link": "https://www.binance.com/en/my/user-support/feedback/entry",
                             "linkTarget": "_self",
                             "title": "footer_support_request_feature",
                             "langMapping": ""
                         }, {
-                            "link": "{{ route('tradding') }}",
+                            "link": "https://www.binance.com/en/fee",
                             "linkTarget": "_self",
                             "title": "ba-Fees",
                             "langMapping": ""
                         }, {
-                            "link": "{{ route('tradding') }}",
+                            "link": "https://www.binance.com/en/binance-api",
                             "linkTarget": "_self",
                             "title": "header-tier2-api",
                             "langMapping": ""
                         }, {
-                            "link": "{{ route('tradding') }}",
+                            "link": "https://www.binance.com/en/official-verification",
                             "linkTarget": "_self",
                             "title": "ba-official-verification",
                             "langMapping": ""
                         }, {
-                            "link": "{{ route('tradding') }}",
+                            "link": "https://www.binance.com/en/trade-parameters",
                             "linkTarget": "_self",
                             "title": "ba-tradeRules",
                             "langMapping": ""
                         }, {
-                            "link": "{{ route('tradding') }}",
+                            "link": "https://www.binance.com/en/airdrop",
                             "linkTarget": "_self",
                             "sceneNames": "exclude-local-kz",
                             "title": "ba-airdrop",
                             "langMapping": ""
                         }, {
-                            "link": "{{ route('tradding') }}",
+                            "link": "https://www.binance.com/en/support/law-enforcement",
                             "linkTarget": "_self",
                             "sceneNames": "exclude-local-kz",
                             "title": "ba-law",
                             "langMapping": ""
                         }, {
-                            "link": "{{ route('tradding') }}",
+                            "link": "https://www.binance.com/en/learn/how-to-raise-a-complaint",
                             "linkTarget": "_self",
                             "title": "ba-raise-complaint",
                             "langMapping": ""
@@ -15305,74 +15302,74 @@
                         "title": "ba-Learn",
                         "columnNumber": 3,
                         "list": [{
-                            "link": "{{ route('tradding') }}",
+                            "link": "https://academy.binance.com/en/learn-and-earn",
                             "linkTarget": "_self",
                             "title": "ba-learn-earn-title",
                             "langMapping": "el(en),en-IN(en),en-KZ(en),en-NG(en),es-AR(es),es-ES(es),es-LA(es),es-MX(es),fr-AF(en),fr-FR(en),hi(en),kk-KZ(en),pt-PT(pt),ru-UA(en),sl(en),uk-UA(uk),zh-TC(zt)"
                         }, {
-                            "link": "{{ route('tradding') }}",
+                            "link": "https://www.binance.com/en/price",
                             "linkTarget": "_self",
                             "title": "ba-footer-pricepage",
                             "langMapping": ""
                         }, {
-                            "link": "{{ route('tradding') }}",
+                            "link": "https://www.binance.com/en/price/bitcoin",
                             "linkTarget": "_self",
                             "title": "footer_bitcoin_price",
                             "langMapping": ""
                         }, {
-                            "link": "{{ route('tradding') }}",
+                            "link": "https://www.binance.com/en/price/ethereum",
                             "linkTarget": "_self",
                             "title": "footer_ethereum_price",
                             "langMapping": ""
                         }, {
-                            "link": "{{ route('tradding') }}",
+                            "link": "https://www.binance.com/en/price-prediction",
                             "linkTarget": "_self",
                             "title": "footer_price_predictions",
                             "langMapping": ""
                         }, {
-                            "link": "{{ route('tradding') }}",
+                            "link": "https://www.binance.com/en/price-prediction/bitcoin",
                             "linkTarget": "_self",
                             "title": "footer_bitcoin_price_prediction",
                             "langMapping": ""
                         }, {
-                            "link": "{{ route('tradding') }}",
+                            "link": "https://www.binance.com/en/price-prediction/ethereum",
                             "linkTarget": "_self",
                             "title": "footer_ethereum_price_prediction",
                             "langMapping": ""
                         }, {
-                            "link": "{{ route('tradding') }}",
+                            "link": "https://www.binance.com/en/ethereum-upgrade",
                             "linkTarget": "_self",
                             "title": "ba-eth-upgrade-pectra",
                             "langMapping": ""
                         }, {
-                            "link": "{{ route('tradding') }}",
+                            "link": "https://www.binance.com/en/how-to-buy/bitcoin",
                             "linkTarget": "_self",
                             "title": "ba-buy-bitcoin",
                             "langMapping": ""
                         }, {
-                            "link": "{{ route('tradding') }}",
+                            "link": "https://www.binance.com/en/how-to-buy/bnb",
                             "linkTarget": "_self",
                             "title": "ba-buybnb",
                             "langMapping": ""
                         }, {
-                            "link": "{{ route('tradding') }}",
+                            "link": "https://www.binance.com/en/how-to-buy/xrp",
                             "linkTarget": "_self",
                             "sceneNames": "exclude-local-kz",
                             "title": "ba-buyRipple",
                             "langMapping": ""
                         }, {
-                            "link": "{{ route('tradding') }}",
+                            "link": "https://www.binance.com/en/how-to-buy/dogecoin",
                             "linkTarget": "_self",
                             "sceneNames": "exclude-local-kz",
                             "title": "ba-buydogecoin",
                             "langMapping": ""
                         }, {
-                            "link": "{{ route('tradding') }}",
+                            "link": "https://www.binance.com/en/how-to-buy/ethereum",
                             "linkTarget": "_self",
                             "title": "ba-buyEthereum",
                             "langMapping": ""
                         }, {
-                            "link": "{{ route('tradding') }}",
+                            "link": "https://www.binance.com/en/altcoins/tradable",
                             "linkTarget": "_self",
                             "title": "ba-BuyTradable",
                             "langMapping": ""
@@ -15384,47 +15381,47 @@
                         "needThemeSwitch": true,
                         "communities": [{
                             "name": "h-discord",
-                            "link": "{{ route('tradding') }}",
+                            "link": "https://discord.gg/jE4wt8g2H2",
                             "linkTarget": "_self"
                         }, {
                             "name": "social-telegram-f",
-                            "link": "{{ route('tradding') }}",
+                            "link": "https://www.binance.com/en/community",
                             "linkTarget": "_self"
                         }, {
                             "name": "h-tiktok",
-                            "link": "{{ route('tradding') }}",
+                            "link": "https://www.tiktok.com/@binance?lang=en",
                             "linkTarget": "_self"
                         }, {
                             "name": "h-facebook",
-                            "link": "{{ route('tradding') }}",
+                            "link": "https://www.facebook.com/binance",
                             "linkTarget": "_self"
                         }, {
                             "name": "social-x-f",
-                            "link": "{{ route('tradding') }}",
+                            "link": "https://twitter.com/binance",
                             "linkTarget": "_self"
                         }, {
                             "name": "h-reddit",
-                            "link": "{{ route('tradding') }}",
+                            "link": "https://www.reddit.com/r/binance",
                             "linkTarget": "_self"
                         }, {
                             "name": "h-instagram",
-                            "link": "{{ route('tradding') }}",
+                            "link": "https://www.instagram.com/Binance/",
                             "linkTarget": "_self"
                         }, {
                             "name": "h-coinmarketcap",
-                            "link": "{{ route('tradding') }}",
+                            "link": "https://coinmarketcap.com/exchanges/binance/",
                             "linkTarget": "_self"
                         }, {
                             "name": "h-youtube",
-                            "link": "{{ route('tradding') }}",
+                            "link": "https://www.youtube.com/binanceyoutube",
                             "linkTarget": "_self"
                         }, {
                             "name": "social-whatsapp",
-                            "link": "{{ route('tradding') }}",
+                            "link": "https://www.whatsapp.com/channel/0029VarQ6LL6rsQq7nwhmn1y",
                             "linkTarget": "_self"
                         }, {
                             "name": "more-f",
-                            "link": "{{ route('tradding') }}",
+                            "link": "https://www.binance.com/en/community",
                             "linkTarget": "_self"
                         }]
                     },
@@ -15607,16 +15604,16 @@
                                         "notTradeTitleInventive": "loginCta-trade-incentive-title",
                                         "existingTitleFontSize": 64,
                                         "existingTitle": "loginCta-copytrading-title",
-                                        "existingTitleUrl": "{{ route('tradding') }}"
+                                        "existingTitleUrl": "https://www.binance.com/en/copy-trading"
                                     },
                                     "buttonConfig": {
                                         "noVerifiedHelpBtnType": "Video",
-                                        "noVerifiedHelpBtnUrl": "{{ route('tradding') }}",
+                                        "noVerifiedHelpBtnUrl": "https://fast.wistia.net/embed/iframe/nldhiwsms7",
                                         "noDepositHelpBtnType": "Video",
-                                        "noDepositHelpBtnUrl": "{{ route('tradding') }}",
+                                        "noDepositHelpBtnUrl": "https://fast.wistia.net/embed/iframe/x460r4tnc7",
                                         "noTradeHelpBtnType": "Video",
-                                        "noTradeHelpBtnUrl": "{{ route('tradding') }}",
-                                        "kycProcessingBtnUrl": "{{ route('tradding') }}",
+                                        "noTradeHelpBtnUrl": "https://fast.wistia.net/embed/iframe/in2spqx47n",
+                                        "kycProcessingBtnUrl": "https://academy.binance.com/en",
                                         "depositAction": "DepositDrawer",
                                         "tradeBtnUrl": "/trade",
                                         "convertBtnUrl": "/convert"
@@ -15687,11 +15684,11 @@
                                 "py2": "48px",
                                 "frames": [{
                                     "desktopImageUrlKey": "/image/julia/new-homepage/banner/en/wotd-0422-desktop.png",
-                                    "desktopRedirectionUrlKey": "{{ route('tradding') }}",
+                                    "desktopRedirectionUrlKey": "https://www.binance.com/en/activity/word-of-the-day/G1117352871085015041?utm_source=banner",
                                     "tabletImageUrlKey": "/image/julia/new-homepage/banner/en/wotd-0422-desktop.png",
-                                    "tabletRedirectionUrlKey": "{{ route('tradding') }}",
+                                    "tabletRedirectionUrlKey": "https://www.binance.com/en/activity/word-of-the-day/G1117352871085015041?utm_source=banner",
                                     "mobileImageUrlKey": "/image/julia/new-homepage/banner/en/wotd-0422-app.png",
-                                    "mobileRedirectionUrlKey": "{{ route('tradding') }}"
+                                    "mobileRedirectionUrlKey": "https://www.binance.com/en/activity/word-of-the-day/G1117352871085015041?utm_source=banner"
                                 }]
                             }
                         },
@@ -15867,7 +15864,7 @@
                                         "fundAmount": "15,000 BTC",
                                         "walletLabel": "homepage-safu-wallet",
                                         "walletAddress": "1BAuq7Vho2CEkVkUxbfU26LhwQjbCmWQkD",
-                                        "walletAddressUrl": "{{ route('tradding') }}"
+                                        "walletAddressUrl": "https://www.blockchain.com/explorer/addresses/btc/1BAuq7Vho2CEkVkUxbfU26LhwQjbCmWQkD"
                                     },
                                     "stats": [{
                                         "value": "7,488,223",
@@ -15910,10 +15907,10 @@
         "shuviInitialState": {},
         "redux": {
             "global": {
-                "origin": "{{ route('tradding') }}",
-                "url": "{{ route('tradding') }}",
+                "origin": "https://www.binance.com",
+                "url": "https://www.binance.com/en",
                 "path": "/en",
-                "host": "{{ route('tradding') }}",
+                "host": "https://www.binance.com",
                 "dir": "ltr",
                 "metaData": {
                     "title": "Binance: The World’s Most Trusted Cryptocurrency Exchange to Buy, Trade \u0026 Invest in Crypto",
@@ -15963,42 +15960,42 @@
                 "lpData": [],
                 "news": [{
                     "id": "319503667947522",
-                    "webLink": "{{ route('tradding') }}",
+                    "webLink": "https://www.binance.com/en/square/post/319503667947522",
                     "title": "Whale Makes Significant Bitcoin Purchase at $78,848.05",
                     "translatedData": null
                 }, {
                     "id": "319503642417346",
-                    "webLink": "{{ route('tradding') }}",
+                    "webLink": "https://www.binance.com/en/square/post/319503642417346",
                     "title": "Western Union's Stablecoin USDPT Launches on Solana",
                     "translatedData": null
                 }, {
                     "id": "319502918044865",
-                    "webLink": "{{ route('tradding') }}",
+                    "webLink": "https://www.binance.com/en/square/post/319502918044865",
                     "title": "Galaxy Digital's Alex Thorn Urges Clarity Act Passage Before Midterms",
                     "translatedData": null
                 }, {
                     "id": "319501194330449",
-                    "webLink": "{{ route('tradding') }}",
+                    "webLink": "https://www.binance.com/en/square/post/319501194330449",
                     "title": "Cerebras Systems Plans IPO to Raise $3.5 Billion",
                     "translatedData": null
                 }, {
                     "id": "319500683054642",
-                    "webLink": "{{ route('tradding') }}",
+                    "webLink": "https://www.binance.com/en/square/post/319500683054642",
                     "title": "Gudtrip's Crypto Rewards for Cannabis Use Raise Ethical Concerns",
                     "translatedData": null
                 }, {
                     "id": "319496414572658",
-                    "webLink": "{{ route('tradding') }}",
+                    "webLink": "https://www.binance.com/en/square/post/319496414572658",
                     "title": "Hut8 Subsidiary Refinances Loan, Releases 3,300 BTC from Collateral",
                     "translatedData": null
                 }, {
                     "id": "319496364758337",
-                    "webLink": "{{ route('tradding') }}",
+                    "webLink": "https://www.binance.com/en/square/post/319496364758337",
                     "title": "U.S. Central Command Denies Iranian Missile Attack on Navy Ship",
                     "translatedData": null
                 }, {
                     "id": "319493906195570",
-                    "webLink": "{{ route('tradding') }}",
+                    "webLink": "https://www.binance.com/en/square/post/319493906195570",
                     "title": "Potential Senate Leadership Changes Could Impact Crypto Regulation",
                     "translatedData": null
                 }],
@@ -17181,17 +17178,17 @@
                     "exchange-home-new-33": "Giao dịch mọi lúc mọi nơi.",
                     "home-download-caption": "Quét mã để tải ứng dụng",
                     "home-ios-android": "iOS và Android",
-                    "home_faq_a1": "Binance is the best cryptocurrency exchange for traders because it offers deep liquidity, low fees, and a complete range of products including [Spot]({{ route('tradding') }} [Futures]({{ route('tradding') }} [Earn]({{ route('tradding') }} and [P2P]({{ route('tradding') }} markets. Users can track [crypto live prices]({{ route('tradding') }} explore [new cryptocurrencies]({{ route('tradding') }} and discover [top gaining cryptos]({{ route('tradding') }} or [top losing cryptocurrencies]({{ route('tradding') }} directly on the platform. Binance also provides exclusive early access to token launches through [Binance MegaDrop]({{ route('tradding') }} and innovative pre-listing projects via [Binance Alpha]({{ route('tradding') }} With strong security, global liquidity, and an easy-to-use interface, Binance remains the trusted choice for millions of crypto traders worldwide.",
+                    "home_faq_a1": "Binance is the best cryptocurrency exchange for traders because it offers deep liquidity, low fees, and a complete range of products including [Spot](https://www.%suffixOrigin%/%locale%/trade), [Futures](https://www.%suffixOrigin%/%locale%/futures), [Earn](https://www.%suffixOrigin%/%locale%/earn), and [P2P](https://p2p.%suffixOrigin%/%locale%) markets. Users can track [crypto live prices](https://www.%suffixOrigin%/%locale%/price), explore [new cryptocurrencies](https://www.%suffixOrigin%/%locale%/price/new-cryptocurrency), and discover [top gaining cryptos](https://www.%suffixOrigin%/%locale%/price/top-gaining-crypto) or [top losing cryptocurrencies](https://www.%suffixOrigin%/%locale%/price/top-losing-crypto) directly on the platform. Binance also provides exclusive early access to token launches through [Binance MegaDrop](https://www.%suffixOrigin%/%locale%/price/binance-megadrop) and innovative pre-listing projects via [Binance Alpha](https://www.%suffixOrigin%/%locale%/price/binance-alpha). With strong security, global liquidity, and an easy-to-use interface, Binance remains the trusted choice for millions of crypto traders worldwide.",
                     "home_faq_q1": "Why is Binance the best exchange for crypto traders?",
-                    "home_faq_a2": "Binance is the world's leading cryptocurrency exchange, catering to over 270 million registered users in over 180 countries. With low fees and over 500 cryptocurrencies to trade, Binance is the preferred exchange to trade Bitcoin, Altcoins, and other virtual assets.<br><br>With Binance users can:<br><li>Trade hundreds of cryptocurrencies on [Spot]({{ route('tradding') }} [Margin]({{ route('tradding') }} and [Futures]({{ route('tradding') }} markets.</li> <li>Buy and sell cryptocurrencies with [Binance P2P]({{ route('tradding') }} interest on your crypto with [Binance Earn]({{ route('tradding') }} or earn new tokens on [Binance Launchpool]({{ route('tradding') }} Airdrop, Megadrop, etc.</li><li>Trade, stake, and loan NFTs on [Binance NFT]({{ route('tradding') }} marketplace.</li><br>To get started, check out our [learning]({{ route('tradding') }}",
+                    "home_faq_a2": "Binance is the world's leading cryptocurrency exchange, catering to over 270 million registered users in over 180 countries. With low fees and over 500 cryptocurrencies to trade, Binance is the preferred exchange to trade Bitcoin, Altcoins, and other virtual assets.<br><br>With Binance users can:<br><li>Trade hundreds of cryptocurrencies on [Spot](https://www.%suffixOrigin%/%locale%/trade/BTC_USDT?theme=light&amp;type=spot), [Margin](https://www.%suffixOrigin%/%locale%/trade/BTC_USDT?theme=light&amp;type=spot), and [Futures](https://www.%suffixOrigin%/%locale%/futures/markets/um) markets.</li> <li>Buy and sell cryptocurrencies with [Binance P2P](https://p2p.%suffixOrigin%/%locale%/trade/all-payments/USDT?fiat=EUR).</li><li>Earn interest on your crypto with [Binance Earn](https://www.%suffixOrigin%/%locale%/earn).</li><li>Buy or earn new tokens on [Binance Launchpool](https://launchpad.%suffixOrigin%/%locale%), Airdrop, Megadrop, etc.</li><li>Trade, stake, and loan NFTs on [Binance NFT](https://www.%suffixOrigin%/%locale%/nft/home) marketplace.</li><br>To get started, check out our [learning](https://www.%suffixOrigin%/%locale%/support/faq).",
                     "home_faq_q2": "What products does Binance provide?",
-                    "home_faq_a3": "There are several ways to buy cryptocurrencies on Binance. You can use a credit/debit card, cash balance, or Apple Pay/Google Pay to [purchase crypto]({{ route('tradding') }} on Binance. Before getting started, please make sure you’ve completed [Identity Verification]({{ route('tradding') }} for your Binance account.",
+                    "home_faq_a3": "There are several ways to buy cryptocurrencies on Binance. You can use a credit/debit card, cash balance, or Apple Pay/Google Pay to [purchase crypto](https://www.%suffixOrigin%/%locale%/support/faq/how-to-buy-cryptocurrency-on-binance-homepage-400c38f5e0cd4b46a1d0805c296b5582) on Binance. Before getting started, please make sure you’ve completed [Identity Verification](https://www.%suffixOrigin%/%locale%/support/faq/how-to-complete-identity-verification-360027287111) for your Binance account.",
                     "home_faq_q3": "How to buy Bitcoin and other cryptocurrencies on Binance",
-                    "home_faq_a4": "The easiest way to track the latest cryptocurrency prices, trading volumes, trending altcoins, and market cap is the [Binance Cryptocurrency Directory]({{ route('tradding') }} Click on the coins to know historical coin prices, 24-hour trading volume, and the price of cryptocurrencies like [Bitcoin]({{ route('tradding') }} [Ethereum]({{ route('tradding') }} [BNB]({{ route('tradding') }} and others in real-time.",
+                    "home_faq_a4": "The easiest way to track the latest cryptocurrency prices, trading volumes, trending altcoins, and market cap is the [Binance Cryptocurrency Directory](https://www.%suffixOrigin%/%locale%/price). Click on the coins to know historical coin prices, 24-hour trading volume, and the price of cryptocurrencies like [Bitcoin](https://www.%suffixOrigin%/%locale%/price/bitcoin), [Ethereum](https://www.%suffixOrigin%/%locale%/price/ethereum), [BNB](https://www.%suffixOrigin%/%locale%/price/bnb) and others in real-time.",
                     "home_faq_q4": "How to track cryptocurrency prices",
-                    "home_faq_a5": "You can trade hundreds of cryptocurrencies on Binance via the [Spot]({{ route('tradding') }} [Margin]({{ route('tradding') }} [Futures]({{ route('tradding') }} and [Options]({{ route('tradding') }} markets. To [begin trading]({{ route('tradding') }} users need to register an account, complete identity verification, buy/deposit crypto, and start trading.",
+                    "home_faq_a5": "You can trade hundreds of cryptocurrencies on Binance via the [Spot](https://www.%suffixOrigin%/%locale%/support/faq/spot-margin-trading?c=3&navId=3#15), [Margin](https://www.%suffixOrigin%/%locale%/support/faq/spot-margin-trading?c=3&navId=3#16), [Futures](https://www.%suffixOrigin%/%locale%/support/faq/crypto-derivatives?c=4&navId=4#18), and [Options](https://www.%suffixOrigin%/%locale%/support/faq/374321c9317c473480243365298b8706) markets. To [begin trading](https://www.%suffixOrigin%/%locale%/support/faq/binance-beginner-s-guide-c780097f75dd450a82d17f1e84153276), users need to register an account, complete identity verification, buy/deposit crypto, and start trading.",
                     "home_faq_q5": "How to trade cryptocurrencies on Binance",
-                    "home_faq_a6": "Users can earn rewards on more than 180+ cryptocurrencies by using one of the products offered on [Binance Earn]({{ route('tradding') }} Our platform offers dozens of digital assets like [Bitcoin]({{ route('tradding') }} [Ethereum]({{ route('tradding') }} and stablecoins.",
+                    "home_faq_a6": "Users can earn rewards on more than 180+ cryptocurrencies by using one of the products offered on [Binance Earn](https://www.%suffixOrigin%/%locale%/earn). Our platform offers dozens of digital assets like [Bitcoin](https://www.%suffixOrigin%/%locale%/price/bitcoin), [Ethereum](https://www.%suffixOrigin%/%locale%/price/ethereum), and stablecoins.",
                     "home_faq_q6": "How to earn from crypto on Binance",
                     "home-faq-title": "Câu hỏi thường gặp",
                     "exchange-home-new-53": "Giao dịch an toàn, phí thấp trên Binance",
@@ -17218,30 +17215,30 @@
         "COMMIT": "dbb0f6e750dfb5b32469b08db668fdfd2d4b7291",
         "WS_HOST": "wss://stream.binance.com",
         "WS_HOST_TEMPLATE": "wss://stream.binance.com",
-        "API_HOST": "{{ route('tradding') }}",
-        "API_HOST_TEMPLATE": "{{ route('tradding') }}",
+        "API_HOST": "https://www.binance.com",
+        "API_HOST_TEMPLATE": "https://www.binance.com",
         "CAVIAR_DEV": "",
-        "STATIC_HOST": "{{ route('tradding') }}",
-        "STATIC_HOST_PUBLIC": "{{ route('tradding') }}",
-        "STATIC_HOST_SHARE": "{{ route('tradding') }}",
+        "STATIC_HOST": "https://bin.bnbstatic.com",
+        "STATIC_HOST_PUBLIC": "https://bin.bnbstatic.com",
+        "STATIC_HOST_SHARE": "https://public.bnbstatic.com",
         "INBOX_STREAM_HOST": "wss://bstream.binance.com:9443",
         "INBOX_STREAM_HOST_TEMPLATE": "wss://bstream.binance.com:9443",
-        "SENSORS_SERVER_HOST": "{{ route('tradding') }}",
-        "DOWNLOAD_URL_WINDOWS_BETA": "{{ route('tradding') }}",
-        "DOWNLOAD_URL_MAC": "{{ route('tradding') }}",
+        "SENSORS_SERVER_HOST": "https://api.saasexch.com/bapi/fe/usd/sa?project=binance",
+        "DOWNLOAD_URL_WINDOWS_BETA": "https://ftp.binance.com/electron-desktop/windows/production/binance-setup.exe",
+        "DOWNLOAD_URL_MAC": "https://ftp.binance.com/electron-desktop/mac/production/binance.dmg",
         "ACCELERATE_DEFAULT_DOMAIN": "api.yshyqxx.com",
         "ACCELERATE_ENBLED_SITES": "www.binancezh.info,accounts.binancezh.info",
         "ACCELERATE_AVAILABLE_DOMAIN": "api.yshyqxx.com,api.bnwebzh.com",
         "MARKET_STREAM_HOST": "wss://nbstream.binance.com",
         "MARKET_STREAM_HOST_TEMPLATE": "wss://nbstream.binance.com",
         "NODE_ENV": "production",
-        "ACCOUNTS_HOST_PUBLIC": "{{ route('tradding') }}",
+        "ACCOUNTS_HOST_PUBLIC": "https://accounts.binance.com",
         "DEPLOYMENT_ENV": "prod",
         "ABTESTHASH": "NDA0NDcwMTczNjp0UTFVaXBHZndBS3RoVTVzbjRhSUlJbjFHVlZPOFR2SQ==",
         "ABTESTID": "35",
-        "I18N_TRACK_HOST": "{{ route('tradding') }}",
+        "I18N_TRACK_HOST": "https://api.saasexch.com",
         "THEMIS_ENV": "PROD",
-        "THEMIS_ADDRESS": "{{ route('tradding') }}",
+        "THEMIS_ADDRESS": "https://api.saasexch.com/bapi/themis/api/",
         "SMARTLING_ORG_ID": "",
         "ENABLE_VISUAL_CONTEXT_IN_QA_ENV": "",
         "THEMIS_AUTH_TOPBAR_HEADER": "NTEwMzc1ODYwMTo4aThubklsaWVtTGZDUnZTN1ZyTzhIV2hCdEJFaDE2Zw==",
@@ -17250,12 +17247,12 @@
         "THEMIS_AUTH_HOME_REDIRECT": "ODAwODc0MTAyNDp6dTYwTHZpbmxDTWxGZUFnMnRGSURreFA4RnNOQVJlSg==",
         "GTM_TRACKING_ID": "M86QHGF",
         "THEMIS_HOME_PAGE_AUTH": "MDg3MDc0NDIwNjpOUkthd3pWTzREUUx4NUh0cExTYTQ3aDRQMmk4RVNJZQ==",
-        "FTP_HOST_PUBLIC": "{{ route('tradding') }}",
+        "FTP_HOST_PUBLIC": "https://ftp.binance.com",
         "APPLE_CLIENT_ID": "com.czzhao.binance.client",
         "GOOGLE_CLIENT_ID": "960821425630-aclsesu662patrhhq95iuuijekgg15p3.apps.googleusercontent.com",
-        "STATIC_HOST_PRIVATE": "{{ route('tradding') }}",
+        "STATIC_HOST_PRIVATE": "http://bin.bnbstatic.com.s3.ap-northeast-1.amazonaws.com",
         "COMMIT_HEAD": "dbb0f6e750dfb5b32469b08db668fdfd2d4b7291",
-        "I18N_BASE_PUBLIC": "{{ route('tradding') }}"
+        "I18N_BASE_PUBLIC": "https://bin.bnbstatic.com/api/i18n/-/web/cms"
     },
     "filesByRoutId": {
         "8ea2": ["static/chunks/ws-http-sdk.49ecd7b4.js", "static/chunks/832.77dbb554.js", "static/chunks/layout-8ea2.c3b4a237.js", "static/css/40b6faad.chunk.css"],
@@ -17266,7 +17263,7 @@
       </script>
       @endverbatim
       <div id="__APP_EXTENSION" style="position: absolute;"></div>
-          <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-M86QHGF" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+      <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-M86QHGF" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <script id="remote-config" src="https://public.bnbstatic.com/unpkg/config/remote-config.js" nonce="25b28dca-3fd5-41bd-944e-3713ed4bf0eb" fetchpriority="high"></script>
       <script src="https://bin.bnbstatic.com/static/polyfills.d7582762.js" nomodule data-ot-ignore nonce="25b28dca-3fd5-41bd-944e-3713ed4bf0eb" fetchpriority="high"></script>
       <script id="essential-js" src="https://public.bnbstatic.com/unpkg/essential/essential@0.3.73.js" nonce="25b28dca-3fd5-41bd-944e-3713ed4bf0eb" fetchpriority="high"></script>
