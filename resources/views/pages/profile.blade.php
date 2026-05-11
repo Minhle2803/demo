@@ -170,18 +170,6 @@
                                         <input type="text" class="form-control bg-light" value="{{ $user->isKycVerified() ? __('messages.common.verified') : ($user->kyc_front_url || $user->kyc_back_url ? __('messages.common.pending') : __('messages.common.not_submitted')) }}" readonly>
                                     </div>
                                 </div>
-                                <div class="col-lg-6">
-                                    <div class="mb-3">
-                                        <label for="createdAtDisplay" class="form-label">{{ __('messages.profile.join_date') }}</label>
-                                        <input type="text" class="form-control bg-light" value="{{ $user->created_at?->format('d/m/Y H:i') }}" readonly>
-                                    </div>
-                                </div>
-                                <div class="col-lg-6">
-                                    <div class="mb-3">
-                                        <label for="verifiedAtDisplay" class="form-label">{{ __('messages.profile.verification_date') }}</label>
-                                        <input type="text" class="form-control bg-light" value="{{ $user->verified_at?->format('d/m/Y H:i') ?? '-' }}" readonly>
-                                    </div>
-                                </div>
                                 @if (!$user->isKycVerified())
                                     <div class="col-12"><hr class="my-4"></div>
                                     <div class="col-12"><h5 class="mb-3">{{ __('messages.profile.kyc_modal_title') }}</h5></div>
@@ -218,12 +206,6 @@
                                         <div class="mb-3">
                                             <label for="kycFullName" class="form-label">{{ __('messages.profile.full_name_cccd') }} <span class="text-danger">*</span></label>
                                             <input type="text" class="form-control" id="kycFullName" name="full_name" value="{{ $user->full_name }}" placeholder="NGUYEN VAN A">
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-4">
-                                        <div class="mb-3">
-                                            <label for="kycDob" class="form-label">{{ __('messages.profile.date_of_birth') }} <span class="text-danger">*</span></label>
-                                            <input type="date" class="form-control" id="kycDob" name="date_of_birth" value="{{ $user->date_of_birth?->format('Y-m-d') }}">
                                         </div>
                                     </div>
                                     <div class="col-lg-4">
