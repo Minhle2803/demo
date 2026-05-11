@@ -4,15 +4,7 @@
 
 @section('content')
 
-<div class="position-relative mx-n4 mt-n4">
-    <div class="profile-wid-bg profile-setting-img">
-        <img src="assets/images/profile-bg.jpg" class="profile-wid-img" alt="">
-        <div class="overlay-content">
-            <div class="text-end p-3">
-            </div>
-        </div>
-    </div>
-</div>
+
 
 <div class="row">
     <div class="col-xxl-3">
