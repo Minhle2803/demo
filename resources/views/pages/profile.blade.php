@@ -9,12 +9,6 @@
         <img src="assets/images/profile-bg.jpg" class="profile-wid-img" alt="">
         <div class="overlay-content">
             <div class="text-end p-3">
-                <div class="p-0 ms-auto rounded-circle profile-photo-edit">
-                    <input id="profile-foreground-img-file-input" type="file" class="profile-foreground-img-file-input">
-                    <label for="profile-foreground-img-file-input" class="profile-photo-edit btn btn-light">
-                        <i class="ri-image-edit-line align-bottom me-1"></i> {{ __('messages.profile.change_cover') }}
-                    </label>
-                </div>
             </div>
         </div>
     </div>
@@ -26,14 +20,8 @@
             <div class="card-body p-4">
                 <div class="text-center">
                     <div class="profile-user position-relative d-inline-block mx-auto mb-4">
-                        <img src="{{ asset('assets/images/users/avatar-1.jpg') }}" class="rounded-circle avatar-xl img-thumbnail user-profile-image material-shadow" alt="user-profile-image">
+                        <img src="{{ asset('assets/images/icons/brand.png') }}" class="rounded-circle avatar-xl img-thumbnail user-profile-image material-shadow" alt="user-profile-image">
                         <div class="avatar-xs p-0 rounded-circle profile-photo-edit">
-                            <input id="profile-img-file-input" type="file" class="profile-img-file-input">
-                            <label for="profile-img-file-input" class="profile-photo-edit avatar-xs">
-                                <span class="avatar-title rounded-circle bg-light text-body material-shadow">
-                                    <i class="ri-camera-fill"></i>
-                                </span>
-                            </label>
                         </div>
                     </div>
                     <h5 class="fs-16 mb-1">{{ $user->nickname }}</h5>
