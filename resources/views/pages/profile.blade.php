@@ -387,7 +387,7 @@
                                                 <p class="text-danger mt-1" id="withdrawError" style="display:none;"></p>
                                             </div>
                                             <div class="mb-3">
-                                                <p class="text-muted mb-1">{{ __('messages.common.account_holder') }}: <strong>{{ $user->account_name ?? '-' }}</strong></p>
+                                                <p class="text-muted mb-1">{{ __('messages.profile.account_holder') }}: <strong>{{ $user->account_name ?? '-' }}</strong></p>
                                                 <p class="text-muted mb-1">{{ __('messages.profile.bank_name') }}: <strong>{{ $user->bank_account ?? '-' }}</strong></p>
                                                 <p class="text-muted mb-1">{{ __('messages.profile.account_number') }}: <strong>{{ $user->bank_number ?? '-' }}</strong></p>
                                                 @if (empty($user->account_name) || empty($user->bank_number) || empty($user->bank_account))
