@@ -314,6 +314,7 @@ return [
         'enter_cccd' => 'Nhập số CCCD',
         'cccd_front' => 'Mặt trước CCCD',
         'cccd_back' => 'Mặt sau CCCD',
+        'choose_file' => 'Chọn file',
         'back' => 'Quay lại',
         'submit_verification' => 'Gửi xác minh',
         'deposit_amount' => 'Số tiền nạp',

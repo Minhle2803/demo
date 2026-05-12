@@ -312,10 +312,25 @@ function initWithdraw() {
 function initKycPreviews() {
     function previewFile(input, previewEl) {
         if (!input || !previewEl) return;
+
+        const wrapper = input.closest('.custom-file-input-wrapper');
+        const label = wrapper?.querySelector('.custom-file-label');
+        const defaultText = label?.getAttribute('data-default') || 'Chọn file';
+
         input.addEventListener('change', () => {
             previewEl.innerHTML = '';
             const file = input.files[0];
-            if (!file) return;
+            if (!file) {
+                if (label) {
+                    label.textContent = defaultText;
+                    label.classList.remove('has-file');
+                }
+                return;
+            }
+            if (label) {
+                label.textContent = file.name;
+                label.classList.add('has-file');
+            }
             const reader = new FileReader();
             reader.onload = (ev) => {
                 previewEl.innerHTML = `<img src="${ev.target.result}" class="img-thumbnail mt-2" style="max-height: 200px;" alt="Preview">`;

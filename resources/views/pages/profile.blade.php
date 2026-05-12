@@ -217,14 +217,20 @@
                                     <div class="col-lg-6">
                                         <div class="mb-3">
                                             <label for="kycFrontInput" class="form-label">{{ __('messages.profile.cccd_front') }} <span class="text-danger">*</span></label>
-                                            <input type="file" class="form-control" name="kyc_front" id="kycFrontInput" accept="image/jpeg,image/png,image/jpg">
+                                            <div class="custom-file-input-wrapper">
+                                                <input type="file" class="custom-file-input" name="kyc_front" id="kycFrontInput" accept="image/jpeg,image/png,image/jpg">
+                                                <label for="kycFrontInput" class="custom-file-label" data-default="{{ __('messages.profile.choose_file') }}">{{ __('messages.profile.choose_file') }}</label>
+                                            </div>
                                             <div class="mt-2" id="kycFrontPreview"></div>
                                         </div>
                                     </div>
                                     <div class="col-lg-6">
                                         <div class="mb-3">
                                             <label for="kycBackInput" class="form-label">{{ __('messages.profile.cccd_back') }} <span class="text-danger">*</span></label>
-                                            <input type="file" class="form-control" name="kyc_back" id="kycBackInput" accept="image/jpeg,image/png,image/jpg">
+                                            <div class="custom-file-input-wrapper">
+                                                <input type="file" class="custom-file-input" name="kyc_back" id="kycBackInput" accept="image/jpeg,image/png,image/jpg">
+                                                <label for="kycBackInput" class="custom-file-label" data-default="{{ __('messages.profile.choose_file') }}">{{ __('messages.profile.choose_file') }}</label>
+                                            </div>
                                             <div class="mt-2" id="kycBackPreview"></div>
                                         </div>
                                     </div>
@@ -455,11 +461,57 @@
     .profile-setting-img {
         height: 100px !important;
     }
+
+    .custom-file-input-wrapper {
+        position: relative;
+    }
+    .custom-file-input {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        white-space: nowrap;
+        border: 0;
+    }
+    .custom-file-label {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        padding: 8px 14px;
+        border: 1px dashed var(--tb-border-color, #dee2e6);
+        border-radius: 6px;
+        cursor: pointer;
+        /* background: var(--tb-body-bg, #fff); */
+        color: var(--tb-secondary-color, #6c757d);
+        font-size: 14px;
+        transition: border-color 0.2s;
+    }
+    .custom-file-label:hover {
+        border-color: var(--tb-primary, #0d6efd);
+        color: var(--tb-primary, #0d6efd);
+    }
+    .custom-file-label::before {
+        content: '\f07c';
+        font-family: 'Phosphor' !important;
+        font-size: 18px;
+    }
+    .custom-file-label.has-file::before {
+        content: '\f040';
+        color: #2ecc71;
+    }
+    .custom-file-label.has-file {
+        border-style: solid;
+        border-color: #2ecc71;
+        color: #2ecc71;
+    }
 </style>
 @endsection
 
 @push('scripts')
-@vite(['resources/js/referral.js'])
+@vite(['resources/js/referral.js', 'resources/js/profile.js'])
 <script>
     window.profileConfig = {
         depositQrUrl: "{{ route('client.profile.deposit.qr') }}",

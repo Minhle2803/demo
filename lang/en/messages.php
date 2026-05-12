@@ -316,6 +316,7 @@ return [
         'enter_cccd' => 'Enter CCCD number',
         'cccd_front' => 'CCCD Front Side',
         'cccd_back' => 'CCCD Back Side',
+        'choose_file' => 'Choose File',
         'back' => 'Back',
         'submit_verification' => 'Submit Verification',
         'deposit_amount' => 'Deposit Amount',
