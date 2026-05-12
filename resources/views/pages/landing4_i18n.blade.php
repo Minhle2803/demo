@@ -240,7 +240,7 @@
             }
         }())
       </script>
-      @verbatim
+      {{ __('landing.verbatim') }}
       <script id="Reporter-init" nonce="25b28dca-3fd5-41bd-944e-3713ed4bf0eb">
          window._bn_reporter = window._bn_reporter || [];
          window._bn_reporter_version = '4.5.11';
@@ -305,10 +305,10 @@
              }
          }, true);
       </script>
-        @endverbatim
+        {{ __('landing.endverbatim') }}
       <script src="https://bin.bnbstatic.com/static/sw-load/cache-control-load@0.0.5.js" data-ot-ignore nonce="25b28dca-3fd5-41bd-944e-3713ed4bf0eb"></script>
       <script src="https://bin.bnbstatic.com/static/js/common-widget/globalthis@0.4.4.min.js" data-ot-ignore nonce="25b28dca-3fd5-41bd-944e-3713ed4bf0eb"></script>
-       @verbatim
+       {{ __('landing.verbatim') }}
       <script type="application/ld+json" nonce="25b28dca-3fd5-41bd-944e-3713ed4bf0eb">
          {
              "@context": "https://schema.org",
@@ -373,11 +373,11 @@
              }]
          }
       </script>
-      @endverbatim
+      {{ __('landing.endverbatim') }}
       <script nonce="25b28dca-3fd5-41bd-944e-3713ed4bf0eb">
          window.isNewDevice = !/bnc-uuid/.test(document.cookie)
       </script>
-       @verbatim
+       {{ __('landing.verbatim') }}
       <script type="application/ld+json" data-shuvi-head="true" nonce="25b28dca-3fd5-41bd-944e-3713ed4bf0eb">
          {
           "@context": "https://schema.org",
@@ -427,7 +427,7 @@
           }]
       }
    </script>
-   @endverbatim
+   {{ __('landing.endverbatim') }}
       <link rel="stylesheet" href="{{ asset('assets/css/landing/40b6faad.chunk.css') }}" />
       <link rel="stylesheet" href="https://public.bnbstatic.com/unpkg/common-widget/header@1.4.110.css" />
       <link rel="stylesheet" href="https://public.bnbstatic.com/unpkg/common-widget/footer@1.4.110.css" />
@@ -585,18 +585,18 @@
                      <div class="header-menu-item rwd-1024-hide-flex"><a class="header-menu-item_view typography-Subtitle4" id="ba-tableMarkets" href="https://www.binance.com/en/markets/overview">{{ __('landing.trading') }}</a></div>
                   </div>
                   <div class="header-rightside">
-                    @auth('client')
+                    {{ __('landing.authclient') }}
                     <a class="header-menu-rightItem" id="toRegisterPage" href="{{ route('tradding') }}">
                         <button class="bn-button bn-button__primary data-size-small header-menu-registerbtn">{{ __('landing.trading') }}</button>
                     </a>
-                    @else
+                    {{ __('landing.else') }}
                     <a id="toLoginPage" class="header-menu-rightItem typography-Subtitle4 color-t_primary rwd-768-hide" href="{{ route('signin') }}">
-                        <button class="bn-button bn-button__secondary data-size-small">{{ __('landing.log_in') }}</button>
+                        <button class="bn-button bn-button__secondary data-size-small">{{ __('landing.log') }}</button>
                     </a>
                     <a class="header-menu-rightItem" id="toRegisterPage" href="{{ route('signup') }}">
-                        <button class="bn-button bn-button__primary data-size-small header-menu-registerbtn">{{ __('landing.sign_up') }}</button>
+                        <button class="bn-button bn-button__primary data-size-small header-menu-registerbtn">{{ __('landing.sign') }}</button>
                     </a>
-                    @endauth
+                    {{ __('landing.endauth') }}
                </header>
                <div class="header-global-js-top-alert">
                   <div class="header-global-js-top-alert__inner" id="header_global_js_wxgy34nj"></div>
@@ -617,10 +617,10 @@
                                     <div class="text-[#F0B90B]">317,026,609</div>
                                     <div style="font-size:72px;line-height:76px" class="min-h-fit text-PrimaryText">
                                        <div>{{ __('landing.users') }}</div>
-                                       <div>{{ __('landing.trust_us') }}</div>
+                                       <div>{{ __('landing.trust') }}</div>
                                     </div>
                                  </div>
-                                 <div class="t-headline4 mobile:t-subtitle2 w-full text-PrimaryText mobile:text-center">The World’s Leading Cryptocurrency Exchange</div>
+                                 <div class="t-headline4 mobile:t-subtitle2 w-full text-PrimaryText mobile:text-center">{{ __('landing.the_worlds_leading_cryptocurrency_exchange') }}</div>
                               </h1>
                               <div class="w-[461px] mobile:w-full" style="margin-top:32px;margin-bottom:64px">
                                  <div class="flex justify-between gap-6xl mobile:justify-center mobile:gap-xl">
@@ -713,11 +713,11 @@
                               <div class="mb-[24px] w-[461px] mobile:w-full">
                                  <div class="w-[461px] mobile:w-full tablet:w-full">
                                     <div class="mobile:align-center mb-[0px] flex w-full mobile:flex-col gap-s">
-                                       @auth('client')
+                                       {{ __('landing.authclient') }}
                                         <div class="flex justify-center">
                                             <a href="{{ route('tradding') }}" class="bn-button data-size-large h-[56px] h-full w-[200px] min-w-[2000px] rounded-[8px] px-3xl text-subtitle1 mobile:h-[40px] mobile:min-h-[40px] mobile:min-w-[200px]">{{ __('landing.trading') }}</a>
                                         </div>
-                                        @else
+                                        {{ __('landing.else') }}
                                         <div class="bn-textField bn-textField__line data-size-large data-gap-size-normal register-input w-[281px] rounded-[10px] mobile:hidden mobile:mr-4xs"><input aria-label="Email/Phone number" placeholder="Email/Phone number" class="bn-textField-input" spellcheck="false" value=""/>
                                        </div>
                                        <div class="hidden mobile:block">
@@ -733,9 +733,9 @@
                                           </div>
                                        </div>
                                         <div class="flex justify-center">
-                                            <a href="{{ route('signin') }}" class="bn-button data-size-large h-[56px] h-full w-[180px] min-w-[160px] rounded-[8px] px-3xl text-subtitle1 mobile:h-[40px] mobile:min-h-[40px] mobile:min-w-[160px]">{{ __('landing.log_in') }}</a>
+                                            <a href="{{ route('signin') }}" class="bn-button data-size-large h-[56px] h-full w-[180px] min-w-[160px] rounded-[8px] px-3xl text-subtitle1 mobile:h-[40px] mobile:min-h-[40px] mobile:min-w-[160px]">{{ __('landing.log') }}</a>
                                         </div>
-                                        @endauth
+                                        {{ __('landing.endauth') }}
                                     </div>
                                     <div class="mobile:hidden"></div>
                                  </div>
@@ -846,7 +846,7 @@
                                           </div>
                                        </a>
                                     </div>
-                                    <a target="_blank" rel="noreferrer" href="{{ route('tradding') }}" class="bg-transparent mb-[0px] flex items-center p-[0px] mobile:justify-center mobile:text-center tablet:top-[10px] noH5:absolute ltr:noH5:right-0 rtl:noH5:left-0 desktop:top-[10px] t-body3 text-t-third hover:text-t-secondary mobile:mt-[13px]">
+                                    <a target="_blank" rel="noreferrer" href="#" class="bg-transparent mb-[0px] flex items-center p-[0px] mobile:justify-center mobile:text-center tablet:top-[10px] noH5:absolute ltr:noH5:right-0 rtl:noH5:left-0 desktop:top-[10px] t-body3 text-t-third hover:text-t-secondary mobile:mt-[13px]">
                                        {{ __('landing.view_all_coins') }}
                                        <svg size="16" class="bn-svg icon-dir mt-[3px] h-[16px] w-[16px]" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                                           <path d="M15.698 12.568a.9.9 0 00-.061-1.205l-6-6-.069-.061a.9.9 0 00-1.266 1.266l.061.069L13.727 12l-5.364 5.363a.9.9 0 001.274 1.274l6-6 .061-.069z" fill="currentColor"></path>
@@ -935,15 +935,15 @@
                            <div class="flex items-center" style="gap:40px">
                               <div class="flex items-center flex-1" style="gap:20px;width:368px">
                                  <img src="{{ asset('assets/images/icons/forbes_dark.png') }}" class="filter flex-shrink-0" style="width:64px;height:64px"/>
-                                 <div class="t-body3 flex-1 min-w-0 text-SecondaryText">{{ __('landing.homepage-forbes-2025') }}</div>
+                                 <div class="t-body3 flex-1 min-w-0 text-SecondaryText">{{ __('landing.recognized_forbesx27_most_trusted_crypto') }}</div>
                               </div>
                               <div class="flex items-center flex-1" style="gap:20px;width:368px">
                                  <img src="{{ asset('assets/images/icons/fortune_dark.png') }}" class="filter flex-shrink-0" style="width:64px;height:64px"/>
-                                 <div class="t-body3 flex-1 min-w-0 text-SecondaryText">{{ __('landing.homepage-fortune-2025') }}</div>
+                                 <div class="t-body3 flex-1 min-w-0 text-SecondaryText">{{ __('landing.listed_fortunex27s_fintech_innovators_asia') }}</div>
                               </div>
                               <div class="flex items-center flex-1" style="gap:20px;width:368px">
                                  <img src="{{ asset('assets/images/icons/cnbc_dark.png') }}" class="filter flex-shrink-0" style="width:64px;height:64px"/>
-                                 <div class="t-body3 flex-1 min-w-0 text-SecondaryText">{{ __('landing.homepage-cnbc-2025') }}</div>
+                                 <div class="t-body3 flex-1 min-w-0 text-SecondaryText">{{ __('landing.named_cnbcx27s_worldx27s_top_fintech') }}</div>
                               </div>
                            </div>
                         </div>
@@ -957,21 +957,8 @@
                                  </svg>
                               </a>
                            </div>
-                           <div class="flex w-full flex-col flex-wrap gap-m">
-                                <a href="{{ route('tradding') }}" class="cursor-pointer overflow-hidden text-PrimaryText text-subtitle1 font-normal hover:text-t-secondary mobile:leading-[22px] line-clamp-2" style="overflow-wrap:break-word;white-space:normal">
-                                    {{ __('landing.whale_makes_bitcoin_purchase') }}
-                                </a>
-                                <a href="{{ route('tradding') }}" class="cursor-pointer overflow-hidden text-PrimaryText text-subtitle1 font-normal hover:text-t-secondary mobile:leading-[22px] line-clamp-2" style="overflow-wrap:break-word;white-space:normal">
-                                    Stablecoin USDPT của Western Union chính thức ra mắt trên Solana.
-                                </a>
-                                <a href="{{ route('tradding') }}" class="cursor-pointer overflow-hidden text-PrimaryText text-subtitle1 font-normal hover:text-t-secondary mobile:leading-[22px] line-clamp-2" style="overflow-wrap:break-word;white-space:normal">
-                                    Alex Thorn của Galaxy Digital kêu gọi thông qua Đạo luật Minh bạch trước cuộc bầu cử giữa nhiệm kỳ.
-                                </a>
-                                <a href="{{ route('tradding') }}" class="cursor-pointer overflow-hidden text-PrimaryText text-subtitle1 font-normal hover:text-t-secondary mobile:leading-[22px] line-clamp-2" style="overflow-wrap:break-word;white-space:normal">
-                                    {{ __('landing.cerebras_systems_plans_ipo') }}
-                                </a>
-                            </div>
-                           <a target="_blank" rel="noreferrer" href="{{ route('tradding') }}" class="bg-transparent inline-flex items-center text-t-third hover:bg-transparent hover:text-t-secondary p-[0px] pr-s mt-m h-[22px] noH5:hidden">
+                           <div class="flex w-full flex-col flex-wrap gap-m"><a href="https://www.binance.com/en/square/post/319503667947522" class="cursor-pointer overflow-hidden text-PrimaryText text-subtitle1 font-normal hover:text-t-secondary mobile:leading-[22px] line-clamp-2" style="overflow-wrap:break-word;white-space:normal">{{ __('landing.whale_makes_significant_bitcoin_purchase') }}</a><a href="https://www.binance.com/en/square/post/319503642417346" class="cursor-pointer overflow-hidden text-PrimaryText text-subtitle1 font-normal hover:text-t-secondary mobile:leading-[22px] line-clamp-2" style="overflow-wrap:break-word;white-space:normal">{{ __('landing.western_unionx27s_stablecoin_usdpt_launches') }}</a><a href="https://www.binance.com/en/square/post/319502918044865" class="cursor-pointer overflow-hidden text-PrimaryText text-subtitle1 font-normal hover:text-t-secondary mobile:leading-[22px] line-clamp-2" style="overflow-wrap:break-word;white-space:normal">{{ __('landing.galaxy_digitalx27s_alex_thorn_urges') }}</a><a href="https://www.binance.com/en/square/post/319501194330449" class="cursor-pointer overflow-hidden text-PrimaryText text-subtitle1 font-normal hover:text-t-secondary mobile:leading-[22px] line-clamp-2" style="overflow-wrap:break-word;white-space:normal">{{ __('landing.cerebras_systems_plans_ipo_raise') }}</a></div>
+                           <a target="_blank" rel="noreferrer" href="/en/register?registerChannel=homepage_square" class="bg-transparent inline-flex items-center text-t-third hover:bg-transparent hover:text-t-secondary p-[0px] pr-s mt-m h-[22px] noH5:hidden">
                               <div class="t-body3">{{ __('landing.view_all_news') }}</div>
                               <svg class="bn-svg icon-dir mt-[3px] h-[16px] w-[16px]" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                                  <path d="M15.698 12.568a.9.9 0 00-.061-1.205l-6-6-.069-.061a.9.9 0 00-1.266 1.266l.061.069L13.727 12l-5.364 5.363a.9.9 0 001.274 1.274l6-6 .061-.069z" fill="currentColor"></path>
@@ -984,15 +971,15 @@
                      <div class="flex items-center" style="gap:40px">
                         <div class="flex items-center flex-1" style="gap:20px;width:368px">
                            <img src="{{ asset('assets/images/icons/forbes_dark.png') }}" class="filter flex-shrink-0" style="width:64px;height:64px"/>
-                           <div class="t-body3 flex-1 min-w-0 text-SecondaryText">{{ __('landing.recognized_forbes_most_trusted_crypto') }}</div>
+                           <div class="t-body3 flex-1 min-w-0 text-SecondaryText">{{ __('landing.recognized_forbesx27_most_trusted_crypto') }}</div>
                         </div>
                         <div class="flex items-center flex-1" style="gap:20px;width:368px">
                            <img src="{{ asset('assets/images/icons/fortune_dark.png') }}" class="filter flex-shrink-0" style="width:64px;height:64px"/>
-                           <div class="t-body3 flex-1 min-w-0 text-SecondaryText">{{ __('landing.listed_fortune_fintech_innovators_asia') }}</div>
+                           <div class="t-body3 flex-1 min-w-0 text-SecondaryText">{{ __('landing.listed_fortunex27s_fintech_innovators_asia') }}</div>
                         </div>
                         <div class="flex items-center flex-1" style="gap:20px;width:368px">
                            <img src="{{ asset('assets/images/icons/cnbc_dark.png') }}" class="filter flex-shrink-0" style="width:64px;height:64px"/>
-                           <div class="t-body3 flex-1 min-w-0 text-SecondaryText">{{ __('landing.named_cnbc_worlds_top_fintech') }}</div>
+                           <div class="t-body3 flex-1 min-w-0 text-SecondaryText">{{ __('landing.named_cnbcx27s_worldx27s_top_fintech') }}</div>
                         </div>
                      </div>
                   </div>
@@ -1013,14 +1000,14 @@
                               </div>
                               <div style="display:flex;flex-direction:column;gap:36px">
                                  <div>
-                                    <div class="t-body3">As of February 2026, the SAFU fund wallet comprises a reserve of</div>
+                                    <div class="t-body3">{{ __('landing.february_the_safu_fund_wallet') }}</div>
                                     <div>
                                        <div class="t-headline2 text-PrimaryYellow h-[32px]" style="line-height:32px;margin-top:4px;margin-bottom:4px">15,000 BTC</div>
                                        <div class="flex">
                                           <div class="text-PrimaryText t-body3">
-                                             SAFU Wallet<!-- -->: 
+                                             {{ __('landing.safu_wallet') }}<!-- -->: 
                                           </div>
-                                          <a href="https://www.blockchain.com/explorer/addresses/btc/1BAuq7Vho2CEkVkUxbfU26LhwQjbCmWQkD" target="_blank" rel="noopener noreferrer" class="text-TertiaryText t-body3">1BAuq7Vho2CEkVkUxbfU26LhwQjbCmWQkD</a>
+                                          <a href="https://www.blockchain.com/explorer/addresses/btc/1BAuq7Vho2CEkVkUxbfU26LhwQjbCmWQkD" target="_blank" rel="noopener noreferrer" class="text-TertiaryText t-body3">{{ __('landing.1bauq7vho2cekvkuxbfu26lhwqjbcmwqkd') }}</a>
                                        </div>
                                     </div>
                                  </div>
@@ -1087,7 +1074,7 @@
                      </div>
                      <div class="flex w-1/2 flex-col justify-between mobile:w-full tablet:w-[352px] desktop:h-[610px]">
                         <div class="flex items-start justify-between mobile:flex-col mobile:items-center tablet:flex-col">
-                           <h2 class="text-headline2 text-PrimaryText mobile:text-center mobile:text-headline5 tablet:text-headline4">{{ __('landing.trade_anywhere_anytime') }}</h2>
+                           <h2 class="text-headline2 text-PrimaryText mobile:text-center mobile:text-headline5 tablet:text-headline4">{{ __('landing.trade_the_anywhere_anytime') }}</h2>
                         </div>
                         <div class="hidden justify-center gap-xl mobile:flex"><a class="h-[40px] w-[135px] items-center rounded-xs bg-contain py-2xs pl-2xs" style="background-image:url({{ asset('assets/images/icons/en-apple.png') }})" href=""></a><a class="h-[40px] w-[135px] items-center rounded-xs bg-contain py-2xs pl-2xs" style="background-image:url({{ asset('assets/images/icons/en-google.png') }})" href=""></a></div>
                         <div class="download-pc flex flex-col gap-5xl mobile:hidden mobile:gap-xl tablet:gap-xl">
@@ -1142,14 +1129,14 @@
                   <div class="faq-item-widget dark  mb-m w-full rounded-[10px] px-xl py-m mobile:bg-inherit last:mb-[0px] mobile:mb-[0px] mobile:px-[0px] mobile:py-[16px]">
                      <div class="flex cursor-pointer items-center ">
                         <div class="border-[#2B3139] flex items-center justify-center rounded-[8px] text-PrimaryText h-[32px] w-[32px] border border-solid p-4xs text-subtitle1 mr-xs mobile:mr-2xs mobile:h-[32px] mobile:w-[32px] mobile:p-[0px] mobile:font-normal">1</div>
-                        <h2 class="mr-m flex-1 text-headline6 text-PrimaryText mobile:t-subtitle6 mobile:font-normal">{{ __('landing.why_binance_best_exchange') }}</h2>
+                        <h2 class="mr-m flex-1 text-headline6 text-PrimaryText mobile:t-subtitle6 mobile:font-normal">{{ __('landing.why_binance_the_best_exchange') }}</h2>
                         <div>
                            <svg class="bn-svg mobile:mx-[8px]" style="font-size:20px" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                               <path d="M11.1 19.5v-6.6H4.5a.9.9 0 010-1.8h6.6V4.5a.9.9 0 011.8 0v6.6h6.6l.092.005a.9.9 0 010 1.79l-.092.005h-6.6v6.6a.9.9 0 01-1.8 0z" fill="currentColor"></path>
                            </svg>
                         </div>
                      </div>
-                     <div class="mt-m px-[48px] text-body1 text-t-third  mobile:t-body1-1 mobile:pl-[32px] mobile:pr-[48px] hidden">Binance is the best cryptocurrency exchange for traders because it offers deep liquidity, low fees, and a complete range of products including <a class='answer-link' href=https://www./en/trade>{{ __('landing.spot') }}</a>, <a class='answer-link' href=https://www./en/futures>{{ __('landing.futures') }}</a>, <a class='answer-link' href=https://www./en/earn>Earn</a>, and <a class='answer-link' href=https://p2p./en>P2P</a> markets. Users can track <a class='answer-link' href=https://www./en/price>crypto live prices</a>, explore <a class='answer-link' href=https://www./en/price/new-cryptocurrency>new cryptocurrencies</a>, and discover <a class='answer-link' href=https://www./en/price/top-gaining-crypto>top gaining cryptos</a> or <a class='answer-link' href=https://www./en/price/top-losing-crypto>top losing cryptocurrencies</a> directly on the platform. Binance also provides exclusive early access to token launches through <a class='answer-link' href=https://www./en/price/binance-megadrop>{{ __('landing.binance_megadrop') }}</a> and innovative pre-listing projects via <a class='answer-link' href=https://www./en/price/binance-alpha>{{ __('landing.binance_alpha') }}</a>. With strong security, global liquidity, and an easy-to-use interface, Binance remains the trusted choice for millions of crypto traders worldwide.</div>
+                     <div class="mt-m px-[48px] text-body1 text-t-third  mobile:t-body1-1 mobile:pl-[32px] mobile:pr-[48px] hidden">{{ __('landing.binance_the_best_cryptocurrency_exchange') }} <a class='answer-link' href=https://www./en/trade>{{ __('landing.spot') }}</a>, <a class='answer-link' href=https://www./en/futures>{{ __('landing.futures') }}</a>, <a class='answer-link' href=https://www./en/earn>{{ __('landing.earn') }}</a>{{ __('landing.and') }} <a class='answer-link' href=https://p2p./en>P2P</a> {{ __('landing.markets_users_can_track') }} <a class='answer-link' href=https://www./en/price>{{ __('landing.crypto_live_prices') }}</a>{{ __('landing.explore') }} <a class='answer-link' href=https://www./en/price/new-cryptocurrency>{{ __('landing.new_cryptocurrencies') }}</a>{{ __('landing.and_discover') }} <a class='answer-link' href=https://www./en/price/top-gaining-crypto>{{ __('landing.top_gaining_cryptos') }}</a> or <a class='answer-link' href=https://www./en/price/top-losing-crypto>{{ __('landing.top_losing_cryptocurrencies') }}</a> {{ __('landing.directly_the_platform_binance_also') }} <a class='answer-link' href=https://www./en/price/binance-megadrop>{{ __('landing.binance_megadrop') }}</a> {{ __('landing.and_innovative_prelisting_projects_via') }} <a class='answer-link' href=https://www./en/price/binance-alpha>{{ __('landing.binance_alpha') }}</a>{{ __('landing.with_strong_security_global_liquidity') }}</div>
                   </div>
                   <div class="faq-item-widget dark  mb-m w-full rounded-[10px] px-xl py-m mobile:bg-inherit last:mb-[0px] mobile:mb-[0px] mobile:px-[0px] mobile:py-[16px]">
                      <div class="flex cursor-pointer items-center ">
@@ -1163,25 +1150,25 @@
                      </div>
                      <div class="mt-m px-[48px] text-body1 text-t-third  mobile:t-body1-1 mobile:pl-[32px] mobile:pr-[48px] hidden">
                         Binance is the world's leading cryptocurrency exchange, catering to over 270 million registered users in over 180 countries. With low fees and over 500 cryptocurrencies to trade, Binance is the preferred exchange to trade Bitcoin, Altcoins, and other virtual assets.<br><br>{{ __('landing.with_binance_users_can') }}<br>
-                        <li class='list-item-content'>Trade hundreds of cryptocurrencies on <a class='answer-link' href=https://www./en/trade/BTC_USDT?theme=light&amp;type=spot>{{ __('landing.spot') }}</a>, <a class='answer-link' href=https://www./en/trade/BTC_USDT?theme=light&amp;type=spot>{{ __('landing.margin') }}</a>, and <a class='answer-link' href=https://www./en/futures/markets/um>{{ __('landing.futures') }}</a> markets.</li>
-                        <li class='list-item-content'>Buy and sell cryptocurrencies with <a class='answer-link' href=https://p2p./en/trade/all-payments/USDT?fiat=EUR>{{ __('landing.binance_p2p') }}</a>.</li>
-                        <li class='list-item-content'>Earn interest on your crypto with <a class='answer-link' href=https://www./en/earn>{{ __('landing.binance_earn') }}</a>.</li>
-                        <li class='list-item-content'>Buy or earn new tokens on <a class='answer-link' href=https://launchpad./en>{{ __('landing.binance_launchpool') }}</a>, Airdrop, Megadrop, etc.</li>
-                        <li class='list-item-content'>Trade, stake, and loan NFTs on <a class='answer-link' href=https://www./en/nft/home>{{ __('landing.binance_nft') }}</a> marketplace.</li>
-                        <br>To get started, check out our <a class='answer-link' href=https://www./en/support/faq>{{ __('landing.learning') }}</a>.
+                        <li class='list-item-content'>{{ __('landing.trade_hundreds_cryptocurrencies') }} <a class='answer-link' href=https://www./en/trade/BTC_USDT?theme=light&amp;type=spot>{{ __('landing.spot') }}</a>, <a class='answer-link' href=https://www./en/trade/BTC_USDT?theme=light&amp;type=spot>{{ __('landing.margin') }}</a>{{ __('landing.and') }} <a class='answer-link' href=https://www./en/futures/markets/um>{{ __('landing.futures') }}</a> {{ __('landing.markets') }}</li>
+                        <li class='list-item-content'>{{ __('landing.buy_and_sell_cryptocurrencies_with') }} <a class='answer-link' href=https://p2p./en/trade/all-payments/USDT?fiat=EUR>{{ __('landing.binance_p2p') }}</a>.</li>
+                        <li class='list-item-content'>{{ __('landing.earn_interest_your_crypto_with') }} <a class='answer-link' href=https://www./en/earn>{{ __('landing.binance_earn') }}</a>.</li>
+                        <li class='list-item-content'>{{ __('landing.buy_earn_new_tokens') }} <a class='answer-link' href=https://launchpad./en>{{ __('landing.binance_launchpool') }}</a>{{ __('landing.airdrop_megadrop_etc') }}</li>
+                        <li class='list-item-content'>{{ __('landing.trade_stake_and_loan_nfts') }} <a class='answer-link' href=https://www./en/nft/home>{{ __('landing.binance_nft') }}</a> {{ __('landing.marketplace') }}</li>
+                        <br>{{ __('landing.get_started_check_out_our') }} <a class='answer-link' href=https://www./en/support/faq>{{ __('landing.learning') }}</a>.
                      </div>
                   </div>
                   <div class="faq-item-widget dark  mb-m w-full rounded-[10px] px-xl py-m mobile:bg-inherit last:mb-[0px] mobile:mb-[0px] mobile:px-[0px] mobile:py-[16px]">
                      <div class="flex cursor-pointer items-center ">
                         <div class="border-[#2B3139] flex items-center justify-center rounded-[8px] text-PrimaryText h-[32px] w-[32px] border border-solid p-4xs text-subtitle1 mr-xs mobile:mr-2xs mobile:h-[32px] mobile:w-[32px] mobile:p-[0px] mobile:font-normal">3</div>
-                        <h2 class="mr-m flex-1 text-headline6 text-PrimaryText mobile:t-subtitle6 mobile:font-normal">{{ __('landing.how_buy_bitcoin') }}</h2>
+                        <h2 class="mr-m flex-1 text-headline6 text-PrimaryText mobile:t-subtitle6 mobile:font-normal">{{ __('landing.how_buy_bitcoin_and_other') }}</h2>
                         <div>
                            <svg class="bn-svg mobile:mx-[8px]" style="font-size:20px" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                               <path d="M11.1 19.5v-6.6H4.5a.9.9 0 010-1.8h6.6V4.5a.9.9 0 011.8 0v6.6h6.6l.092.005a.9.9 0 010 1.79l-.092.005h-6.6v6.6a.9.9 0 01-1.8 0z" fill="currentColor"></path>
                            </svg>
                         </div>
                      </div>
-                     <div class="mt-m px-[48px] text-body1 text-t-third  mobile:t-body1-1 mobile:pl-[32px] mobile:pr-[48px] hidden">There are several ways to buy cryptocurrencies on Binance. You can use a credit/debit card, cash balance, or Apple Pay/Google Pay to <a class='answer-link' href=https://www./en/support/faq/how-to-buy-cryptocurrency-on-binance-homepage-400c38f5e0cd4b46a1d0805c296b5582>purchase crypto</a> on Binance. Before getting started, please make sure you’ve completed <a class='answer-link' href=https://www./en/support/faq/how-to-complete-identity-verification-360027287111>{{ __('landing.identity_verification') }}</a> {{ __('landing.for_your_binance_account') }}</div>
+                     <div class="mt-m px-[48px] text-body1 text-t-third  mobile:t-body1-1 mobile:pl-[32px] mobile:pr-[48px] hidden">{{ __('landing.there_are_several_ways_buy') }} <a class='answer-link' href=https://www./en/support/faq/how-to-buy-cryptocurrency-on-binance-homepage-400c38f5e0cd4b46a1d0805c296b5582>{{ __('landing.purchase_crypto') }}</a> {{ __('landing.binance_before_getting_started_please') }} <a class='answer-link' href=https://www./en/support/faq/how-to-complete-identity-verification-360027287111>{{ __('landing.identity_verification') }}</a> {{ __('landing.for_your_binance_account') }}</div>
                   </div>
                   <div class="faq-item-widget dark  mb-m w-full rounded-[10px] px-xl py-m mobile:bg-inherit last:mb-[0px] mobile:mb-[0px] mobile:px-[0px] mobile:py-[16px]">
                      <div class="flex cursor-pointer items-center ">
@@ -1193,31 +1180,31 @@
                            </svg>
                         </div>
                      </div>
-                     <div class="mt-m px-[48px] text-body1 text-t-third  mobile:t-body1-1 mobile:pl-[32px] mobile:pr-[48px] hidden">The easiest way to track the latest cryptocurrency prices, trading volumes, trending altcoins, and market cap is the <a class='answer-link' href=https://www./en/price>{{ __('landing.binance_cryptocurrency_directory') }}</a>. Click on the coins to know historical coin prices, 24-hour trading volume, and the price of cryptocurrencies like <a class='answer-link' href=https://www./en/price/bitcoin>{{ __('landing.bitcoin') }}</a>, <a class='answer-link' href=https://www./en/price/ethereum>{{ __('landing.ethereum') }}</a>, <a class='answer-link' href=https://www./en/price/bnb>BNB</a> and others in real-time.</div>
+                     <div class="mt-m px-[48px] text-body1 text-t-third  mobile:t-body1-1 mobile:pl-[32px] mobile:pr-[48px] hidden">{{ __('landing.the_easiest_way_track_the') }} <a class='answer-link' href=https://www./en/price>{{ __('landing.binance_cryptocurrency_directory') }}</a>{{ __('landing.click_the_coins_know_historical') }} <a class='answer-link' href=https://www./en/price/bitcoin>{{ __('landing.bitcoin') }}</a>, <a class='answer-link' href=https://www./en/price/ethereum>{{ __('landing.ethereum') }}</a>, <a class='answer-link' href=https://www./en/price/bnb>BNB</a> {{ __('landing.and_others_realtime') }}</div>
                   </div>
                   <div class="faq-item-widget dark  mb-m w-full rounded-[10px] px-xl py-m mobile:bg-inherit last:mb-[0px] mobile:mb-[0px] mobile:px-[0px] mobile:py-[16px]">
                      <div class="flex cursor-pointer items-center ">
                         <div class="border-[#2B3139] flex items-center justify-center rounded-[8px] text-PrimaryText h-[32px] w-[32px] border border-solid p-4xs text-subtitle1 mr-xs mobile:mr-2xs mobile:h-[32px] mobile:w-[32px] mobile:p-[0px] mobile:font-normal">5</div>
-                        <h2 class="mr-m flex-1 text-headline6 text-PrimaryText mobile:t-subtitle6 mobile:font-normal">{{ __('landing.how_trade_cryptocurrencies') }}</h2>
+                        <h2 class="mr-m flex-1 text-headline6 text-PrimaryText mobile:t-subtitle6 mobile:font-normal">{{ __('landing.how_trade_cryptocurrencies_binance') }}</h2>
                         <div>
                            <svg class="bn-svg mobile:mx-[8px]" style="font-size:20px" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                               <path d="M11.1 19.5v-6.6H4.5a.9.9 0 010-1.8h6.6V4.5a.9.9 0 011.8 0v6.6h6.6l.092.005a.9.9 0 010 1.79l-.092.005h-6.6v6.6a.9.9 0 01-1.8 0z" fill="currentColor"></path>
                            </svg>
                         </div>
                      </div>
-                     <div class="mt-m px-[48px] text-body1 text-t-third  mobile:t-body1-1 mobile:pl-[32px] mobile:pr-[48px] hidden">You can trade hundreds of cryptocurrencies on Binance via the <a class='answer-link' href=https://www./en/support/faq/spot-margin-trading?c=3&navId=3#15>{{ __('landing.spot') }}</a>, <a class='answer-link' href=https://www./en/support/faq/spot-margin-trading?c=3&navId=3#16>{{ __('landing.margin') }}</a>, <a class='answer-link' href=https://www./en/support/faq/crypto-derivatives?c=4&navId=4#18>{{ __('landing.futures') }}</a>, and <a class='answer-link' href=https://www./en/support/faq/374321c9317c473480243365298b8706>{{ __('landing.options') }}</a> markets. To <a class='answer-link' href=https://www./en/support/faq/binance-beginner-s-guide-c780097f75dd450a82d17f1e84153276>{{ __('landing.begin_trading') }}</a>, users need to register an account, complete identity verification, buy/deposit crypto, and start trading.</div>
+                     <div class="mt-m px-[48px] text-body1 text-t-third  mobile:t-body1-1 mobile:pl-[32px] mobile:pr-[48px] hidden">{{ __('landing.you_can_trade_hundreds_cryptocurrencies') }} <a class='answer-link' href=https://www./en/support/faq/spot-margin-trading?c=3&navId=3#15>{{ __('landing.spot') }}</a>, <a class='answer-link' href=https://www./en/support/faq/spot-margin-trading?c=3&navId=3#16>{{ __('landing.margin') }}</a>, <a class='answer-link' href=https://www./en/support/faq/crypto-derivatives?c=4&navId=4#18>{{ __('landing.futures') }}</a>{{ __('landing.and') }} <a class='answer-link' href=https://www./en/support/faq/374321c9317c473480243365298b8706>{{ __('landing.options') }}</a> markets. To <a class='answer-link' href=https://www./en/support/faq/binance-beginner-s-guide-c780097f75dd450a82d17f1e84153276>{{ __('landing.begin_trading') }}</a>{{ __('landing.users_need_register_account_complete') }}</div>
                   </div>
                   <div class="faq-item-widget dark  mb-m w-full rounded-[10px] px-xl py-m mobile:bg-inherit last:mb-[0px] mobile:mb-[0px] mobile:px-[0px] mobile:py-[16px]">
                      <div class="flex cursor-pointer items-center ">
                         <div class="border-[#2B3139] flex items-center justify-center rounded-[8px] text-PrimaryText h-[32px] w-[32px] border border-solid p-4xs text-subtitle1 mr-xs mobile:mr-2xs mobile:h-[32px] mobile:w-[32px] mobile:p-[0px] mobile:font-normal">6</div>
-                        <h2 class="mr-m flex-1 text-headline6 text-PrimaryText mobile:t-subtitle6 mobile:font-normal">{{ __('landing.how_earn_from_crypto') }}</h2>
+                        <h2 class="mr-m flex-1 text-headline6 text-PrimaryText mobile:t-subtitle6 mobile:font-normal">{{ __('landing.how_earn_from_crypto_binance') }}</h2>
                         <div>
                            <svg class="bn-svg mobile:mx-[8px]" style="font-size:20px" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                               <path d="M11.1 19.5v-6.6H4.5a.9.9 0 010-1.8h6.6V4.5a.9.9 0 011.8 0v6.6h6.6l.092.005a.9.9 0 010 1.79l-.092.005h-6.6v6.6a.9.9 0 01-1.8 0z" fill="currentColor"></path>
                            </svg>
                         </div>
                      </div>
-                     <div class="mt-m px-[48px] text-body1 text-t-third  mobile:t-body1-1 mobile:pl-[32px] mobile:pr-[48px] hidden">Users can earn rewards on more than 180+ cryptocurrencies by using one of the products offered on <a class='answer-link' href=https://www./en/earn>{{ __('landing.binance_earn') }}</a>. Our platform offers dozens of digital assets like <a class='answer-link' href=https://www./en/price/bitcoin>{{ __('landing.bitcoin') }}</a>, <a class='answer-link' href=https://www./en/price/ethereum>{{ __('landing.ethereum') }}</a>, and stablecoins.</div>
+                     <div class="mt-m px-[48px] text-body1 text-t-third  mobile:t-body1-1 mobile:pl-[32px] mobile:pr-[48px] hidden">{{ __('landing.users_can_earn_rewards_more') }} <a class='answer-link' href=https://www./en/earn>{{ __('landing.binance_earn') }}</a>{{ __('landing.our_platform_offers_dozens_digital') }} <a class='answer-link' href=https://www./en/price/bitcoin>{{ __('landing.bitcoin') }}</a>, <a class='answer-link' href=https://www./en/price/ethereum>{{ __('landing.ethereum') }}</a>{{ __('landing.and_stablecoins') }}</div>
                   </div>
                </div>
             </div>
@@ -1225,11 +1212,11 @@
                <div class="mx-auto mobile:px-m px-xl" style="max-width:1248px">
                     <div class="flex flex-col items-center py-[64px] mobile:py-xl tablet:py-[48px]">
                         <div class="mb-[40px] text-headline2 text-PrimaryText mobile:mb-m mobile:text-subtitle1 tablet:mb-xl tablet:text-headline4">
-                            <h2>{{ __('landing.secure_lowfee_trading') }}</h2>
+                            <h2>{{ __('landing.secure_lowfee_trading_binance') }}</h2>
                         </div>
-                            @guest('client')
-                            <a href="{{  route('signup') }}" class="bn-button data-size-large h-[48px] min-w-[164px] rounded-[8px] px-m py-2xs text-[16px] mobile:h-[32px] mobile:max-h-[32px] mobile:min-h-[32px] mobile:min-w-[128px] mobile:rounded-[6px] mobile:px-s mobile:py-4xs mobile:text-[14px] tablet:rounded-[8px]">{{ __('landing.sign_up_now') }}</a>
-                            @endguest
+                            {{ __('landing.guestclient') }}
+                            <a href="{{  route('signup') }}" class="bn-button data-size-large h-[48px] min-w-[164px] rounded-[8px] px-m py-2xs text-[16px] mobile:h-[32px] mobile:max-h-[32px] mobile:min-h-[32px] mobile:min-w-[128px] mobile:rounded-[6px] mobile:px-s mobile:py-4xs mobile:text-[14px] tablet:rounded-[8px]">{{ __('landing.sign_now') }}</a>
+                            {{ __('landing.endguest') }}
                         </div>
                     </div>
                 </div>
@@ -1389,7 +1376,7 @@
                         <div>Nest Exchange Limited (Recognition Order Number 0072) and Binance Bahrain BSC (Licence Number CAS-4/01) offers limited derivative products to Binance users in South Africa as a Juristic Representatives of FiveWest OTC Desk (Pty) Limited (Authorised FSP 51619), an authorised financial service provider in South Africa. Nest Exchange Limited and Binance Bahrain BSC are a part of the Binance group of companies.</div>
                      </div>
                      <div class="footer-copyright-text footer-copyright-enterprise typography-Caption2">
-                        <span>Binance</span>
+                        <span>{{ __('landing.binance') }}</span>
                         <span class="no-wrap">
                            © <!-- -->2026
                         </span>
@@ -15478,7 +15465,7 @@
              }
          }())
       </script>
-       @verbatim
+       {{ __('landing.verbatim') }}
       <script id="__APP_DATA" type="application/json" nonce="25b28dca-3fd5-41bd-944e-3713ed4bf0eb">
          {
     "dynamicIds": [3007, 9248, 4222, 6725, 3141, 1241, 4335, 4231, 950, 344, 7275, 6621, 4394, 9682, 9535, 589, 2616, 9596, 7503, 7461, 3660, 5550, 7772, 733, 764, 1228, 8622, 6101, 8087, 3068, 2222, 8144, 9110, 2434, 8196, 686, 6296, 8794, 2477, 2571, 3464, 8554, 9411, 5268, 5689, 9138, 2908, 5731, 2902, 6108, 5246, 4953, 415, 9097, 3558, 4940, 9838, 2806, 2282, 7982, 9999, 4943, 6399, 1490, 3468, 1956, 2933, 7718, 9336, 7889, 1483, 2966, 2140, 442, 1371, 528, 1155, 8147, 4553, 9772, 9202, 5501, 7667, 8973, 756, 1476, 5173, 7657, 26, 9445, 9671, 9165, 6354, 3202, 1575, 5553, 1222, 4856, 292, 2496, 99, 279, 5562, 341, 5313, 6092, 6357, 9546, 5203, 3152, 479, 7278, 1635, 1388, 6313, 2025, 7856, 1900, 1858, 7869, 6258, 3460, 6102, 6711, 6856, 2553, 1692, 1587, 2279, 6562, 9884],
@@ -15974,37 +15961,37 @@
                 }, {
                     "id": "319503642417346",
                     "webLink": "https://www.binance.com/en/square/post/319503642417346",
-                    "title": "Stablecoin USDPT của Western Union chính thức ra mắt trên Solana.",
+                    "title": "Western Union's Stablecoin USDPT Launches on Solana",
                     "translatedData": null
                 }, {
                     "id": "319502918044865",
                     "webLink": "https://www.binance.com/en/square/post/319502918044865",
-                    "title": "Alex Thorn của Galaxy Digital kêu gọi thông qua Đạo luật Minh bạch trước cuộc bầu cử giữa nhiệm kỳ.",
+                    "title": "Galaxy Digital's Alex Thorn Urges Clarity Act Passage Before Midterms",
                     "translatedData": null
                 }, {
                     "id": "319501194330449",
                     "webLink": "https://www.binance.com/en/square/post/319501194330449",
-                    "title": "Cerebras Systems lên kế hoạch IPO để huy động 3,5 tỷ đô la.",
+                    "title": "Cerebras Systems Plans IPO to Raise $3.5 Billion",
                     "translatedData": null
                 }, {
                     "id": "319500683054642",
                     "webLink": "https://www.binance.com/en/square/post/319500683054642",
-                    "title": "Phần thưởng Crypto của Gudtrip cho Việc Sử dụng Cannabis Gây Ra Những Lo ngại Đạo đức",
+                    "title": "Gudtrip's Crypto Rewards for Cannabis Use Raise Ethical Concerns",
                     "translatedData": null
                 }, {
                     "id": "319496414572658",
                     "webLink": "https://www.binance.com/en/square/post/319496414572658",
-                    "title": "Công ty con của Hut8 tái cấu trúc khoản vay, giải phóng 3.300 BTC từ tài sản thế chấp.",
+                    "title": "Hut8 Subsidiary Refinances Loan, Releases 3,300 BTC from Collateral",
                     "translatedData": null
                 }, {
                     "id": "319496364758337",
                     "webLink": "https://www.binance.com/en/square/post/319496364758337",
-                    "title": "Bộ Chỉ huy Trung ương Hoa Kỳ bác bỏ thông tin Iran tấn công bằng tên lửa vào tàu hải quân.",
+                    "title": "U.S. Central Command Denies Iranian Missile Attack on Navy Ship",
                     "translatedData": null
                 }, {
                     "id": "319493906195570",
                     "webLink": "https://www.binance.com/en/square/post/319493906195570",
-                    "title": "Những thay đổi tiềm năng trong ban lãnh đạo Thượng viện có thể tác động đến quy định về tiền điện tử.",
+                    "title": "Potential Senate Leadership Changes Could Impact Crypto Regulation",
                     "translatedData": null
                 }],
                 "allSymbols": [{
@@ -17269,7 +17256,7 @@
     "publicPath": "/"
 }
       </script>
-      @endverbatim
+      {{ __('landing.endverbatim') }}
       <div id="__APP_EXTENSION" style="position: absolute;"></div>
       <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-M86QHGF" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <script id="remote-config" src="https://public.bnbstatic.com/unpkg/config/remote-config.js" nonce="25b28dca-3fd5-41bd-944e-3713ed4bf0eb" fetchpriority="high"></script>
