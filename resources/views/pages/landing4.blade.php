@@ -1239,7 +1239,7 @@
          <div class="_CWC">
             <div class="theme-root dark _CWC common-widget-provider">
                <footer class="hidden-in-bnc-app footer-wrapper dark-color common-widget-css_wrap theme-root">
-                  <div class="footer-content">
+                  <!-- <div class="footer-content">
                      <div class="footer-community">
                         <h3 class="footer-navlist-title">{{ __('landing.community') }}</h3>
                         <div class="footer-icongroup">
@@ -1382,7 +1382,7 @@
                            </div>
                         </div>
                      </div>
-                  </div>
+                  </div> -->
                   <div class="footer-copyright">
                      <div class="footer-copyright-line"></div>
                      <div class="typography-Caption2 footer-copyright-text footer-copyright-legal">
