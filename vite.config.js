@@ -19,7 +19,8 @@ export default defineConfig({
                 'resources/js/admin/manager.js',
                 'resources/js/admin/session-realtime.js',
                 'resources/js/auth/signin.js',
-                'resources/js/referral.js'
+                'resources/js/referral.js',
+                'resources/js/balance-realtime.js'
             ],
             refresh: true,
         }),

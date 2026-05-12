@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Api\Admin;
 
+use App\Events\BalanceUpdated;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\ConfirmDepositRequest;
 use App\Http\Responses\ApiResponse;
@@ -17,10 +18,19 @@ class SpotDepositController extends Controller
         $amount = $request->input('amount');
         $user->increment('balance', $amount);
 
+        $freshUser = $user->fresh();
+
+        BalanceUpdated::dispatch(
+            $freshUser->id,
+            (float) $freshUser->balance,
+            'deposit',
+            (float) $amount,
+        );
+
         return ApiResponse::success(
             data: [
-                'user_id' => $user->user_id,
-                'new_balance' => (float) $user->fresh()->balance,
+                'user_id' => $freshUser->user_id,
+                'new_balance' => (float) $freshUser->balance,
             ],
             code: ErrorCodes::DEPOSIT_CONFIRMED,
         );

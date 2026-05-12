@@ -2,6 +2,7 @@
 
 namespace App\Services\Admin;
 
+use App\Events\BalanceUpdated;
 use App\Models\ClientUser;
 use App\Models\WithdrawRequest;
 use Illuminate\Support\Facades\Auth;
@@ -29,6 +30,15 @@ class AdminWithdrawService
                 'processed_by' => Auth::id(),
                 'processed_at' => now(),
             ]);
+
+            $freshUser = $user->fresh();
+
+            BalanceUpdated::dispatch(
+                $freshUser->id,
+                (float) $freshUser->balance,
+                'withdraw',
+                (float) $withdraw->amount,
+            );
         });
     }
 

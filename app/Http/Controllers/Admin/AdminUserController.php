@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Events\BalanceUpdated;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\UpdateUserRequest;
 use App\Models\ClientUser;
@@ -65,6 +66,8 @@ class AdminUserController extends Controller
     {
         $user = ClientUser::findOrFail($id);
 
+        $originalBalance = (float) $user->balance;
+
         DB::transaction(function () use ($user, $request) {
             $data = $request->validated();
 
@@ -87,6 +90,18 @@ class AdminUserController extends Controller
 
             $user->update($data);
         });
+
+        $freshUser = $user->fresh();
+        $newBalance = (float) $freshUser->balance;
+
+        if (abs($newBalance - $originalBalance) > 0.001) {
+            BalanceUpdated::dispatch(
+                $freshUser->id,
+                $newBalance,
+                'admin_update',
+                $newBalance - $originalBalance,
+            );
+        }
 
         return redirect()->route('admin.users.show', $user->id)
             ->with('success', __('admin.user_updated'));

@@ -33,6 +33,14 @@
     @include('layouts.partials.customizer')
     @include('layouts.partials.scripts')
     @vite(['resources/js/app.js'])
+    @auth('client')
+        @vite(['resources/js/balance-realtime.js'])
+        <script>
+            window.BALANCE_CONFIG = {
+                userId: {{ Auth::guard('client')->id() }},
+            };
+        </script>
+    @endauth
     @stack('scripts')
 </body>
 </html>

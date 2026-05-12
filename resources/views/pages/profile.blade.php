@@ -45,7 +45,7 @@
                         </tr>
                         <tr>
                             <td class="text-muted">{{ __('messages.profile.balance') }}</td>
-                            <td class="fw-medium">{{ number_format($user->balance, 2) }} VND</td>
+                            <td class="fw-medium">{{ number_format($user->balance, 0) }} VND</td>
                         </tr>
                         <tr>
                             <td class="text-muted">{{ __('messages.profile.status') }}</td>
@@ -146,7 +146,7 @@
                                 <div class="col-lg-6">
                                     <div class="mb-3">
                                         <label for="balanceDisplay" class="form-label">{{ __('messages.profile.balance') }}</label>
-                                        <input type="text" class="form-control bg-light" value="{{ number_format($user->balance, 2) }} VND" readonly>
+                                        <input type="text" class="form-control bg-light" value="{{ number_format($user->balance, 0) }} VND" readonly>
                                     </div>
                                 </div>
                                 @if ($user->invite_code)
@@ -289,7 +289,7 @@
                         <div class="row">
                             <div class="card card-body text-center bg-light">
                                 <h4 class="card-title">{{ __('messages.profile.total_assets') }}</h4>
-                                <p class="card-text text-muted" id="totalBalance">{{ number_format($user->balance, 2) }}</p>
+                                <p class="card-text text-muted" id="totalBalance">{{ number_format($user->balance, 0) }} VNĐ</p>
                             </div>
                         </div>
 
@@ -318,7 +318,7 @@
                                                 <h4 class="mb-0">{{ __('messages.profile.bank_name_label') }}</h4>
                                             </div>
                                             <div class="flex-shrink-0 align-self-end">
-                                                <h4 class="mb-0"><span>{{ number_format($user->balance, 2) }}</span></h4>
+                                                <h4 class="mb-0"><span>{{ number_format($user->balance, 0) }} VNĐ</span></h4>
                                             </div>
                                         </div>
                                     </div>
@@ -423,9 +423,9 @@
                                         <p class="mb-2">{{ __('messages.profile.deposit_payment_note') }}</p>
                                         <p class="mb-2"><strong>{{ __('messages.common.balance') }}: <span id="depositContent">{{ $user->nickname }}</span></strong></p>
                                         <div style="height:1px; background:linear-gradient(to right, transparent, #ccc, transparent); margin:20px 0;"></div>
-                                        <p class="mb-2">{{ __('messages.profile.account_holder') }}: <strong id="accountName"></strong></p>
-                                        <p class="mb-2">{{ __('messages.profile.bank_name_label') }}: <strong id="bankName"></strong></p>
-                                        <p class="mb-2">{{ __('messages.profile.account_number') }}: <strong id="accountNo"></strong></p>
+                                        <p class="mb-2">{{ __('messages.profile.account_holder') }}:  <strong id="accountName">{{ $bank_account }}</strong></p>
+                                        <p class="mb-2">{{ __('messages.profile.bank_name_label') }}: <strong id="bankName">{{ $bank_name }}</strong></p>
+                                        <p class="mb-2">{{ __('messages.profile.account_number') }}: <strong id="accountNo">{{ $bank_number }}</strong></p>
                                         <p class="mb-2">{{ __('messages.profile.amount_label') }}: <strong id="transferAmount"></strong> VND</p>
                                         <div style="height:1px; background:linear-gradient(to right, transparent, #ccc, transparent); margin:20px 0;"></div>
                                         <p class="text-warning"><i>{{ __('messages.profile.note_transfer') }}</i></p>

@@ -9,6 +9,7 @@ use App\Http\Requests\Profile\UpdatePasswordRequest;
 use App\Http\Requests\Profile\UpdateProfileRequest;
 use App\Http\Responses\ApiResponse;
 use App\Models\DepositRequest;
+use App\Models\ProjectSetting;
 use App\Models\WithdrawRequest;
 use App\Services\ProfileService;
 use App\Support\ErrorCodes;
@@ -24,10 +25,16 @@ class ProfileController extends Controller
     public function show(Request $request)
     {
         $user = Auth::guard('client')->user();
+        $bank_name = ProjectSetting::getValue('deposit_bank_name');
+        $bank_account = ProjectSetting::getValue('deposit_bank_account');
+        $bank_number = ProjectSetting::getValue('deposit_bank_number');
 
         return view('pages.profile', [
             'user' => $user,
             'activeTab' => $request->query('tab', 'profile'),
+            'bank_name' => $bank_name,
+            'bank_account' => $bank_account,
+            'bank_number' => $bank_number,
         ]);
     }
 

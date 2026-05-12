@@ -2,6 +2,7 @@
 
 namespace App\Services\Admin;
 
+use App\Events\BalanceUpdated;
 use App\Models\ClientUser;
 use App\Models\DepositRequest;
 use Illuminate\Support\Facades\Auth;
@@ -24,6 +25,15 @@ class AdminDepositService
                 'processed_by' => Auth::id(),
                 'processed_at' => now(),
             ]);
+
+            $freshUser = $user->fresh();
+
+            BalanceUpdated::dispatch(
+                $freshUser->id,
+                (float) $freshUser->balance,
+                'deposit',
+                (float) $deposit->amount,
+            );
         });
     }
 

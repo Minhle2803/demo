@@ -234,7 +234,7 @@
                                         $textClass = "text-danger";
                                     }
                                 ?>
-                                <h6 class="{{ $textClass }} fs-13 mb-0">{{ $trade->type }}</h6>
+                                <h6 class="{{ $textClass }} fs-13 mb-0">{{ Str::upper($trade->type) }}</h6>
                             </td>
                             <td>{{ $trade->session_open_price }}</td>
                             <td>{{ $trade->session_close_price }}</td>

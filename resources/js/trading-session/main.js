@@ -153,7 +153,7 @@ function showTradeConfirm(type, amount) {
     const symbol = symbolEl?.textContent ?? '—';
     const amountLabel = amountSelect?.selectedOptions?.[0]?.textContent ?? amount;
 
-    const feeAmount = Math.round((amount * 2) * (feePercent / 100) * 100) / 100;
+    const feeAmount = Math.round(amount * (feePercent / 100) * 100) / 100;
     const estimatedPayout = (amount * 2) - feeAmount;
 
     document.getElementById('confirm-type').textContent = type === 'buy' ? 'BUY' : 'SELL';

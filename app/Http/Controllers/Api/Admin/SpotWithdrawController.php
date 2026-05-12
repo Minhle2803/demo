@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Api\Admin;
 
+use App\Events\BalanceUpdated;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\ProcessWithdrawRequest;
 use App\Http\Responses\ApiResponse;
@@ -26,6 +27,15 @@ class SpotWithdrawController extends Controller
 
         if ($status === 'done' && $withdraw->user) {
             $withdraw->user->decrement('balance', $withdraw->amount);
+
+            $freshUser = $withdraw->user->fresh();
+
+            BalanceUpdated::dispatch(
+                $freshUser->id,
+                (float) $freshUser->balance,
+                'withdraw',
+                (float) $withdraw->amount,
+            );
         }
 
         $withdraw->update([

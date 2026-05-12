@@ -26,7 +26,7 @@ if (! function_exists('format_currency_short')) {
         //     $formatted = rtrim(rtrim($formatted, '0'), '.');
         //     $result = $sign.$formatted.'k';
         // } else {
-            $result = $sign.number_format($amount, 0);
+        $result = $sign.number_format($amount, 0);
         // }
 
         return $suffix ? $result.' '.$suffix : $result;
