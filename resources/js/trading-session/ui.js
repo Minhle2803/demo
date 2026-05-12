@@ -117,6 +117,18 @@ export function buildTradeRow(trade, coinMeta) {
         resultAmount = amount;
     }
 
+    var status = "THẮNG";
+    if (trade.status === 'lose') {
+        status = "THUA";
+    } else if (trade.status === 'pending') {
+        status = "ĐANG CHỜ";
+    }
+
+    var type = "MUA";
+    if (trade.type === 'sell') {
+        type = "BÁN";
+    }
+
     return `
         <tr data-id="${trade.id}">
             <td>
@@ -124,10 +136,10 @@ export function buildTradeRow(trade, coinMeta) {
                 ${name}
             </td>
             <td>${trade.session_id}</td>
-            <td class="${typeClass}">${trade.type.toUpperCase()}</td>
+            <td class="${typeClass}">${type.toUpperCase()}</td>
             <td>${trade.session_open_price ?? '-'}</td>
             <td>${trade.session_close_price ?? '-'}</td>
-            <td class="${statusClass}">${trade.status.toUpperCase()}</td>
+            <td class="${statusClass}">${status.toUpperCase()}</td>
             <td>${amount}</td>
             <td>${feeDisplay}</td>
             <td>

@@ -233,8 +233,12 @@
                                     if ($trade->type === 'sell') {
                                         $textClass = "text-danger";
                                     }
+                                    $type = "MUA";
+                                    if ($trade->type === 'sell') {
+                                        $type = "BÁN";
+                                    }
                                 ?>
-                                <h6 class="{{ $textClass }} fs-13 mb-0">{{ strtoupper($trade->type) }}</h6>
+                                <h6 class="{{ $textClass }} fs-13 mb-0">{{ $type }}</h6>
                             </td>
                             <td>{{ $trade->session_open_price }}</td>
                             <td>{{ $trade->session_close_price }}</td>
@@ -244,8 +248,14 @@
                                     if ($trade->status === 'lose') {
                                         $textClass = "text-danger";
                                     }
+                                    $status = "THẮNG";
+                                    if ($trade->status === 'lose') {
+                                        $status = "THUA";
+                                    } else if ($trade->status === 'pending') {
+                                        $status = "ĐANG CHỜ";
+                                    }
                                 ?>
-                                <h6 class="{{ $textClass }} fs-13 mb-0">{{ strtoupper($trade->status) }}</h6>    
+                                <h6 class="{{ $textClass }} fs-13 mb-0">{{ $status }}</h6>    
                             </td>
                             <td>{{ number_format($trade->amount, 0, '.', ',') }}</td>
                             <td>{{ $trade->trading_fee ? number_format((float) $trade->trading_fee, 0, '.', ',') : '—' }}</td>
