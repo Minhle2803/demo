@@ -27,7 +27,7 @@ export function disableTrading() {
 
 export function showResultPopup(summary, session) {
     const net = summary?.net ?? 0;
-    const modalId = net >= 0 ? 'modal-win' : 'modal-lost';
+    const modalId = net > 0 ? 'modal-win' : 'modal-lost';
     const modalEl = document.getElementById(modalId);
     if (!modalEl) return;
 
