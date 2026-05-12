@@ -124,10 +124,10 @@ export function buildTradeRow(trade, coinMeta) {
                 ${name}
             </td>
             <td>${trade.session_id}</td>
-            <td class="${typeClass}">${trade.type}</td>
+            <td class="${typeClass}">${trade.type.toUpperCase()}</td>
             <td>${trade.session_open_price ?? '-'}</td>
             <td>${trade.session_close_price ?? '-'}</td>
-            <td class="${statusClass}">${trade.status}</td>
+            <td class="${statusClass}">${trade.status.toUpperCase()}</td>
             <td>${amount}</td>
             <td>${feeDisplay}</td>
             <td>
