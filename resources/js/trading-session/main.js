@@ -156,7 +156,7 @@ function showTradeConfirm(type, amount) {
     const feeAmount = Math.round(amount * (feePercent / 100) * 100) / 100;
     const estimatedPayout = (amount * 2) - feeAmount;
 
-    document.getElementById('confirm-type').textContent = type === 'buy' ? 'BUY' : 'SELL';
+    document.getElementById('confirm-type').textContent = type === 'buy' ? 'MUA' : 'BÁN';
     document.getElementById('confirm-type').className = type === 'buy' ? 'text-success fw-bold' : 'text-danger fw-bold';
     document.getElementById('confirm-symbol').textContent = symbol;
     document.getElementById('confirm-price').textContent = price;

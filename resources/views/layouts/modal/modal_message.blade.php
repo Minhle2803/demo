@@ -8,7 +8,7 @@
                 <div class="mt-2">
                     <lord-icon src="https://cdn.lordicon.com/tqywkdcz.json" trigger="hover" style="width:150px;height:150px">
                     </lord-icon>
-                    <h4 class="mb-3 mt-4">Xin chúc mừng !</h4>
+                    <h4 class="mb-3 mt-4">BẠN ĐÃ THẮNG!</h4>
                     <p class="text-muted fs-15 mb-3">Kết quả phiên <span id="session_id">#39282</span> — <span id="trade-count">0</span> lệnh</p>
                     <div class="table-responsive">
                         <table class="table table-borderless text-start mb-0">
@@ -53,7 +53,7 @@
                     <button type="button" class="btn-close text-end" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="mt-2">
-                    <h4 class="mb-3 mt-4">Chúc may mắn lần sau !</h4>
+                    <h4 class="mb-3 mt-4">BẠN ĐÃ THUA!</h4>
                     <p class="text-muted fs-15 mb-3">Kết quả phiên <span id="session_id">#39282</span> — <span id="trade-count">0</span> lệnh</p>
                     <div class="table-responsive">
                         <table class="table table-borderless text-start mb-0">

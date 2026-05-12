@@ -55,7 +55,7 @@
                 @auth('client')
                 
                 <div class="dropdown ms-1 topbar-head-dropdown header-item">
-                    <span class=" d-xl-block ms-1 fs-12 user-name-sub-text" id="balance-display"><b class="balance-display" data-amount="{{ (float) Auth::guard('client')->user()->balance }}">{{ format_currency_short((float) Auth::guard('client')->user()->balance, 'VND') }}</b></span>
+                    <h5 class=" d-xl-block ms-1 mt-2 fs-16 user-name-sub-text" style="color: white;" id="balance-display"><b class="balance-display" data-amount="{{ (float) Auth::guard('client')->user()->balance }}">{{ format_currency_short((float) Auth::guard('client')->user()->balance, 'VND') }}</b></h5>
                 </div>
                 <div class="dropdown ms-1 topbar-head-dropdown header-item">
                     <a class="btn btn-outline-warning btn-label waves-effect waves-light" href="{{ route('client.profile.show', ['tab' => 'deposit']) }}"><i class="bx bx-money label-icon align-middle fs-16 me-2"></i> Nạp / Rút Tiền</a>
