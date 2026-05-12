@@ -100,7 +100,7 @@ class TradingSessionController extends Controller
                 'total_win' => (float) $totalPayout,
                 'total_lose' => (float) $trades->where('status', 'lose')->sum('amount'),
                 'total_fee' => (float) $trades->where('status', 'win')->sum('trading_fee'),
-                'net' => (float) ($totalPayout - $totalAmount),
+                'net' => (float) ($totalPayout),
                 'trade_count' => $trades->count(),
             ],
         ], ErrorCodes::TRADE_RESULT_FETCHED);
