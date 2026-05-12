@@ -22,9 +22,6 @@ return new class extends Migration
             $table->index('session_id');
             $table->index('user_id');
             $table->index('status');
-
-            $table->foreign('session_id')->references('id')->on('trading_sessions');
-            $table->foreign('user_id')->references('id')->on('users');
         });
     }
 

@@ -84,6 +84,15 @@
                                     </div>
                                 </div>
                                 <div class="mb-3">
+                                    <label class="form-label" for="password-confirm-input">{{ __('messages.auth.confirm_password') }}</label>
+                                    <div class="position-relative auth-pass-inputgroup">
+                                        <input type="password" name="password_confirmation" class="form-control pe-5 password-input" onpaste="return false" placeholder="{{ __('messages.auth.enter_confirm_password') }}" id="password-confirm-input" required>
+                                        <div class="invalid-feedback">
+                                            {{ __('messages.auth.validate_confirm') }}
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="mb-3">
                                     <label for="referral_code" class="form-label">{{ __('messages.auth.referral_code') }}</label>
                                     <input type="text" class="form-control" id="referral_code" name="referral_code" placeholder="{{ __('messages.auth.enter_referral') }}">
                                 </div>

@@ -36,6 +36,7 @@ class ClientRegisterRequest extends FormRequest
                 'required',
                 'string',
                 'min:8',
+                'confirmed',
             ],
             'referral_code' => [
                 'nullable',
@@ -50,8 +51,8 @@ class ClientRegisterRequest extends FormRequest
         return [
             'nickname.unique' => __('errors.'.ErrorCodes::AUTH_NICKNAME_ALREADY_USED),
             'phone_number.unique' => __('errors.'.ErrorCodes::AUTH_PHONE_ALREADY_USED),
-            'phone_number.regex' => 'The phone number format is invalid.',
-            'password.regex' => 'Password must contain uppercase, lowercase, number, and special character.',
+            'phone_number.regex' => 'Số điện thoại không đúng.',
+            'password.confirmed' => 'Xác nhận mật khẩu phải giống với mật khẩu.',
         ];
     }
 
