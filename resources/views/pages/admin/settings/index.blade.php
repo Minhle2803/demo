@@ -57,7 +57,14 @@
                     @csrf
                     <div class="mb-3">
                         <label class="form-label">{{ __('admin.bank_name') }}</label>
-                        <input type="text" class="form-control" name="bank_name" value="{{ $bankInfo['bank_name'] ?? '' }}">
+                        <select class="form-control" name="bank_name">
+                            <option value="">{{ __('messages.profile.select_bank') }}</option>
+                            @foreach ($bank_list as $bank)
+                                <option value="{{ $bank['code'] }}" {{ old('bank_name', $bankInfo['bank_name'] ?? '') === $bank['code'] || old('bank_name', $bankInfo['bank_name'] ?? '') === $bank['name'] ? 'selected' : '' }}>
+                                    {{ $bank['name'] }}
+                                </option>
+                            @endforeach
+                        </select>
                     </div>
                     <div class="mb-3">
                         <label class="form-label">{{ __('admin.bank_account') }}</label>
@@ -86,6 +93,26 @@
                         <input type="number" class="form-control" name="fee_percent" value="{{ $feePercent }}" step="0.01" min="0" max="100">
                         @error('fee_percent') <span class="text-danger">{{ $message }}</span> @enderror
                         <small class="text-muted">{{ __('admin.trading_fee_desc') }}</small>
+                    </div>
+                    <button type="submit" class="btn btn-primary">{{ __('admin.save') }}</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-xxl-6">
+        <div class="card">
+            <div class="card-header">
+                <h5 class="card-title mb-0">{{ __('admin.min_deposit_setting') }}</h5>
+            </div>
+            <div class="card-body">
+                <form action="{{ route('admin.settings.min-deposit') }}" method="POST">
+                    @csrf
+                    <div class="mb-3">
+                        <label class="form-label">{{ __('admin.min_deposit_label') }}</label>
+                        <input type="number" class="form-control" name="min_deposit" value="{{ $minDeposit }}" step="10000" min="10000" max="100000000">
+                        @error('min_deposit') <span class="text-danger">{{ $message }}</span> @enderror
+                        <small class="text-muted">{{ __('admin.min_deposit_desc') }}</small>
                     </div>
                     <button type="submit" class="btn btn-primary">{{ __('admin.save') }}</button>
                 </form>

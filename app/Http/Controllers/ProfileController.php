@@ -25,16 +25,22 @@ class ProfileController extends Controller
     public function show(Request $request)
     {
         $user = Auth::guard('client')->user();
-        $bank_name = ProjectSetting::getValue('deposit_bank_name');
-        $bank_account = ProjectSetting::getValue('deposit_bank_account');
-        $bank_number = ProjectSetting::getValue('deposit_bank_number');
+        $bankCode = ProjectSetting::getValue('deposit_bank_name');
+        $bankAccount = ProjectSetting::getValue('deposit_bank_account');
+        $bankNumber = ProjectSetting::getValue('deposit_bank_number');
+        $bankName = $this->resolveBankName($bankCode);
+        $minDeposit = (int) ProjectSetting::getValue('deposit_min_amount', '300000');
 
         return view('pages.profile', [
             'user' => $user,
             'activeTab' => $request->query('tab', 'profile'),
-            'bank_name' => $bank_name,
-            'bank_account' => $bank_account,
-            'bank_number' => $bank_number,
+            'bank_name' => $bankName,
+            'bank_code' => $bankCode,
+            'bank_account' => $bankAccount,
+            'bank_number' => $bankNumber,
+            'bank_list' => config('bank'),
+            'user_bank_name' => $this->resolveBankName($user->bank_account),
+            'min_deposit' => $minDeposit,
         ]);
     }
 
@@ -124,11 +130,16 @@ class ProfileController extends Controller
             'status' => 'pending',
         ]);
 
+        $bankCode = ProjectSetting::getValue('deposit_bank_name');
+        $bankAccount = ProjectSetting::getValue('deposit_bank_account');
+        $bankNumber = ProjectSetting::getValue('deposit_bank_number');
+        $bankInfo = $this->findBankByCode($bankCode);
+
         $depositData = [
-            'bank_id' => config('deposit.bank_id', '970436'),
-            'account_no' => config('deposit.account_no', '123456789'),
-            'account_name' => config('deposit.account_name', 'NGUYEN VAN A'),
-            'bank_name' => config('deposit.bank_name', 'Vietcombank'),
+            'bank_id' => $bankInfo['bin'] ?? '970436',
+            'account_no' => $bankNumber ?: '123456789',
+            'account_name' => $bankAccount ?: 'NGUYEN VAN A',
+            'bank_name' => $bankInfo['name'] ?? 'Vietcombank',
             'amount' => $amount,
             'content' => $user->nickname,
         ];
@@ -235,5 +246,27 @@ class ProfileController extends Controller
             ->paginate($request->input('per_page', 10));
 
         return ApiResponse::success(data: $withdraws);
+    }
+
+    private function findBankByCode(?string $code): ?array
+    {
+        if (! $code) {
+            return null;
+        }
+
+        foreach (config('bank') as $bank) {
+            if (($bank['code'] ?? '') === $code) {
+                return $bank;
+            }
+        }
+
+        return null;
+    }
+
+    private function resolveBankName(?string $code): ?string
+    {
+        $bank = $this->findBankByCode($code);
+
+        return $bank['name'] ?? $code;
     }
 }

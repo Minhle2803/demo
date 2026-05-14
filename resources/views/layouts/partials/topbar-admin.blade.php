@@ -3,24 +3,7 @@
         <div class="navbar-header">
             <div class="d-flex">
                 <!-- LOGO -->
-                <div class="navbar-brand-box horizontal-logo">
-                    <a class="logo logo-dark" href="{{ route('landing2') }}">
-                        <span class="logo-sm">
-                            <img alt="" height="22" src="{{ asset('assets/images/logo/logo.png') }}" />
-                        </span>
-                        <span class="logo-lg">
-                            <img alt="" height="64" src="{{ asset('assets/images/logo/logo.png') }}" />
-                        </span>
-                    </a>
-                    <a class="logo logo-light" href="{{ route('landing2') }}">
-                        <span class="logo-sm">
-                            <img alt="" height="64" src="{{ asset('assets/images/logo/logo.png') }}" />
-                        </span>
-                        <span class="logo-lg">
-                            <img alt="" height="64" src="{{ asset('assets/images/logo/logo.png') }}" />
-                        </span>
-                    </a>
-                </div>
+                
                 <button class="btn btn-sm px-3 fs-16 header-item vertical-menu-btn topnav-hamburger material-shadow-none" id="topnav-hamburger-icon" type="button">
                     <span class="hamburger-icon">
                         <span></span>
@@ -123,27 +106,12 @@
                         </form>
                     </div>
                 </div>
-                <div class="dropdown ms-1 topbar-head-dropdown header-item">
-                    <button aria-expanded="false" aria-haspopup="true" class="btn btn-icon btn-topbar material-shadow-none btn-ghost-secondary rounded-circle" data-bs-toggle="dropdown" type="button">
-                        <img alt="Header Language" class="rounded" height="20" id="header-lang-img" src="{{ asset('assets/images/flags/' . (app()->getLocale() === 'vi' ? 'vn' : 'us') . '.svg') }}" />
-                    </button>
-                    <div class="dropdown-menu dropdown-menu-end">
-                        <a class="dropdown-item notify-item language py-2 {{ app()->getLocale() === 'en' ? 'active' : '' }}" data-lang="en" href="{{ route('lang.switch', 'en') }}" title="English">
-                            <img alt="EN" class="me-2 rounded" height="18" src="{{ asset('assets/images/flags/us.svg') }}" />
-                            <span class="align-middle">English</span>
-                        </a>
-                        <a class="dropdown-item notify-item language py-2 {{ app()->getLocale() === 'vi' ? 'active' : '' }}" data-lang="vi" href="{{ route('lang.switch', 'vi') }}" title="Vietnamese">
-                            <img alt="VI" class="me-2 rounded" height="18" src="{{ asset('assets/images/flags/vn.svg') }}" />
-                            <span class="align-middle">Tiếng Việt</span>
-                        </a>
-                    </div>
-                </div>
                 @auth('web')
                 
                 <div class="dropdown ms-sm-3 header-item topbar-user">
                     <button aria-expanded="false" aria-haspopup="true" class="btn material-shadow-none" data-bs-toggle="dropdown" id="page-header-user-dropdown" type="button">
                         <span class="d-flex align-items-center">
-                            <img alt="Header Avatar" class="rounded-circle header-profile-user" src="{{ asset('assets/images/users/avatar-1.jpg') }}" />
+                            <img alt="Header Avatar" class="rounded-circle header-profile-user" src="{{ asset('assets/images/icons/brand.png') }}" />
                             <span class="text-start ms-xl-2">
                                 <span class="d-none d-xl-inline-block ms-1 fw-medium user-name-text">{{ Auth::guard('web')->user()->name }}</span>
                             </span>

@@ -151,4 +151,19 @@ return [
     'agent_stats' => 'Thống kê đại lý',
     'invited_users_by_agent' => 'Người dùng được mời bởi đại lý này',
     'view' => 'Xem',
+
+    'change_password' => 'Đổi mật khẩu',
+    'current_password' => 'Mật khẩu hiện tại',
+    'new_password' => 'Mật khẩu mới',
+    'confirm_new_password' => 'Xác nhận mật khẩu mới',
+    'password_changed' => 'Đổi mật khẩu thành công.',
+
+    'min_deposit_setting' => 'Cài đặt nạp tối thiểu',
+    'min_deposit_label' => 'Số tiền nạp tối thiểu (VND)',
+    'min_deposit_desc' => 'Người dùng phải nạp ít nhất số tiền này.',
+    'min_deposit_updated' => 'Cập nhật số tiền nạp tối thiểu thành công.',
+    'min_deposit_required' => 'Vui lòng nhập số tiền nạp tối thiểu.',
+    'min_deposit_numeric' => 'Số tiền nạp tối thiểu phải là số.',
+    'min_deposit_min' => 'Số tiền nạp tối thiểu ít nhất là 10,000 VND.',
+    'min_deposit_max' => 'Số tiền nạp tối thiểu không được vượt quá 100,000,000 VND.',
 ];

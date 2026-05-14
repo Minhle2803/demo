@@ -9,6 +9,7 @@ use App\Http\Controllers\Admin\AdminSessionController;
 use App\Http\Controllers\Admin\AdminSettingController;
 use App\Http\Controllers\Admin\AdminUserController;
 use App\Http\Controllers\Admin\AdminWithdrawController;
+use App\Http\Controllers\Admin\ChangePasswordController;
 use Illuminate\Support\Facades\Route;
 
 Route::name('admin.')->group(function () {
@@ -38,6 +39,7 @@ Route::name('admin.')->group(function () {
         Route::post('/settings/bank', [AdminSettingController::class, 'updateBank'])->name('settings.bank');
         Route::post('/settings/logo', [AdminSettingController::class, 'updateLogo'])->name('settings.logo');
         Route::post('/settings/fee', [AdminSettingController::class, 'updateFee'])->name('settings.fee');
+        Route::post('/settings/min-deposit', [AdminSettingController::class, 'updateMinDeposit'])->name('settings.min-deposit');
 
         Route::get('/settings/crypto-assets', [AdminCryptoAssetController::class, 'index'])->name('crypto-assets.index');
         Route::post('/settings/crypto-assets', [AdminCryptoAssetController::class, 'store'])->name('crypto-assets.store');
@@ -46,6 +48,9 @@ Route::name('admin.')->group(function () {
 
         Route::get('/referrals', [AdminReferralController::class, 'index'])->name('referrals.index');
         Route::get('/referrals/{clientUserId}', [AdminReferralController::class, 'show'])->name('referrals.show');
+
+        Route::get('/change-password', [ChangePasswordController::class, 'showForm'])->name('change-password');
+        Route::post('/change-password', [ChangePasswordController::class, 'update'])->name('change-password.update');
 
         Route::get('/sessions', [AdminSessionController::class, 'index'])->name('sessions.index');
         Route::get('/sessions/{id}', [AdminSessionController::class, 'show'])->name('sessions.show');

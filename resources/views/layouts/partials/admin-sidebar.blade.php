@@ -91,6 +91,12 @@
                     </a>
                 </li>
 
+                <li class="nav-item">
+                    <a class="nav-link {{ request()->routeIs('admin.change-password') ? 'active' : '' }}" href="{{ route('admin.change-password') }}">
+                        <i class="ri-lock-password-line"></i> <span>{{ __('admin.change_password') }}</span>
+                    </a>
+                </li>
+
                 <li class="menu-title"><span>{{ __('admin.settings') }}</span></li>
 
                 <li class="nav-item">

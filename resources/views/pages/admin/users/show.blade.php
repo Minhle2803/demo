@@ -59,7 +59,7 @@
             <div class="card-body">
                 <table class="table table-sm table-borderless">
                     <tr><th class="ps-0">{{ __('admin.bank_name') }}</th><td>{{ $user->account_name ?? 'N/A' }}</td></tr>
-                    <tr><th class="ps-0">{{ __('admin.bank_account') }}</th><td>{{ $user->bank_account ?? 'N/A' }}</td></tr>
+                    <tr><th class="ps-0">{{ __('admin.bank_account') }}</th><td>{{ $userBankName ?? ($user->bank_account ?? 'N/A') }}</td></tr>
                     <tr><th class="ps-0">{{ __('admin.bank_number') }}</th><td>{{ $user->bank_number ?? 'N/A' }}</td></tr>
                 </table>
             </div>

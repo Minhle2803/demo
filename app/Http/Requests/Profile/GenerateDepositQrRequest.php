@@ -3,6 +3,7 @@
 namespace App\Http\Requests\Profile;
 
 use App\Http\Responses\ApiResponse;
+use App\Models\ProjectSetting;
 use App\Support\ErrorCodes;
 use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Foundation\Http\FormRequest;
@@ -18,17 +19,24 @@ class GenerateDepositQrRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'amount' => ['required', 'numeric', 'min:300000'],
+            'amount' => ['required', 'numeric', 'min:'.$this->minDeposit()],
         ];
     }
 
     public function messages(): array
     {
+        $min = number_format($this->minDeposit());
+
         return [
             'amount.required' => __('errors.'.ErrorCodes::DEPOSIT_AMOUNT_REQUIRED),
             'amount.numeric' => 'Cần nhập số tiền.',
-            'amount.min' => 'Số tiền tối thiểu là 300,000 VND.',
+            'amount.min' => "Số tiền tối thiểu là {$min} VND.",
         ];
+    }
+
+    private function minDeposit(): int
+    {
+        return (int) ProjectSetting::getValue('deposit_min_amount', '300000');
     }
 
     protected function failedValidation(Validator $validator): never

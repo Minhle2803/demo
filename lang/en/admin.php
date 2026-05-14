@@ -151,4 +151,19 @@ return [
     'agent_stats' => 'Agent Stats',
     'invited_users_by_agent' => 'Invited Users by This Agent',
     'view' => 'View',
+
+    'change_password' => 'Change Password',
+    'current_password' => 'Current Password',
+    'new_password' => 'New Password',
+    'confirm_new_password' => 'Confirm New Password',
+    'password_changed' => 'Password changed successfully.',
+
+    'min_deposit_setting' => 'Min Deposit Setting',
+    'min_deposit_label' => 'Minimum Deposit Amount (VND)',
+    'min_deposit_desc' => 'Users must deposit at least this amount.',
+    'min_deposit_updated' => 'Minimum deposit updated successfully.',
+    'min_deposit_required' => 'Minimum deposit amount is required.',
+    'min_deposit_numeric' => 'Minimum deposit amount must be a number.',
+    'min_deposit_min' => 'Minimum deposit amount must be at least 10,000 VND.',
+    'min_deposit_max' => 'Minimum deposit amount cannot exceed 100,000,000 VND.',
 ];

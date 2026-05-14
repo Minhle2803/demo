@@ -93,7 +93,14 @@
 
                     <div class="mb-3">
                         <label for="bank_account" class="form-label">{{ __('admin.bank_name') }}</label>
-                        <input type="text" name="bank_account" id="bank_account" class="form-control @error('bank_account') is-invalid @enderror" value="{{ old('bank_account', $user->bank_account) }}">
+                        <select name="bank_account" id="bank_account" class="form-control @error('bank_account') is-invalid @enderror">
+                            <option value="">{{ __('messages.profile.select_bank') }}</option>
+                            @foreach ($bank_list as $bank)
+                                <option value="{{ $bank['code'] }}" {{ old('bank_account', $user->bank_account) === $bank['code'] || old('bank_account', $user->bank_account) === $bank['name'] ? 'selected' : '' }}>
+                                    {{ $bank['name'] }}
+                                </option>
+                            @endforeach
+                        </select>
                         @error('bank_account') <div class="invalid-feedback">{{ $message }}</div> @enderror
                     </div>
 

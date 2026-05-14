@@ -51,15 +51,17 @@ class AdminUserController extends Controller
     public function show(int $id)
     {
         $user = ClientUser::findOrFail($id);
+        $userBankName = $this->resolveBankName($user->bank_account);
 
-        return view('pages.admin.users.show', compact('user'));
+        return view('pages.admin.users.show', compact('user', 'userBankName'));
     }
 
     public function edit(int $id)
     {
         $user = ClientUser::findOrFail($id);
 
-        return view('pages.admin.users.edit', compact('user'));
+        return view('pages.admin.users.edit', compact('user'))
+            ->with('bank_list', config('bank'));
     }
 
     public function update(UpdateUserRequest $request, int $id)
@@ -144,5 +146,27 @@ class AdminUserController extends Controller
 
         return redirect()->back()
             ->with('success', __('admin.kyc_approved'));
+    }
+
+    private function findBankByCode(?string $code): ?array
+    {
+        if (! $code) {
+            return null;
+        }
+
+        foreach (config('bank') as $bank) {
+            if (($bank['code'] ?? '') === $code) {
+                return $bank;
+            }
+        }
+
+        return null;
+    }
+
+    private function resolveBankName(?string $code): ?string
+    {
+        $bank = $this->findBankByCode($code);
+
+        return $bank['name'] ?? $code;
     }
 }

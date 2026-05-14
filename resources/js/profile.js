@@ -197,9 +197,10 @@ function initDeposit() {
 
     depositBtn.addEventListener('click', async () => {
         const amount = amountInput?.value?.trim();
-        if (!amount || isNaN(amount) || Number(amount) < 300000) {
+        const min = window.profileConfig?.minDeposit || 300000;
+        if (!amount || isNaN(amount) || Number(amount) < min) {
             if (errorEl) {
-                errorEl.textContent = 'Vui lòng nhập số tiền tối thiểu 300,000 VND.';
+                errorEl.textContent = 'Số tiền tối thiểu là ' + Number(min).toLocaleString('vi-VN') + ' VND.';
                 errorEl.style.display = 'block';
             }
             return;

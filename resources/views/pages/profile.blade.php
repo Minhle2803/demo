@@ -169,6 +169,31 @@
                                         <input type="text" class="form-control bg-light" value="{{ $user->isKycVerified() ? __('messages.common.verified') : ($user->kyc_front_url || $user->kyc_back_url ? __('messages.common.pending') : __('messages.common.not_submitted')) }}" readonly>
                                     </div>
                                 </div>
+                                <div class="col-lg-6">
+                                        <div class="mb-3">
+                                            <label for="kycBankName" class="form-label">{{ __('messages.profile.account_name') }} <span class="text-danger">*</span></label>
+                                            <input type="text" class="form-control" id="kycBankName" name="account_name" value="{{ $user->account_name }}" placeholder="NGUYEN VAN A">
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="mb-3">
+                                            <label for="kycBankNumber" class="form-label">{{ __('messages.profile.account_number') }} <span class="text-danger">*</span></label>
+                                            <input type="text" class="form-control" id="kycBankNumber" name="bank_number" value="{{ $user->bank_number }}" placeholder="{{ __('messages.profile.enter_account_number') }}">
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="mb-3">
+                                            <label for="kycBankBranch" class="form-label">{{ __('messages.profile.bank_name_label') }} <span class="text-danger">*</span></label>
+                                            <select class="form-control" id="kycBankBranch" name="bank_account">
+                                                <option value="">{{ __('messages.profile.select_bank') }}</option>
+                                                @foreach ($bank_list as $bank)
+                                                    <option value="{{ $bank['code'] }}" {{ old('bank_account', $user->bank_account) === $bank['code'] || old('bank_account', $user->bank_account) === $bank['name'] ? 'selected' : '' }}>
+                                                        {{ $bank['name'] }}
+                                                    </option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+                                    </div>
                                 @if (!$user->isKycVerified())
                                     <div class="col-12"><hr class="my-4"></div>
                                     <div class="col-12"><h5 class="mb-3">{{ __('messages.profile.kyc_modal_title') }}</h5></div>
@@ -182,24 +207,7 @@
                                         </div>
                                     @endif
 
-                                    <div class="col-lg-4">
-                                        <div class="mb-3">
-                                            <label for="kycBankName" class="form-label">{{ __('messages.profile.account_name') }} <span class="text-danger">*</span></label>
-                                            <input type="text" class="form-control" id="kycBankName" name="account_name" value="{{ $user->account_name }}" placeholder="NGUYEN VAN A">
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-4">
-                                        <div class="mb-3">
-                                            <label for="kycBankNumber" class="form-label">{{ __('messages.profile.account_number') }} <span class="text-danger">*</span></label>
-                                            <input type="text" class="form-control" id="kycBankNumber" name="bank_number" value="{{ $user->bank_number }}" placeholder="{{ __('messages.profile.enter_account_number') }}">
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-4">
-                                        <div class="mb-3">
-                                            <label for="kycBankBranch" class="form-label">{{ __('messages.profile.bank_name_label') }} <span class="text-danger">*</span></label>
-                                            <input type="text" class="form-control" id="kycBankBranch" name="bank_account" value="{{ $user->bank_account }}" placeholder="{{ __('messages.profile.enter_bank_name') }}">
-                                        </div>
-                                    </div>
+                                    
 
                                     <div class="col-lg-4">
                                         <div class="mb-3">
@@ -375,7 +383,7 @@
                                             </div>
                                             <div class="mb-3">
                                                 <p class="text-muted mb-1">{{ __('messages.profile.account_holder') }}: <strong>{{ $user->account_name ?? '-' }}</strong></p>
-                                                <p class="text-muted mb-1">{{ __('messages.profile.bank_name') }}: <strong>{{ $user->bank_account ?? '-' }}</strong></p>
+                                                <p class="text-muted mb-1">{{ __('messages.profile.bank_name') }}: <strong>{{ $user_bank_name ?? ($user->bank_account ?? '-') }}</strong></p>
                                                 <p class="text-muted mb-1">{{ __('messages.profile.account_number') }}: <strong>{{ $user->bank_number ?? '-' }}</strong></p>
                                                 @if (empty($user->account_name) || empty($user->bank_number) || empty($user->bank_account))
                                                     <p class="text-warning"><i class="ri-information-line"></i> {{ __('messages.profile.kyc_warning') }}</p>
@@ -423,11 +431,11 @@
                                     </div>
                                     <div class="modal-body text-center">
                                         <h5 class="fs-15">{{ __('messages.profile.enter_amount') }}</h5>
-                                        <p class="text-warning"><i>Số tiền tối thiểu 300.000 VNĐ</i></p>
-                                        <input type="number" class="form-control mb-3" id="depositAmount" placeholder="{{ __('messages.profile.enter_deposit_amount') }}" min="300000">
+                                        <p class="text-warning"><i>{{ __('messages.profile.min_deposit_notice', ['amount' => number_format($min_deposit)]) }}</i></p>
+                                        <input type="number" class="form-control mb-3" id="depositAmount" placeholder="{{ __('messages.profile.enter_deposit_amount') }}" min="{{ $min_deposit }}">
                                         <p class="mb-2 text-danger" id="depositError" style="display:none;"></p>
                                         <p class="mb-2">{{ __('messages.profile.deposit_payment_note') }}</p>
-                                        <p class="mb-2"><strong>{{ __('messages.common.balance') }}: <span id="depositContent">{{ $user->nickname }}</span></strong></p>
+                                        <p class="mb-2"><strong>{{ __('messages.profile.deposit_content_label') }}: <span id="depositContent">{{ $user->nickname }}</span></strong></p>
                                         <div style="height:1px; background:linear-gradient(to right, transparent, #ccc, transparent); margin:20px 0;"></div>
                                         <p class="mb-2">{{ __('messages.profile.account_holder') }}:  <strong id="accountName">{{ $bank_account }}</strong></p>
                                         <p class="mb-2">{{ __('messages.profile.bank_name_label') }}: <strong id="bankName">{{ $bank_name }}</strong></p>
@@ -522,6 +530,7 @@
         updatePasswordUrl: "{{ route('client.profile.password') }}",
         activeTab: "{{ $activeTab }}",
         nickname: "{{ $user->nickname }}",
+        minDeposit: {{ $min_deposit }},
     };
 </script>
 @endpush

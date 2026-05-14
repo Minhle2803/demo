@@ -49,8 +49,18 @@ class AdminSettingService
         return (float) ProjectSetting::getValue('trading_fee_percent', '5');
     }
 
+    public function getMinDeposit(): float
+    {
+        return (float) ProjectSetting::getValue('deposit_min_amount', '300000');
+    }
+
     public function updateFeePercent(float $percent): void
     {
         ProjectSetting::setValue('trading_fee_percent', (string) $percent, 'numeric');
+    }
+
+    public function updateMinDeposit(float $amount): void
+    {
+        ProjectSetting::setValue('deposit_min_amount', (string) $amount, 'numeric');
     }
 }
