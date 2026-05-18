@@ -348,3 +348,7 @@ routes/
 - Ngôn ngữ: `en` (mặc định), `vi` — chuyển đổi qua route `/lang/{locale}` hoặc topbar dropdown.
 - KYC upload hỗ trợ ảnh JPEG/PNG, file input đã được custom hiển thị tiếng Việt.
 - Real-time balance update hoạt động qua kênh `user.{id}.balance`, tự động cập nhật số dư trên topbar khi nạp/rút tiền.
+
+## Lưu ý quan trọng: 
+
+- Trước khi chạy, đảm bảo domain đã được trỏ DNS (A record) về IP server — Certbot cần verify qua HTTP nên domain phải resolve về đúng server mới lấy được cert.

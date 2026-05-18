@@ -4,6 +4,7 @@ use App\Http\Controllers\Admin\AdminAuthController;
 use App\Http\Controllers\Admin\AdminCryptoAssetController;
 use App\Http\Controllers\Admin\AdminDashboardController;
 use App\Http\Controllers\Admin\AdminDepositController;
+use App\Http\Controllers\Admin\AdminIpWhitelistController;
 use App\Http\Controllers\Admin\AdminReferralController;
 use App\Http\Controllers\Admin\AdminSessionController;
 use App\Http\Controllers\Admin\AdminSettingController;
@@ -40,6 +41,7 @@ Route::name('admin.')->group(function () {
         Route::post('/settings/logo', [AdminSettingController::class, 'updateLogo'])->name('settings.logo');
         Route::post('/settings/fee', [AdminSettingController::class, 'updateFee'])->name('settings.fee');
         Route::post('/settings/min-deposit', [AdminSettingController::class, 'updateMinDeposit'])->name('settings.min-deposit');
+        Route::post('/settings/ip-whitelist', [AdminSettingController::class, 'updateIpWhitelist'])->name('settings.ip-whitelist');
 
         Route::get('/settings/crypto-assets', [AdminCryptoAssetController::class, 'index'])->name('crypto-assets.index');
         Route::post('/settings/crypto-assets', [AdminCryptoAssetController::class, 'store'])->name('crypto-assets.store');
@@ -54,5 +56,10 @@ Route::name('admin.')->group(function () {
 
         Route::get('/sessions', [AdminSessionController::class, 'index'])->name('sessions.index');
         Route::get('/sessions/{id}', [AdminSessionController::class, 'show'])->name('sessions.show');
+
+        Route::get('/ip-whitelist', [AdminIpWhitelistController::class, 'index'])->name('ip-whitelist.index');
+        Route::post('/ip-whitelist', [AdminIpWhitelistController::class, 'store'])->name('ip-whitelist.store');
+        Route::put('/ip-whitelist/{id}', [AdminIpWhitelistController::class, 'update'])->name('ip-whitelist.update');
+        Route::delete('/ip-whitelist/{id}', [AdminIpWhitelistController::class, 'destroy'])->name('ip-whitelist.destroy');
     });
 });

@@ -14,7 +14,7 @@ return new class extends Migration
             $table->string('user_id')->unique()->comment('Auto-generated business identifier, e.g. USR-XXXXXXXX');
 
             // Core auth fields
-            $table->string('email')->unique();
+            $table->string('email')->nullable();
             $table->string('nickname')->unique();
             $table->string('password');
             $table->string('phone_number')->unique();

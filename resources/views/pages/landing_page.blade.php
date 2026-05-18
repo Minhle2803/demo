@@ -27,7 +27,7 @@
     <div class="container navbar-inner">
         <a href="/" class="logo">
             <img 
-                src="{{ asset('assets/images/logo/logo.png') }}" 
+                src="{{ $projectLogo }}" 
                 alt="Binance Logo"
                 class="logo-img"
                 style="width: 64px;"

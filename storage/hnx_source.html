@@ -1,0 +1,1666 @@
+﻿
+<!DOCTYPE html>
+<html>
+
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    
+    
+
+    <link href="/Content/PortalCSS/Style.css?v=1.5.8.16" rel="stylesheet" />
+
+    <link href="/Content/font.css" rel="stylesheet" />
+
+    <script src="/Scripts/jquery-1.7.1.min.js"></script>
+    <script src="/Scripts/jquery-ui-1.8.20.min.js"></script>
+
+
+
+
+    <link href="/Content/datepicker/ui-lightness/jquery-ui-1.10.4.custom.min.css" rel="stylesheet" />
+
+    <script src="/Scripts/vue.global.js"></script>
+    <link href="/Content/StyleSheetGeneral.css" rel="stylesheet" />
+    <link href="/Content/CssFormPoup/StyleFormPopup.css?v=1.5.8.16" rel="stylesheet" />
+    <script src="/Scripts/messagebox/JsFormPopup.js?v=1.5.8.16"></script>
+
+    <link href="/Content/Site.css" rel="stylesheet" />
+
+
+
+    
+
+    <style>
+        *, html, body {
+            /*font-family: "Noto Sans", sans-serif !important;*/
+        }
+
+        #header {
+            margin-right: 20px;
+        }
+
+
+        .search_contain {
+            float: right;
+            padding-top: 2px;
+            position: relative;
+            margin-left: 10px;
+        }
+
+        #btn_search_menu {
+            position: relative;
+            z-index: 999;
+            background-color: #F5F5F5;
+            border: 1px solid #f5f5f5;
+            right: 0;
+            top: 1px;
+            height: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            max-width: 200px;
+            min-width: 200px;
+            width: 100%;
+            border-radius: 20px;
+            border: 1px solid
+        }
+
+            #btn_search_menu img {
+                margin-right: 12px;
+            }
+
+        .btn_search_menu {
+            border: 1px solid #ccc !important;
+            border-bottom: none !important;
+            background-color: #F9F9F8 !important;
+        }
+
+        #g_txt_search {
+            border: 1px solid;
+            -moz-border-radius: 20px;
+            -webkit-border-radius: 20px;
+            border-radius: 20px;
+            padding: 0 10px 0 7px;
+            margin: 0;
+            margin-top: 7px;
+            width: 250px;
+            font-size: 13px
+        }
+
+        .cls_display_none {
+            display: none !important;
+        }
+
+        .clsBtnDefault {
+            padding: 3px 15px 0;
+            text-transform: uppercase;
+            background-color: #1a8200;
+            color: #fff;
+            border: none;
+            text-align: center;
+            text-decoration: none;
+            cursor: pointer;
+            font-size: 13px;
+            height: 25px
+        }
+
+        #g_txt_search:not(:empty) .advanced_search_menu {
+            display: flex;
+        }
+
+        .advanced_search_menu {
+            display: none;
+            align-items: center;
+            padding: 2px 8px;
+        }
+
+        #box_search_menu img {
+            position: absolute;
+            right: 8px;
+            top: 8px;
+        }
+
+        #box_search_menu {
+            display: flex;
+            flex-direction: column;
+            /*box-shadow: 0 2px 7px 0 rgba(204, 204, 204, .96) !important;*/
+        }
+
+        .containMenuHeader {
+            position: relative;
+            right: 8px
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <div id="header">
+            <div class="containMenuHeader">
+                <a href="/hnx.html" class="hnx-icon"></a>
+                <div class="menuright">
+                    <div class="lang_contain">
+                        <div id="lang_icon">
+
+                                <a href="/Home/Language?culture=en-GB&returnUrl=home.html" class="lang-en">
+                                    <img src="/Content/CountryFlags/united-states.png">
+                                </a>
+                        </div>
+                        <div id="cssmenu">
+                            <div class="search_contain" id="div_search_contain">
+                                <div id="box_search_menu" class="box_search ">
+                                    <img alt="" src="/Content/TTTT/icon_search_24.png" />
+                                    <input type="text" id="g_txt_search" placeholder="Nhập từ kh&#243;a t&#236;m kiếm" class="ui-autocomplete-input" />
+                                    
+                                <div class="advanced_search_menu ">
+                                    <input type="radio" name="name" id="g_MaCKOnSearchSuggest" value="" checked="checked" />
+                                    &nbsp; M&#227; CK
+                                    <input type="radio" name="name" id="g_NewsOnSearchSuggest" value="" style="margin-left: 45px" />
+                                    &nbsp; Tin tức
+                                </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ul-menu">
+                        <ul>
+                            <li>  <a style="display: block; text-align: center;" href="/co-phieu.html"> CỔ PHIẾU </a>  <ul class="ul-5-li"></ul></li>
+                            <li>  <a style="display: block; text-align: center;" href="/trai-phieu.html">  TR&#193;I PHIẾU </a>  <ul class="ul-5-li"></ul></li>
+                            <li>  <a style="display: block; text-align: center;" href="/phai-sinh.html">  CHỨNG KHO&#193;N PH&#193;I SINH</a>  <ul class="ul-5-li"></ul></li>
+                        </ul>
+                    </div>
+
+                    <div class="ul-index-1" id="TTChiSo">
+
+
+                        <div class="ul-index" v-for="(DataChiSo, index) in lstDataChiSo" :key="index">
+
+                            <div class="font-bold">{{ DataChiSo.Floor_Text }} </div>
+                            <div>{{ DataChiSo.Current_Index }}</div>
+                            <div v-if="DataChiSo.Chg_Index > 0" style="float:left" class="triangle-up"></div>
+                            <div v-else-if="DataChiSo.Chg_Index < 0" style="float:left" class="triangle-down"></div>
+                            <div v-else style="float:left" class="square"></div>
+                            <div>{{ DataChiSo.Chg_Index }}</div>
+                            <div>({{ DataChiSo.Pct_Index }}%)</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="container-index-2 ">
+                <div class="ul-index-2 marquee ">
+                    <div class="marquee-content">
+                        <!--// nhân nhiều bản ghi để tránh bị đứt đoạn-->
+
+                        <div class="index-2" v-for="(DataSymbol, index) in lstDataSymbol" :key="index">
+                            <div>{{ DataSymbol.Symbol }}</div>
+                            <div>{{ DataSymbol.Match_Price_format }}</div>
+                            <div v-if="DataSymbol.Change_Price > 0" class="triangle-up"></div>
+                            <div v-else-if="DataSymbol.Change_Price < 0" class="triangle-down"></div>
+                            <div v-else class="square"></div>
+                            <div>{{ DataSymbol.Change_Price_format }}</div>
+                            <div>({{ DataSymbol.Change_Price_Per_format }}%)</div>
+                        </div>
+
+                        <div class="index-2" v-for="(DataSymbol, index) in lstDataSymbol" :key="index">
+                            <div>{{ DataSymbol.Symbol }}</div>
+                            <div>{{ DataSymbol.Match_Price_format }}</div>
+                            <div v-if="DataSymbol.Change_Price > 0" class="triangle-up"></div>
+                            <div v-else-if="DataSymbol.Change_Price < 0" class="triangle-down"></div>
+                            <div v-else class="square"></div>
+                            <div>{{ DataSymbol.Change_Price_format }}</div>
+                            <div>({{ DataSymbol.Change_Price_Per_format }}%)</div>
+                        </div>
+
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        
+
+<style>
+    .title_new {
+        font-size: 36px;
+        color: #fffffd;
+        font-weight: bold;
+        line-height: 46px;
+    }
+
+    .time_new {
+        padding: 3px 7px 2px 7px;
+        display: inline-block;
+        margin-top: 10px;
+        background: #628a67;
+        font-style: italic
+    }
+
+    .content_new {
+        color: #fefefe;
+        margin: 15px 0px;
+        line-height: 25px;
+        font-size: 19px;
+        font-style: italic
+    }
+
+    .view-more {
+        border: 1px solid #c2c7c5;
+        color: #c2c7c5;
+        padding: 4px 26px;
+        display: inline-block;
+        border-radius: 6px;
+        font-style: italic;
+        font-size: 16px;
+        cursor: pointer
+    }
+
+    .grid-container {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr); /* 3 cột có kích thước bằng nhau */
+        grid-template-rows: repeat(2, 50px); /* 2 hàng, mỗi hàng có chiều cao 200px */
+        gap: 10px;
+    }
+
+    .tr-center {
+        display: flex;
+        align-items: center;
+    }
+
+    .triangle-up-lar {
+        margin-right: 10px;
+    }
+
+    .triangle-down-lar {
+        margin-right: 10px;
+    }
+
+    .square-lar {
+        margin-right: 10px;
+    }
+
+    .pd-right-20 {
+        padding-right: 20px !important;
+    }
+
+    .clsBtnClosePopup {
+        font-family: MyriadPro-Cond !important;
+        font-size: 16px;
+        font-weight: 400;
+    }
+
+    a:hover {
+        color: #c2c7c5 !important;
+    }
+
+    span {
+    }
+
+    .content-main {
+        background-size: cover;
+        background-position: center center;
+        position: relative;
+        background-color: #003300;
+    }
+
+
+
+    .background-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-size: cover;
+        background-position: center center;
+        opacity: 0; /* Lớp phủ bắt đầu với độ mờ */
+        transition: opacity 1s ease-in-out; /* Điều chỉnh thời gian chuyển đổi opacity */
+    }
+
+
+
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    html, body {
+        height: 100%;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+    #header, #footer {
+    }
+
+    #pannel {
+        flex: 1; /* Điều này giúp content tự động chiếm phần còn lại của màn hình */
+
+        overflow: auto; /* Khi zoom hoặc có nội dung dài, sẽ có thanh cuộn */
+    }
+
+    .ghichu_text_child {
+        min-width: 25%;
+    }
+
+    .multiline-ellipsis {
+        padding-right: 5px;
+    }
+</style>
+
+
+
+<div id="pannel">
+    <div class="content-main"
+         :style="{
+      backgroundImage: `url(${currentDataSlider})`,
+      backgroundRepeat: 'no-repeat',
+      backgroundPosition: 'center center',
+      transition: 'background-image 1s ease-in-out',
+
+    }">
+
+        <div style="height:100%" id="content-panel">
+            <div class="slideshow-container">
+                <div class="mySlides ">
+                    <div class="mySlides_Content containMenuHeader">
+
+                        <div class="mySlides_child" :class="currentClassChangeNews">
+                            <div>
+                                <div class="title_new multiline-ellipsis">{{ currentContentTitle }}   </div>
+                                <div class="time_new" v-if="currentContent.ARTICLES_ID > 0">{{ currentContent.PUBLICTIME_TEXT }}</div>
+                                <div class="content_new multiline-ellipsis truncate" ref="truncateText">
+                                    {{ currentContentHeader }}
+                                </div>
+
+
+
+                                <div v-if="currentContent.ARTICLES_ID > 0" class="view-more hover-link" @click="DetailArticlesByID(currentContent.ARTICLES_ID, currentContent.FILEATTACH)"> Xem Th&#234;m </div>
+                            </div>
+                        </div>
+
+
+
+
+
+                        <div class="mySlides_child_table">
+                            <div>
+                                <table id="table_home">
+                                    <tr class="header_table">
+                                        <th style="width:200px">Thị trường</th>
+                                        <th style="width:200px">Giá trị giao dịch<br>(tỷ Đồng)</th>
+                                        <th style="width:100px">Thay đổi</th>
+                                    </tr>
+                                    <tr>
+                                        <td class="">Cổ phiếu Ni&#234;m yết</td>
+                                        <td class="textright pd-right-20">{{ currentContentTrading_Auto_Info?.Total_Traded_Value_LIS_Format }}</td>
+                                        <td class="tr-center">
+                                            <div v-if="currentContentTrading_Auto_Info.Change_LIST > 0" style="float:left" class="triangle-up-lar"></div>
+                                            <div v-else-if="currentContentTrading_Auto_Info.Change_LIST < 0" style="float:left" class="triangle-down-lar"></div>
+                                            <div v-else style="float:left" class="square-lar"></div>
+                                            &nbsp;
+                                            <span> {{ currentContentTrading_Auto_Info?.Change_LIST_Format }}%</span>
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td class="">Cổ phiếu UPCoM</td>
+                                        <td class="textright pd-right-20">{{ currentContentTrading_Auto_Info?.Total_Traded_Value_UP_Format }}</td>
+                                        <td class="tr-center">
+                                            <div v-if="currentContentTrading_Auto_Info.Change_UP > 0" style="float:left" class="triangle-up-lar"></div>
+                                            <div v-else-if="currentContentTrading_Auto_Info.Change_UP < 0" style="float:left" class="triangle-down-lar"></div>
+                                            <div v-else style="float:left" class="square-lar"></div>
+                                            &nbsp;
+                                            <span> {{ currentContentTrading_Auto_Info?.Change_UP_Format }}%</span>
+                                        </td>
+                                    </tr>
+
+
+                                    <tr>
+                                        <td>Tr&#225;i phiếu Ch&#237;nh phủ</td>
+                                        <td class="textright pd-right-20">{{ currentContentTrading_Auto_Info?.Total_Traded_Value_TPCP_Format }}</td>
+                                        <td class="tr-center">
+                                            <div v-if="currentContentTrading_Auto_Info.Change_TPCP > 0" style="float:left" class="triangle-up-lar"></div>
+                                            <div v-else-if="currentContentTrading_Auto_Info.Change_TPCP < 0" style="float:left" class="triangle-down-lar"></div>
+                                            <div v-else style="float:left" class="square-lar"></div>
+                                            &nbsp;
+                                            <span> {{ currentContentTrading_Auto_Info?.Chang_TPCP_Format }}%</span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Tr&#225;i phiếu Doanh nghiệp</td>
+                                        <td class="textright pd-right-20">{{ currentContentTrading_Auto_Info?.Total_Traded_Value_TPCP_DN_Format }}</td>
+                                        <td class="tr-center">
+                                            <div v-if="currentContentTrading_Auto_Info.Change_TPCP_DN > 0" style="float:left" class="triangle-up-lar"></div>
+                                            <div v-else-if="currentContentTrading_Auto_Info.Change_TPCP_DN < 0" style="float:left" class="triangle-down-lar"></div>
+                                            <div v-else style="float:left" class="square-lar"></div>
+                                            &nbsp;
+                                            <span> {{ currentContentTrading_Auto_Info?.Change_TPCP_DN_Format }}%</span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>HĐTL Chỉ số cổ phiếu</td>
+                                        <td class="textright pd-right-20">{{ currentContentTrading_Auto_Info?.Total_Traded_Value_HDTL_CS_CP_Format }}</td>
+                                        <td class="tr-center">
+                                            <div v-if="currentContentTrading_Auto_Info.Change_HDTL_CS_CP > 0" style="float:left" class="triangle-up-lar"></div>
+                                            <div v-else-if="currentContentTrading_Auto_Info.Change_HDTL_CS_CP < 0" style="float:left" class="triangle-down-lar"></div>
+                                            <div v-else style="float:left" class="square-lar"></div>
+                                            &nbsp;
+                                            <span> {{ currentContentTrading_Auto_Info?.Change_HDTL_CS_CP_Format }}%</span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>HĐTL Tr&#225;i phiếu Ch&#237;nh phủ</td>
+                                        <td class="textright pd-right-20">{{ currentContentTrading_Auto_Info?.Total_Traded_Value_HDTL_TPCP_Format }}</td>
+                                        <td class="tr-center">
+                                            <div v-if="currentContentTrading_Auto_Info.Change_HDTL_TPCP > 0" style="float:left" class="triangle-up-lar"></div>
+                                            <div v-else-if="currentContentTrading_Auto_Info.Change_HDTL_TPCP < 0" style="float:left" class="triangle-down-lar"></div>
+                                            <div v-else style="float:left" class="square-lar"></div>
+                                            &nbsp;
+                                            <span> {{ currentContentTrading_Auto_Info?.Change_HDTL_TPCP_Format }}%</span>
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td colspan="3" class="table-footer" style=" font-weight: 400">Cập nhật ng&#224;y {{ currentContentTrading_Auto_Info?.TRADING_DATE_TEXT }}</td>
+
+                                    </tr>
+
+                                </table>
+                            </div>
+                            <div class="mySlides_child_table_foot">
+                                <div class="form_text hover-link" @click="DetailArticlesMore()"><a style="color: #c2c7c5">Danh s&#225;ch tin mới nhất</a></div>
+                                <div class="form_text hover-link"><a class="style_href" target="_blank" href="https://banggia.hnx.vn/">Bảng gi&#225; trực tuyến</a></div>
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+
+                
+                <div class="mySlides">
+                    <div class="mySlides_Content containMenuHeader">
+                        <div class="mySlides_child" :class="classChangeNews">
+                            <div>
+                                <div class="title_new multiline-ellipsis">{{ currentContentCPTitle }}</div>
+                                <div class="time_new" v-if="currentContentCP.ARTICLES_ID > 0">{{ currentContentCP?.PUBLICTIME_TEXT }}</div>
+                                <div class="content_new multiline-ellipsis">
+                                    {{ currentContentCPHeader }}
+
+                                </div>
+                                <div v-if="currentContentCP.ARTICLES_ID > 0" class="view-more hover-link" @click="DetailArticlesByID(currentContentCP.ARTICLES_ID, currentContentCP.FILEATTACH)">Xem Th&#234;m  </div>
+                            </div>
+                        </div>
+                        <div class="mySlides_child_table">
+                            <div class="form_cp">
+                                <div style="padding: 15px 25px;">
+                                    <div>
+                                        <div style="padding: 0 0 10px 0; ">
+                                            <span style="font-size: 24px; font-weight: bold">Số lượng c&#244;ng ty</span>
+                                            <span style="float:right; font-style:italic; font-size: 20px;">(C&#244;ng ty)</span>
+                                        </div>
+                                        <div class="bieudo">
+                                            <div class="bieudodetail bieudoPar">
+                                                <span v-if="currentContentTrading_Auto_InfoCP.Total_Number_Com_Up > 0" class="textPar" :style="{ left: currentValueUPCom + '%'  }">{{ currentContentTrading_Auto_InfoCP?.Total_Number_Com_Up_Format }}</span>
+                                                <span v-else class="textPar"></span>
+
+                                                <div class="bieudodetail bieudoChi fixvalueSLCT" :style="{ width: currentValueSLCT + '%'  }">
+                                                    <span v-if="currentContentTrading_Auto_InfoCP.Total_Number_Com_List > 0" class="textChild">{{ currentContentTrading_Auto_InfoCP?.Total_Number_Com_List_Format }}</span>
+                                                    <span v-else class="textChild" style="width: 0%"></span>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                        <div class="ghichu">
+
+                                            <div v-if="currentContentTrading_Auto_InfoCP.Total_Number_Com_Up > 0" class="ghichu_text_par" :style="{ left: currentValueUPCom + '%'  }">UPCoM</div>
+                                            <div v-else class="ghichu_text_par"></div>
+
+                                            <div v-if="currentContentTrading_Auto_InfoCP.Total_Number_Com_List > 0" class="ghichu_text_child" :style="{ width: currentValueSLCT + '%'  }">Ni&#234;m yết</div>
+                                            <div v-else class="ghichu_text_child" style="width: 0%"></div>
+
+                                        </div>
+
+                                    </div>
+
+                                    <div style="margin-top:25px">
+                                        <div style="padding: 0 0 10px 0; ">
+                                            <span style="font-size: 24px; font-weight: bold">Gi&#225; trị vốn h&#243;a</span>
+                                            <span style="float: right; font-style: italic; font-size: 20px;">(Tỷ trọng)</span>
+                                        </div>
+                                        <div class="bieudo">
+                                            <div class="bieudodetail bieudoPar">
+                                                <span v-if="currentContentTrading_Auto_InfoCP?.Total_Value_Up > 0" class="textPar" :style="{ left: currentUPCom + '%'  }">{{ currentContentTrading_Auto_InfoCP?.Total_Value_Up_Format }}</span>
+                                                <span v-else class="textPar"></span>
+
+                                                <div class="bieudodetail bieudoChi fixvalueSLCT" :style="{ width: currentValue + '%'  }">
+                                                    <span v-if="currentContentTrading_Auto_InfoCP?.Total_Value_List > 0" class="textChild" style="left: 15px; transform: translate(0%, -50%) ">{{ currentContentTrading_Auto_InfoCP?.Total_Value_List_Format }}</span>
+                                                    <span v-else class="textChild" style="width: 0%"></span>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                        <div class="ghichu">
+
+                                            <div v-if="currentContentTrading_Auto_InfoCP?.Total_Value_Up > 0" class="ghichu_text_par" :style="{ left: currentUPCom + '%'  }">UPCoM</div>
+                                            <div v-else class="ghichu_text_par"></div>
+
+                                            <div v-if="currentContentTrading_Auto_InfoCP?.Total_Value_List > 0" class="ghichu_text_child" :style="{ width: currentValue + '%'  }">Ni&#234;m yết </div>
+                                            <div v-else class="ghichu_text_child" style="width: 0%"></div>
+
+                                        </div>
+                                    </div>
+
+
+                                </div>
+                                <div class="table-footer">
+                                    <span style=" font-weight: 400">
+                                        Cập nhật ng&#224;y {{ currentContentTrading_Auto_InfoCP?.TRADING_DATE_TEXT }}
+                                    </span>
+                                </div>
+                            </div>
+
+
+                            <div style="width:100%">
+                                <div class="form_text hover-link"><a class="style_href" target="_blank" href="https://banggia.hnx.vn/">Bảng gi&#225; trực tuyến</a></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                
+
+                <div class="mySlides">
+                    <div class="mySlides_Content containMenuHeader">
+                        <div class="mySlides_child" :class="classChangeNews">
+                            <div>
+                                <div class="title_new multiline-ellipsis">{{ currentContentTPTitle }}</div>
+                                <div class="time_new" v-if="currentContentTP.ARTICLES_ID > 0">{{ currentContentTP?.PUBLICTIME_TEXT }}</div>
+                                <div class="content_new multiline-ellipsis">
+                                    {{ currentContentTPHeader }}
+                                </div>
+                                <div v-if="currentContentTP.ARTICLES_ID > 0" class="view-more hover-link" @click="DetailArticlesByID(currentContentTP.ARTICLES_ID, currentContentTP.FILEATTACH)">Xem Th&#234;m  </div>
+
+                            </div>
+                        </div>
+                        <div class="mySlides_child_table">
+                            <div style="">
+                                <div>
+                                    <table id="table_home">
+                                        <tr class="header_table">
+                                            <th style="width:200px"><a class="style_href href" style="color:#fff" target="_blank" href="/trai-phieu/bang-chao-gia-trong-ngay.html">Tr&#225;i phiếu ch&#237;nh phủ </a></th>
+                                            <th style="width:200px">Điểm chỉ số</th>
+                                            <th style="width:100px">Thay đổi</th>
+                                        </tr>
+                                        <tr>
+                                            <td class="">Chỉ số Gi&#225; sạch</td>
+                                            <td class="textright pd-right-20">{{ currentContentTrading_Auto_InfoTP?.CLEAN_INDEX_FORMAT }}</td>
+                                            <td class="tr-center">
+                                                <div v-if="currentContentTrading_Auto_InfoTP?.CLEAN_INDEX_CHG > 0" style="float:left" class="triangle-up-lar"></div>
+                                                <div v-else-if="currentContentTrading_Auto_InfoTP?.CLEAN_INDEX_CHG < 0" style="float:left" class="triangle-down-lar"></div>
+                                                <div v-else style="float:left" class="square-lar"></div>
+                                                &nbsp;
+                                                <span> {{ currentContentTrading_Auto_InfoTP?.CLEAN_INDEX_PER }}%</span>
+                                            </td>
+                                        </tr>
+
+                                        <tr>
+                                            <td class="">Chỉ số Gi&#225; bẩn</td>
+                                            <td class="textright pd-right-20">{{ currentContentTrading_Auto_InfoTP?.DIRTY_INDEX_FORMAT }}</td>
+                                            <td class="tr-center">
+                                                <div v-if="currentContentTrading_Auto_InfoTP?.DIRTY_INDEX_CHG > 0" style="float:left" class="triangle-up-lar"></div>
+                                                <div v-else-if="currentContentTrading_Auto_InfoTP?.DIRTY_INDEX_CHG < 0" style="float:left" class="triangle-down-lar"></div>
+                                                <div v-else style="float:left" class="square-lar"></div>
+                                                &nbsp;
+                                                <span> {{ currentContentTrading_Auto_InfoTP?.DIRTY_INDEX_PER_FORMAT }}%</span>
+                                            </td>
+                                        </tr>
+
+
+                                        <tr>
+                                            <td>Chỉ số Tổng thu nhập</td>
+                                            <td class="textright pd-right-20">{{ currentContentTrading_Auto_InfoTP?.TOTAL_INCOME_INDEX_FORMAT }}</td>
+                                            <td class="tr-center">
+                                                <div v-if="currentContentTrading_Auto_InfoTP?.TOTAL_INCOME_INDEX_CHG > 0" style="float:left" class="triangle-up-lar"></div>
+                                                <div v-else-if="currentContentTrading_Auto_InfoTP?.TOTAL_INCOME_INDEX_CHG < 0" style="float:left" class="triangle-down-lar"></div>
+                                                <div v-else style="float:left" class="square-lar"></div>
+                                                &nbsp;
+                                                <span> {{ currentContentTrading_Auto_InfoTP?.TOTAL_INCOME_INDEX_PER_FORMAT }}%</span>
+                                            </td>
+
+                                        </tr>
+
+                                        <tr class="header_table">
+                                            <th style="width:200px"><a class="style_href href" style="color:#fff" target="_blank" href="https://cbonds.hnx.vn/" _bla>Tr&#225;i phiếu Doanh nghiệp</a></th>
+                                            <th style="width:200px">Giá trị giao dịch<br>(tỷ Đồng)</th>
+                                            <th style="width:100px">Thay đổi</th>
+                                        </tr>
+                                        <tr>
+                                            <td>TPDN ni&#234;m yết</td>
+                                            <td class="textright pd-right-20" style="">{{ currentContentTrading_Auto_InfoTP?.Total_Traded_Value_TPCP_DN_NY_FORMAT }}</td>
+                                            <td class="tr-center">
+                                                <div v-if="currentContentTrading_Auto_InfoTP?.TPCP_DN_NY_change > 0" style="float:left" class="triangle-up-lar"></div>
+                                                <div v-else-if="currentContentTrading_Auto_InfoTP?.TPCP_DN_NY_change < 0" style="float:left" class="triangle-down-lar"></div>
+                                                <div v-else style="float:left" class="square-lar"></div>
+                                                &nbsp;
+                                                <span> {{ currentContentTrading_Auto_InfoTP?.TPCP_DN_NY_CHANGE_FORMAT }}%</span>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>TPDN ri&#234;ng lẻ</td>
+                                            <td class="textright pd-right-20" style="">{{ currentContentTrading_Auto_InfoTP?.Total_Traded_Value_TPCP_DN_RL_FORMAT }}</td>
+                                            <td class="tr-center">
+                                                <div v-if="currentContentTrading_Auto_InfoTP?.TPCP_DN_RL_change > 0" style="float:left" class="triangle-up-lar"></div>
+                                                <div v-else-if="currentContentTrading_Auto_InfoTP?.TPCP_DN_RL_change < 0" style="float:left" class="triangle-down-lar"></div>
+                                                <div v-else style="float:left" class="square-lar"></div>
+                                                &nbsp;
+                                                <span> {{ currentContentTrading_Auto_InfoTP?.TPCP_DN_RL_CHANGE_FORMAT }}%</span>
+                                            </td>
+                                        </tr>
+
+
+                                        <tr>
+                                            <td colspan="3" class="table-footer" style="font-weight: 400">Cập nhật ng&#224;y {{ currentContentTrading_Auto_InfoTP?.TRADING_DATE_TEXT }}</td>
+
+                                        </tr>
+
+                                    </table>
+                                </div>
+
+                            </div>
+                            <div style="width:100%">
+                               
+                                    <div class="form_text hover-link"><a class="style_href" target="_blank" href="/trai-phieu/ket-qua-gd-trong-ngay.html?site=in">Bảng giao dịch TPCP</a></div>
+
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                
+
+                <div class="mySlides">
+                    <div class="mySlides_Content containMenuHeader">
+                        <div class="mySlides_child"  :class="classChangeNews">
+                            <div>
+                                <div class="title_new multiline-ellipsis">{{ currentContentPSTitle }}</div>
+                                <div class="time_new" v-if="currentContentPS.ARTICLES_ID > 0">{{ currentContentPS?.PUBLICTIME_TEXT }}</div>
+                                <div class="content_new multiline-ellipsis">
+                                    {{ currentContentPSHeader }}
+                                </div>
+                                <div v-if="currentContentPS.ARTICLES_ID > 0" class="view-more hover-link" @click="DetailArticlesByID(currentContentPS.ARTICLES_ID, currentContentPS.FILEATTACH)">Xem Th&#234;m  </div>
+                            </div>
+                        </div>
+                        <div class="mySlides_child_table">
+                            <div style="">
+
+                                <div>
+                                    <table id="table_home">
+                                        <tr class="header_table">
+                                            <th style="width:200px"></th>
+                                            <th style="width:200px">Giá trị giao dịch<br>(tỷ Đồng)</th>
+                                            <th style="width:100px">Khối lượng mở</th>
+                                        </tr>
+                                        <tr>
+                                            <td class="">HĐTL TPCP 5 năm</td>
+                                            <td class="textright pd-right-20">{{ currentContentTrading_Auto_InfoPS?.Total_Traded_Value_HDTL_TPCP_5_Format }}</td>
+                                            <td class="textright pd-right-20">{{ currentContentTrading_Auto_InfoPS?.Total_OI_HDTL_TPCP_5_FORMAT }}</td>
+                                            
+                                        </tr>
+
+                                        <tr>
+                                            <td class="">HĐTL TPCP 10 năm</td>
+                                            <td class="textright pd-right-20">{{ currentContentTrading_Auto_InfoPS?.Total_Traded_Value_HDTL_TPCP_10_Format }}</td>
+                                            <td class="textright pd-right-20">{{ currentContentTrading_Auto_InfoPS?.Total_OI_HDTL_TPCP_10_FORMAT }}</td>
+                                            
+                                        </tr>
+
+
+                                        <tr>
+                                            <td class="">HĐTL chỉ số VN30</td>
+                                            <td class="textright pd-right-20">{{ currentContentTrading_Auto_InfoPS?.Total_Traded_Value_HDTL_CS_CP_Format }}</td>
+                                            <td class="textright pd-right-20">{{ currentContentTrading_Auto_InfoPS?.Total_OI_HDTL_CS_CP_FORMAT }}</td>
+                                            
+                                        </tr>
+                                            <tr>
+                                                <td class="">HĐTL chỉ số VN100</td>
+                                                <td class="textright pd-right-20">{{ currentContentTrading_Auto_InfoPS?.Total_Traded_Value_VN100_FORMAT }}</td>
+                                                <td class="textright pd-right-20">{{ currentContentTrading_Auto_InfoPS?.Total_OI_HDTL_VN100_FORMAT }}</td>
+                                                
+                                            </tr>
+
+
+
+                                        <tr>
+                                            <td colspan="3" class="table-footer" style="font-weight: 400">Cập nhật ng&#224;y {{ currentContentTrading_Auto_InfoPS?.TRADING_DATE_TEXT }}</td>
+                                        </tr>
+                                    </table>
+                                </div>
+
+                            </div>
+                            <div style="width:100%">
+                                <div class="form_text hover-link"><a class="style_href" target="_blank" href="https://banggia.hnx.vn/">Bảng gi&#225; trực tuyến</a></div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+
+
+                <!-- Next and previous buttons -->
+                <a class="prev" onclick="plusSlides(-1)">
+                    <img src="/Content/images/left-arrow.png" style=" filter: invert(100%) sepia(4%) saturate(7500%) hue-rotate(291deg) brightness(106%) contrast(102%); width: 50px; height: 50px;" />
+                </a>
+                <a class="next" onclick="plusSlides(1)"> <img src="/Content/images/left-arrow.png" style=" filter: invert(100%) sepia(4%) saturate(7500%) hue-rotate(291deg) brightness(106%) contrast(102%); width: 50px; height: 50px;" /></a>
+            </div>
+        </div>
+
+
+    </div>
+</div>
+
+<div id="footer" style="display: flex; align-items: center; color: #fff;width: 100%; background: linear-gradient(90deg, rgba(0,16,42,1) 0%, rgba(1,48,40,1) 40%, rgba(0,48,6,1) 100%)">
+    <div class="containMenuHeader" style="display: flex; align-items: center; justify-content: space-between; height: max-content">
+        <div style="text-align: center; font-size: 13px">&#169; 2016 Bản quyển thuộc &quot;Sở Giao dịch Chứng kho&#225;n H&#224; Nội&quot;.</div>
+
+        <div style="text-align: center; color: #fff">
+            <div style="text-align: center; width: 100%">
+                <div style="width: 100%">
+                    <span style="padding: 10px"><a href="/dich-vu-cctt.html" target="_blank" style="color: #fff; text-decoration: none">Dịch vụ cung cấp th&#244;ng tin</a></span>
+                    <span>|</span>
+                    <span style="padding: 10px"><a href="/rss.html" target="_blank" style="color: #fff; text-decoration: none">RSS</a></span>
+                    <span>|</span>
+                    <span style="padding: 10px"><a href="/hoat-dong-hop-tac-quoc-te.html" target="_blank" style="color: #fff; text-decoration: none">Li&#234;n kết</a></span>
+                    <span>|</span>
+                    <span style="padding: 10px"><a href="/lien-he.html" target="_blank" style="color: #fff; text-decoration: none">Li&#234;n hệ</a></span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="divWrapperDetailArticlas" class="divWrapperPopup" style="display: none">
+    <div class="divPopup" id="divViewDetailArticles">
+    </div>
+</div>
+
+<div id="divWrapperDetail" class="divWrapperPopup" style="display: none">
+    <div class="divPopup2" id="divViewDetail">
+    </div>
+</div>
+
+
+<script>
+    let slideIndex = 1;
+
+    showSlides(slideIndex);
+    function plusSlides(n) {
+        showSlides(slideIndex += n);
+    }
+    function currentSlide(n) {
+
+        showSlides(slideIndex = n);
+    }
+    function showSlides(n) {
+        let i;
+        let slides = document.getElementsByClassName("mySlides");
+
+        if (n > slides.length) { slideIndex = 1 }
+        if (n < 1) { slideIndex = slides.length }
+        for (i = 0; i < slides.length; i++) {
+            slides[i].style.display = "none";
+        }
+
+        slides[slideIndex - 1].style.display = "block";
+    }
+
+</script>
+
+<script>
+    $(document).ready(function () {
+        //loadMemdata();
+        //setInterval(loadMemdata, 5000);
+
+        let currentSlide1 = 0;
+        const $slides = $('.mySlides');
+        const totalSlides = $slides.length;
+        let isScrolling = false;  // Cờ để kiểm tra nếu đang cuộn
+
+        $(window).on('wheel', function (e) {
+            // Nếu đang trong quá trình cuộn, không xử lý nữa
+            if (isScrolling) return;
+
+            // Thiết lập cờ đang cuộn
+            isScrolling = true;
+
+            // Kiểm tra hướng cuộn chuột
+            if (e.originalEvent.deltaY > 0) {
+                // Lăn chuột xuống -> chuyển đến slide tiếp theo
+                plusSlides(1);
+
+            } else {
+                // Lăn chuột lên -> quay lại slide trước
+                plusSlides(-1);
+            }
+            $(".mySlides_child").addClass("fade-in-right");
+            // Sau khi di chuyển slide xong, thiết lập lại cờ cuộn sau 500ms (hoặc tùy chỉnh)
+            setTimeout(function () {
+                isScrolling = false;
+            }, 500);  // Điều chỉnh giá trị 500ms cho phù hợp
+        });
+
+        var userAgent = navigator.userAgent;
+
+
+        // Kiểm tra trình duyệt Firefox
+        if (userAgent.indexOf("Firefox") > -1) {
+
+        }
+        else if (userAgent.indexOf("Edg") > -1) {
+            $(".containMenuHeader").css("right", "7px");
+        }
+        // Kiểm tra trình duyệt Chrome
+        else if (userAgent.indexOf("Chrome") > -1) {
+
+        }
+
+        // Kiểm tra trình duyệt Safari
+        else if (userAgent.indexOf("Safari") > -1) {
+
+        }
+        // Kiểm tra trình duyệt Edge
+
+        // Kiểm tra trình duyệt Internet Explorer
+        else if (userAgent.indexOf("MSIE") > -1 || userAgent.indexOf("Trident") > -1) {
+
+        }
+        // Trình duyệt không xác định
+        else {
+
+        }
+
+    });
+
+
+    const appreceived = Vue.createApp({
+        data() {
+            return {
+                message: '',
+                sysdate: '',
+                classChangeNews: '',
+                lstArticlesHome: [],
+                lstArticlesCP: [],
+                lstArticlesTP: [],
+                lstArticlesPS: [],
+
+                DataSlider: [],
+
+                Trading_Auto_Info: {},
+                Trading_Auto_Info_CP: {},
+                Trading_Auto_Info_PS: {},
+                Trading_Auto_Info_TP: {},
+
+                currentIndex: 0,
+                currentIndexCP: 0,
+                currentIndexTP: 0,
+                currentIndexPS: 0,
+                currentIndexSlider: 0,
+
+                sliderDefault: "   ",
+
+                intervalIdPortal: null,
+
+
+                text: '',
+                visibleText: '',
+            };
+        },
+
+        computed: {
+            currentContent() {
+                return this.lstArticlesHome[this.currentIndex] || [];
+            },
+
+            currentContentHeader() {
+                 return this.truncateString(this.lstArticlesHome?.[this.currentIndex]?.HEADER || "");
+            },
+             currentContentTitle() {
+                 return this.truncateString(this.lstArticlesHome?.[this.currentIndex]?.TITLE || "", 110);
+             },
+
+
+            currentContentCP() {
+                return this.lstArticlesCP[this.currentIndexCP] || [];
+            },
+
+            currentContentCPHeader() {
+                return this.truncateString(this.lstArticlesCP?.[this.currentIndexCP]?.HEADER || "");
+            },
+              currentContentCPTitle() {
+                  return this.truncateString(this.lstArticlesCP?.[this.currentIndexCP]?.TITLE || "", 110);
+              },
+
+
+            currentContentTP() {
+                return this.lstArticlesTP[this.currentIndexTP] || [];
+            },
+
+            currentContentTPHeader() {
+                return this.truncateString(this.lstArticlesTP?.[this.currentIndexTP]?.HEADER || "");
+            },
+             currentContentTPTitle() {
+                 return this.truncateString(this.lstArticlesTP?.[this.currentIndexTP]?.TITLE || "", 110);
+             },
+
+
+
+            currentContentPS() {
+                return this.lstArticlesPS[this.currentIndexPS] || [];
+            },
+
+            currentContentPSHeader() {
+                return this.truncateString(this.lstArticlesPS?.[this.currentIndexPS]?.HEADER || "");
+            },
+              currentContentPSTitle() {
+                  return this.truncateString(this.lstArticlesPS?.[this.currentIndexPS]?.TITLE || "", 110);
+           },
+
+
+
+            currentDataSlider() {
+
+                if (this.DataSlider != null && this.DataSlider != [] && this.DataSlider.length > 0 && this.DataSlider[this.currentIndexSlider].PATH != null) {
+                    return encodeURI(this.DataSlider[this.currentIndexSlider].PATH) || '';
+                } else {
+                    return '../../content/portalcss/img/main-BG-01.jpg';
+                }
+
+            },
+
+            currentClassChangeNews() {
+                return this.classChangeNews;
+            },
+
+
+            currentContentTrading_Auto_Info() {
+                return this.Trading_Auto_Info;
+            },
+            currentContentTrading_Auto_InfoPS() {
+                return this.Trading_Auto_Info_PS;
+            },
+
+            currentContentTrading_Auto_InfoCP() {
+                return this.Trading_Auto_Info_CP;
+            },
+            currentContentTrading_Auto_InfoTP() {
+                return this.Trading_Auto_Info_TP;
+            },
+
+
+            currentValueSLCT() {
+
+                var sumX = parseFloat(this.Trading_Auto_Info_CP.Total_Number_Com_List) + parseFloat(this.Trading_Auto_Info_CP.Total_Number_Com_Up);
+
+                if (sumX == 0) {
+                    return 50;
+                } else {
+                    return (parseFloat(this.Trading_Auto_Info_CP.Total_Number_Com_List) * 100 / sumX).toFixed(2);
+                }
+                return 0;
+            },
+
+            currentValueUPCom() {
+                var sumX = parseFloat(this.Trading_Auto_Info_CP.Total_Number_Com_List) + parseFloat(this.Trading_Auto_Info_CP.Total_Number_Com_Up);
+                var value = 0
+                if (sumX == 0) {
+                    return 50;
+                } else {
+                    value = (parseFloat(this.Trading_Auto_Info_CP.Total_Number_Com_List) * 100 / sumX).toFixed(2);
+                    return (value * 0.5 + 50).toFixed(2);
+                }
+                return 0;
+            },
+
+
+            currentValue() {
+
+                var sumX = parseFloat(this.Trading_Auto_Info_CP.Total_Value_List) + parseFloat(this.Trading_Auto_Info_CP.Total_Value_Up);
+
+                if (sumX == 0) {
+                    return 50;
+                } else {
+                    return (parseFloat(this.Trading_Auto_Info_CP.Total_Value_List) * 100 / sumX).toFixed(2);
+                }
+                return 0;
+            },
+
+            currentUPCom() {
+                var sumX = parseFloat(this.Trading_Auto_Info_CP.Total_Value_List) + parseFloat(this.Trading_Auto_Info_CP.Total_Value_Up);
+                var value = 0
+                if (sumX == 0) {
+                    return 50;
+                } else {
+                    value = (parseFloat(this.Trading_Auto_Info_CP.Total_Value_List) * 100 / sumX).toFixed(2);
+                    return (value * 0.5 + 50).toFixed(2);
+                }
+                return 0;
+            },
+
+
+        },
+
+        created() {
+            // Gọi hàm fetchData ngay khi component được tạo
+            this.loadMemdata();
+        },
+
+        mounted() {
+            this.loadMemdata();
+            this.startContentRotation();
+
+
+        },
+        //beforeDestroy() {
+        //    // Clear the interval when component is destroyed to avoid memory leaks
+        //    clearInterval(this.intervalIdPortal);
+        //},
+
+
+        methods: {
+            loadMemdata() {
+                $.ajax({
+                    type: 'POST',
+                    url: '/Home/GetDataArticles',
+                    data: {},
+                    cache: false,
+                    traditional: true,
+                    beforeSend: function () {
+                        // Có thể thêm loading spinner ở đây nếu cần
+                    },
+                    success: (data) => { // Sử dụng arrow function để giữ `this`
+                        const _lstArticlesHome = data.dataHome;
+                        const _lstArticlesCP = data.dataCP;
+                        const _lstArticlesTP = data.dataTP;
+                        const _lstArticlesPS = data.dataPS;
+                        const _dataTrading_Auto_Info = data.dataTrading_Auto_Info;
+                        const _dataTrading_Auto_InfoPS = data.dataTrading_Auto_InfoPS;
+                        const _dataTrading_Auto_InfoCP = data.dataTrading_Auto_InfoCP;
+                        const _dataSlider = data.dataSlider;
+
+                        const _dataTrading_Auto_Info_TP = data.dataTrading_Auto_InfoTP;
+
+
+
+                        this.lstArticlesHome = JSON.parse(_lstArticlesHome);
+                        this.lstArticlesCP = JSON.parse(_lstArticlesCP);
+
+                        console.log(this.lstArticlesCP);
+
+                        this.lstArticlesTP = JSON.parse(_lstArticlesTP);
+                        this.lstArticlesPS = JSON.parse(_lstArticlesPS);
+
+
+
+
+
+
+                        this.Trading_Auto_Info = JSON.parse(_dataTrading_Auto_Info);
+
+                        this.Trading_Auto_Info_PS = JSON.parse(_dataTrading_Auto_InfoPS);
+
+                        this.Trading_Auto_Info_CP = JSON.parse(_dataTrading_Auto_InfoCP);
+
+                        this.Trading_Auto_Info_TP = JSON.parse(_dataTrading_Auto_Info_TP);
+
+
+                        if (_dataSlider != null && _dataSlider.length > 0 && _dataSlider != "") {
+
+                            this.DataSlider = JSON.parse(_dataSlider);
+
+                        }
+
+
+                    },
+                    error: (xhr, status, error) => {
+                        console.error('Có lỗi xảy ra:', error);
+                    }
+                });
+            },
+
+            startContentRotation() {
+                this.intervalIdPortal =  setInterval(() => {
+                    // Cập nhật currentIndex và làm mới nội dung mỗi 5 giây
+
+                    this.loadMemdata();
+                    if (this.lstArticlesHome.length > 0 || this.lstArticlesCP.length > 0 || this.lstArticlesTP.length > 0 || this.lstArticlesPS.length > 0) {
+
+
+                        this.currentIndex = (this.currentIndex + 1) % this.lstArticlesHome.length;
+                        this.currentIndexCP = (this.currentIndexCP + 1) % this.lstArticlesCP.length;
+                        this.currentIndexTP = (this.currentIndexTP + 1) % this.lstArticlesTP.length;
+                        this.currentIndexPS = (this.currentIndexPS + 1) % this.lstArticlesPS.length;
+
+
+
+                        if (this.DataSlider.length > 0) {
+                            this.currentIndexSlider = (this.currentIndexSlider + 1) % this.DataSlider.length;
+                        }
+
+                        setTimeout(() => {
+                            this.classChangeNews = '';
+                        }, 3000);
+
+                        this.classChangeNews = 'fade-in-right';
+                        //this.changeBackground(encodeURI(this.DataSlider[this.currentIndexSlider].PATH))
+
+                        setTimeout(() => {
+                            this.classChangeNews = '';
+                        }, 3000);
+
+
+
+                    }
+                }, '10000');
+            },
+
+            DetailArticlesByID(id, FileAttach) {
+                $.ajax({
+                    type: 'POST',
+                    url: '/Home/PopupTinCongBoDetailTrangChu',
+                    dataType: "html",
+                    data: { pArticlesID: id, pFileAttach: FileAttach }
+                    , async: true, cache: false, traditional: true,
+                    success: function (data) {
+                        if (data != null) {
+                            $("#divViewDetailArticles").html(data);
+                            var titleContent = $(".Box-TieuDe label").html();
+                            ShowPopupDialog('divWrapperDetailArticlas', titleContent, 860, 0);
+
+                        }
+                    }
+                });
+            },
+
+
+            DetailArticlesMore() {
+                $.ajax({
+                    type: 'POST',
+                    url: '/Home/PopupTinCongBoMoreTrangChu',
+                    dataType: "html",
+                    data: {}
+                    , async: true, cache: false, traditional: true,
+                    success: function (data) {
+                        if (data != null) {
+                            $("#divViewDetailArticles").html(data);
+                            var titleContent = $(".Box-TieuDe label").html();
+                            ShowPopupDialog('divWrapperDetailArticlas', 'Danh s&#225;ch tin mới nhất', 1000, 0);
+
+                        }
+                    }
+                });
+             },
+
+             truncateString(inputString, maxLength = 230) {
+                if (inputString.length > maxLength) {
+                    let truncated = inputString.substring(0, maxLength);
+                    let lastSpace = truncated.lastIndexOf(' ');  // Tìm dấu cách cuối cùng
+                    if (lastSpace !== -1) {
+                        truncated = truncated.substring(0, lastSpace);  // Cắt tại dấu cách
+                    }
+                    return truncated + " ...";
+                }
+                return inputString;
+            }
+
+        },
+
+
+            //changeBackground(newImage) {
+            //    $('.content-main').fadeOut(1, function () {
+            //        // Thay đổi background-image
+            //        $(this).css('background-image', `url(${newImage})`);
+
+            //        // Làm phần tử hiển thị lại
+            //        $(this).fadeIn(1009);
+            //    });
+            //}
+
+
+
+
+    });
+
+    const vueReceived = appreceived.mount('#pannel');
+
+
+</script>
+
+
+
+    </div>
+
+    <style>
+        .ui-autocomplete {
+            position: fixed;
+            z-index: 1004 !important;
+            background: #fff !important;
+            width: 245px !important;
+            max-height: 150px !important;
+            overflow: auto !important;
+        }
+
+        .clsCheck {
+            color: #daa520;
+        }
+
+        #box_search_menu {
+            top: 0px;
+            padding: 0;
+            border: none;
+            box-shadow: none;
+            width: 250px;
+        }
+    </style>
+    <script>
+        $(document).ready(function () {
+            // Mở div .advanced_search_menu khi click vào input #g_txt_search
+            $("#g_txt_search").on("click", function () {
+                $(".advanced_search_menu").css("display", "flex");
+            });
+
+            // Ẩn div .advanced_search_menu khi blur khỏi input #g_txt_search
+            $("#g_txt_search").on("blur", function () {
+                // Sử dụng setTimeout để trì hoãn việc ẩn để người dùng có thể click vào .advanced_search_menu
+                setTimeout(function () {
+                    if (!$(".advanced_search_menu:hover").length) {
+                        $(".advanced_search_menu").css("display", "none");
+                    }
+                }, 100);
+            });
+
+            // Đảm bảo khi người dùng click vào .advanced_search_menu, thì nó không bị ẩn
+            $(".advanced_search_menu").on("click", function (e) {
+                e.stopPropagation(); // Ngừng sự kiện "click" lan ra ngoài để không ẩn div
+            });
+        });
+
+
+        $(window).scroll(function () {
+            var scroll = $(window).scrollTop();
+            if (scroll > 0) {
+                $("#wrapper-header").addClass("active");
+            }
+            else {
+                $("#wrapper-header").removeClass("active");
+            }
+        });
+
+        $(document).mousedown(function (e) {
+            e = e || window.event;
+            var key = e.which || e.buttons;
+            if (key == 1 && !$("#div_search_contain").is(':hover') && !$(".box_search").is(':hover')) {
+                //$(".box_search").addClass("cls_display_none");
+                //$("#box_search_menu").siblings().removeClass('btn_search_menu');
+            }
+        });
+
+        $(function () {
+            var mn_active = $("#menuActiveSearch").val();
+            if (mn_active != "") {
+                $("#MN_" + mn_active).addClass("menu_active");
+            }
+        });
+
+
+        function OpenBoxSearch() {
+            try {
+
+                if ($("#box_search_menu").hasClass("cls_display_none")) {
+                    $("#box_search_menu").removeClass("cls_display_none");
+                    $("#box_search_menu").siblings().addClass('btn_search_menu');
+                    $("#g_txt_search").val("");
+                    $("#g_txt_search").focus();
+                } else {
+                    $("#box_search_menu").addClass("cls_display_none");
+                    $("#box_search_menu").siblings().removeClass('btn_search_menu');
+                }
+            }
+            catch (e) {
+            }
+        }
+
+
+        $("#g_txt_search").keypress(function (e) {
+            
+            if (e.keyCode == 13) {
+                if ($("#g_NewsOnSearchSuggest").is(":checked") == true) {
+
+                    funcSearchOnPageHNX();
+                } else {
+                    //window.location.href = "/cophieu-etfs/chi-tiet-chung-khoan-ny-" + $("#g_txt_search").val().toLowerCase() + ".html";
+                    window.location.href = "/cophieu-etfs/chi-tiet-chung-khoan-" + $("#g_txt_search").val().toLowerCase() + ".html";
+                }
+            }
+        });
+
+
+
+        $("#g_btn_search").click(function () {
+
+           
+
+            if ($("#g_NewsOnSearchSuggest").is(":checked") == true) {
+                funcSearchOnPageHNX();
+            } else {
+
+                //window.location.href = "/cophieu-etfs/chi-tiet-chung-khoan-ny-" + $("#g_txt_search").val().toLowerCase() + ".html";
+                window.location.href = "/cophieu-etfs/chi-tiet-chung-khoan-" + $("#g_txt_search").val().toLowerCase() + ".html";
+            }
+        });
+
+        function funcSearchOnPageHNX() {
+            try {
+                var keysearch = $('#g_txt_search').val();
+                if (keysearch != "") {
+                    keysearch = keysearch.replace(/!|%|\^|\*|\(|\)|\+|\=|\<|\>|\?|\/|,|\.|\:|\;|\'| |\"|\&|\#|\[|\]|~|$|_/g, " ");
+                }
+                if (keysearch != "") {
+                    var url = "/ket-qua-tim-kiem.html?key=" + keysearch;
+                    window.location.href = url;
+                }
+            } catch (e) {
+                console.log(e.message);
+            }
+        }
+
+        $("input#g_txt_search").autocomplete({
+            autoFocus: true,
+            source: function (request, response) {
+                if ($("#g_MaCKOnSearchSuggest").is(":checked") == true) { //neu la chung khoan thi moi cho search autogest
+                    $.ajax({
+                        type: 'GET',
+                        url: "/ModuleSearchALL/SearchDataHNX/SearchSuggestSymbol",
+                        dataType: "json",
+                        data: { pSymbol: $("#g_txt_search").val().trim(), },
+                        success: function (data) {
+                            response($.map(data, function (item) {
+                                //calcDropdownPosition();
+                                return { label: item.STOCK_CODE + " - " + item.NAME, value: item.Link_To_Detail, }
+                            }));
+                            //calcDropdownPosition();
+                        },
+                        error: function (data, type) {
+                            console.log(type);
+                        },
+                        complete: function () {
+                            //calcDropdownPosition();
+                            console.log("Request complete");
+                        }
+                    });
+                }
+            },
+            select: function (event, data) {
+                window.location.href = "/cophieu-etfs/chi-tiet-chung-khoan-" + data.item.value.toLowerCase() + ".html";
+
+            }
+        });
+
+        $.ui.autocomplete.prototype._renderItem = function (ul, item) {
+            var re = new RegExp("" + this.term.toUpperCase());
+            var t = item.label.replace(re, "<span class='clsCheck'>" +
+                this.term.toUpperCase() +
+                "</span>");
+
+            return $("<li></li>")
+                .data("item.autocomplete", item)
+                .append("<a>" + t + "</a>")
+                .appendTo(ul);
+        };
+
+        function calcDropdownPosition() {
+
+            const parentElement = document.querySelector('#box_search_menu');
+            const dropdownElement = document.querySelector('.ui-autocomplete');
+
+            if (parentElement && dropdownElement) {
+                const parentRect = parentElement.getBoundingClientRect();
+
+                const top = parentRect.bottom;
+                const left = parentRect.left;
+
+                //dropdownElement.style.display = 'block';
+                dropdownElement.style.top = top + 26 + "px";
+                dropdownElement.style.left = left + "px";
+            } else {
+                setTimeout(calcDropdownPosition, 250);
+
+            }
+        }
+
+        const appreceivedChiSo = Vue.createApp({
+            data() {
+                return {
+                    message: '',
+                    lstDataChiSo: [],
+                    lstDataSymbol: [],
+                    intervalId: null, // Store interval ID to clear later
+                };
+            },
+            created() {
+                // Gọi hàm fetchData ngay khi component được tạo
+                this.loadMemdataChiSo();
+            },
+            mounted() {
+                this.loadMemdataChiSo();
+                this.startContentRotation();
+            },
+
+            beforeDestroy() {
+                // Clear the interval when component is destroyed to avoid memory leaks
+                clearInterval(this.intervalId);
+            },
+
+
+            methods: {
+                loadMemdataChiSo() {
+                    $.ajax({
+                        type: 'POST',
+                        url: '/Home/GetDataChiSo',
+                        data: {},
+                        cache: false,
+                        traditional: true,
+                        beforeSend: function () {
+                            // Có thể thêm loading spinner ở đây nếu cần
+                        },
+                        success: (data) => { // Sử dụng arrow function để giữ `this`
+                            const _lstDataChiSo = data.dataIndex;
+                            const _lstDataSymbol = data.dataSymbol;
+                            // Gán dữ liệu vào thuộc tính của Vue instance
+                            this.lstDataChiSo = JSON.parse(_lstDataChiSo);
+                            this.lstDataSymbol = JSON.parse(_lstDataSymbol);
+                        },
+                        error: (xhr, status, error) => {
+                            console.error('Có lỗi xảy ra:', error);
+                        }
+                    });
+                },
+
+                startContentRotation() {
+                    this.intervalId = setInterval(() => {
+                        this.loadMemdataChiSo();  // Ensure `this` context is correct
+                    }, 60000);
+                }
+
+
+
+            },
+
+        });
+        const vueReceivedChiSo = appreceivedChiSo.mount('#header');
+    </script>
+
+    <script>
+        $(window).scroll(function () {
+            var scroll = $(window).scrollTop();
+            if (scroll > 0) {
+                $("#wrapper-header").addClass("active");
+            }
+            else {
+                $("#wrapper-header").removeClass("active");
+            }
+        });
+
+        $(document).mousedown(function (e) {
+            e = e || window.event;
+            var key = e.which || e.buttons;
+            if (key == 1 && !$("#div_search_contain").is(':hover') && !$(".box_search").is(':hover')) {
+                //$(".box_search").addClass("cls_display_none");
+                //$("#box_search_menu").siblings().removeClass('btn_search_menu');
+            }
+        });
+
+        $(function () {
+            var mn_active = $("#menuActiveSearch").val();
+            if (mn_active != "") {
+                $("#MN_" + mn_active).addClass("menu_active");
+            }
+        });
+
+        //function OpenBoxSearch() {
+        //    try {
+
+        //        if ($("#box_search_menu").hasClass("cls_display_none")) {
+        //            $("#box_search_menu").removeClass("cls_display_none");
+        //            $("#box_search_menu").siblings().addClass('btn_search_menu');
+        //            $("#g_txt_search").val("");
+        //            $("#g_txt_search").focus();
+        //        } else {
+        //            $("#box_search_menu").addClass("cls_display_none");
+        //            $("#box_search_menu").siblings().removeClass('btn_search_menu');
+        //        }
+        //    }
+        //    catch (e) {
+        //    }
+        //}
+
+
+        $("#g_txt_search").keypress(function (e) {
+            if (e.keyCode == 13) {
+                if ($("#g_NewsOnSearchSuggest").is(":checked") == true) {
+
+                    funcSearchOnPageHNX();
+                } else {
+                    //window.location.href = "/cophieu-etfs/chi-tiet-chung-khoan-ny-" + $("#g_txt_search").val().toLowerCase() + ".html";
+                    window.location.href = "/cophieu-etfs/chi-tiet-chung-khoan-" + $("#g_txt_search").val().toLowerCase() + ".html";
+                }
+            }
+        });
+
+        $("#g_btn_search").click(function () {
+            if ($("#g_NewsOnSearchSuggest").is(":checked") == true) {
+                funcSearchOnPageHNX();
+            } else {
+
+                //window.location.href = "/cophieu-etfs/chi-tiet-chung-khoan-ny-" + $("#g_txt_search").val().toLowerCase() + ".html";
+                window.location.href = "/cophieu-etfs/chi-tiet-chung-khoan-" + $("#g_txt_search").val().toLowerCase() + ".html";
+            }
+        });
+
+        function funcSearchOnPageHNX() {
+            try {
+                var keysearch = $('#g_txt_search').val();
+                if (keysearch != "") {
+                    keysearch = keysearch.replace(/!|%|\^|\*|\(|\)|\+|\=|\<|\>|\?|\/|,|\.|\:|\;|\'| |\"|\&|\#|\[|\]|~|$|_/g, " ");
+                }
+                if (keysearch != "") {
+                    var url = "/ket-qua-tim-kiem.html?key=" + keysearch;
+                    window.location.href = url;
+                }
+            } catch (e) {
+                console.log(e.message);
+            }
+        }
+
+        $("input#g_txt_search").autocomplete({
+            autoFocus: true,
+            source: function (request, response) {
+                if ($("#g_MaCKOnSearchSuggest").is(":checked") == true) { //neu la chung khoan thi moi cho search autogest
+                    $.ajax({
+                        type: 'GET',
+                        url: "/ModuleSearchALL/SearchDataHNX/SearchSuggestSymbol",
+                        dataType: "json",
+                        data: { pSymbol: $("#g_txt_search").val().trim(), },
+                        success: function (data) {
+                            response($.map(data, function (item) {
+                                //calcDropdownPosition();
+                                return { label: item.STOCK_CODE + " - " + item.NAME, value: item.Link_To_Detail, }
+                            }));
+                            //calcDropdownPosition();
+                        },
+                        error: function (data, type) {
+                            console.log(type);
+                        },
+                        complete: function () {
+                            //calcDropdownPosition();
+                            console.log("Request complete");
+                        }
+                    });
+                }
+            },
+            select: function (event, data) {
+                window.location.href = "/cophieu-etfs/chi-tiet-chung-khoan-" + data.item.value.toLowerCase() + ".html";
+
+            }
+        });
+
+        $.ui.autocomplete.prototype._renderItem = function (ul, item) {
+            var re = new RegExp("" + this.term.toUpperCase());
+            var t = item.label.replace(re, "<span class='clsCheck'>" +
+                this.term.toUpperCase() +
+                "</span>");
+
+            return $("<li></li>")
+                .data("item.autocomplete", item)
+                .append("<a>" + t + "</a>")
+                .appendTo(ul);
+        };
+
+        //function calcDropdownPosition() {
+
+        //    const parentElement = document.querySelector('#box_search_menu');
+        //    const dropdownElement = document.querySelector('.ui-autocomplete');
+
+        //    if (parentElement && dropdownElement) {
+        //        const parentRect = parentElement.getBoundingClientRect();
+
+        //        const top = parentRect.bottom;
+        //        const left = parentRect.left;
+
+        //        //dropdownElement.style.display = 'block';
+        //        dropdownElement.style.top = top + 26 + "px";
+        //        dropdownElement.style.left = left + "px";
+        //    } else {
+        //        setTimeout(calcDropdownPosition, 250);
+
+        //    }
+        //}
+
+
+    </script>
+
+
+</body>
+
+</html>
+
+

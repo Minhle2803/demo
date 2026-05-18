@@ -19,7 +19,16 @@ Route::middleware('guest')->group(function () {
     Route::get('/signup', [ClientRegisterController::class, 'index'])->name('signup');
 });
 
-Route::view('/', 'pages.landing4')->name('landing2');
+Route::get('/', function () {
+    // $userAgent = request()->userAgent();
+    // $isMobile = (bool) preg_match('/(android|iphone|ipad|ipod|mobile|webos|blackberry|windows phone)/i', $userAgent);
+
+    // if ($isMobile) {
+    //     return view('pages.landing6_mobile');
+    // }
+
+    return view('pages.landing6');
+})->name('landing2');
 
 Route::get('/lang/{locale}', function (string $locale) {
     if (in_array($locale, ['en', 'vi'], true)) {

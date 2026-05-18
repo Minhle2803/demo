@@ -184,14 +184,7 @@
                                     <div class="col-lg-6">
                                         <div class="mb-3">
                                             <label for="kycBankBranch" class="form-label">{{ __('messages.profile.bank_name_label') }} <span class="text-danger">*</span></label>
-                                            <select class="form-control" id="kycBankBranch" name="bank_account">
-                                                <option value="">{{ __('messages.profile.select_bank') }}</option>
-                                                @foreach ($bank_list as $bank)
-                                                    <option value="{{ $bank['code'] }}" {{ old('bank_account', $user->bank_account) === $bank['code'] || old('bank_account', $user->bank_account) === $bank['name'] ? 'selected' : '' }}>
-                                                        {{ $bank['name'] }}
-                                                    </option>
-                                                @endforeach
-                                            </select>
+                                            <input type="text" class="form-control" id="kycBankBranch" name="bank_account" value="{{ old('bank_account', $user->bank_account) }}" placeholder="{{ __('messages.profile.enter_bank_name') }}">
                                         </div>
                                     </div>
                                 @if (!$user->isKycVerified())

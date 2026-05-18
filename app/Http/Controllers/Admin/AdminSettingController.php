@@ -8,6 +8,7 @@ use App\Http\Requests\Admin\UpdateFeePercentRequest;
 use App\Http\Requests\Admin\UpdateLogoRequest;
 use App\Http\Requests\Admin\UpdateMinDepositRequest;
 use App\Services\Admin\AdminSettingService;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class AdminSettingController extends Controller
@@ -18,10 +19,11 @@ class AdminSettingController extends Controller
         $logo = $service->getLogo();
         $feePercent = $service->getFeePercent();
         $minDeposit = $service->getMinDeposit();
+        $ipWhitelistEnabled = $service->getIpWhitelistEnabled();
         $admin = Auth::user();
         $inviteLink = $admin->invite_code ? route('signup', ['ref' => $admin->invite_code]) : null;
 
-        return view('pages.admin.settings.index', compact('bankInfo', 'logo', 'feePercent', 'minDeposit', 'admin', 'inviteLink'))
+        return view('pages.admin.settings.index', compact('bankInfo', 'logo', 'feePercent', 'minDeposit', 'ipWhitelistEnabled', 'admin', 'inviteLink'))
             ->with('bank_list', config('bank'));
     }
 
@@ -55,5 +57,14 @@ class AdminSettingController extends Controller
 
         return redirect()->route('admin.settings.index')
             ->with('success', __('admin.min_deposit_updated'));
+    }
+
+    public function updateIpWhitelist(Request $request, AdminSettingService $service)
+    {
+        $enabled = $request->boolean('ip_whitelist_enabled');
+        $service->updateIpWhitelistEnabled($enabled);
+
+        return redirect()->route('admin.settings.index')
+            ->with('success', __('admin.ip_whitelist_toggle_updated'));
     }
 }

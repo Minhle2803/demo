@@ -123,6 +123,33 @@
     <div class="col-xxl-6">
         <div class="card">
             <div class="card-header">
+                <h5 class="card-title mb-0">{{ __('admin.ip_whitelist_toggle') }}</h5>
+            </div>
+            <div class="card-body">
+                <form action="{{ route('admin.settings.ip-whitelist') }}" method="POST">
+                    @csrf
+                    <div class="mb-3">
+                        <div class="d-flex align-items-center gap-3">
+                            <div class="form-check form-switch">
+                                <input class="form-check-input" type="checkbox" role="switch"
+                                       id="ipWhitelistSwitch" name="ip_whitelist_enabled" value="1"
+                                       {{ $ipWhitelistEnabled ? 'checked' : '' }}>
+                                <label class="form-check-label" for="ipWhitelistSwitch">
+                                    {{ __('admin.ip_whitelist_enable_label') }}
+                                </label>
+                            </div>
+                        </div>
+                        <small class="text-muted d-block mt-2">{{ __('admin.ip_whitelist_desc') }}</small>
+                    </div>
+                    <button type="submit" class="btn btn-primary">{{ __('admin.save') }}</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-xxl-6">
+        <div class="card">
+            <div class="card-header">
                 <h5 class="card-title mb-0">{{ __('admin.logo_setting') }}</h5>
             </div>
             <div class="card-body">

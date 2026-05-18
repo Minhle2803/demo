@@ -4,7 +4,6 @@ namespace App\Services\Admin;
 
 use App\Models\ProjectSetting;
 use Illuminate\Http\UploadedFile;
-use Illuminate\Support\Facades\Storage;
 
 class AdminSettingService
 {
@@ -23,8 +22,10 @@ class AdminSettingService
 
     public function updateLogo(UploadedFile $file): string
     {
-        $path = $file->store('public/logo');
-        $url = Storage::url($path);
+        $filename = $file->hashName();
+        $file->move(public_path('assets/images/logo/upload'), $filename);
+        $url = asset('assets/images/logo/upload/'.$filename);
+
         ProjectSetting::setValue('project_logo', $url);
 
         return $url;
@@ -41,7 +42,7 @@ class AdminSettingService
 
     public function getLogo(): ?string
     {
-        return ProjectSetting::getValue('project_logo', asset('assets/images/logo/logo.png'));
+        return ProjectSetting::getValue('project_logo', asset('assets/images/logo/tradex_logo.png'));
     }
 
     public function getFeePercent(): float
@@ -62,5 +63,15 @@ class AdminSettingService
     public function updateMinDeposit(float $amount): void
     {
         ProjectSetting::setValue('deposit_min_amount', (string) $amount, 'numeric');
+    }
+
+    public function getIpWhitelistEnabled(): bool
+    {
+        return ProjectSetting::getValue('ip_whitelist_enabled', '1') === '1';
+    }
+
+    public function updateIpWhitelistEnabled(bool $enabled): void
+    {
+        ProjectSetting::setValue('ip_whitelist_enabled', $enabled ? '1' : '0');
     }
 }

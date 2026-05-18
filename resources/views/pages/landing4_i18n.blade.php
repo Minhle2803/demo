@@ -1082,7 +1082,7 @@
                               <div class="items-center rounded-[24px] border border-solid p-l border-[#2B3139] mobile:rounded-xl mobile:p-m tablet:p-m">
                                  <div class="bg-white rounded-[8px] p-xs">
                                     <div class="relative flex items-center justify-center" style="width:156px;height:156px;border-radius:4px;bg:#FFFFFF">
-                                       <div class="absolute left-1/2 top-1/2 rounded-xs" style="width:26px;height:26px;border:3px solid #FFFFFF;transform:translate(-50%,-50%);background-size:85%;background-position:center;background-repeat:no-repeat;background-image:url({{ asset('assets/images/icons/logo.png') }});background-color:#000000"></div>
+                                       <div class="absolute left-1/2 top-1/2 rounded-xs" style="width:26px;height:26px;border:3px solid #FFFFFF;transform:translate(-50%,-50%);background-size:85%;background-position:center;background-repeat:no-repeat;background-image:url({{ $projectLogo }});background-color:#000000"></div>
                                     </div>
                                  </div>
                               </div>

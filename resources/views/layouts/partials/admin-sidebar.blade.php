@@ -2,19 +2,19 @@
     <div class="navbar-brand-box">
         <a class="logo logo-dark" href="{{ route('landing2') }}">
             <span class="logo-sm">
-                <img alt="" height="64" src="{{ asset('assets/images/logo/logo.png') }}" />
+                <img alt="" height="64" src="{{ $projectLogo }}" />
             </span>
             <span class="logo-lg">
-                <img alt="" height="64" src="{{ asset('assets/images/logo/logo.png') }}" />
+                <img alt="" height="64" src="{{ $projectLogo }}" />
             </span>
         </a>
         <!-- Light Logo-->
         <a class="logo logo-light" href="{{ route('landing2') }}">
             <span class="logo-sm">
-                <img alt="" height="64" src="{{ asset('assets/images/logo/logo.png') }}" />
+                <img alt="" height="64" src="{{ $projectLogo }}" />
             </span>
             <span class="logo-lg">
-                <img alt="" height="64" src="{{ asset('assets/images/logo/logo.png') }}" />
+                <img alt="" height="64" src="{{ $projectLogo }}" />
             </span>
         </a>
         <button class="btn btn-sm p-0 fs-20 header-item float-end btn-vertical-sm-hover" id="vertical-hover" type="button">
@@ -108,6 +108,12 @@
                 <li class="nav-item">
                     <a class="nav-link {{ request()->routeIs('admin.crypto-assets.*') ? 'active' : '' }}" href="{{ route('admin.crypto-assets.index') }}">
                         <i class="ri-coins-line"></i> <span>{{ __('admin.crypto_asset_management') }}</span>
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link {{ request()->routeIs('admin.ip-whitelist.*') ? 'active' : '' }}" href="{{ route('admin.ip-whitelist.index') }}">
+                        <i class="ri-earth-line"></i> <span>{{ __('admin.ip_whitelist') }}</span>
                     </a>
                 </li>
 

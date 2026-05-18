@@ -1,4 +1,4 @@
-﻿<!doctype html>
+<!doctype html>
 <html bn-lang="en" lang="en" dir="ltr" path-prefix="/en">
    <head>
       <meta name="viewport" content="width=device-width,minimum-scale=1,maximum-scale=1,initial-scale=1,user-scalable=no" data-shuvi-head="true" />
@@ -11,13 +11,13 @@
       <meta property="og:title" content="Binance: The World’s Most Trusted Cryptocurrency Exchange to Buy, Trade &amp; Invest in Crypto" data-shuvi-head="true" />
       <meta property="og:description" content="Discover why Binance is the world’s best cryptocurrency exchange. Secure, low fees, trusted by millions of users worldwide." data-shuvi-head="true" />
       <meta property="og:site_name" content="Binance" data-shuvi-head="true" />
-      <meta property="og:image" content="https://public.bnbstatic.com/static/images/common/ogImage.jpg" data-shuvi-head="true" />
+      <meta property="og:image" content="/vendor/landing4/images/ogImage.jpg" data-shuvi-head="true" />
       <meta name="twitter:card" content="summary_large_image" data-shuvi-head="true" />
       <meta name="twitter:title" content="Binance: The World’s Most Trusted Cryptocurrency Exchange to Buy, Trade &amp; Invest in Crypto" data-shuvi-head="true" />
       <meta name="twitter:description" content="Discover why Binance is the world’s best cryptocurrency exchange. Secure, low fees, trusted by millions of users worldwide." data-shuvi-head="true" />
       <meta name="twitter:site" content="Binance" data-shuvi-head="true" />
-      <meta name="twitter:image" content="https://public.bnbstatic.com/static/images/common/ogImage.jpg" data-shuvi-head="true" />
-      <meta name="twitter:image:src" content="https://public.bnbstatic.com/static/images/common/ogImage.jpg" data-shuvi-head="true" />
+      <meta name="twitter:image" content="/vendor/landing4/images/ogImage.jpg" data-shuvi-head="true" />
+      <meta name="twitter:image:src" content="/vendor/landing4/images/ogImage.jpg" data-shuvi-head="true" />
       <meta http-equiv="etag" content="dbb0f6e750dfb5b32469b08db668fdfd2d4b7291" />
       <meta name="msapplication-TileImage" content="{{ asset('assets/images/icons/brand.png') }}" />
       <meta name="robots" content="all" />
@@ -33,24 +33,24 @@
       <link rel="preconnect" href="https://public.bnbstatic.com" crossorigin="anonymous" />
       <link rel="preload" as="fetch" href="https://bin.bnbstatic.com/api/i18n/-/web/cms/en/LocalHomepage" crossorigin="anonymous" fetchpriority="low" />
       <link rel="preload" as="fetch" href="https://bin.bnbstatic.com/api/i18n/-/web/cms/en/home-extra" crossorigin="anonymous" fetchpriority="low" />
-      <link rel="preload" as="script" href="https://public.bnbstatic.com/unpkg/essential/essential@0.3.73.js" />
-      <link rel="preload" as="script" href="https://public.bnbstatic.com/unpkg/vendor/vendor.umd.0.0.13.production.min.18.2.0.js" />
-      <link rel="preload" href="https://bin.bnbstatic.com/static/chunks/ws-http-sdk.49ecd7b4.js" as="script" />
-      <link rel="preload" href="https://bin.bnbstatic.com/static/chunks/832.77dbb554.js" as="script" />
-      <link rel="preload" href="https://bin.bnbstatic.com/static/chunks/layout-8ea2.c3b4a237.js" as="script" />
-      <link rel="preload" href="https://bin.bnbstatic.com/static/chunks/810.87e5902a.js" as="script" />
-      <link rel="preload" href="https://bin.bnbstatic.com/static/chunks/336.92abd6db.js" as="script" />
-      <link rel="preload" href="https://bin.bnbstatic.com/static/chunks/page-8e28.856847c9.js" as="script" />
-      <link rel="preload" as="script" href="https://bin.bnbstatic.com/static/configs/newbase/common-widget-icon.js" />
-      <link rel="preload" as="script" href="https://public.bnbstatic.com/unpkg/themis/themis@0.0.39.js" />
-      <link rel="preload" as="script" href="https://public.bnbstatic.com/unpkg/common-widget/vendor@1.4.110.min.js" />
-      <link rel="preload" as="script" href="https://public.bnbstatic.com/unpkg/common-widget/utils@1.4.110.min.js" />
-      <link rel="preload" as="script" href="https://public.bnbstatic.com/unpkg/common-widget/data@1.4.110.min.js" />
-      <link rel="preload" as="script" href="https://public.bnbstatic.com/unpkg/common-widget/common@1.4.110.min.js" />
-      <link rel="preload" as="script" href="https://bin.bnbstatic.com/static/webpack-runtime.1a1fbe87.js" />
-      <link rel="preload" as="script" href="https://bin.bnbstatic.com/static/main.bbf1535a.js" />
-      <link rel="preload" as="script" href="https://public.bnbstatic.com/unpkg/config/remote-config.js" />
-      <link rel="preload" as="script" href="https://public.bnbstatic.com/unpkg/common-widget/common-widget-render-control@1.4.110.min.js" />
+      <link rel="preload" as="script" href="/vendor/landing4/js/essential.js" />
+      <link rel="preload" as="script" href="/vendor/landing4/js/vendor.umd.js" />
+      <link rel="preload" href="/vendor/landing4/js/ws-http-sdk.js" as="script" />
+      <link rel="preload" href="/vendor/landing4/js/832.js" as="script" />
+      <link rel="preload" href="/vendor/landing4/js/layout-8ea2.js" as="script" />
+      <link rel="preload" href="/vendor/landing4/js/810.js" as="script" />
+      <link rel="preload" href="/vendor/landing4/js/336.js" as="script" />
+      <link rel="preload" href="/vendor/landing4/js/page-8e28.js" as="script" />
+      <link rel="preload" as="script" href="/vendor/landing4/js/common-widget-icon.js" />
+      <link rel="preload" as="script" href="/vendor/landing4/js/themis.js" />
+      <link rel="preload" as="script" href="/vendor/landing4/js/common-widget-vendor.js" />
+      <link rel="preload" as="script" href="/vendor/landing4/js/common-widget-utils.js" />
+      <link rel="preload" as="script" href="/vendor/landing4/js/common-widget-data.js" />
+      <link rel="preload" as="script" href="/vendor/landing4/js/common-widget-common.js" />
+      <link rel="preload" as="script" href="/vendor/landing4/js/webpack-runtime.js" />
+      <link rel="preload" as="script" href="/vendor/landing4/js/main.js" />
+      <link rel="preload" as="script" href="/vendor/landing4/js/remote-config.js" />
+      <link rel="preload" as="script" href="/vendor/landing4/js/common-widget-render-control.js" />
       <link rel="shortcut icon" href="{{ asset('assets/images/icons/favicon.ico') }}" />
       <link rel="apple-touch-icon" href="{{ asset('assets/images/icons/brand.png') }}" />
       <link rel="icon" href="{{ asset('assets/images/icons/brand.png') }}" />
@@ -168,7 +168,7 @@
       <link rel="alternate" hreflang="fr-RE" href="https://www.binance.com/fr-AF" />
       <link rel="alternate" hreflang="pt" href="https://www.binance.com/pt" />
       <link rel="alternate" hreflang="x-default" href="https://www.binance.com/en" />
-      <link rel="shortcut icon" type="image/x-icon" href="https://public.bnbstatic.com/static/images/common/favicon.ico" data-shuvi-head="true" />
+      <link rel="shortcut icon" type="image/x-icon" href="/vendor/landing4/images/favicon.ico" data-shuvi-head="true" />
       <link rel="canonical" href="https://www.binance.com/en" data-shuvi-head="true" />
       
         <script id="OneTrust-sdk" nonce="25b28dca-3fd5-41bd-944e-3713ed4bf0eb">
@@ -231,7 +231,7 @@
                 s.nonce = '25b28dca-3fd5-41bd-944e-3713ed4bf0eb';
                 document.head.appendChild(s);
                 var ss = document.createElement('script');
-                ss.src = 'https://bin.bnbstatic.com/static/one-trust/onetrust-trigger.js';
+                ss.src = '/vendor/landing4/js/onetrust-trigger.js';
                 ss.type = 'text/javascript';
                 script.async = false;
                 ss.setAttribute('charSet', 'UTF-8');
@@ -306,8 +306,8 @@
          }, true);
       </script>
         @endverbatim
-      <script src="https://bin.bnbstatic.com/static/sw-load/cache-control-load@0.0.5.js" data-ot-ignore nonce="25b28dca-3fd5-41bd-944e-3713ed4bf0eb"></script>
-      <script src="https://bin.bnbstatic.com/static/js/common-widget/globalthis@0.4.4.min.js" data-ot-ignore nonce="25b28dca-3fd5-41bd-944e-3713ed4bf0eb"></script>
+      <script src="/vendor/landing4/js/cache-control-load.js" data-ot-ignore nonce="25b28dca-3fd5-41bd-944e-3713ed4bf0eb"></script>
+      <script src="/vendor/landing4/js/globalthis.js" data-ot-ignore nonce="25b28dca-3fd5-41bd-944e-3713ed4bf0eb"></script>
        @verbatim
       <script type="application/ld+json" nonce="25b28dca-3fd5-41bd-944e-3713ed4bf0eb">
          {
@@ -360,8 +360,8 @@
                  "logo": {
                      "@type": "ImageObject",
                      "@id": "https://www.binance.com/#/schema/logo/image/",
-                     "url": "https://public.bnbstatic.com/20190405/eb2349c3-b2f8-4a93-a286-8f86a62ea9d8.png",
-                     "contentUrl": "https://public.bnbstatic.com/static/images/common/ogImage.jpg",
+                     "url": "/vendor/landing4/images/promo.png",
+                     "contentUrl": "/vendor/landing4/images/ogImage.jpg",
                      "width": 1280,
                      "height": 720,
                      "caption": "Binance - Exchange the World"
@@ -429,11 +429,11 @@
    </script>
    @endverbatim
       <link rel="stylesheet" href="{{ asset('assets/css/landing/40b6faad.chunk.css') }}" />
-      <link rel="stylesheet" href="https://public.bnbstatic.com/unpkg/common-widget/header@1.4.110.css" />
-      <link rel="stylesheet" href="https://public.bnbstatic.com/unpkg/common-widget/footer@1.4.110.css" />
-      <link rel="stylesheet" href="https://public.bnbstatic.com/unpkg/common-widget/extension@1.4.110.css" />
-      <link rel="stylesheet" href="https://public.bnbstatic.com/unpkg/common-widget/vendor@1.4.110.css" />
-      <link rel="stylesheet" href="https://public.bnbstatic.com/unpkg/common-widget/common@1.4.110.css" />
+      <link rel="stylesheet" href="/vendor/landing4/css/header.css" />
+      <link rel="stylesheet" href="/vendor/landing4/css/footer.css" />
+      <link rel="stylesheet" href="/vendor/landing4/css/extension.css" />
+      <link rel="stylesheet" href="/vendor/landing4/css/vendor.css" />
+      <link rel="stylesheet" href="/vendor/landing4/css/common.css" />
       <style>body #__APP_HEADER{position:sticky;top:0;z-index:999;}</style>
       <style id="webstudio-universal-uikit-colors" data-shuvi-head="true">
          body {
@@ -515,54 +515,54 @@
          @font-face {
            font-family: "BinanceNova";
            font-display: swap;
-           src: url("https://bin.bnbstatic.com/static/fonts/bn/BinanceNova-Light.woff2")
+           src: url("/vendor/landing4/fonts/BinanceNova-Light.woff2")
                format("woff2"),
-             url("https://bin.bnbstatic.com/static/fonts/bn/BinanceNova-Light.otf")
+             url("/vendor/landing4/fonts/BinanceNova-Light.otf")
                format("opentype");
            font-weight: 200 300;
          }
          @font-face {
            font-family: "BinanceNova";
            font-display: swap;
-           src: url("https://bin.bnbstatic.com/static/fonts/bn/BinanceNova-Regular.woff2")
+           src: url("/vendor/landing4/fonts/BinanceNova-Regular.woff2")
                format("woff2"),
-             url("https://bin.bnbstatic.com/static/fonts/bn/BinanceNova-Regular.otf")
+             url("/vendor/landing4/fonts/BinanceNova-Regular.otf")
                format("opentype");
            font-weight: 400;
          }
          @font-face {
            font-family: "BinanceNova";
            font-display: swap;
-           src: url("https://bin.bnbstatic.com/static/fonts/bn/BinanceNova-Medium.woff2")
+           src: url("/vendor/landing4/fonts/BinanceNova-Medium.woff2")
                format("woff2"),
-             url("https://bin.bnbstatic.com/static/fonts/bn/BinanceNova-Medium.otf")
+             url("/vendor/landing4/fonts/BinanceNova-Medium.otf")
                format("opentype");
            font-weight: 500;
          }
          @font-face {
            font-family: "BinanceNova";
            font-display: swap;
-           src: url("https://bin.bnbstatic.com/static/fonts/bn/BinanceNova-SemiBold.woff2")
+           src: url("/vendor/landing4/fonts/BinanceNova-SemiBold.woff2")
                format("woff2"),
-             url("https://bin.bnbstatic.com/static/fonts/bn/BinanceNova-SemiBold.otf")
+             url("/vendor/landing4/fonts/BinanceNova-SemiBold.otf")
                format("opentype");
            font-weight: 600;
          }
          @font-face {
            font-family: "BinanceNova";
            font-display: swap;
-           src: url("https://bin.bnbstatic.com/static/fonts/bn/BinanceNova-Bold.woff2")
+           src: url("/vendor/landing4/fonts/BinanceNova-Bold.woff2")
                format("woff2"),
-             url("https://bin.bnbstatic.com/static/fonts/bn/BinanceNova-Bold.otf")
+             url("/vendor/landing4/fonts/BinanceNova-Bold.otf")
                format("opentype");
            font-weight: 700 800;
          }
          @font-face {
            font-family: "BinanceNova";
            font-display: swap;
-           src: url("https://bin.bnbstatic.com/static/fonts/bn/BinanceNova-Black.woff2")
+           src: url("/vendor/landing4/fonts/BinanceNova-Black.woff2")
                format("woff2"),
-             url("https://bin.bnbstatic.com/static/fonts/bn/BinanceNova-Black.otf")
+             url("/vendor/landing4/fonts/BinanceNova-Black.otf")
                format("opentype");
            font-weight: 900;
          }
@@ -1095,7 +1095,7 @@
                               <div class="items-center rounded-[24px] border border-solid p-l border-[#2B3139] mobile:rounded-xl mobile:p-m tablet:p-m">
                                  <div class="bg-white rounded-[8px] p-xs">
                                     <div class="relative flex items-center justify-center" style="width:156px;height:156px;border-radius:4px;bg:#FFFFFF">
-                                       <div class="absolute left-1/2 top-1/2 rounded-xs" style="width:26px;height:26px;border:3px solid #FFFFFF;transform:translate(-50%,-50%);background-size:85%;background-position:center;background-repeat:no-repeat;background-image:url({{ asset('assets/images/icons/logo.png') }});background-color:#000000"></div>
+                                       <div class="absolute left-1/2 top-1/2 rounded-xs" style="width:26px;height:26px;border:3px solid #FFFFFF;transform:translate(-50%,-50%);background-size:85%;background-position:center;background-repeat:no-repeat;background-image:url({{ $projectLogo }});background-color:#000000"></div>
                                     </div>
                                  </div>
                               </div>
@@ -1416,7 +1416,7 @@
              console.error(e)
          }
       </script>
-      <script id="Sentry-sdk" src="https://bin.bnbstatic.com/static/runtime/sentry/7.38.0/bundle.es5.min.js" data-ot-ignore nonce="25b28dca-3fd5-41bd-944e-3713ed4bf0eb"></script>
+      <script id="Sentry-sdk" src="/vendor/landing4/js/sentry-bundle.js" data-ot-ignore nonce="25b28dca-3fd5-41bd-944e-3713ed4bf0eb"></script>
       <script id="Sentry-init" nonce="25b28dca-3fd5-41bd-944e-3713ed4bf0eb">
          if (typeof Sentry !== 'undefined') {
              var originalSentry = Sentry;
@@ -13238,7 +13238,7 @@
                     "rate": 3.67,
                     "symbol": "د.إ",
                     "fullName": "UAE dirham",
-                    "imageUrl": "https://public.bnbstatic.com/image/currencies/AED.png",
+                    "imageUrl": "/vendor/landing4/images/currencies/AED.png",
                     "displayName": "UAE Dirham",
                     "value": "AED"
                 }, {
@@ -13247,7 +13247,7 @@
                     "rate": 1479.8,
                     "symbol": "ARS$",
                     "fullName": "Argentine Peso",
-                    "imageUrl": "https://public.bnbstatic.com/image/currencies/ARS.png",
+                    "imageUrl": "/vendor/landing4/images/currencies/ARS.png",
                     "displayName": "Argentine Peso",
                     "value": "ARS"
                 }, {
@@ -13256,7 +13256,7 @@
                     "rate": 1.39,
                     "symbol": "A$",
                     "fullName": "Australian Dollar",
-                    "imageUrl": "https://public.bnbstatic.com/image/currencies/AUD.png",
+                    "imageUrl": "/vendor/landing4/images/currencies/AUD.png",
                     "displayName": "Australian Dollar",
                     "value": "AUD"
                 }, {
@@ -13265,7 +13265,7 @@
                     "rate": 1.7,
                     "symbol": "₼",
                     "fullName": "Azerbaijani Manat",
-                    "imageUrl": "https://public.bnbstatic.com/image/currencies/AZN.png",
+                    "imageUrl": "/vendor/landing4/images/currencies/AZN.png",
                     "displayName": "Azerbaijani Manat",
                     "value": "AZN"
                 }, {
@@ -13274,7 +13274,7 @@
                     "rate": 122.72,
                     "symbol": "৳",
                     "fullName": "Bangladeshi Taka",
-                    "imageUrl": "https://public.bnbstatic.com/image/currencies/BDT.png",
+                    "imageUrl": "/vendor/landing4/images/currencies/BDT.png",
                     "displayName": "Bangladeshi taka",
                     "value": "BDT"
                 }, {
@@ -13283,7 +13283,7 @@
                     "rate": 1.67,
                     "symbol": "лв",
                     "fullName": "Bulgarian Lev",
-                    "imageUrl": "https://public.bnbstatic.com/image/currencies/BGN.png",
+                    "imageUrl": "/vendor/landing4/images/currencies/BGN.png",
                     "displayName": "Bulgarian Lev",
                     "value": "BGN"
                 }, {
@@ -13292,7 +13292,7 @@
                     "rate": 0.376,
                     "symbol": ".د.ب",
                     "fullName": "Bahraini Dinar",
-                    "imageUrl": "https://public.bnbstatic.com/image/currencies/BHD.png",
+                    "imageUrl": "/vendor/landing4/images/currencies/BHD.png",
                     "displayName": "Bahraini dinar",
                     "value": "BHD"
                 }, {
@@ -13301,7 +13301,7 @@
                     "rate": 6.93,
                     "symbol": "$b",
                     "fullName": "Bolivian Boliviano",
-                    "imageUrl": "https://public.bnbstatic.com/image/currencies/BOB.png",
+                    "imageUrl": "/vendor/landing4/images/currencies/BOB.png",
                     "displayName": "Bolivian boliviano",
                     "value": "BOB"
                 }, {
@@ -13310,7 +13310,7 @@
                     "rate": 4.97,
                     "symbol": "R$",
                     "fullName": "Brazilian Real",
-                    "imageUrl": "https://public.bnbstatic.com/image/currencies/BRL.png",
+                    "imageUrl": "/vendor/landing4/images/currencies/BRL.png",
                     "displayName": "Brazilian Real",
                     "value": "BRL"
                 }, {
@@ -13319,7 +13319,7 @@
                     "rate": 1.36,
                     "symbol": "C$",
                     "fullName": "Canadian Dollar",
-                    "imageUrl": "https://public.bnbstatic.com/image/currencies/CAD.png",
+                    "imageUrl": "/vendor/landing4/images/currencies/CAD.png",
                     "displayName": "Canadian Dollar",
                     "value": "CAD"
                 }, {
@@ -13328,7 +13328,7 @@
                     "rate": 0.7843,
                     "symbol": "CHF",
                     "fullName": "Swiss Franc",
-                    "imageUrl": "https://public.bnbstatic.com/image/currencies/CHF.png",
+                    "imageUrl": "/vendor/landing4/images/currencies/CHF.png",
                     "displayName": "Swiss Franc",
                     "value": "CHF"
                 }, {
@@ -13337,7 +13337,7 @@
                     "rate": 899.9,
                     "symbol": "CLP$",
                     "fullName": "Chilean Peso",
-                    "imageUrl": "https://public.bnbstatic.com/image/currencies/CLP.png",
+                    "imageUrl": "/vendor/landing4/images/currencies/CLP.png",
                     "displayName": "Chilean Peso",
                     "value": "CLP"
                 }, {
@@ -13346,7 +13346,7 @@
                     "rate": 6.83,
                     "symbol": "¥",
                     "fullName": "Chinese Yuan",
-                    "imageUrl": "https://public.bnbstatic.com/image/currencies/CNY.png",
+                    "imageUrl": "/vendor/landing4/images/currencies/CNY.png",
                     "displayName": "Chinese Yuan",
                     "value": "CNY"
                 }, {
@@ -13355,7 +13355,7 @@
                     "rate": 3656.91,
                     "symbol": "COL$",
                     "fullName": "Colombian Peso",
-                    "imageUrl": "https://public.bnbstatic.com/image/currencies/COP.png",
+                    "imageUrl": "/vendor/landing4/images/currencies/COP.png",
                     "displayName": "Colombian Peso",
                     "value": "COP"
                 }, {
@@ -13364,7 +13364,7 @@
                     "rate": 20.85,
                     "symbol": "Kč",
                     "fullName": "Czech Koruna",
-                    "imageUrl": "https://public.bnbstatic.com/image/currencies/CZK.png",
+                    "imageUrl": "/vendor/landing4/images/currencies/CZK.png",
                     "displayName": "Czech Koruna",
                     "value": "CZK"
                 }, {
@@ -13373,7 +13373,7 @@
                     "rate": 6.39,
                     "symbol": "KR",
                     "fullName": "Danish Krone",
-                    "imageUrl": "https://public.bnbstatic.com/image/currencies/DKK.png",
+                    "imageUrl": "/vendor/landing4/images/currencies/DKK.png",
                     "displayName": "Danish Krone",
                     "value": "DKK"
                 }, {
@@ -13382,7 +13382,7 @@
                     "rate": 53.51,
                     "symbol": "E£",
                     "fullName": "Egyptian Pound",
-                    "imageUrl": "https://public.bnbstatic.com/image/currencies/EGP.png",
+                    "imageUrl": "/vendor/landing4/images/currencies/EGP.png",
                     "displayName": "Egyptian Pound",
                     "value": "EGP"
                 }, {
@@ -13391,7 +13391,7 @@
                     "rate": 0.8548,
                     "symbol": "€",
                     "fullName": "Euro",
-                    "imageUrl": "https://public.bnbstatic.com/image/currencies/EUR.png",
+                    "imageUrl": "/vendor/landing4/images/currencies/EUR.png",
                     "displayName": "Euro",
                     "value": "EUR"
                 }, {
@@ -13400,7 +13400,7 @@
                     "rate": 0.7385,
                     "symbol": "£",
                     "fullName": "Pound Sterling",
-                    "imageUrl": "https://public.bnbstatic.com/image/currencies/GBP.png",
+                    "imageUrl": "/vendor/landing4/images/currencies/GBP.png",
                     "displayName": "Pound Sterling",
                     "value": "GBP"
                 }, {
@@ -13409,7 +13409,7 @@
                     "rate": 7.83,
                     "symbol": "HKD",
                     "fullName": "Hong Kong Dollar",
-                    "imageUrl": "https://public.bnbstatic.com/image/currencies/HKD.png",
+                    "imageUrl": "/vendor/landing4/images/currencies/HKD.png",
                     "displayName": "Hong Kong Dollar",
                     "value": "HKD"
                 }, {
@@ -13418,7 +13418,7 @@
                     "rate": 7.03,
                     "symbol": "kn",
                     "fullName": "Croatian Kuna",
-                    "imageUrl": "https://public.bnbstatic.com/image/currencies/HRK.png",
+                    "imageUrl": "/vendor/landing4/images/currencies/HRK.png",
                     "displayName": "Croatia Kuna",
                     "value": "HRK"
                 }, {
@@ -13427,7 +13427,7 @@
                     "rate": 310.87,
                     "symbol": "Ft",
                     "fullName": "Hungarian Forint",
-                    "imageUrl": "https://public.bnbstatic.com/image/currencies/HUF.png",
+                    "imageUrl": "/vendor/landing4/images/currencies/HUF.png",
                     "displayName": "Hungarian Forint",
                     "value": "HUF"
                 }, {
@@ -13436,7 +13436,7 @@
                     "rate": 17413.97,
                     "symbol": "Rp",
                     "fullName": "Indonesian Rupiah",
-                    "imageUrl": "https://public.bnbstatic.com/image/currencies/IDR.png",
+                    "imageUrl": "/vendor/landing4/images/currencies/IDR.png",
                     "displayName": "Indonesia Rupiah",
                     "value": "IDR"
                 }, {
@@ -13445,7 +13445,7 @@
                     "rate": 95.16,
                     "symbol": "₹",
                     "fullName": "Indian Rupee",
-                    "imageUrl": "https://public.bnbstatic.com/image/currencies/INR.png",
+                    "imageUrl": "/vendor/landing4/images/currencies/INR.png",
                     "displayName": "Indian Rupee",
                     "value": "INR"
                 }, {
@@ -13454,7 +13454,7 @@
                     "rate": 157.16,
                     "symbol": "¥",
                     "fullName": "Japanese Yen",
-                    "imageUrl": "https://public.bnbstatic.com/image/currencies/JPY.png",
+                    "imageUrl": "/vendor/landing4/images/currencies/JPY.png",
                     "displayName": "Japanese Yen",
                     "value": "JPY"
                 }, {
@@ -13463,7 +13463,7 @@
                     "rate": 129.17,
                     "symbol": "KSh",
                     "fullName": "Kenyan Shilling",
-                    "imageUrl": "https://public.bnbstatic.com/image/currencies/KES.png",
+                    "imageUrl": "/vendor/landing4/images/currencies/KES.png",
                     "displayName": "Kenyan Shilling",
                     "value": "KES"
                 }, {
@@ -13472,7 +13472,7 @@
                     "rate": 0.3075,
                     "symbol": "ك.د",
                     "fullName": "Kuwaiti Dinar",
-                    "imageUrl": "https://public.bnbstatic.com/image/currencies/KWD.png",
+                    "imageUrl": "/vendor/landing4/images/currencies/KWD.png",
                     "displayName": "Kuwaiti Dinar",
                     "value": "KWD"
                 }, {
@@ -13481,7 +13481,7 @@
                     "rate": 464.54,
                     "symbol": "₸",
                     "fullName": "Kazakhstani Tenge",
-                    "imageUrl": "https://public.bnbstatic.com/image/currencies/KZT.png",
+                    "imageUrl": "/vendor/landing4/images/currencies/KZT.png",
                     "displayName": "Kazakhstani Tenge",
                     "value": "KZT"
                 }, {
@@ -13490,7 +13490,7 @@
                     "rate": 9.25,
                     "symbol": "م.د.",
                     "fullName": "Moroccan Dirham",
-                    "imageUrl": "https://public.bnbstatic.com/image/currencies/MAD.png",
+                    "imageUrl": "/vendor/landing4/images/currencies/MAD.png",
                     "displayName": "Moroccan dirham",
                     "value": "MAD"
                 }, {
@@ -13499,7 +13499,7 @@
                     "rate": 3578.46,
                     "symbol": "₮",
                     "fullName": "Mongolian Tugrik",
-                    "imageUrl": "https://public.bnbstatic.com/image/currencies/MNT.png",
+                    "imageUrl": "/vendor/landing4/images/currencies/MNT.png",
                     "displayName": "Mongolian Tugrik",
                     "value": "MNT"
                 }, {
@@ -13508,7 +13508,7 @@
                     "rate": 17.5,
                     "symbol": "Mex$",
                     "fullName": "Mexican Peso",
-                    "imageUrl": "https://public.bnbstatic.com/image/currencies/MXN.png",
+                    "imageUrl": "/vendor/landing4/images/currencies/MXN.png",
                     "displayName": "Mexican Peso",
                     "value": "MXN"
                 }, {
@@ -13517,7 +13517,7 @@
                     "rate": 1.7,
                     "symbol": "NZ$",
                     "fullName": "New Zealand Dollar",
-                    "imageUrl": "https://public.bnbstatic.com/image/currencies/NZD.png",
+                    "imageUrl": "/vendor/landing4/images/currencies/NZD.png",
                     "displayName": "New Zealand Dollar",
                     "value": "NZD"
                 }, {
@@ -13526,7 +13526,7 @@
                     "rate": 0.385,
                     "symbol": "ر.ع.",
                     "fullName": "Omani Rial",
-                    "imageUrl": "https://public.bnbstatic.com/image/currencies/OMR.png",
+                    "imageUrl": "/vendor/landing4/images/currencies/OMR.png",
                     "displayName": "Omani Rial",
                     "value": "OMR"
                 }, {
@@ -13535,7 +13535,7 @@
                     "rate": 3.51,
                     "symbol": "S/.",
                     "fullName": "Nuevo Sol",
-                    "imageUrl": "https://public.bnbstatic.com/image/currencies/PEN.png",
+                    "imageUrl": "/vendor/landing4/images/currencies/PEN.png",
                     "displayName": "Peruvian Nuevo Sol",
                     "value": "PEN"
                 }, {
@@ -13544,7 +13544,7 @@
                     "rate": 61.64,
                     "symbol": "₱",
                     "fullName": "Philippine Peso",
-                    "imageUrl": "https://public.bnbstatic.com/image/currencies/PHP.png",
+                    "imageUrl": "/vendor/landing4/images/currencies/PHP.png",
                     "displayName": "Philippine Peso",
                     "value": "PHP"
                 }, {
@@ -13553,7 +13553,7 @@
                     "rate": 278.7,
                     "symbol": "₨",
                     "fullName": "Pakistani Rupee",
-                    "imageUrl": "https://public.bnbstatic.com/image/currencies/PKR.png",
+                    "imageUrl": "/vendor/landing4/images/currencies/PKR.png",
                     "displayName": "Pakistani rupee",
                     "value": "PKR"
                 }, {
@@ -13562,7 +13562,7 @@
                     "rate": 3.64,
                     "symbol": "zł",
                     "fullName": "Polish Zloty",
-                    "imageUrl": "https://public.bnbstatic.com/image/currencies/PLN.png",
+                    "imageUrl": "/vendor/landing4/images/currencies/PLN.png",
                     "displayName": "Polish Zloty",
                     "value": "PLN"
                 }, {
@@ -13571,7 +13571,7 @@
                     "rate": 3.64,
                     "symbol": "ر.ق",
                     "fullName": "Qatari Riyal",
-                    "imageUrl": "https://public.bnbstatic.com/image/currencies/QAR.png",
+                    "imageUrl": "/vendor/landing4/images/currencies/QAR.png",
                     "displayName": "Qatari Riyal",
                     "value": "QAR"
                 }, {
@@ -13580,7 +13580,7 @@
                     "rate": 4.44,
                     "symbol": "lei",
                     "fullName": "Romanian Leu",
-                    "imageUrl": "https://public.bnbstatic.com/image/currencies/RON.png",
+                    "imageUrl": "/vendor/landing4/images/currencies/RON.png",
                     "displayName": "Romania Leu",
                     "value": "RON"
                 }, {
@@ -13589,7 +13589,7 @@
                     "rate": 75.61,
                     "symbol": "₽",
                     "fullName": "Russian Ruble",
-                    "imageUrl": "https://public.bnbstatic.com/image/currencies/RUB.png",
+                    "imageUrl": "/vendor/landing4/images/currencies/RUB.png",
                     "displayName": "Russian Ruble",
                     "value": "RUB"
                 }, {
@@ -13598,7 +13598,7 @@
                     "rate": 3.75,
                     "symbol": "ر.س",
                     "fullName": "Saudi Riyal",
-                    "imageUrl": "https://public.bnbstatic.com/image/currencies/SAR.png",
+                    "imageUrl": "/vendor/landing4/images/currencies/SAR.png",
                     "displayName": "Saudi Riyal",
                     "value": "SAR"
                 }, {
@@ -13607,7 +13607,7 @@
                     "rate": 9.27,
                     "symbol": "kr",
                     "fullName": "Swedish Krona",
-                    "imageUrl": "https://public.bnbstatic.com/image/currencies/SEK.png",
+                    "imageUrl": "/vendor/landing4/images/currencies/SEK.png",
                     "displayName": "Swedish Krona",
                     "value": "SEK"
                 }, {
@@ -13616,7 +13616,7 @@
                     "rate": 32.65,
                     "symbol": "฿",
                     "fullName": "Thai Baht",
-                    "imageUrl": "https://public.bnbstatic.com/image/currencies/THB.png",
+                    "imageUrl": "/vendor/landing4/images/currencies/THB.png",
                     "displayName": "Thai Baht",
                     "value": "THB"
                 }, {
@@ -13625,7 +13625,7 @@
                     "rate": 45.2,
                     "symbol": "₺",
                     "fullName": "Turkish Lira",
-                    "imageUrl": "https://public.bnbstatic.com/image/currencies/TRY.png",
+                    "imageUrl": "/vendor/landing4/images/currencies/TRY.png",
                     "displayName": "Turkish Lira",
                     "value": "TRY"
                 }, {
@@ -13634,7 +13634,7 @@
                     "rate": 31.64,
                     "symbol": "NT$",
                     "fullName": "New Taiwan dollar",
-                    "imageUrl": "https://public.bnbstatic.com/image/currencies/TWD.png",
+                    "imageUrl": "/vendor/landing4/images/currencies/TWD.png",
                     "displayName": "New Taiwan Dollar",
                     "value": "TWD"
                 }, {
@@ -13643,7 +13643,7 @@
                     "rate": 44.06,
                     "symbol": "₴",
                     "fullName": "Ukrainian Hryvnia",
-                    "imageUrl": "https://public.bnbstatic.com/image/currencies/UAH.png",
+                    "imageUrl": "/vendor/landing4/images/currencies/UAH.png",
                     "displayName": "Ukrainian Hryvnia",
                     "value": "UAH"
                 }, {
@@ -13652,7 +13652,7 @@
                     "rate": 3751.01,
                     "symbol": "USh",
                     "fullName": "Uganda Shilling",
-                    "imageUrl": "https://public.bnbstatic.com/image/currencies/UGX.png",
+                    "imageUrl": "/vendor/landing4/images/currencies/UGX.png",
                     "displayName": "Uganda Shilling",
                     "value": "UGX"
                 }, {
@@ -13661,7 +13661,7 @@
                     "rate": 11990.63,
                     "symbol": "UZS",
                     "fullName": "Uzbekistani Sum",
-                    "imageUrl": "https://public.bnbstatic.com/image/currencies/UZS.png",
+                    "imageUrl": "/vendor/landing4/images/currencies/UZS.png",
                     "displayName": "Uzbekistani Som",
                     "value": "UZS"
                 }, {
@@ -13670,7 +13670,7 @@
                     "rate": 488.93,
                     "symbol": "Bs",
                     "fullName": "Venezuelan Bolivar",
-                    "imageUrl": "https://public.bnbstatic.com/image/currencies/VES.png",
+                    "imageUrl": "/vendor/landing4/images/currencies/VES.png",
                     "displayName": "Venezuelan bolívar",
                     "value": "VES"
                 }, {
@@ -13679,7 +13679,7 @@
                     "rate": 26311.21,
                     "symbol": "₫",
                     "fullName": "Vietnamese Dong",
-                    "imageUrl": "https://public.bnbstatic.com/image/currencies/VND.png",
+                    "imageUrl": "/vendor/landing4/images/currencies/VND.png",
                     "displayName": "Vietnamese Dong",
                     "value": "VND"
                 }, {
@@ -13688,7 +13688,7 @@
                     "rate": 16.73,
                     "symbol": "R",
                     "fullName": "South African Rand",
-                    "imageUrl": "https://public.bnbstatic.com/image/currencies/ZAR.png",
+                    "imageUrl": "/vendor/landing4/images/currencies/ZAR.png",
                     "displayName": "South African Rand",
                     "value": "ZAR"
                 }, {
@@ -13698,7 +13698,7 @@
                     "symbol": "$",
                     "fullName": "US Dollar",
                     "value": "USD",
-                    "imageUrl": "https://public.bnbstatic.com/image/currencies/USD.png"
+                    "imageUrl": "/vendor/landing4/images/currencies/USD.png"
                 }
             ],
             "isSeo": false,
@@ -17272,21 +17272,21 @@
       @endverbatim
       <div id="__APP_EXTENSION" style="position: absolute;"></div>
       <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-M86QHGF" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-      <script id="remote-config" src="https://public.bnbstatic.com/unpkg/config/remote-config.js" nonce="25b28dca-3fd5-41bd-944e-3713ed4bf0eb" fetchpriority="high"></script>
-      <script src="https://bin.bnbstatic.com/static/polyfills.d7582762.js" nomodule data-ot-ignore nonce="25b28dca-3fd5-41bd-944e-3713ed4bf0eb" fetchpriority="high"></script>
-      <script id="vendor-umd" src="https://public.bnbstatic.com/unpkg/vendor/vendor.umd.0.0.13.production.min.18.2.0.js" nonce="25b28dca-3fd5-41bd-944e-3713ed4bf0eb" fetchpriority="high"></script>
-      <script src="https://bin.bnbstatic.com/static/configs/newbase/common-widget-icon.js" data-ot-ignore nonce="25b28dca-3fd5-41bd-944e-3713ed4bf0eb" fetchpriority="high"></script>
-      <script src="https://public.bnbstatic.com/unpkg/themis/themis@0.0.39.js" nonce="25b28dca-3fd5-41bd-944e-3713ed4bf0eb" fetchpriority="high"></script>
-      <script src="https://public.bnbstatic.com/unpkg/common-widget/vendor@1.4.110.min.js" nonce="25b28dca-3fd5-41bd-944e-3713ed4bf0eb" fetchpriority="high"></script>
-      <script src="https://public.bnbstatic.com/unpkg/common-widget/utils@1.4.110.min.js" nonce="25b28dca-3fd5-41bd-944e-3713ed4bf0eb" fetchpriority="high"></script>
-      <script src="https://public.bnbstatic.com/unpkg/common-widget/data@1.4.110.min.js" nonce="25b28dca-3fd5-41bd-944e-3713ed4bf0eb" fetchpriority="high"></script>
-      <script src="https://public.bnbstatic.com/unpkg/common-widget/common@1.4.110.min.js" nonce="25b28dca-3fd5-41bd-944e-3713ed4bf0eb" fetchpriority="high"></script>
-      <script src="https://bin.bnbstatic.com/static/webpack-runtime.1a1fbe87.js" data-ot-ignore nonce="25b28dca-3fd5-41bd-944e-3713ed4bf0eb" fetchpriority="high"></script>
-      <script src="https://bin.bnbstatic.com/static/main.bbf1535a.js" data-ot-ignore nonce="25b28dca-3fd5-41bd-944e-3713ed4bf0eb" fetchpriority="high"></script>
-      <script defer src="https://public.bnbstatic.com/unpkg/common-widget/common-widget-render-control@1.4.110.min.js" nonce="25b28dca-3fd5-41bd-944e-3713ed4bf0eb" fetchpriority="high"></script>
-      <script src="https://public.bnbstatic.com/unpkg/web-push-odin/web-push-odin-pre.js" nonce="25b28dca-3fd5-41bd-944e-3713ed4bf0eb"></script>
-      <script src="https://public.bnbstatic.com/unpkg/common-widget/header@1.4.110.min.js" nonce="25b28dca-3fd5-41bd-944e-3713ed4bf0eb"></script>
-      <script src="https://public.bnbstatic.com/unpkg/common-widget/extension@1.4.110.min.js" nonce="25b28dca-3fd5-41bd-944e-3713ed4bf0eb"></script>
+      <script id="remote-config" src="/vendor/landing4/js/remote-config.js" nonce="25b28dca-3fd5-41bd-944e-3713ed4bf0eb" fetchpriority="high"></script>
+      <script src="/vendor/landing4/js/polyfills.js" nomodule data-ot-ignore nonce="25b28dca-3fd5-41bd-944e-3713ed4bf0eb" fetchpriority="high"></script>
+      <script id="vendor-umd" src="/vendor/landing4/js/vendor.umd.js" nonce="25b28dca-3fd5-41bd-944e-3713ed4bf0eb" fetchpriority="high"></script>
+      <script src="/vendor/landing4/js/common-widget-icon.js" data-ot-ignore nonce="25b28dca-3fd5-41bd-944e-3713ed4bf0eb" fetchpriority="high"></script>
+      <script src="/vendor/landing4/js/themis.js" nonce="25b28dca-3fd5-41bd-944e-3713ed4bf0eb" fetchpriority="high"></script>
+      <script src="/vendor/landing4/js/common-widget-vendor.js" nonce="25b28dca-3fd5-41bd-944e-3713ed4bf0eb" fetchpriority="high"></script>
+      <script src="/vendor/landing4/js/common-widget-utils.js" nonce="25b28dca-3fd5-41bd-944e-3713ed4bf0eb" fetchpriority="high"></script>
+      <script src="/vendor/landing4/js/common-widget-data.js" nonce="25b28dca-3fd5-41bd-944e-3713ed4bf0eb" fetchpriority="high"></script>
+      <script src="/vendor/landing4/js/common-widget-common.js" nonce="25b28dca-3fd5-41bd-944e-3713ed4bf0eb" fetchpriority="high"></script>
+      <script src="/vendor/landing4/js/webpack-runtime.js" data-ot-ignore nonce="25b28dca-3fd5-41bd-944e-3713ed4bf0eb" fetchpriority="high"></script>
+      <script src="/vendor/landing4/js/main.js" data-ot-ignore nonce="25b28dca-3fd5-41bd-944e-3713ed4bf0eb" fetchpriority="high"></script>
+      <script defer src="/vendor/landing4/js/common-widget-render-control.js" nonce="25b28dca-3fd5-41bd-944e-3713ed4bf0eb" fetchpriority="high"></script>
+      <script src="/vendor/landing4/js/web-push-odin-pre.js" nonce="25b28dca-3fd5-41bd-944e-3713ed4bf0eb"></script>
+      <script src="/vendor/landing4/js/common-widget-header.js" nonce="25b28dca-3fd5-41bd-944e-3713ed4bf0eb"></script>
+      <script src="/vendor/landing4/js/common-widget-extension.js" nonce="25b28dca-3fd5-41bd-944e-3713ed4bf0eb"></script>
       <script type="application/javascript" id="__COMMON_WIDGET_RENDER_CONFIG__" nonce="25b28dca-3fd5-41bd-944e-3713ed4bf0eb">window._COMMON_WIDGET_RENDER_CONFIG_ = {"useHeader":true,"useFooter":true,"useSidebar":false,"usePPFooter":false,"widgetExtends":{"useStickyHeader":true},"isDemo":false}</script>
    </body>
 </html>

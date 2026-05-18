@@ -4,19 +4,19 @@
         <!-- Dark Logo-->
         <a class="logo logo-dark" href="{{ route('landing2') }}">
             <span class="logo-sm">
-                <img alt="" height="22" src="{{ asset('assets/images/logo/logo.png') }}" />
+                <img alt="" height="22" src="{{ $projectLogo }}" />
             </span>
             <span class="logo-lg">
-                <img alt="" height="17" src="{{ asset('assets/images/logo/logo.png') }}" />
+                <img alt="" height="17" src="{{ $projectLogo }}" />
             </span>
         </a>
         <!-- Light Logo-->
         <a class="logo logo-light" href="{{ route('landing2') }}">
             <span class="logo-sm">
-                <img alt="" height="22" src="{{ asset('assets/images/logo/logo.png') }}" />
+                <img alt="" height="22" src="{{ $projectLogo }}" />
             </span>
             <span class="logo-lg">
-                <img alt="" height="17" src="{{ asset('assets/images/logo/logo.png') }}" />
+                <img alt="" height="17" src="{{ $projectLogo }}" />
             </span>
         </a>
         <button class="btn btn-sm p-0 fs-20 header-item float-end btn-vertical-sm-hover" id="vertical-hover" type="button">

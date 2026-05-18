@@ -13,7 +13,7 @@
                         <div class="position-relative h-100 d-flex flex-column">
                             <div class="mb-4">
                                 <a href="{{ route('landing2') }}" class="d-block">
-                                    <img src="{{ asset('assets/images/logo/logo.png') }}" alt="" height="64">
+                                    <img src="{{ $projectLogo }}" alt="" height="64">
                                   
                                 </a>
                             </div>
