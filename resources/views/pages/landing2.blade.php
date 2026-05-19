@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="{{ __('messages.landing2.hero_subtitle') }}">
-    <title>Binance — {{ __('messages.landing2.world_leading') }}</title>
+    <title>HN Stock Exchange — {{ __('messages.landing2.world_leading') }}</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -25,7 +25,7 @@
         <a href="/" class="logo">
             <img
                 src="{{ $projectLogo }}"
-                alt="Binance Logo"
+                alt="HN Stock Exchange Logo"
                 style="height:64px;width:auto;object-fit:contain;margin-right:8px;"
             >
             <span class="trust-stat">{{ __('messages.landing2.users_trust') }}</span>
@@ -209,7 +209,7 @@
         </div>
         <div class="news-grid">
             <div class="news-card">
-                <div class="news-title">Binance Introduces New Trading Pairs for Q2 2026</div>
+                <div class="news-title">HN Stock Exchange Introduces New Trading Pairs for Q2 2026</div>
                 <div class="news-date">2026-05-01</div>
             </div>
             <div class="news-card">
@@ -217,7 +217,7 @@
                 <div class="news-date">2026-04-28</div>
             </div>
             <div class="news-card">
-                <div class="news-title">Binance Proof of Reserves Report — April 2026</div>
+                <div class="news-title">HN Stock Exchange Proof of Reserves Report — April 2026</div>
                 <div class="news-date">2026-04-25</div>
             </div>
             <div class="news-card">
@@ -250,7 +250,7 @@
                     </div>
                 </div>
                 <div style="margin-top:20px;">
-                    <h4 style="font-size:16px;font-weight:600;">{{ __('messages.landing2.humans_of_binance') }}</h4>
+                    <h4 style="font-size:16px;font-weight:600;">{{ __('messages.landing2.humans_of_HN Stock Exchange') }}</h4>
                     <div class="humans-grid">
                         <div class="human-avatar">👤</div>
                         <div class="human-avatar">👤</div>

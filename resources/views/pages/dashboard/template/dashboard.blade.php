@@ -358,7 +358,7 @@
                             </div>
                             <div class="d-flex align-items-center">
                                 <img src="assets/images/svg/crypto-icons/bnb.svg" class="bg-light rounded-circle p-1 avatar-xs img-fluid material-shadow" alt="">
-                                <h6 class="ms-2 mb-0 fs-14">Binance</h6>
+                                <h6 class="ms-2 mb-0 fs-14">HN Stock Exchange</h6>
                             </div>
                             <div class="row align-items-end g-0">
                                 <div class="col-6">
@@ -366,7 +366,7 @@
                                     <p class="text-danger fs-13 fw-medium mb-0">-09.21%<span class="text-muted ms-2 fs-10 text-uppercase">(bnb)</span></p>
                                 </div><!-- end col -->
                                 <div class="col-6">
-                                    <div class="apex-charts crypto-widget" data-colors='["--vz-danger", "--vz-transparent"]' dir="ltr" id="binance_sparkline_charts"></div>
+                                    <div class="apex-charts crypto-widget" data-colors='["--vz-danger", "--vz-transparent"]' dir="ltr" id="HN Stock Exchange_sparkline_charts"></div>
                                 </div><!-- end col -->
                             </div><!-- end row -->
                         </div><!-- end card body -->
@@ -570,7 +570,7 @@
                                             <img src="assets/images/svg/crypto-icons/bnb.svg" alt="" class="avatar-xxs material-shadow">
                                         </div>
                                         <div>
-                                            <h6 class="fs-14 mb-0">Binance</h6>
+                                            <h6 class="fs-14 mb-0">HN Stock Exchange</h6>
                                         </div>
                                     </div>
                                 </td>
@@ -1077,7 +1077,7 @@
                             <img src="assets/images/svg/crypto-icons/bnb.svg" class="avatar-xs material-shadow" alt="">
                         </div>
                         <div class="flex-grow-1 ms-3">
-                            <h6 class="fs-14 mb-1">Binance</h6>
+                            <h6 class="fs-14 mb-1">HN Stock Exchange</h6>
                             <p class="text-muted mb-0">$14.2 Billions</p>
                         </div>
                         <div class="flex-shrink-0 text-end">

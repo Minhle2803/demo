@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Professional crypto spot trading. Real-time charts, secure wallet, KYC-verified accounts.">
-    <title>Binance — Crypto Trading Platform</title>
+    <title>HN Stock Exchange — Crypto Trading Platform</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -28,7 +28,7 @@
         <a href="/" class="logo">
             <img 
                 src="{{ $projectLogo }}" 
-                alt="Binance Logo"
+                alt="HN Stock Exchange Logo"
                 class="logo-img"
                 style="width: 64px;"
             >
@@ -184,7 +184,7 @@
 <section class="section features-section" id="features">
     <div class="container">
         <div class="section-header">
-            <div class="section-label">{{ __('messages.features.why_Binance') }}</div>
+            <div class="section-label">{{ __('messages.features.why_HN Stock Exchange') }}</div>
             <h2 class="section-title">{{ __('messages.features.built_for') }}</h2>
         </div>
 
@@ -343,7 +343,7 @@
     <div class="container footer-inner">
         <div class="footer-brand">
             <span class="logo-icon">◈</span>
-            <span class="logo-text">Binance</span>
+            <span class="logo-text">HN Stock Exchange</span>
         </div>
         <div class="footer-links">
             <a href="#markets">Markets</a>

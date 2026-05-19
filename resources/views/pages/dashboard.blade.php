@@ -2,14 +2,14 @@
 <html lang="en" data-bs-theme="dark" data-layout="horizontal" data-topbar="light" data-sidebar="dark" data-sidebar-size="sm-hover" data-sidebar-image="none" data-preloader="disable" data-theme="default" data-theme-colors="default" love-deals="879BC0364EB9EBEE3DBE71B15E175613" data-layout-width="fluid" data-layout-position="fixed" data-layout-style="default" data-body-image="none" data-sidebar-visibility="show">
 
 
-<!-- Mirrored from themesbrand.com/Binance/html/master/landing.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 12 Aug 2024 07:47:05 GMT -->
+<!-- Mirrored from themesbrand.com/HN Stock Exchange/html/master/landing.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 12 Aug 2024 07:47:05 GMT -->
 <head>
 
     <meta charset="utf-8" />
-    <title>Landing | Binance</title>
+    <title>Landing | HN Stock Exchange</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta content="Premium Multipurpose Admin & Dashboard Template" name="description" />
-    <meta content="Binance" name="author" />
+    <meta content="HN Stock Exchange" name="author" />
     <!-- App favicon -->
     <link rel="shortcut icon" href="assets/images/favicon.ico">
 
@@ -1199,7 +1199,7 @@
                             </div>
                             <div class="mt-4 fs-13">
                                 <p>Premium Multipurpose Admin & Dashboard Template</p>
-                                <p class="ff-secondary">You can build any type of web application like eCommerce, CRM, CMS, Project management apps, Admin Panels, etc using Binance.</p>
+                                <p class="ff-secondary">You can build any type of web application like eCommerce, CRM, CMS, Project management apps, Admin Panels, etc using HN Stock Exchange.</p>
                             </div>
                         </div>
                     </div>
@@ -1248,7 +1248,7 @@
 
                         <div>
                             <p class="copy-rights mb-0">
-                                <script> document.write(new Date().getFullYear()) </script> © Binance 
+                                <script> document.write(new Date().getFullYear()) </script> © HN Stock Exchange 
                             </p>
                         </div>
                     </div>
@@ -1325,5 +1325,5 @@
 </body>
 
 
-<!-- Mirrored from themesbrand.com/Binance/html/master/landing.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 12 Aug 2024 07:47:10 GMT -->
+<!-- Mirrored from themesbrand.com/HN Stock Exchange/html/master/landing.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 12 Aug 2024 07:47:10 GMT -->
 </html>

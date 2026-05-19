@@ -71,6 +71,7 @@ a { text-decoration: none; }
     margin-left: auto;
     gap: 20px;
     height: 80px;
+    flex-shrink: 0;
 }
 
 /* Navigation */
@@ -158,33 +159,44 @@ a { text-decoration: none; }
 
 .index-bar {
     background: #efeded;
-    height: 35px;
+    min-height: 35px;
     width: 100%;
     display: flex;
     align-items: center;
+    overflow: hidden;
 }
 
 .index-bar-inner {
-    width: var(--container-width);
-    max-width: 100%;
+    width: 100%;
     margin: 0 auto;
     display: flex;
     align-items: center;
-    height: 100%;
+    min-height: 35px;
+    overflow: hidden;
 }
 
 .market-indices {
-    display: flex;
-    width: 100%;
+    display: inline-flex;
+    flex-wrap: nowrap;
+    animation: marquee-index 120s linear infinite;
+    align-items: center;
+    min-height: 35px;
+}
+
+@keyframes marquee-index {
+    from { transform: translateX(0); }
+    to   { transform: translateX(-50%); }
 }
 
 .index-item {
     display: flex;
     align-items: center;
     gap: 4px;
-    flex: 1;
+    flex-shrink: 0;
     justify-content: center;
     font-size: 12px;
+    white-space: nowrap;
+    padding: 4px 28px;
 }
 
 .index-name {
@@ -211,7 +223,7 @@ a { text-decoration: none; }
 
 .ticker-bar {
     background: var(--hnx-dark);
-    height: 35px;
+    min-height: 35px;
     width: 100%;
     border-bottom: 1px solid #0a6b3ba3;
     overflow: hidden;
@@ -222,7 +234,7 @@ a { text-decoration: none; }
 .ticker-content {
     display: inline-flex;
     animation: marquee 200s linear infinite;
-    height: 35px;
+    min-height: 35px;
     align-items: center;
 }
 
@@ -305,8 +317,9 @@ a { text-decoration: none; }
 }
 
 .slide-inner > * {
-    flex: 0 0 calc(50% - 12px);
+    flex: 1 1 calc(50% - 12px);
     max-width: calc(50% - 12px);
+    min-width: 0;
 }
 
 .slide-news {
@@ -368,6 +381,15 @@ a { text-decoration: none; }
     color: #fff;
 }
 
+/* Table Scroll Wrapper */
+
+.table-scroll {
+    width: 100%;
+    max-width: 562px;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
 /* Slide Table Side */
 
 .slide-table {
@@ -375,6 +397,7 @@ a { text-decoration: none; }
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    min-width: 0;
 }
 
 /* ══════════════════════════════════════════════════════════
@@ -383,6 +406,7 @@ a { text-decoration: none; }
 
 .market-table {
     width: 100%;
+    min-width: 420px;
     max-width: 562px;
     color: var(--text-light);
     border-radius: 15px;
@@ -398,22 +422,27 @@ a { text-decoration: none; }
 }
 
 .market-table .table-header th {
-    padding: 8px;
-    font-size: 20px;
+    padding: 8px 12px;
+    font-size: 18px;
     text-align: left;
     font-style: italic;
+    white-space: nowrap;
+}
+
+.market-table .table-header .th-change {
+    text-align: center;
 }
 
 .market-table td {
-    padding: 10px 16px;
-    font-size: 24px;
+    padding: 8px 14px;
+    font-size: 22px;
     font-weight: 700;
     text-shadow: 1px 1px #000;
     white-space: nowrap;
 }
 
 .market-table td span {
-    font-size: 24px;
+    font-size: 22px;
 }
 
 .market-table .text-right {
@@ -425,9 +454,19 @@ a { text-decoration: none; }
 }
 
 .tr-center {
-    display: flex;
-    align-items: center;
-    gap: 4px;
+    text-align: center;
+    white-space: nowrap;
+}
+
+.tr-center .triangle-up-lar,
+.tr-center .triangle-down-lar {
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 3px;
+}
+
+.tr-center span {
+    vertical-align: middle;
 }
 
 .table-footer {
@@ -670,15 +709,43 @@ a { text-decoration: none; }
    RESPONSIVE
    ══════════════════════════════════════════════════════════ */
 
+/* ── Narrow desktop (table layout stays side-by-side) ── */
+
+@media (max-width: 1100px) {
+    .news-title {
+        font-size: 26px;
+        line-height: 34px;
+    }
+
+    .news-desc {
+        font-size: 15px;
+        line-height: 21px;
+    }
+
+    .market-table td {
+        font-size: 17px;
+        padding: 6px 10px;
+    }
+
+    .market-table td span {
+        font-size: 17px;
+    }
+
+    .market-table .table-header th {
+        font-size: 15px;
+    }
+
+    .bar-chart .bar-label { width: 35px; font-size: 12px; }
+    .bar-chart .bar-value { width: 40px; font-size: 12px; }
+}
+
+/* ── Tablet: stack slide columns ── */
+
 @media (max-width: 992px) {
     .header-inner {
         height: auto;
         flex-wrap: wrap;
         padding: 8px 12px;
-    }
-
-    .market-indices {
-        flex-wrap: wrap;
     }
 
     .slide-inner {
@@ -707,10 +774,16 @@ a { text-decoration: none; }
         padding: 6px 10px;
     }
 
+    .market-table td span {
+        font-size: 16px;
+    }
+
     .prev, .next {
         display: none;
     }
 }
+
+/* ── Small mobile ── */
 
 @media (max-width: 768px) {
     .nav-menu ul li a {
@@ -723,6 +796,41 @@ a { text-decoration: none; }
     }
 
     .index-item {
+        font-size: 11px;
+    }
+
+    .header-right {
+        gap: 8px;
+    }
+
+    .btn-login, .btn-signup, .btn-trading {
+        padding: 4px 10px;
+        font-size: 12px;
+    }
+
+    .market-table {
+        min-width: 320px;
+    }
+
+    .market-table td {
+        font-size: 14px;
+        padding: 5px 8px;
+    }
+
+    .market-table td span {
+        font-size: 14px;
+    }
+
+    .market-table .table-header th {
         font-size: 13px;
+        padding: 5px 8px;
+    }
+
+    .slideshow-container {
+        margin: auto 8px;
+    }
+
+    .slide-inner {
+        padding: 6px;
     }
 }

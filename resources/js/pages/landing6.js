@@ -101,6 +101,9 @@ function initVueApps() {
                 return { indices: appData.indices || [] };
             },
         }).mount('#marketIndices');
+
+        // Duplicate for seamless marquee
+        indicesEl.innerHTML += indicesEl.innerHTML;
     }
 
     const tickerEl = document.getElementById('tickerContent');

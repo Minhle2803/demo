@@ -88,11 +88,12 @@
                             </div>
                         </div>
                         <div class="slide-table">
+                            <div class="table-scroll">
                             <table class="market-table">
                                 <tr class="table-header">
-                                    <th style="width:200px">Thị trường</th>
-                                    <th style="width:200px">Khối lượng giao dịch<br>(tỷ USD)</th>
-                                    <th style="width:100px">Thay đổi</th>
+                                    <th>Thị trường</th>
+                                    <th>Khối lượng giao dịch<br>(tỷ USD)</th>
+                                    <th class="th-change">Thay đổi</th>
                                 </tr>
                                 <tr>
                                     <td>Spot BTC/USDT</td>
@@ -138,6 +139,7 @@
                                     <td colspan="3" class="table-footer">Cập nhật ngày 18/05/2026</td>
                                 </tr>
                             </table>
+                            </div>
                             <div class="slide-links">
                                 <a href="{{ route('tradding') }}" class="form-text">Bảng giá trực tuyến</a>
                                 <span class="form-text">Danh sách tin mới nhất</span>
@@ -216,11 +218,12 @@
                             </div>
                         </div>
                         <div class="slide-table">
+                            <div class="table-scroll">
                             <table class="market-table">
                                 <tr class="table-header">
-                                    <th style="width:200px">Top biến động 24h</th>
-                                    <th style="width:200px">Giá (USD)</th>
-                                    <th style="width:100px">Thay đổi</th>
+                                    <th>Top biến động 24h</th>
+                                    <th>Giá (USD)</th>
+                                    <th class="th-change">Thay đổi</th>
                                 </tr>
                                 <tr>
                                     <td>SOL</td>
@@ -254,6 +257,7 @@
                                     <td colspan="3" class="table-footer">Cập nhật ngày 18/05/2026</td>
                                 </tr>
                             </table>
+                            </div>
                             <div class="slide-links">
                                 <a href="{{ route('tradding') }}" class="form-text">Bảng giá trực tuyến</a>
                                 <span class="form-text">Xem thêm biến động</span>
@@ -274,11 +278,12 @@
                             </div>
                         </div>
                         <div class="slide-table">
+                            <div class="table-scroll">
                             <table class="market-table">
                                 <tr class="table-header">
-                                    <th style="width:200px">Sản phẩm Futures</th>
-                                    <th style="width:200px">Khối lượng (tỷ USD)</th>
-                                    <th style="width:100px">Open Interest</th>
+                                    <th>Sản phẩm Futures</th>
+                                    <th>Khối lượng (tỷ USD)</th>
+                                    <th class="th-change">Open Interest</th>
                                 </tr>
                                 <tr>
                                     <td>BTC/USDT Perpetual</td>
@@ -304,6 +309,7 @@
                                     <td colspan="3" class="table-footer">Cập nhật ngày 18/05/2026</td>
                                 </tr>
                             </table>
+                            </div>
                             <div class="slide-links">
                                 <a href="{{ route('tradding') }}" class="form-text">Giao dịch Futures</a>
                                 <a href="{{ route('tradding') }}" class="form-text">Bảng giá trực tuyến</a>
@@ -327,7 +333,6 @@
 {{-- ═══════════════════════ FOOTER ══════════════════════════ --}}
 <div id="footer">
     <div class="footer-inner">
-        <div class="footer-copyright">© 2026 Bản quyền thuộc TradeX. Giao dịch tiền mã hóa tiềm ẩn rủi ro cao.</div>
         <div class="footer-links">
             <a href="#">Dịch vụ</a>
             <span>|</span>
