@@ -57,17 +57,7 @@ class TradingSessionService
      */
     public function activateSession(TradingSession $session): void
     {
-        $realtimeCandle = TradingChartCandle::forPair($session->symbol, $session->interval)
-            ->realtime()
-            ->where('timestamp', $session->candle_timestamp)
-            ->first();
-
         $data = ['status' => 'open'];
-
-        if ($realtimeCandle) {
-            $data['open_price'] = $realtimeCandle->open;
-        }
-
         $session->update($data);
     }
 

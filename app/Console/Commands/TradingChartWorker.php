@@ -202,14 +202,19 @@ class TradingChartWorker extends Command
         string $interval,
         int $currentIntervalTs,
     ): void {
-        // If a realtime candle already exists at this timestamp (e.g. worker restart after crash),
-        // don't try to create a duplicate — just broadcast it and move on.
+        // Check if ANY candle already exists at this timestamp.
         $existing = TradingChartCandle::forPair($symbol, $interval)
-            ->realtime()
             ->where('timestamp', $currentIntervalTs)
             ->first();
 
         if ($existing) {
+            // Convert future candle to realtime open if needed.
+            if ($existing->timeline_type === TradingChartCandle::TIMELINE_FUTURE) {
+                $existing->timeline_type = TradingChartCandle::TIMELINE_REALTIME;
+                $existing->status = TradingChartCandle::STATUS_OPEN;
+                $existing->save();
+            }
+
             $this->broadcaster->broadcastUpdate($existing);
 
             return;
@@ -297,13 +302,20 @@ class TradingChartWorker extends Command
             $gapStart += $intervalMs;
         }
 
-        // c) Open the current interval candle (skip if already exists from a partial prior run).
-        $alreadyExists = TradingChartCandle::forPair($symbol, $interval)
-            ->realtime()
+        // c) Open the current interval candle — convert future if exists, else create.
+        $existing = TradingChartCandle::forPair($symbol, $interval)
             ->where('timestamp', $currentIntervalTs)
-            ->exists();
+            ->first();
 
-        if (! $alreadyExists) {
+        if ($existing) {
+            if ($existing->timeline_type === TradingChartCandle::TIMELINE_FUTURE) {
+                $existing->timeline_type = TradingChartCandle::TIMELINE_REALTIME;
+                $existing->status = TradingChartCandle::STATUS_OPEN;
+                $existing->save();
+            }
+
+            $this->broadcaster->broadcastUpdate($existing);
+        } else {
             [$direction, $biasPct] = $this->ruleService->getActiveDirectionAndBias(
                 $symbol, $interval, $currentIntervalTs,
             );
@@ -331,24 +343,30 @@ class TradingChartWorker extends Command
     {
         $offset = (int) config('trading_chart.future_session_offset', 10);
 
-        // Resolve the previous close: prefer latest realtime candle, then seed price.
-        $latestRealtime = TradingChartCandle::forPair($symbol, $interval)
-            ->realtime()
-            ->closed()
-            ->latestFirst()
-            ->first();
+        // Base previousClose on the current realtime open candle for continuity.
+        // Falls back to last closed realtime, then seed price.
+        $currentOpen = TradingChartCandle::currentOpenFor($symbol, $interval);
 
-        $previousClose = $latestRealtime
-            ? (string) $latestRealtime->close
-            : $this->seedPrice($symbol);
+        if ($currentOpen) {
+            $previousClose = (string) $currentOpen->close;
+        } else {
+            $latestRealtime = TradingChartCandle::forPair($symbol, $interval)
+                ->realtime()
+                ->closed()
+                ->latestFirst()
+                ->first();
+
+            $previousClose = $latestRealtime
+                ? (string) $latestRealtime->close
+                : $this->seedPrice($symbol);
+        }
 
         $futureTs = $currentIntervalTs + $intervalMs;
 
         for ($i = 0; $i < $offset; $i++) {
-            // Check if a future candle already exists for this timestamp.
+            // Check if ANY candle (realtime or future) already exists at this timestamp.
             $exists = TradingChartCandle::forPair($symbol, $interval)
                 ->where('timestamp', $futureTs)
-                ->where('timeline_type', TradingChartCandle::TIMELINE_FUTURE)
                 ->exists();
 
             if (! $exists) {
@@ -373,7 +391,6 @@ class TradingChartWorker extends Command
                         $this->generator->closeCandle($candle);
                     });
                 } catch (Throwable $e) {
-                    // Future candle is best-effort — don't crash the tick.
                     Log::warning('[chart:worker] Failed to sync future candle', [
                         'symbol' => $symbol,
                         'interval' => $interval,
@@ -383,13 +400,12 @@ class TradingChartWorker extends Command
                 }
             }
 
-            // Price continuity: use the future candle's close (or realtime close if it was a duplicate).
-            $lastFuture = TradingChartCandle::forPair($symbol, $interval)
+            // Read back any candle at this timestamp for price continuity.
+            $lastCandle = TradingChartCandle::forPair($symbol, $interval)
                 ->where('timestamp', $futureTs)
-                ->where('timeline_type', TradingChartCandle::TIMELINE_FUTURE)
                 ->first();
 
-            $previousClose = $lastFuture ? (string) $lastFuture->close : $previousClose;
+            $previousClose = $lastCandle ? (string) $lastCandle->close : $previousClose;
             $futureTs += $intervalMs;
         }
     }

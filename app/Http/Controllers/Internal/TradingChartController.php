@@ -60,10 +60,10 @@ class TradingChartController extends Controller
         $symbol = $v['symbol'];
         $interval = $v['interval'];
         $limit = $request->resolvedLimit();
-        $from = Carbon::now()->utc()->subDays(2)->timestamp * 1000;
+        $from = Carbon::now()->utc()->subDays(1)->timestamp * 1000;
         $to = Carbon::now()->utc()->timestamp * 1000;
 
-        if (isset($v['from'])) {
+        if (isset($v['from'])) { 
             $from = (int) $v['from'];
         }
 
