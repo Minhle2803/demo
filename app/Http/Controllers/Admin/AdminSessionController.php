@@ -73,15 +73,22 @@ class AdminSessionController extends Controller
         return view('pages.admin.sessions.realtime', compact('sessions', 'symbols'));
     }
 
-    public function show(int $id)
+    public function show(Request $request, $id)
     {
         $session = TradingSession::findOrFail($id);
+        $search = $request->input('search', '');
 
         $trades = $session->trades()
             ->with('user')
+            ->when($search, function ($query) use ($search) {
+                $query->whereHas('user', function ($q) use ($search) {
+                    $q->where('nickname', 'like', '%' . $search . '%');
+                });
+            })
             ->orderByDesc('id')
-            ->paginate(25);
+            ->paginate(25)
+            ->withQueryString();
 
-        return view('pages.admin.sessions.show', compact('session', 'trades'));
+        return view('pages.admin.sessions.show', compact('session', 'trades', 'search'));
     }
 }

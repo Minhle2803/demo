@@ -13,6 +13,7 @@ use App\Services\Trading\TradingSessionService;
 use App\Support\ErrorCodes;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class TradingSessionController extends Controller
 {
@@ -185,7 +186,7 @@ class TradingSessionController extends Controller
 
                 'trading_sessions.symbol as session_symbol',
                 'trading_sessions.open_price as session_open_price',
-                'trading_sessions.close_price as session_close_price',
+                DB::raw("CASE WHEN trades.status = 'pending' THEN 0 ELSE trading_sessions.close_price END as session_close_price"),
             ])
             ->where('trades.id', '>=', $lastId)
             ->where('trades.user_id', $userId)
@@ -220,7 +221,7 @@ class TradingSessionController extends Controller
 
                 'trading_sessions.symbol as session_symbol',
                 'trading_sessions.open_price as session_open_price',
-                'trading_sessions.close_price as session_close_price',
+                DB::raw("CASE WHEN trades.status = 'pending' THEN 0 ELSE trading_sessions.close_price END as session_close_price"),
             ])
             ->where('trades.session_id', $sessionId)
             ->where('trades.user_id', $userId)

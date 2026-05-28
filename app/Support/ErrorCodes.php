@@ -62,6 +62,8 @@ final class ErrorCodes
 
     const AUTH_FORBIDDEN = 'AUTH_FORBIDDEN';
 
+    const AUTH_ACCOUNT_BLOCKED = 'AUTH_ACCOUNT_BLOCKED';
+
     // -------------------------------------------------------------------------
     // OTP errors
     // -------------------------------------------------------------------------

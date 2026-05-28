@@ -28,6 +28,7 @@ return [
     'AUTH_EMAIL_ALREADY_USED' => 'Email already registered.',
     'AUTH_PHONE_ALREADY_USED' => 'Phone number already registered.',
     'AUTH_NICKNAME_ALREADY_USED' => 'Nickname already in use.',
+    'AUTH_ACCOUNT_BLOCKED' => 'Your account has been blocked. Please contact support.',
     'AUTH_UNVERIFIED_ACCOUNT' => 'Account not verified.',
     'AUTH_EMAIL_VERIFICATION_REQUIRED' => 'Email verification required.',
     'AUTH_PHONE_VERIFICATION_REQUIRED' => 'Phone verification required.',

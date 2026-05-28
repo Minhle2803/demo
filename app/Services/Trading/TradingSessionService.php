@@ -99,7 +99,6 @@ class TradingSessionService
             DB::transaction(function () use ($session) {
                 $session->update([
                     'status' => 'closed',
-                    'close_price' => $session->open_price ?? '0',
                 ]);
             });
 
@@ -115,10 +114,9 @@ class TradingSessionService
         DB::transaction(function () use ($session, $candle) {
             $session->update([
                 'status' => 'closed',
-                'close_price' => $candle->close,
             ]);
 
-            $this->settleTradesForSession($session, $candle->open, $candle->close);
+            $this->settleTradesForSession($session, (float) $session->open_price, (float) $session->close_price);
         });
 
         broadcast(new TradingSessionUpdated($session->fresh()));
@@ -176,7 +174,7 @@ class TradingSessionService
     /**
      * Settle all pending trades for a closed session.
      */
-    protected function settleTradesForSession(TradingSession $session, string $openPrice, string $closePrice): void
+    protected function settleTradesForSession(TradingSession $session, float $openPrice, float $closePrice): void
     {
         $trades = $session->trades()->where('status', 'pending')->get();
 

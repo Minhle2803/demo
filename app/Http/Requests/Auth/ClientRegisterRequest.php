@@ -23,6 +23,7 @@ class ClientRegisterRequest extends FormRequest
                 'string',
                 'min:3',
                 'max:50',
+                'regex:/^[a-zA-Z0-9_]+$/', // Chỉ cho phép chữ, số, dấu gạch dưới
                 'unique:client_users,nickname',
             ],
             'phone_number' => [
@@ -49,10 +50,12 @@ class ClientRegisterRequest extends FormRequest
     public function messages(): array
     {
         return [
-            'nickname.unique' => __('errors.'.ErrorCodes::AUTH_NICKNAME_ALREADY_USED),
             'phone_number.unique' => __('errors.'.ErrorCodes::AUTH_PHONE_ALREADY_USED),
             'phone_number.regex' => 'Số điện thoại không đúng.',
             'password.confirmed' => 'Xác nhận mật khẩu phải giống với mật khẩu.',
+            'nickname.regex' => 'Tên người dùng chỉ được chứa chữ cái, số và dấu gạch dưới (_), không được có dấu cách.',
+            'nickname.unique' => 'Tên người dùng đã được sử dụng.',
+            'nickname.min' => 'Tên người dùng phải có ít nhất :min ký tự.',
         ];
     }
 

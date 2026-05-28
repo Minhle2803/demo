@@ -58,6 +58,8 @@ class ClientUser extends Authenticatable
         'date_of_birth',
         'cccd_number',
         'kyc_verified_at',
+        'is_verified',
+        'is_blocked',
     ];
 
     // -------------------------------------------------------------------------
@@ -86,6 +88,7 @@ class ClientUser extends Authenticatable
             'trading_balance' => 'decimal:2',
             'date_of_birth' => 'date',
             'kyc_verified_at' => 'datetime',
+            'is_blocked' => 'boolean',
         ];
     }
 

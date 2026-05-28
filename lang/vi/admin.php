@@ -26,6 +26,8 @@ return [
     'edit_user' => 'Chỉnh sửa người dùng',
     'edit' => 'Sửa',
     'user_updated' => 'Đã cập nhật thông tin người dùng.',
+    'user_blocked' => 'Đã chặn người dùng.',
+    'user_unblocked' => 'Đã bỏ chặn người dùng.',
     'user' => 'Người dùng',
     'user_id' => 'Mã người dùng',
     'user_info' => 'Thông tin người dùng',

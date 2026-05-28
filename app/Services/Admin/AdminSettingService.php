@@ -25,7 +25,7 @@ class AdminSettingService
         $filename = $file->hashName();
         $file->move(public_path('assets/images/logo/upload'), $filename);
         $url = asset('assets/images/logo/upload/'.$filename);
-
+    
         ProjectSetting::setValue('project_logo', $url);
 
         return $url;

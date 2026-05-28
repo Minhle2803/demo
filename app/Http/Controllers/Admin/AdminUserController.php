@@ -6,11 +6,15 @@ use App\Events\BalanceUpdated;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\UpdateUserRequest;
 use App\Models\ClientUser;
+use App\Models\Trade;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
+use function PHPUnit\Framework\isEmpty;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Validation\Rules\Password;
 
 class AdminUserController extends Controller
 {
@@ -52,8 +56,30 @@ class AdminUserController extends Controller
     {
         $user = ClientUser::findOrFail($id);
         $userBankName = $this->resolveBankName($user->bank_account);
+        $trades = [];
+        $userId = $user->id;
 
-        return view('pages.admin.users.show', compact('user', 'userBankName'));
+        $trades = Trade::query()
+            ->join('trading_sessions', 'trades.session_id', '=', 'trading_sessions.id')
+            ->select([
+                'trades.id',
+                'trades.user_id',
+                'trades.session_id',
+                'trades.type',
+                'trades.amount',
+                'trades.status',
+                'trades.payout',
+                'trades.created_at',
+                'trading_sessions.symbol as session_symbol',
+                'trading_sessions.open_price as session_open_price',
+                'trading_sessions.close_price as session_close_price',
+            ])
+            ->where('trades.user_id', $userId)
+            ->orderByDesc('trades.session_id')
+            ->orderByDesc('trades.id')
+            ->paginate(20);
+
+        return view('pages.admin.users.show', compact('user', 'userBankName', 'trades'));
     }
 
     public function edit(int $id)
@@ -64,10 +90,51 @@ class AdminUserController extends Controller
             ->with('bank_list', config('bank'));
     }
 
+    public function updatePass(Request $request, int $id)
+    {
+        $user = ClientUser::findOrFail($id);
+        // Validate password ngoài transaction
+        $request->validate([
+            'password' => ['required', Password::min(8), 'confirmed'],
+        ]);
+        $user->update([
+            'password' => Hash::make($request->input('password')),
+        ]);
+
+        return redirect()->route('admin.users.show', $user->id)
+            ->with('success', __('admin.user_updated'));
+    }
+
+    public function blockUser(Request $request, int $id)
+    {
+        $user = ClientUser::findOrFail($id);
+        // Validate password ngoài transaction
+        DB::transaction(function () use ($user, $request) {
+            $user->update([
+                'is_blocked' => true,
+            ]);
+        });
+        return redirect()->route('admin.users.show', $user->id)
+            ->with('success', __('admin.user_blocked'));
+    }
+
+    public function unBlockUser(Request $request, int $id)
+    {
+        $user = ClientUser::findOrFail($id);
+        // Validate password ngoài transaction
+        DB::transaction(function () use ($user, $request) {
+            $user->update([
+                'is_blocked' => false,
+            ]);
+        });
+
+        return redirect()->route('admin.users.show', $user->id)
+            ->with('success', __('admin.user_unblocked'));
+    }
+
     public function update(UpdateUserRequest $request, int $id)
     {
         $user = ClientUser::findOrFail($id);
-
         $originalBalance = (float) $user->balance;
 
         DB::transaction(function () use ($user, $request) {

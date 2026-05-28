@@ -28,6 +28,7 @@ return [
     'AUTH_EMAIL_ALREADY_USED' => 'Địa chỉ email này đã được đăng ký.',
     'AUTH_PHONE_ALREADY_USED' => 'Số điện thoại này đã được đăng ký.',
     'AUTH_NICKNAME_ALREADY_USED' => 'Tên người dùng này đã được sử dụng.',
+    'AUTH_ACCOUNT_BLOCKED' => 'Tài khoản của bạn đã bị khóa. Vui lòng liên hệ hỗ trợ.',
     'AUTH_UNVERIFIED_ACCOUNT' => 'Tài khoản của bạn chưa được xác minh.',
     'AUTH_EMAIL_VERIFICATION_REQUIRED' => 'Yêu cầu xác minh email.',
     'AUTH_PHONE_VERIFICATION_REQUIRED' => 'Yêu cầu xác minh số điện thoại.',

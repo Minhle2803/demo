@@ -48,6 +48,21 @@ class ClientLoginController extends Controller
                 ->with('error', __('errors.'.ErrorCodes::AUTH_INVALID_CREDENTIALS));
         }
 
+        if ($user->is_blocked) {
+            if ($request->expectsJson()) {
+                return ApiResponse::error(
+                    code: ErrorCodes::AUTH_ACCOUNT_BLOCKED,
+                    statusCode: 403,
+                    message: __('errors.'.ErrorCodes::AUTH_ACCOUNT_BLOCKED),
+                );
+            }
+
+            return redirect()
+                ->back()
+                ->withInput()
+                ->with('error', __('errors.'.ErrorCodes::AUTH_ACCOUNT_BLOCKED));
+        }
+
         // Optionally block unverified accounts (toggle this depending on project policy)
         // if (!$user->is_verified) {
         //     return ApiResponse::error(ErrorCodes::AUTH_UNVERIFIED_ACCOUNT, statusCode: 403);

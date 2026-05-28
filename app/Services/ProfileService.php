@@ -8,12 +8,13 @@ use App\Support\ErrorCodes;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
+use App\Events\BalanceUpdated;
 
 class ProfileService
 {
     public function updateProfile(ClientUser $user, array $data): void
     {
-        $profileData = ['nickname' => $data['nickname']];
+        $profileData = [];
 
         if (! empty($data['account_name'])) {
             $profileData['account_name'] = $data['account_name'];
@@ -96,12 +97,23 @@ class ProfileService
         if ((float) $user->balance < $amount) {
             return ['code' => ErrorCodes::WITHDRAW_INSUFFICIENT_BALANCE];
         }
+        $balance = (float) $user->balance;
+
+        $user->decrement('balance', $amount);
+
 
         WithdrawRequest::create([
             'user_id' => $user->id,
             'amount' => $amount,
             'status' => 'processing',
         ]);
+        
+        BalanceUpdated::dispatch(
+            $user->id,
+            $balance - $amount,
+            'withdraw',
+            $amount,
+        );
 
         return ['code' => ErrorCodes::WITHDRAW_REQUESTED];
     }

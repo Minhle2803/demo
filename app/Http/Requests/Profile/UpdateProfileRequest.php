@@ -19,21 +19,14 @@ class UpdateProfileRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'nickname' => [
-                'required',
-                'string',
-                'min:3',
-                'max:50',
-                Rule::unique('client_users', 'nickname')->ignore(auth('client')->id()),
-            ],
             'account_name' => ['nullable', 'string', 'max:255'],
             'bank_number' => ['nullable', 'string', 'max:50'],
             'bank_account' => ['nullable', 'string', 'max:255'],
             'full_name' => ['nullable', 'string', 'max:255'],
             'date_of_birth' => ['nullable', 'date'],
             'cccd_number' => ['nullable', 'string', 'max:50'],
-            'kyc_front' => ['nullable', 'file', 'image', 'max:5120'],
-            'kyc_back' => ['nullable', 'file', 'image', 'max:5120'],
+            'kyc_front' => ['nullable', 'file', 'image', 'max:10240'],
+            'kyc_back' => ['nullable', 'file', 'image', 'max:10240'],
         ];
     }
 

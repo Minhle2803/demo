@@ -25,8 +25,16 @@ Route::name('admin.')->group(function () {
         Route::get('/users/kyc', [AdminUserController::class, 'kyc'])->name('users.kyc');
         Route::get('/users/{id}', [AdminUserController::class, 'show'])->name('users.show');
         Route::get('/users/{id}/edit', [AdminUserController::class, 'edit'])->name('users.edit');
+        Route::get('/users/{id}/change-password', function (int $id) {
+            return view('pages.admin.users.change-password', [
+                'id' => $id
+            ]);
+        })->name('users.change-password');
+        Route::post('/users/{id}/change-password', [AdminUserController::class, 'updatePass'])->name('users.change-password.update');
         Route::put('/users/{id}', [AdminUserController::class, 'update'])->name('users.update');
         Route::post('/users/{id}/approve-kyc', [AdminUserController::class, 'approveKyc'])->name('users.approve-kyc');
+        Route::post('/users/{id}/unblock', [AdminUserController::class, 'unBlockUser'])->name('users.unblock');
+        Route::post('/users/{id}/block', [AdminUserController::class, 'blockUser'])->name('users.block');
 
         Route::get('/deposits', [AdminDepositController::class, 'index'])->name('deposits.index');
         Route::post('/deposits/{id}/approve', [AdminDepositController::class, 'approve'])->name('deposits.approve');

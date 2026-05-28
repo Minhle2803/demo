@@ -17,28 +17,13 @@ class AdminWithdrawService
         }
 
         DB::transaction(function () use ($withdraw) {
-            $user = ClientUser::findOrFail($withdraw->user_id);
 
-            if (bccomp((string) $user->balance, (string) $withdraw->amount, 2) < 0) {
-                throw new \RuntimeException(__('admin.insufficient_balance'));
-            }
-
-            $user->decrement('balance', (float) $withdraw->amount);
 
             $withdraw->update([
                 'status' => 'done',
                 'processed_by' => Auth::id(),
                 'processed_at' => now(),
             ]);
-
-            $freshUser = $user->fresh();
-
-            BalanceUpdated::dispatch(
-                $freshUser->id,
-                (float) $freshUser->balance,
-                'withdraw',
-                (float) $withdraw->amount,
-            );
         });
     }
 
@@ -47,6 +32,9 @@ class AdminWithdrawService
         if (! in_array($withdraw->status, ['pending', 'processing'], true)) {
             throw new \RuntimeException(__('admin.withdraw_already_processed'));
         }
+        $user = ClientUser::findOrFail($withdraw->user_id);
+
+        $user->increment('balance', (float) $withdraw->amount);
 
         $withdraw->update([
             'status' => 'rejected',
@@ -54,5 +42,15 @@ class AdminWithdrawService
             'processed_by' => Auth::id(),
             'processed_at' => now(),
         ]);
+
+        $freshUser = $user->fresh();
+
+        BalanceUpdated::dispatch(
+            $freshUser->id,
+            (float) $freshUser->balance,
+            'withdraw',
+            (float) $withdraw->amount,
+        );
     }
 }
+
